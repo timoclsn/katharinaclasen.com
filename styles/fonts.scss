@@ -1,0 +1,28 @@
+/* el_messiri-regular - latin */
+@font-face {
+  font-family: "ElMessiri";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/ElMessiri-Regular.eot"); /* IE9 Compat Modes */
+  src: local("ElMessiri Regular"), local("ElMessiri-Regular"),
+    url("/fonts/ElMessiri-Regular.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("/fonts/ElMessiri-Regular.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("/fonts/ElMessiri-Regular.woff")
+      format("woff"),
+    /* Modern Browsers */ url("/fonts/ElMessiri-Regular.ttf") format("truetype"),
+    /* Safari, Android, iOS */ url("/fonts/ElMessiri-Regular.svg") format("svg"); /* Legacy iOS */
+}
+
+/* el_messiri-bold - latin */
+@font-face {
+  font-family: "ElMessiri";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/ElMessiri-Bold.eot"); /* IE9 Compat Modes */
+  src: local("ElMessiri Bold"), local("ElMessiri-Bold"),
+    url("/fonts/ElMessiri-Bold.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("/fonts/ElMessiri-Bold.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("/fonts/ElMessiri-Bold.woff") format("woff"),
+    /* Modern Browsers */ url("/fonts/ElMessiri-Bold.ttf") format("truetype"),
+    /* Safari, Android, iOS */ url("/fonts/ElMessiri-Bold.svg") format("svg"); /* Legacy iOS */
+}

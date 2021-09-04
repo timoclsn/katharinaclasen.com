@@ -1,0 +1,287 @@
+@import "reset.scss";
+@import "media-queries.scss";
+@import "colors.scss";
+@import "fonts.scss";
+@import "type.scss";
+
+// GENERAL
+
+html {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  width: 100%;
+  background-color: #fff;
+}
+
+// PADDING
+
+.padding-main {
+  padding-left: 20%;
+  padding-right: 20%;
+  @media screen and (max-width: $DesktopL) {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  @media screen and (max-width: $DesktopS) {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  @media screen and (max-width: $Mobile) {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+
+.padding-main-left {
+  padding-left: 20%;
+  @media screen and (max-width: $DesktopL) {
+    padding-left: 10%;
+  }
+  @media screen and (max-width: $DesktopS) {
+    padding-left: 2%;
+  }
+  @media screen and (max-width: $Mobile) {
+    padding-left: 4%;
+  }
+}
+
+// STRUCTURE
+.logo {
+  padding-top: 48px;
+  @media screen and (max-width: $TabletPortrait) {
+    padding-top: 24px;
+  }
+  a {
+    color: $cc_black;
+  }
+}
+
+.text-boxes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 200px;
+  padding-bottom: 88px;
+  @media screen and (max-width: $TabletPortrait) {
+    flex-direction: column;
+    padding-top: 64px;
+  }
+}
+
+.text-box {
+  width: 18%;
+  @media screen and (max-width: $TabletPortrait) {
+    width: 50%;
+    padding-top: 56px;
+  }
+}
+
+.text-box-link {
+  padding-top: 32px;
+  @media screen and (max-width: $TabletPortrait) {
+    padding-top: 8px;
+  }
+}
+
+.quote-container {
+  background-color: $cc_lightGrey;
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: $TabletPortrait) {
+    flex-direction: column;
+  }
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.quote {
+  background-color: $cc_olive;
+  width: 40%;
+  @media screen and (max-width: $DesktopL) {
+    width: 50%;
+  }
+  @media screen and (max-width: $DesktopS) {
+    width: 58%;
+  }
+  @media screen and (max-width: $TabletPortrait) {
+    width: 98%;
+  }
+  @media screen and (max-width: $Mobile) {
+    width: 96%;
+  }
+  figure {
+    padding-right: 5%;
+    padding-top: 320px;
+    padding-bottom: 88px;
+    @media screen and (max-width: $TabletPortrait) {
+      padding-top: 240px;
+    }
+  }
+  blockquote {
+    color: $cc_white;
+  }
+}
+
+.quote-image {
+  background-color: $cc_lightGrey;
+  width: 40%;
+  display: flex;
+  align-items: flex-end;
+  @media screen and (max-width: $TabletPortrait) {
+    width: 100%;
+  }
+  img {
+    max-width: 100%;
+    display: block;
+  }
+}
+
+.about-container {
+  background-color: $cc_pinkCandy;
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: $TabletPortrait) {
+    flex-direction: column;
+  }
+  flex-wrap: nowrap;
+}
+
+.text {
+  background-color: $cc_white;
+  width: 30%;
+  padding-top: 120px;
+  padding-bottom: 88px;
+  padding-right: 40px;
+  @media screen and (max-width: $DesktopL) {
+    width: 40%;
+  }
+  @media screen and (max-width: $DesktopS) {
+    width: 48%;
+  }
+  @media screen and (max-width: $TabletPortrait) {
+    width: 90%;
+    padding-right: 8%;
+  }
+  @media screen and (max-width: $Mobile) {
+    width: 90%;
+    padding-right: 6%;
+  }
+  h2 {
+    padding-bottom: 16px;
+  }
+  h3 {
+    padding-top: 32px;
+    padding-bottom: 16px;
+    text-decoration: underline;
+  }
+}
+
+.social {
+  align-self: flex-end;
+  background-color: $cc_pinkCandy;
+  width: 50%;
+  @media screen and (max-width: $TabletPortrait) {
+    width: 96%;
+    padding-top: 240px;
+  }
+  @media screen and (max-width: $Mobile) {
+    width: 98%;
+  }
+  padding-top: 320px;
+  padding-left: 40px;
+  blockquote {
+    color: $cc_orange;
+    width: 30%;
+    @media screen and (max-width: $DesktopL) {
+      width: 50%;
+    }
+    @media screen and (max-width: $DesktopS) {
+      width: 80%;
+    }
+    @media screen and (max-width: $TabletPortrait) {
+      width: 60%;
+      padding-left: 0;
+    }
+    @media screen and (max-width: $Mobile) {
+      width: 85%;
+      padding-left: 2%;
+    }
+  }
+}
+
+.social-links {
+  padding-top: 72px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 30%;
+  @media screen and (max-width: $DesktopL) {
+    width: 50%;
+  }
+  @media screen and (max-width: $DesktopS) {
+    width: 80%;
+  }
+  @media screen and (max-width: $TabletPortrait) {
+    width: 60%;
+    padding-left: 0;
+  }
+  @media screen and (max-width: $Mobile) {
+    width: 85%;
+    padding-left: 2%;
+  }
+}
+
+.footer {
+  height: 112px;
+  background-color: $cc_lightGrey;
+  li {
+    line-height: 112px;
+    float: left;
+    padding-right: 64px;
+    @media screen and (max-width: $TabletPortrait) {
+      padding-right: 40px;
+    }
+    @media screen and (max-width: $Mobile) {
+      line-height: 40px;
+      float: none;
+    }
+  }
+  @media screen and (max-width: $Mobile) {
+    height: 240px;
+    li:first-child {
+      padding-top: 20px;
+    }
+    li:last-child {
+      padding-bottom: 20px;
+    }
+  }
+}
+
+.headline {
+  margin-top: 48px;
+  height: 240px;
+  background-color: $cc_olive;
+  h1 {
+    line-height: 240px;
+    color: $cc_white;
+    font-size: 2.5rem;
+  }
+}
+
+.imprint {
+  h2 {
+    padding-top: 32px;
+    padding-bottom: 16px;
+  }
+  h3 {
+    padding-top: 16px;
+  }
+}
