@@ -1,4 +1,6 @@
 {
+  "name": "katharinaclasen.de",
+  "description": "Personal website of Katharina Clasen.",
   "private": true,
   "scripts": {
     "dev": "next",
@@ -9,6 +11,7 @@
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "sass": "1.39.0"
+    "sass": "1.39.0",
+    "sharp": "^0.29.0"
   }
 }
