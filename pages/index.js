@@ -6,6 +6,7 @@ import { Footer } from "../components/Footer";
 import { Layout } from "../components/Layout";
 import { Navigation } from "../components/Navigation";
 import { Social } from "../components/Social";
+import { Vita } from "../components/Vita";
 
 export default function Home() {
   return (
@@ -15,64 +16,56 @@ export default function Home() {
     >
       <div className="padding-main">
         <Navigation />
-
         <div className="text-boxes">
-          <div className="text-box">
-            <h2>Head of Strategy & UX</h2>
-            <h3>Since 2020</h3>
-            <div className="text-box-link">
-              <a href="https://codeatelier.com">@ Codeatelier GmbH</a>
-            </div>
-            <p>
-              Building a culture, team and environment to co-create smart
-              products & services for a positive future.
-            </p>
-          </div>
-          <div className="text-box">
-            <h2>Lecturer (Media Design)</h2>
-            <h3>Since 2020</h3>
-            <div className="text-box-link">
-              <a href="https://www.hs-esslingen.de">
-                @ University of Applied Sciences Esslingen
-              </a>
-            </div>
-            <p>
-              Exploring how to design digital products that address
-              environmental challenges.
-            </p>
-          </div>
-          <div className="text-box">
-            <h2>Board member</h2>
-            <h3>Since 2019</h3>
-            <div className="text-box-link">
-              <a href="https://makersleague.de">@ Makers League</a>
-            </div>
-            <p>
-              Creating space, community & opportunity for important ideas to
-              become a reality.
-            </p>
-          </div>
-          <div className="text-box">
-            <h2>Lecturer (UX Design)</h2>
-            <h3>Since 2014</h3>
-            <div className="text-box-link">
-              <a href="https://www.hdm-stuttgart.de">
-                @ Stuttgart Media University
-              </a>
-            </div>
-            <p>
-              Exploring how to design digital products that address
-              environmental challenges.
-            </p>
-          </div>
-          <div className="text-box">
-            <h2>Formerly: Founder</h2>
-            <h3>2013 - 2020</h3>
-            <div className="text-box-link">
-              <a href="https://informationlovers.com">Information Lovers</a>
-            </div>
-            <p>Helping businesses create digital experiences.</p>
-          </div>
+          <Vita
+            title="Head of Strategy & UX"
+            date="Since 2020"
+            link={{
+              url: "https://codeatelier.com",
+              name: "Codeatelier GmbH",
+            }}
+            description="Building a culture, team and environment to co-create smart
+              products & services for a positive future."
+          />
+          <Vita
+            title="Lecturer (Media Design)"
+            date="Since 2020"
+            link={{
+              url: "https://www.hs-esslingen.de",
+              name: "University of Applied Sciences Esslingen",
+            }}
+            description="Exploring how to design digital products that address
+              environmental challenges."
+          />
+          <Vita
+            title="Board member"
+            date="Since 2019"
+            link={{
+              url: "https://makersleague.de",
+              name: "Makers League",
+            }}
+            description="Creating space, community & opportunity for important ideas to
+              become a reality."
+          />
+          <Vita
+            title="Lecturer (UX Design)"
+            date="Since 2014"
+            link={{
+              url: "https://www.hdm-stuttgart.de",
+              name: "Stuttgart Media University",
+            }}
+            description="Exploring how to design digital products that address
+              environmental challenges."
+          />
+          <Vita
+            title="Formerly: Founder"
+            date="2013 - 2020"
+            link={{
+              url: "https://informationlovers.com",
+              name: "Information Lovers",
+            }}
+            description="Helping businesses create digital experiences."
+          />
         </div>
       </div>
 
