@@ -1,4 +1,14 @@
-export function Vita({ title, date, link, description }) {
+interface Props {
+  title: string;
+  date: string;
+  link: {
+    name: string;
+    url: string;
+  };
+  description: string;
+}
+
+export function Vita({ title, date, link, description }: Props) {
   return (
     <div className="text-box">
       <h2>{title}</h2>
