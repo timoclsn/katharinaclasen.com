@@ -12,6 +12,7 @@
   "dependencies": {
     "@fontsource/source-serif-4": "4.5.16",
     "class-variance-authority": "0.2.4",
+    "clsx": "1.2.1",
     "contentlayer": "0.2.8",
     "next": "13.0.0",
     "next-contentlayer": "0.2.8",
