@@ -18,9 +18,11 @@
     "contentlayer": "0.2.8",
     "next": "13.0.0",
     "next-contentlayer": "0.2.8",
+    "next-sanity": "1.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sharp": "0.31.1"
+    "sharp": "0.31.1",
+    "zod": "3.19.1"
   },
   "devDependencies": {
     "@babel/core": "7.19.6",
