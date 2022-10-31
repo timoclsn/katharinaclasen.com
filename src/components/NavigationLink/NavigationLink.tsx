@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 
 interface Props {
@@ -8,7 +10,7 @@ interface Props {
 }
 
 export const NavigationLink = ({ children, href }: Props) => {
-  const { pathname } = useRouter();
+  const pathname = usePathname();
   const isActive = pathname.includes(href);
   return (
     <Link href={href} className={`${isActive ? "underline" : ""}`}>
