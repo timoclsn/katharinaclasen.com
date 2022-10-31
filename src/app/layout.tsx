@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
-import "../styles/global.css";
-import "@fontsource/source-serif-4/variable.css";
-import { Navigation } from "../components/Navigation/Navigation";
 import { Footer } from "../components/Footer/Footer";
+import { Navigation } from "../components/Navigation/Navigation";
+import { serifFont } from "../lib/fonts";
+import "../styles/global.css";
 
 interface Props {
   children: ReactNode;
@@ -10,7 +10,7 @@ interface Props {
 
 const RootLayout = ({ children }: Props) => {
   return (
-    <html lang="en" className="min-h-screen">
+    <html lang="en" className={`${serifFont.className} min-h-screen`}>
       <head></head>
       <body className="flex min-h-screen flex-col">
         <Navigation />
