@@ -1,6 +1,6 @@
 import { InferGetStaticPropsType } from "next";
-import { queryContent } from "src/lib/sanity";
-import { animalSchema } from "src/schemas/animal";
+import { queryContent } from "../lib/sanity";
+import { animalSchema } from "../schemas/animal";
 import { z } from "zod";
 import { Layout } from "../components/Layout/Layout";
 
