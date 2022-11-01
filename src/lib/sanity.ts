@@ -9,7 +9,7 @@ const sanityClient = createClient({
   projectId,
   dataset: "production",
   apiVersion: "2022-10-31",
-  useCdn: false,
+  useCdn: process.env.NODE_ENV === "production",
 });
 
 export const queryContent = cache(
