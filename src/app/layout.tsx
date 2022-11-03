@@ -1,8 +1,21 @@
+import { Inter, Source_Serif_4 } from "@next/font/google";
+import clsx from "clsx";
 import { ReactNode } from "react";
 import { Footer } from "../components/Footer/Footer";
 import { Navigation } from "../components/Navigation/Navigation";
-import { serifFont } from "../lib/fonts";
 import "../styles/global.css";
+
+const serifFont = Source_Serif_4({
+  display: "optional",
+  subsets: ["latin"],
+  variable: "--serif-font",
+});
+
+const sansFont = Inter({
+  display: "optional",
+  subsets: ["latin"],
+  variable: "--sans-font",
+});
 
 interface Props {
   children: ReactNode;
@@ -10,7 +23,10 @@ interface Props {
 
 const RootLayout = ({ children }: Props) => {
   return (
-    <html lang="en" className={`${serifFont.className} min-h-screen`}>
+    <html
+      lang="en"
+      className={clsx(sansFont.variable, serifFont.variable, "min-h-screen")}
+    >
       <head></head>
       <body className="flex min-h-screen flex-col">
         <Navigation />

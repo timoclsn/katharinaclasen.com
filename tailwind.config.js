@@ -3,8 +3,8 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      sans: ["sans-serif"],
-      serif: ["'Source Serif 4Variable'", "serif"],
+      sans: "var(--sans-font)",
+      serif: "var(--serif-font)",
     },
   },
   plugins: [require("@tailwindcss/typography")],
