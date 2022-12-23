@@ -1,5 +1,5 @@
-import { Body } from "../components/Body/Body";
-import { Heading } from "../components/Heading/Heading";
+import { Body } from "../design-system/Body/Body";
+import { Heading } from "../design-system/Heading/Heading";
 import { queryPersons } from "../lib/queries";
 import Image from "next/image";
 import { urlForImage } from "../lib/sanity";
