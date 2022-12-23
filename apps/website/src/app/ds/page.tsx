@@ -1,4 +1,4 @@
-import { UilArrowRight } from "@iconscout/react-unicons";
+import { ArrowRight } from "lucide-react";
 import { Body } from "../../design-system/Body/Body";
 import { Button } from "../../design-system/Button/Button";
 import { Heading } from "../../design-system/Heading/Heading";
@@ -10,7 +10,7 @@ const DesignSystemPage = () => {
         <Heading>Buttton</Heading>
         <Button style="solid">Solid</Button>
         <Button style="solid">
-          <UilArrowRight />
+          <ArrowRight />
           Solid + Icon
         </Button>
         <Button style="solid" size="large">

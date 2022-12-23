@@ -12,12 +12,11 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@fontsource/dm-sans": "^4.5.9",
-    "@fontsource/source-serif-4": "^4.5.16",
-    "@iconscout/react-unicons": "^1.1.6",
+    "@next/font": "^13.1.0",
     "@sanity/image-url": "^1.0.1",
     "class-variance-authority": "0.4.0",
     "groqd": "^0.1.2",
+    "lucide-react": "0.105.0-alpha.4",
     "next": "13.1.0",
     "next-sanity": "3.1.5",
     "react": "18.2.0",

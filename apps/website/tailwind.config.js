@@ -1,12 +1,10 @@
-const { fontFamily } = require("tailwindcss/defaultTheme");
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      sans: ["'DM Sans'", ...fontFamily.sans],
-      serif: ["'Source Serif 4Variable'", ...fontFamily.serif],
+      sans: "var(--sans-font)",
+      serif: "var(--serif-font)",
     },
     colors: {
       background: {

@@ -28,14 +28,14 @@ const buttonVariants = cva(
         normal: [
           "text-base",
           "leading-6",
-          "[&>svg]:w-[24px]",
-          "[&>svg]:h-[24px]",
+          "[&>svg]:w-[16px]",
+          "[&>svg]:h-[16px]",
         ],
         large: [
           "text-2xl",
           "leading-8",
-          "[&>svg]:w-[32px]",
-          "[&>svg]:h-[32px]",
+          "[&>svg]:w-[24px]",
+          "[&>svg]:h-[24px]",
         ],
       },
     },
