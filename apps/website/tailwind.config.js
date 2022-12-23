@@ -48,6 +48,11 @@ module.exports = {
         },
       },
     },
+    extend: {
+      borderWidth: {
+        3: "3px",
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography")],
 };
