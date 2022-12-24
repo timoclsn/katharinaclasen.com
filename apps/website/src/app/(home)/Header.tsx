@@ -21,7 +21,12 @@ export const Header = () => {
             <Tag size="xxl">experiences</Tag>
           </Heading>
           <div className="flex items-center justify-center gap-6">
-            <Image src={memojiImg} alt="Memoji of Katharina Clasen" />
+            <Image
+              src={memojiImg}
+              alt="Memoji of Katharina Clasen"
+              priority
+              placeholder="blur"
+            />
             <Body size="large" className="text-contrast-secondary-dark">
               Hi! I am a freelance UX Designer with 10+ years experience working
               with companies of all sizes on their digitization projects.
@@ -34,7 +39,12 @@ export const Header = () => {
           <div className="flex flex-col gap-6">
             <div className="flex justify-between gap-2">
               <div className="relative">
-                <Image src={serviceUxResearchImg} alt="Pattern of Icons" />
+                <Image
+                  src={serviceUxResearchImg}
+                  alt="Pattern of Icons"
+                  priority
+                  placeholder="blur"
+                />
                 <Heading
                   as="h2"
                   level="4"
@@ -44,7 +54,12 @@ export const Header = () => {
                 </Heading>
               </div>
               <div className="relative">
-                <Image src={serviceUxDesignImg} alt="Mobile app wireframes" />
+                <Image
+                  src={serviceUxDesignImg}
+                  alt="Mobile app wireframes"
+                  priority
+                  placeholder="blur"
+                />
                 <Heading
                   as="h2"
                   level="4"
@@ -57,6 +72,8 @@ export const Header = () => {
                 <Image
                   src={serviceUiDesign}
                   alt="Hand holding a mockup iPhone"
+                  priority
+                  placeholder="blur"
                 />
                 <Heading
                   as="h2"
@@ -79,6 +96,8 @@ export const Header = () => {
           <Image
             src={projectsImg}
             alt="Hand holding a iPhone with a app design"
+            priority
+            placeholder="blur"
           />
           <Button className="absolute top-8 right-8">
             <ArrowRight />
