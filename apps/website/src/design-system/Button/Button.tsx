@@ -1,6 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority";
+import Link from "next/link";
 import { forwardRef, ReactNode } from "react";
-import NextLink from "next/link";
 
 const buttonVariants = cva(
   [
@@ -90,11 +90,8 @@ const buttonVariants = cva(
 
 type ButtonVariants = VariantProps<typeof buttonVariants>;
 
-type Link = typeof NextLink;
-
 interface ComponentProps {
   children: ReactNode;
-  as?: "button" | "a" | Link;
 }
 
 type ConditionalProps =
@@ -119,7 +116,6 @@ export const Button = forwardRef<HTMLAnchorElement & HTMLButtonElement, Props>(
   (
     {
       children,
-      as,
       size = "normal",
       style = "solid",
       color = "dark",
@@ -131,15 +127,14 @@ export const Button = forwardRef<HTMLAnchorElement & HTMLButtonElement, Props>(
     },
     ref
   ) => {
-    const Element = as ? as : href ? "a" : "button";
+    const Element = href ? Link : "button";
     return (
       <Element
         className={buttonVariants({ size, style, color })}
         type={Element === "button" ? type : undefined}
         onClick={onClick}
         disabled={disabled}
-        // @ts-expect-error
-        href={href}
+        href={href || ""}
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
         ref={ref}
