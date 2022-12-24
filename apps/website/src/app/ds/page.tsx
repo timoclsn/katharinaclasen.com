@@ -1,4 +1,5 @@
 import { ArrowDown, ArrowRight } from "lucide-react";
+import Image from "next/image";
 import { Body } from "../../design-system/Body/Body";
 import { Button } from "../../design-system/Button/Button";
 import { Heading } from "../../design-system/Heading/Heading";
@@ -68,6 +69,24 @@ const DesignSystemPage = () => {
             <ArrowDown />
             Tag normal
           </Tag>
+          <Tag color="dark" outline="solid" size="normal" prepend={1}>
+            Tag number
+          </Tag>
+          <Tag
+            color="dark"
+            outline="solid"
+            size="normal"
+            prepend={
+              <Image
+                src="/clients/bauder.png"
+                alt="logo"
+                width={94}
+                height={30}
+              />
+            }
+          >
+            Tag normal Client
+          </Tag>
           <Tag color="dark" outline="solid" size="large">
             <ArrowDown />
             Tag large
@@ -80,6 +99,21 @@ const DesignSystemPage = () => {
             <ArrowDown />
             Tag xxl
           </Tag>
+          <Tag
+            color="dark"
+            outline="solid"
+            size="xxl"
+            prepend={
+              <Image
+                src="/clients/bauder.png"
+                alt="logo"
+                width={100}
+                height={30}
+              />
+            }
+          >
+            Tag Client
+          </Tag>
           <Tag color="dark" outline="solid" size="xxl" state="deselected">
             <ArrowDown />
             Tag deselected
@@ -88,7 +122,7 @@ const DesignSystemPage = () => {
             <ArrowDown />
             Tag selected
           </Tag>
-          <Tag color="dark" outline="solid" size="xxl" number={1}>
+          <Tag color="dark" outline="solid" size="xxl" prepend={1}>
             Tag number
           </Tag>
           <Tag color="dark" outline="dash" size="normal">
@@ -107,7 +141,7 @@ const DesignSystemPage = () => {
             <ArrowDown />
             Tag xxl
           </Tag>
-          <Tag color="dark" outline="dash" size="xxl" number={1}>
+          <Tag color="dark" outline="dash" size="xxl" prepend={1}>
             Tag number
           </Tag>
           <Tag color="dark" outline="none" size="normal">
@@ -126,15 +160,34 @@ const DesignSystemPage = () => {
             <ArrowDown />
             Tag xxl
           </Tag>
-          <Tag color="dark" outline="none" size="xxl" number={1}>
+          <Tag color="dark" outline="none" size="xxl" prepend={1}>
             Tag number
           </Tag>
         </div>
+
         <div className="flex flex-1 flex-col items-start gap-4 bg-background-dark p-4 ring-2 ring-contrast-primary-dark">
           <Heading className="text-contrast-primary-light">Tag Light</Heading>
           <Tag color="light" outline="solid" size="normal">
             <ArrowDown />
             Tag normal
+          </Tag>
+          <Tag color="light" outline="solid" size="normal" prepend={1}>
+            Tag number
+          </Tag>
+          <Tag
+            color="light"
+            outline="solid"
+            size="normal"
+            prepend={
+              <Image
+                src="/clients/bauder.png"
+                alt="logo"
+                width={94}
+                height={30}
+              />
+            }
+          >
+            Tag normal Client
           </Tag>
           <Tag color="light" outline="solid" size="large">
             <ArrowDown />
@@ -148,6 +201,21 @@ const DesignSystemPage = () => {
             <ArrowDown />
             Tag xxl
           </Tag>
+          <Tag
+            color="light"
+            outline="solid"
+            size="xxl"
+            prepend={
+              <Image
+                src="/clients/bauder.png"
+                alt="logo"
+                width={94}
+                height={30}
+              />
+            }
+          >
+            Tag Client
+          </Tag>
           <Tag color="light" outline="solid" size="xxl" state="deselected">
             <ArrowDown />
             Tag deselected
@@ -156,7 +224,7 @@ const DesignSystemPage = () => {
             <ArrowDown />
             Tag selected
           </Tag>
-          <Tag color="light" outline="solid" size="xxl" number={1}>
+          <Tag color="light" outline="solid" size="xxl" prepend={1}>
             Tag number
           </Tag>
           <Tag color="light" outline="dash" size="normal">
@@ -175,7 +243,7 @@ const DesignSystemPage = () => {
             <ArrowDown />
             Tag xxl
           </Tag>
-          <Tag color="light" outline="dash" size="xxl" number={1}>
+          <Tag color="light" outline="dash" size="xxl" prepend={1}>
             Tag number
           </Tag>
           <Tag color="light" outline="none" size="normal">
@@ -194,7 +262,7 @@ const DesignSystemPage = () => {
             <ArrowDown />
             Tag xxl
           </Tag>
-          <Tag color="light" outline="none" size="xxl" number={1}>
+          <Tag color="light" outline="none" size="xxl" prepend={1}>
             Tag number
           </Tag>
         </div>

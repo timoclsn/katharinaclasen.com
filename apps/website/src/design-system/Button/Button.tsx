@@ -16,13 +16,13 @@ const buttonVariants = cva(
   {
     variants: {
       style: {
-        solid: "",
-        outline: "",
-        text: "",
+        solid: null,
+        outline: null,
+        text: null,
       },
       color: {
-        dark: "",
-        white: "",
+        dark: null,
+        white: null,
       },
       size: {
         normal: [
@@ -44,12 +44,15 @@ const buttonVariants = cva(
       {
         style: "solid",
         color: "dark",
-        class: ["bg-background-dark text-contrast-primary-light", "px-6 py-3"],
+        className: [
+          "bg-background-dark text-contrast-primary-light",
+          "px-6 py-3",
+        ],
       },
       {
         style: "solid",
         color: "white",
-        class: [
+        className: [
           "bg-background-primary text-contrast-primary-dark",
           "px-6 py-3",
         ],
@@ -57,7 +60,7 @@ const buttonVariants = cva(
       {
         style: "outline",
         color: "dark",
-        class: [
+        className: [
           "ring-2 ring-contrast-primary-dark text-contrast-primary-dark",
           "px-6 py-3",
         ],
@@ -65,7 +68,7 @@ const buttonVariants = cva(
       {
         style: "outline",
         color: "white",
-        class: [
+        className: [
           "ring-2 ring-contrast-primary-light text-contrast-primary-light",
           ,
           "px-6 py-3",
@@ -74,12 +77,12 @@ const buttonVariants = cva(
       {
         style: "text",
         color: "dark",
-        class: ["text-contrast-primary-dark"],
+        className: ["text-contrast-primary-dark"],
       },
       {
         style: "text",
         color: "white",
-        class: ["text-contrast-primary-light"],
+        className: ["text-contrast-primary-light"],
       },
     ],
   }
