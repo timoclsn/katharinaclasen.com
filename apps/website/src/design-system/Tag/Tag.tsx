@@ -2,7 +2,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import { ReactNode } from "react";
 
 const tagVariants = cva(
-  "font-sans font-medium flex items-center justify-center",
+  "font-sans font-medium inline-flex items-center justify-center",
   {
     variants: {
       outline: {
@@ -98,7 +98,7 @@ export const Tag = ({
   prepend,
 }: Props) => {
   return (
-    <div className={tagVariants({ outline, color, state, size })}>
+    <span className={tagVariants({ outline, color, state, size })}>
       {prepend !== undefined && (
         <div className={prependVariants({ size, color })}>
           {prepend}
@@ -106,6 +106,6 @@ export const Tag = ({
         </div>
       )}
       {children}
-    </div>
+    </span>
   );
 };

@@ -92,6 +92,7 @@ type ButtonVariants = VariantProps<typeof buttonVariants>;
 
 interface ComponentProps {
   children: ReactNode;
+  className?: string;
 }
 
 type ConditionalProps =
@@ -124,13 +125,14 @@ export const Button = forwardRef<HTMLAnchorElement & HTMLButtonElement, Props>(
       disabled,
       href,
       external,
+      className,
     },
     ref
   ) => {
     const Element = href ? Link : "button";
     return (
       <Element
-        className={buttonVariants({ size, style, color })}
+        className={buttonVariants({ size, style, color, className })}
         type={Element === "button" ? type : undefined}
         onClick={onClick}
         disabled={disabled}

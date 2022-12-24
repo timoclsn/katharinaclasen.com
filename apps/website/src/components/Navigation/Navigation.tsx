@@ -3,7 +3,7 @@ import { NavigationLink } from "../NavigationLink/NavigationLink";
 
 export const Navigation = () => {
   return (
-    <nav role="navigation">
+    <nav role="navigation" className="mb-6">
       <a href="#skip" className="sr-only">
         Skip to content
       </a>
