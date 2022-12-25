@@ -36,7 +36,7 @@ export const Header = () => {
             <ArrowRight />
             More about me
           </Button>
-          <div className="flex flex-col gap-6">
+          <div className="flex w-full flex-col gap-6">
             <div className="flex justify-between gap-2">
               <div className="relative">
                 <Image
