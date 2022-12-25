@@ -15,8 +15,8 @@ export const Header = () => {
   return (
     <section className="bg-background-secondary pb-28 pt-40">
       <Container inset>
-        <div className="flex gap-14">
-          <div className="flex w-2/3 flex-col items-start gap-10">
+        <div className="flex flex-col gap-14 md:flex-row">
+          <div className="flex w-full flex-col items-start gap-10 md:w-2/3">
             <Heading level="1">
               <Tag size="xxl">UX Design</Tag> for lasting positive{" "}
               <Tag size="xxl">experiences</Tag>
