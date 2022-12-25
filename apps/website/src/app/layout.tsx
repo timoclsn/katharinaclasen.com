@@ -42,7 +42,7 @@ const RootLayout = ({ children }: Props) => {
           />
           <link rel="manifest" href="/favicons/manifest.webmanifest" />
         </head>
-        <body className="flex min-h-screen flex-col">
+        <body className="flex min-h-screen flex-col gap-28">
           <Navigation />
           <main id="skip" className="flex-1">
             {children}
