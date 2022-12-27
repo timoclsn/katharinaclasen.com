@@ -3,7 +3,7 @@ import { forwardRef, ReactNode } from "react";
 
 const validElements = ["h1", "h2", "h3", "h4", "p", "span", "strong"] as const;
 
-const bodyVariants = cva("font-sans", {
+const bodyVariants = cva("font-sans antialiased", {
   variants: {
     size: {
       normal: "text-base",

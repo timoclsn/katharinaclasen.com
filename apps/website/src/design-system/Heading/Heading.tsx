@@ -4,7 +4,7 @@ import { forwardRef, ReactNode } from "react";
 const validElements = ["h1", "h2", "h3", "h4", "span"] as const;
 type ValidElements = typeof validElements[number];
 
-const headingVariants = cva("font-serif", {
+const headingVariants = cva("font-serif antialiased", {
   variants: {
     level: {
       "1": "text-7xl",
