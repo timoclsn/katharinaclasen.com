@@ -44,7 +44,7 @@ const RootLayout = ({ children }: Props) => {
         </head>
         <body className="flex min-h-screen flex-col">
           <Navigation />
-          <main id="skip" className="flex-1">
+          <main id="skip" className="flex flex-1 flex-col gap-10">
             {children}
           </main>
           <Footer />
