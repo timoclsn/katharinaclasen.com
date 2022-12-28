@@ -5,3 +5,10 @@
 #__next {
   @apply flex min-h-screen flex-col;
 }
+
+@layer utilities {
+  .writing-vertical {
+    writing-mode: vertical-lr;
+    rotate: 180deg;
+  }
+}

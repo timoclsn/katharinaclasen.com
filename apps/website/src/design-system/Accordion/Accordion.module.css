@@ -1,0 +1,70 @@
+.AccordionContent {
+  overflow: hidden;
+}
+
+.AccordionContent[data-state="open"] {
+  animation: slideDown 300ms ease-out;
+  opacity: 1;
+}
+.AccordionContent[data-state="closed"] {
+  animation: slideUp 300ms ease-out;
+  opacity: 0;
+}
+
+@media (min-width: 1024px) {
+  .AccordionContent[data-state="open"] {
+    animation: openHorizontal 600ms ease-out;
+    opacity: 1;
+  }
+  .AccordionContent[data-state="closed"] {
+    animation: closeHorizontal 300ms ease-out;
+    opacity: 0;
+  }
+}
+
+@keyframes openHorizontal {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  50% {
+    width: var(--radix-accordion-content-width);
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes closeHorizontal {
+  0% {
+    width: var(--radix-accordion-content-width);
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}

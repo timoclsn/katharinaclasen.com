@@ -1,5 +1,8 @@
+"use client";
+
 import { ArrowDown, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { Accordion } from "../../design-system/Accordion/Accordion";
 import { Body } from "../../design-system/Body/Body";
 import { Button } from "../../design-system/Button/Button";
 import { Heading } from "../../design-system/Heading/Heading";
@@ -7,7 +10,61 @@ import { Tag } from "../../design-system/Tag/Tag";
 
 const DesignSystemPage = () => {
   return (
-    <div className="flex flex-col gap-8 p-6">
+    <div className="mt-32 flex flex-col gap-8 p-6">
+      <Heading level="1">Design System</Heading>
+
+      <section>
+        <Accordion type="single" defaultValue="item-1">
+          <Accordion.Item value="item-1" color="blueExtreme">
+            <Accordion.Trigger className="flex flex-col justify-end">
+              <Heading color="light" className="lg:writing-vertical">
+                Trigger
+              </Heading>
+            </Accordion.Trigger>
+            <Accordion.Content>
+              <div className="flex h-full flex-col lg:justify-end">
+                <Body color="light">Content</Body>
+              </div>
+            </Accordion.Content>
+          </Accordion.Item>
+
+          <Accordion.Item value="item-2" color="redCandy">
+            <Accordion.Trigger className="flex flex-col justify-end">
+              <Heading className="lg:writing-vertical">Trigger</Heading>
+            </Accordion.Trigger>
+            <Accordion.Content>
+              <div className="flex h-full flex-col lg:justify-end">
+                <Body>Content</Body>
+              </div>
+            </Accordion.Content>
+          </Accordion.Item>
+
+          <Accordion.Item value="item-3" color="stone">
+            <Accordion.Trigger className="flex flex-col justify-end">
+              <Heading className="lg:writing-vertical">Trigger</Heading>
+            </Accordion.Trigger>
+            <Accordion.Content>
+              <div className="flex h-full flex-col lg:justify-end">
+                <Body>Content</Body>
+              </div>
+            </Accordion.Content>
+          </Accordion.Item>
+
+          <Accordion.Item value="item-4" color="dark">
+            <Accordion.Trigger className="flex flex-col justify-end">
+              <Heading color="light" className="lg:writing-vertical">
+                Trigger
+              </Heading>
+            </Accordion.Trigger>
+            <Accordion.Content>
+              <div className="flex h-full flex-col lg:justify-end">
+                <Body color="light">Content</Body>
+              </div>
+            </Accordion.Content>
+          </Accordion.Item>
+        </Accordion>
+      </section>
+
       <section className="flex w-full gap-8">
         <div className="flex flex-1 flex-col items-start gap-4 p-4 ring-2 ring-contrast-primary-dark">
           <Heading>Buttton Dark</Heading>
@@ -59,7 +116,7 @@ const DesignSystemPage = () => {
         <Heading>Body</Heading>
         <Body size="normal">Normal</Body>
         <Body size="large">Large</Body>
-        <Body special>Special</Body>
+        <Body family="serif">Special</Body>
       </section>
 
       <section className="flex gap-8">

@@ -1,10 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { Body } from "../../design-system/Body/Body";
-import { Button } from "../../design-system/Button/Button";
-import { Container } from "../../design-system/Container/Container";
-import { Heading } from "../../design-system/Heading/Heading";
-import { Tag } from "../../design-system/Tag/Tag";
+import { Body } from "../../../design-system/Body/Body";
+import { Button } from "../../../design-system/Button/Button";
+import { Container } from "../../../design-system/Container/Container";
+import { Heading } from "../../../design-system/Heading/Heading";
+import { Tag } from "../../../design-system/Tag/Tag";
 import projectsImg from "./assets/hero.png";
 import memojiImg from "./assets/memoji.png";
 import serviceUiDesign from "./assets/service-ui-design.png";
@@ -28,7 +28,7 @@ export const Header = () => {
                 priority
                 placeholder="blur"
               />
-              <Body size="large" className="text-contrast-secondary-dark">
+              <Body size="large" priority="secondary">
                 Hi! I am a freelance UX Designer with 10+ years experience
                 working with companies of all sizes on their digitization
                 projects.

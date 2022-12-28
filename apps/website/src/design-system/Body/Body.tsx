@@ -3,8 +3,17 @@ import { forwardRef, ReactNode } from "react";
 
 const validElements = ["h1", "h2", "h3", "h4", "p", "span", "strong"] as const;
 
-const bodyVariants = cva("font-sans antialiased", {
+const bodyVariants = cva("antialiased", {
   variants: {
+    priority: {
+      primary: null,
+      secondary: null,
+      disabled: null,
+    },
+    family: {
+      sans: "font-sans",
+      serif: "font-serif",
+    },
     size: {
       normal: "text-base",
       large: "text-2xl",
@@ -13,10 +22,44 @@ const bodyVariants = cva("font-sans antialiased", {
       normal: "font-normal",
       bold: "font-bold",
     },
-    special: {
-      true: "font-serif",
+    color: {
+      dark: null,
+      light: null,
     },
   },
+
+  compoundVariants: [
+    {
+      priority: "primary",
+      color: "dark",
+      className: "text-contrast-primary-dark",
+    },
+    {
+      priority: "primary",
+      color: "light",
+      className: "text-contrast-primary-light",
+    },
+    {
+      priority: "secondary",
+      color: "dark",
+      className: "text-contrast-secondary-dark",
+    },
+    {
+      priority: "secondary",
+      color: "light",
+      className: "text-contrast-secondary-light",
+    },
+    {
+      priority: "disabled",
+      color: "dark",
+      className: "text-contrast-disabled-dark",
+    },
+    {
+      priority: "disabled",
+      color: "light",
+      className: "text-contrast-disabled-light",
+    },
+  ],
 });
 
 type BodyVariants = VariantProps<typeof bodyVariants>;
@@ -36,16 +79,25 @@ export const Body = forwardRef<ElementType, Props>(
     {
       children,
       as: Element = "span",
+      priority = "primary",
+      family = "sans",
       size = "normal",
       weight = "normal",
-      special,
+      color = "dark",
       className,
     },
     ref
   ) => {
     return (
       <Element
-        className={bodyVariants({ size, weight, special, className })}
+        className={bodyVariants({
+          priority,
+          family,
+          size,
+          weight,
+          color,
+          className,
+        })}
         ref={ref}
       >
         {children}

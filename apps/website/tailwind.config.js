@@ -52,6 +52,9 @@ module.exports = {
       borderWidth: {
         3: "3px",
       },
+      borderRadius: {
+        "4xl": "2rem",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
