@@ -2,17 +2,17 @@
 
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { Accordion } from "../../design-system/Accordion/Accordion";
-import { Body } from "../../design-system/Body/Body";
-import { Button } from "../../design-system/Button/Button";
-import { Container } from "../../design-system/Container/Container";
-import { Heading } from "../../design-system/Heading/Heading";
+import { Accordion } from "../../../design-system/Accordion/Accordion";
+import { Body } from "../../../design-system/Body/Body";
+import { Button } from "../../../design-system/Button/Button";
+import { Container } from "../../../design-system/Container/Container";
+import { Heading } from "../../../design-system/Heading/Heading";
 import aboutMeImg from "./assets/about-me.png";
 import differentiatorsImg from "./assets/differentiators.png";
 import howIWorkImg from "./assets/how-i-work.png";
 import philosophyImg from "./assets/philosophy.png";
 
-export const AboutAccordion = () => {
+export const HomeAccordion = () => {
   return (
     <section>
       <Container inset>
