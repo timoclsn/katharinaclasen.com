@@ -28,7 +28,7 @@ export const Header = () => {
                 priority
                 placeholder="blur"
               />
-              <Body size="large" priority="secondary">
+              <Body as="p" size="large" priority="secondary">
                 Hi! I am a freelance UX Designer with 10+ years experience
                 working with companies of all sizes on their digitization
                 projects.

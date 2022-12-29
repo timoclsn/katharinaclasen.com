@@ -8,8 +8,8 @@ import earthImg from "./assets/earth.png";
 
 export const LcdTeaser = () => {
   return (
-    <section className="bg-background-dark">
-      <Container inset className="flex flex-col gap-8 py-10 lg:flex-row">
+    <section className="bg-background-dark py-32">
+      <Container inset className="flex flex-col gap-8 lg:flex-row">
         <Image
           src={earthImg}
           alt="Image of the earth from space"
@@ -18,7 +18,7 @@ export const LcdTeaser = () => {
         />
         <div className="flex flex-col items-start justify-center gap-8 lg:w-1/2">
           <Heading color="light">Life-centered Design</Heading>
-          <Body color="light" priority="secondary" family="serif">
+          <Body as="p" color="light" priority="secondary" family="serif">
             I am very passionate about Life-centered Design, as I strongly
             believe that it is the future of design. For a couple of years now,
             I have been doing several activities in that space, starting from

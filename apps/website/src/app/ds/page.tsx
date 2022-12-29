@@ -23,7 +23,9 @@ const DesignSystemPage = () => {
             </Accordion.Trigger>
             <Accordion.Content>
               <div className="flex h-full flex-col lg:justify-end">
-                <Body color="light">Content</Body>
+                <Body as="p" color="light">
+                  Content
+                </Body>
               </div>
             </Accordion.Content>
           </Accordion.Item>
@@ -34,7 +36,7 @@ const DesignSystemPage = () => {
             </Accordion.Trigger>
             <Accordion.Content>
               <div className="flex h-full flex-col lg:justify-end">
-                <Body>Content</Body>
+                <Body as="p">Content</Body>
               </div>
             </Accordion.Content>
           </Accordion.Item>
@@ -45,7 +47,7 @@ const DesignSystemPage = () => {
             </Accordion.Trigger>
             <Accordion.Content>
               <div className="flex h-full flex-col lg:justify-end">
-                <Body>Content</Body>
+                <Body as="p">Content</Body>
               </div>
             </Accordion.Content>
           </Accordion.Item>
@@ -58,7 +60,9 @@ const DesignSystemPage = () => {
             </Accordion.Trigger>
             <Accordion.Content>
               <div className="flex h-full flex-col lg:justify-end">
-                <Body color="light">Content</Body>
+                <Body as="p" color="light">
+                  Content
+                </Body>
               </div>
             </Accordion.Content>
           </Accordion.Item>
@@ -114,9 +118,15 @@ const DesignSystemPage = () => {
 
       <section className="flex flex-col items-start gap-4 p-4 ring-2 ring-contrast-primary-dark">
         <Heading>Body</Heading>
-        <Body size="normal">Normal</Body>
-        <Body size="large">Large</Body>
-        <Body family="serif">Special</Body>
+        <Body as="p" size="normal">
+          Normal
+        </Body>
+        <Body as="p" size="large">
+          Large
+        </Body>
+        <Body as="p" family="serif">
+          Special
+        </Body>
       </section>
 
       <section className="flex gap-8">
