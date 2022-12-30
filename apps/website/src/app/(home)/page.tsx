@@ -9,6 +9,7 @@ const Home = async () => {
       <Header />
       <HomeAccordion />
       <LcdTeaser />
+      {/* @ts-expect-error Server Component */}
       <MyClients />
     </>
   );

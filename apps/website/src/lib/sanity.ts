@@ -1,12 +1,9 @@
 import imageUrlBuilder from '@sanity/image-url';
 import { makeSafeQueryRunner } from "groqd";
 import { createClient } from "next-sanity";
-import { z } from "zod";
-
-const projectId = z.string().parse(process.env.SANITY_PROJECT_ID);
 
 const sanityClient = createClient({
-  projectId,
+  projectId: 'dk9hv6ix',
   dataset: "production",
   apiVersion: "2022-12-21",
   useCdn: typeof document !== 'undefined',

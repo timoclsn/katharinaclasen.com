@@ -7,6 +7,7 @@ import { MyClientsCarousel } from "./MyClientsCarousel";
 
 export const MyClients = async () => {
   const clients = await runQuery(clientsQuery);
+  console.log("fired");
   return (
     <section className="bg-background-secondary py-32">
       <Container inset>
