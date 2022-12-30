@@ -1,5 +1,9 @@
-import person from './person'
+import { client } from "./client";
+import { image } from "./image";
+import { quote } from "./quote";
 
 export const schemaTypes = [
-  person,
+  client,
+  quote,
+  image
 ]

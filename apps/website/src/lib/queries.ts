@@ -1,17 +1,20 @@
-import { q } from "groqd";
-import { runQuery } from "./sanity";
+import { InferType, q } from "groqd";
 
-export const queryPersons = async () => {
-  return await runQuery(
-    q(
-      "*",
-      q.filter("_type == 'person'"),
-      q.grab({
-        fullName: q.string(),
-        portrait: ["portrait.asset._ref", q.string()],
-        portraitAlt: ["portrait.alt", q.string()],
-      }),
-      q.slice(0, 150)
-    )
-  );
-};
+export type Clients = InferType<typeof clientsQuery>;
+
+export const clientsQuery = q(
+  "*",
+  q.filter("_type == 'client'"),
+  q.order("name asc"),
+  q.grab({
+    shortName: q.string(),
+    name: q.string().nullable(),
+    logo: ["logo->image.asset._ref", q.string()],
+    logoAlt: ["logo->alt", q.string()],
+    description: q.string(),
+    website: q.string().nullable(),
+    caseStudy: q.string().nullable(),
+    quoteText: ["quote->text", q.string().nullable()],
+    quoteAutor: ["quote->author", q.string().nullable()]
+  }),
+);
