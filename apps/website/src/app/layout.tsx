@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 import { Footer } from "../components/Footer/Footer";
 import { Navigation } from "../components/Navigation/Navigation";
 import "../styles/global.css";
+import { Providers } from "./Providers";
 
 const serifFont = Source_Serif_4({
   display: "optional",
@@ -43,11 +44,13 @@ const RootLayout = ({ children }: Props) => {
           <link rel="manifest" href="/favicons/manifest.webmanifest" />
         </head>
         <body className="flex min-h-screen flex-col">
-          <Navigation />
-          <main id="skip" className="flex-1">
-            {children}
-          </main>
-          <Footer />
+          <Providers>
+            <Navigation />
+            <main id="skip" className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </Providers>
         </body>
       </html>
     </>
