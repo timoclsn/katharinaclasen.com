@@ -22,6 +22,9 @@ const bodyVariants = cva("antialiased", {
       normal: "font-normal",
       bold: "font-bold",
     },
+    style: {
+      italic: "italic",
+    },
     color: {
       dark: null,
       light: null,
@@ -84,6 +87,7 @@ export const Body = forwardRef<ElementType, Props>(
       size = "normal",
       weight = "normal",
       color = "dark",
+      style,
       className,
     },
     ref
@@ -96,6 +100,7 @@ export const Body = forwardRef<ElementType, Props>(
           size,
           weight,
           color,
+          style,
           className,
         })}
         ref={ref}

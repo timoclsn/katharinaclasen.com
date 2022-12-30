@@ -17,7 +17,7 @@ const buttonVariants = cva(
     variants: {
       style: {
         solid: null,
-        outline: null,
+        outline: "ring-2 ring-inset",
         text: null,
       },
       color: {
@@ -61,7 +61,7 @@ const buttonVariants = cva(
         style: "outline",
         color: "dark",
         className: [
-          "ring-2 ring-contrast-primary-dark text-contrast-primary-dark",
+          "ring-contrast-primary-dark text-contrast-primary-dark",
           "px-6 py-3",
         ],
       },
@@ -69,7 +69,7 @@ const buttonVariants = cva(
         style: "outline",
         color: "white",
         className: [
-          "ring-2 ring-contrast-primary-light text-contrast-primary-light",
+          "ring-contrast-primary-light text-contrast-primary-light",
           ,
           "px-6 py-3",
         ],
