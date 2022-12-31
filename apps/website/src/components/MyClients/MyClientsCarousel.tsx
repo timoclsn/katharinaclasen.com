@@ -4,23 +4,22 @@ import { AnimatePresence, m, Variants } from "framer-motion";
 import { ArrowLeft, ArrowRight, Files, Link2 } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import useMeasure from "react-use-measure";
 import { Body } from "../../design-system/Body/Body";
 import { Button } from "../../design-system/Button/Button";
 import { Card } from "../../design-system/Card/Card";
 import { Heading } from "../../design-system/Heading/Heading";
 import { Tag } from "../../design-system/Tag/Tag";
 import { usePrevious } from "../../hooks/usePrevious";
-import { Clients } from "../../lib/queries";
 import { urlForImage } from "../../lib/sanity";
+import { Clients } from "./MyClients";
 
 const variants: Variants = {
-  enter: ({ direction, width }: { direction: number; width: number }) => ({
-    x: direction * width,
+  enter: (direction: number) => ({
+    x: `${direction * 100}%`,
   }),
   center: { x: 0 },
-  exit: ({ direction, width }: { direction: number; width: number }) => ({
-    x: direction * -width,
+  exit: (direction: number) => ({
+    x: `${direction * -100}%`,
   }),
 };
 
@@ -30,7 +29,6 @@ interface Props {
 
 export const MyClientsCarousel = ({ clients }: Props) => {
   const [clientIndex, setClientIndex] = useState(0);
-  const [ref, { width }] = useMeasure();
 
   const prevClientIndex = usePrevious(clientIndex);
 
@@ -82,7 +80,7 @@ export const MyClientsCarousel = ({ clients }: Props) => {
                   prepend={
                     <Image
                       src={urlForImage(client.logo).url()}
-                      alt={client.logoAlt}
+                      alt={`Logo of company ${client.shortName}`}
                       width={50}
                       height={50}
                     />
@@ -100,11 +98,8 @@ export const MyClientsCarousel = ({ clients }: Props) => {
         <button className="px-4 hover:opacity-80 lg:px-10" onClick={prevClient}>
           <ArrowLeft />
         </button>
-        <div ref={ref} className="relative flex-1 overflow-x-hidden">
-          <AnimatePresence
-            initial={false}
-            custom={{ direction: direction(), width }}
-          >
+        <div className="relative flex-1 overflow-x-hidden">
+          <AnimatePresence initial={false} custom={direction()}>
             <m.div
               className="absolute flex h-full w-full flex-col gap-12 bg-background-primary py-16 lg:flex-row"
               key={clientIndex}
@@ -112,7 +107,7 @@ export const MyClientsCarousel = ({ clients }: Props) => {
               initial="enter"
               animate="center"
               exit="exit"
-              custom={{ direction: direction(), width }}
+              custom={direction()}
               transition={{
                 type: "spring",
                 duration: 0.5,
@@ -121,7 +116,7 @@ export const MyClientsCarousel = ({ clients }: Props) => {
               <div className="flex-1">
                 <Image
                   src={urlForImage(client.logo).url()}
-                  alt={client.logoAlt}
+                  alt={`Logo of company ${client.shortName}`}
                   width={50}
                   height={50}
                   className="mb-10 h-[40px] w-auto"
@@ -151,7 +146,7 @@ export const MyClientsCarousel = ({ clients }: Props) => {
                 )}
               </div>
               <div className="flex flex-1 flex-col items-start justify-center">
-                {client.quoteText && client.quoteAutor && (
+                {client.quote && (
                   <div className="border-l-4 border-background-salmon pl-3">
                     <Body
                       as="p"
@@ -160,10 +155,10 @@ export const MyClientsCarousel = ({ clients }: Props) => {
                       style="italic"
                       className="mb-3"
                     >
-                      {client.quoteText}
+                      {client.quote.text}
                     </Body>
                     <p className="font-sans text-sm text-contrast-secondary-dark">
-                      {client.quoteAutor}
+                      {client.quote.author}
                     </p>
                   </div>
                 )}

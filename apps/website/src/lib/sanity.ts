@@ -1,6 +1,6 @@
 import imageUrlBuilder from '@sanity/image-url';
-import { makeSafeQueryRunner } from "groqd";
 import { createClient } from "next-sanity";
+import { z } from 'zod';
 
 const sanityClient = createClient({
   projectId: 'dk9hv6ix',
@@ -9,7 +9,10 @@ const sanityClient = createClient({
   useCdn: typeof document !== 'undefined',
 });
 
-export const runQuery = makeSafeQueryRunner(query => sanityClient.fetch(query));
+export const queryContent = async <T>(query: string, schema: z.ZodType<T>) => {
+  const result = await sanityClient.fetch(query);
+  return schema.parse(result);
+};
 
 const imageBuilder = imageUrlBuilder(sanityClient)
 

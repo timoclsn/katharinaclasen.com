@@ -53,7 +53,6 @@ importers:
       eslint: 8.30.0
       eslint-config-custom: workspace:*
       framer-motion: ^8.0.2
-      groqd: ^0.2.1
       lucide-react: 0.105.0-alpha.4
       next: 13.1.1
       next-sanity: 3.1.8
@@ -62,7 +61,6 @@ importers:
       prettier-plugin-tailwindcss: 0.2.1
       react: 18.2.0
       react-dom: 18.2.0
-      react-use-measure: ^2.1.1
       sharp: 0.31.3
       tailwindcss: 3.2.4
       typescript: 4.9.4
@@ -73,13 +71,11 @@ importers:
       '@sanity/image-url': 1.0.1
       class-variance-authority: 0.4.0_typescript@4.9.4
       framer-motion: 8.0.2_biqbaboplfbrettd7655fr4n2y
-      groqd: 0.2.1
       lucide-react: 0.105.0-alpha.4_react@18.2.0
       next: 13.1.1_biqbaboplfbrettd7655fr4n2y
       next-sanity: 3.1.8_next@13.1.1+react@18.2.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      react-use-measure: 2.1.1_biqbaboplfbrettd7655fr4n2y
       sharp: 0.31.3
       zod: 3.20.2
     devDependencies:
@@ -3677,10 +3673,6 @@ packages:
       date-now: 1.0.1
     dev: false
 
-  /debounce/1.2.1:
-    resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
-    dev: false
-
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     peerDependencies:
@@ -5170,13 +5162,6 @@ packages:
   /groq/2.33.2:
     resolution: {integrity: sha512-5pf4c91JESCS28IJCgolJq/WBw4Xvf2m8FgZVUlrCig17I+qERosALAHLyyutXu403EYnyCD3DdCLaPb3aGneA==}
     engines: {node: '>=6'}
-    dev: false
-
-  /groqd/0.2.1:
-    resolution: {integrity: sha512-pmDHZsSveuDoYDH5l77aJbrzy98Cs6n5CXbj2IjK8UYdXR1pzMAuJx9fvO6/J/BMoAD1HwJ4o1B7XgFT2JbhYg==}
-    engines: {node: '>= 14'}
-    dependencies:
-      zod: 3.20.2
     dev: false
 
   /gunzip-maybe/1.4.2:
@@ -6712,17 +6697,6 @@ packages:
     resolution: {integrity: sha512-ywYLSjNkxKHiZOqNlso9PZByNEY+FTyh3C+7uuziK0xFXu9xzdyfHwg4S9iyiRRoPCR4k2LqaBBsWVmSBwCWYQ==}
     dependencies:
       prop-types: 15.8.1
-    dev: false
-
-  /react-use-measure/2.1.1_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-nocZhN26cproIiIduswYpV5y5lQpSQS1y/4KuvUCjSKmw7ZWIS/+g3aFnX3WdBkyuGUtTLif3UTqnLLhbDoQig==}
-    peerDependencies:
-      react: '>=16.13'
-      react-dom: '>=16.13'
-    dependencies:
-      debounce: 1.2.1
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react/18.2.0:

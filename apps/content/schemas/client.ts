@@ -27,9 +27,8 @@ export const client = defineType({
       name: 'logo',
       title: 'Logo',
       description: 'Logo des Kunden',
-      type: 'reference',
-      to: [{ type: 'customImage' }],
-      validation: Rule => Rule.required()
+      type: 'image',
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'description',

@@ -1,13 +1,37 @@
+import { z } from "zod";
 import { Body } from "../../design-system/Body/Body";
 import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";
-import { clientsQuery } from "../../lib/queries";
-import { runQuery } from "../../lib/sanity";
+import { queryContent } from "../../lib/sanity";
 import { MyClientsCarousel } from "./MyClientsCarousel";
 
+export type Clients = Awaited<ReturnType<typeof queryClients>>;
+
+const queryClients = async () => {
+  return await queryContent(
+    "*[_type == 'client']{_id, shortName, name, 'logo': logo.asset._ref, description, website, caseStudy, quote->{text, author}} | order(shortName asc)",
+    z.array(
+      z.object({
+        _id: z.string(),
+        shortName: z.string(),
+        name: z.string().nullable(),
+        logo: z.string(),
+        description: z.string(),
+        website: z.string().nullable(),
+        caseStudy: z.string().nullable(),
+        quote: z
+          .object({
+            text: z.string(),
+            author: z.string(),
+          })
+          .nullable(),
+      })
+    )
+  );
+};
+
 export const MyClients = async () => {
-  const clients = await runQuery(clientsQuery);
-  console.log("fired");
+  const clients = await queryClients();
   return (
     <section className="bg-background-secondary py-32">
       <Container inset>
