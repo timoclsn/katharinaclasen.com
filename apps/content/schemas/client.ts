@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity';
 
 export const client = defineType({
   name: 'client',
-  title: 'Kunden',
+  title: 'Kunde',
   type: 'document',
   preview: {
     select: {

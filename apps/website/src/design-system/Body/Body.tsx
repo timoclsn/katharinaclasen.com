@@ -20,6 +20,7 @@ const bodyVariants = cva("antialiased", {
     },
     weight: {
       normal: "font-normal",
+      medium: "font-medium",
       bold: "font-bold",
     },
     style: {

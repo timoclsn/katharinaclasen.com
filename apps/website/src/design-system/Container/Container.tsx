@@ -1,8 +1,12 @@
 import { cva, VariantProps } from "class-variance-authority";
 import { forwardRef, ReactNode } from "react";
 
-const containerVariants = cva("mx-auto max-w-screen-2xl w-full", {
+const containerVariants = cva("mx-auto w-full", {
   variants: {
+    size: {
+      normal: "max-w-screen-2xl",
+      small: "max-w-screen-lg",
+    },
     inset: {
       true: "px-6 sm:px-8",
     },
@@ -19,9 +23,9 @@ interface ComponentProps {
 type Props = ComponentProps & ContainerVariants;
 
 export const Container = forwardRef<HTMLDivElement, Props>(
-  ({ children, inset, className }, ref) => {
+  ({ children, size = "normal", inset, className }, ref) => {
     return (
-      <div className={containerVariants({ inset, className })} ref={ref}>
+      <div className={containerVariants({ size, inset, className })} ref={ref}>
         {children}
       </div>
     );

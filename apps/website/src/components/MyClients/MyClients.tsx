@@ -9,7 +9,7 @@ export type Clients = Awaited<ReturnType<typeof queryClients>>;
 
 const queryClients = async () => {
   return await queryContent(
-    "*[_type == 'client']{_id, shortName, name, 'logo': logo.asset._ref, description, website, caseStudy, quote->{text, author}} | order(shortName asc)",
+    "*[_type == 'client']{_id, shortName, name, 'logo': logo.asset->url, description, website, caseStudy, quote->{text, author}} | order(shortName asc)",
     z.array(
       z.object({
         _id: z.string(),

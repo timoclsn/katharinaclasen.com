@@ -12,6 +12,15 @@ export const project = defineType({
       validation: Rule => Rule.required()
     }),
     defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      validation: (Rule) => Rule.required(),
+      options: {
+        source: 'title',
+      },
+    }),
+    defineField({
       name: 'image',
       title: 'Bild',
       type: 'image',
@@ -33,12 +42,12 @@ export const project = defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: 'year',
-      title: 'Jahr',
+      name: 'date',
+      title: 'Datum',
       type: 'date',
       validation: Rule => Rule.required(),
       options: {
-        dateFormat: 'YYYY',
+        dateFormat: 'DD.MM.YYYY',
       }
     }),
     defineField({
@@ -71,21 +80,7 @@ export const project = defineType({
     defineField({
       name: 'content',
       title: 'Inhalt',
-      type: 'array',
-      of: [
-        { type: 'block' },
-        {
-          type: 'image',
-          fields: [
-            defineField({
-              name: 'alt',
-              type: 'string',
-              title: 'Alt Text',
-              validation: Rule => Rule.required(),
-            }),
-          ],
-        }
-      ],
+      type: 'markdown',
       validation: Rule => Rule.required(),
     })
   ]

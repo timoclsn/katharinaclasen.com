@@ -10,7 +10,6 @@ import { Card } from "../../design-system/Card/Card";
 import { Heading } from "../../design-system/Heading/Heading";
 import { Tag } from "../../design-system/Tag/Tag";
 import { usePrevious } from "../../hooks/usePrevious";
-import { urlForImage } from "../../lib/sanity";
 import { Clients } from "./MyClients";
 
 const variants: Variants = {
@@ -79,7 +78,7 @@ export const MyClientsCarousel = ({ clients }: Props) => {
                   state={selected ? "selected" : "deselected"}
                   prepend={
                     <Image
-                      src={urlForImage(client.logo).url()}
+                      src={client.logo}
                       alt={`Logo of company ${client.shortName}`}
                       width={50}
                       height={50}
@@ -115,7 +114,7 @@ export const MyClientsCarousel = ({ clients }: Props) => {
             >
               <div className="flex-1">
                 <Image
-                  src={urlForImage(client.logo).url()}
+                  src={client.logo}
                   alt={`Logo of company ${client.shortName}`}
                   width={50}
                   height={50}
