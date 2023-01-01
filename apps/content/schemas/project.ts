@@ -22,7 +22,7 @@ export const project = defineType({
     }),
     defineField({
       name: 'image',
-      title: 'Bild',
+      title: 'Titelbild',
       type: 'image',
       validation: Rule => Rule.required(),
       fields: [
