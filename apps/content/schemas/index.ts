@@ -1,3 +1,4 @@
+import { blogPost } from "./blogPost";
 import { client } from "./client";
 import { project } from "./project";
 import { quote } from "./quote";
@@ -9,5 +10,6 @@ export const schemaTypes = [
   quote,
   service,
   topic,
-  project
+  project,
+  blogPost
 ]
