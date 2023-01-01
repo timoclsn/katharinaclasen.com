@@ -13,7 +13,7 @@ const components = {
       alt={props.alt || ""}
       width={1000}
       height={1000}
-      className="h-auto w-full rounded-t-6xl"
+      className="h-auto w-full rounded-6xl"
       sizes="100vw"
     />
   ),
