@@ -87,7 +87,7 @@ interface ComponentProps {
   prepend?: number | ReactNode;
 }
 
-type Props = ComponentProps & TagVariants;
+export type TagProps = ComponentProps & TagVariants;
 
 export const Tag = ({
   children,
@@ -96,7 +96,7 @@ export const Tag = ({
   state,
   size = "normal",
   prepend,
-}: Props) => {
+}: TagProps) => {
   return (
     <span className={tagVariants({ outline, color, state, size })}>
       {prepend !== undefined && (
