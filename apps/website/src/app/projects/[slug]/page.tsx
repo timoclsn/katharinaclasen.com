@@ -1,14 +1,10 @@
-import { CalendarDays, Contact, Link2 } from "lucide-react";
-import Image from "next/image";
-import { z } from "zod";
-import { Body } from "../../../design-system/Body/Body";
-import { Button } from "../../../design-system/Button/Button";
-import { Container } from "../../../design-system/Container/Container";
-import { Heading } from "../../../design-system/Heading/Heading";
-import { Tag } from "../../../design-system/Tag/Tag";
-import { queryContent } from "../../../lib/sanity";
+import { CalendarDays, Contact } from "lucide-react";
 import { serialize } from "next-mdx-remote/serialize";
+import { z } from "zod";
+import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
+import { Container } from "../../../design-system/Container/Container";
+import { queryContent } from "../../../lib/sanity";
 
 export const generateStaticParams = async () => {
   const projects = await queryContent(
@@ -74,52 +70,41 @@ const ProjectPage = async ({ params }: Props) => {
   return (
     <article className="py-40">
       <Container size="small" inset>
-        <Image
-          src={project.image.url}
-          alt={project.image.alt}
-          width={500}
-          height={500}
-          sizes="100vw"
-          className="mb-8 h-auto w-full rounded-6xl"
-          priority
+        <ArticleHeader
+          title={project.title}
+          titleImage={project.image}
+          metaData={[
+            {
+              icon: Contact,
+              text: project.client,
+            },
+            {
+              icon: CalendarDays,
+              text: new Date(project.date).getFullYear().toString(),
+            },
+          ]}
+          tags={[
+            ...(project.services
+              ? project.services.map(
+                  (service) =>
+                    ({
+                      outline: "solid",
+                      text: service.title,
+                    } as const)
+                )
+              : []),
+            ...(project.topics
+              ? project.topics.map(
+                  (topic) =>
+                    ({
+                      outline: "dash",
+                      text: topic.title,
+                    } as const)
+                )
+              : []),
+          ]}
+          website={project.website || undefined}
         />
-        {(project.services || project.topics) && (
-          <div className="mb-8 flex flex-wrap items-center gap-1">
-            {project.services?.map((service, idx) => {
-              return (
-                <Tag size="normal" key={idx}>
-                  {service.title}
-                </Tag>
-              );
-            })}
-            {project.topics?.map((topic, idx) => {
-              return (
-                <Tag size="normal" outline="dash" key={idx}>
-                  {topic.title}
-                </Tag>
-              );
-            })}
-          </div>
-        )}
-        <Heading level="1" className="mb-8">
-          {project.title}
-        </Heading>
-        <div className="flex flex-wrap items-center gap-x-9 gap-y-4">
-          <div className="flex items-center gap-2">
-            <Contact className="text-contrast-secondary-dark" />
-            <Body weight="medium">{project.client}</Body>
-          </div>
-          <div className="flex items-center gap-2">
-            <CalendarDays className="text-contrast-secondary-dark" />
-            <Body weight="medium">{new Date(project.date).getFullYear()}</Body>
-          </div>
-        </div>
-        {project.website && (
-          <Button href={project.website} external className="mt-12">
-            <Link2 />
-            Website
-          </Button>
-        )}
         <div className="prose mx-auto mt-32 max-w-none text-contrast-secondary-dark">
           <MDXContent {...mdxContent} />
         </div>

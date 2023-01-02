@@ -63,7 +63,7 @@ const ProjectsPage = async () => {
                       ]}
                       tags={[
                         ...(project.services
-                          ? project.services?.map(
+                          ? project.services.map(
                               (service) =>
                                 ({
                                   outline: "solid",
@@ -72,7 +72,7 @@ const ProjectsPage = async () => {
                             )
                           : []),
                         ...(project.topics
-                          ? project.topics?.map(
+                          ? project.topics.map(
                               (topic) =>
                                 ({
                                   outline: "dash",
