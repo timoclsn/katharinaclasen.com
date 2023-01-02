@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity';
 
 export const blogPost = defineType({
   name: 'blogPost',
-  title: 'Blogpost',
+  title: 'Blog Post',
   type: 'document',
   initialValue: {
     author: 'Katharina Clasen'
