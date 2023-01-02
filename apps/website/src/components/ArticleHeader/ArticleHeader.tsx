@@ -41,7 +41,7 @@ export const ArticleHeader = ({
         priority
       />
       {tags && (
-        <div className="mt-8 flex flex-wrap items-center gap-1">
+        <div className="mb-8 flex flex-wrap items-center gap-1">
           {tags.map((tag, idx) => (
             <Tag outline={tag.outline} size="normal" key={idx}>
               {tag.text}
