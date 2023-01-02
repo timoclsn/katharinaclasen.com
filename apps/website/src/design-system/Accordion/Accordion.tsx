@@ -26,6 +26,7 @@ const itemVariants = cva(
         redCandy: "bg-background-red-candy",
         stone: "bg-background-stone",
         dark: "bg-background-dark",
+        mint: "bg-background-mint",
       },
     },
   }
