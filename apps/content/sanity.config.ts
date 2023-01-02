@@ -1,6 +1,8 @@
 import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
+import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import { markdownSchema } from "sanity-plugin-markdown";
+import { media } from 'sanity-plugin-media';
 import { deskTool } from 'sanity/desk';
 import { schemaTypes } from './schemas';
 
@@ -15,6 +17,8 @@ export default defineConfig({
     deskTool(),
     visionTool(),
     markdownSchema(),
+    media(),
+    unsplashImageAsset(),
   ],
 
   schema: {
