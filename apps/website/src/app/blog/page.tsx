@@ -40,7 +40,7 @@ const BlogPage = async () => {
     )
   );
   return (
-    <div className="pt-40">
+    <div className="py-28">
       <Container inset>
         <section className="py-20">
           <ul className="grid grid-cols-1 gap-14">

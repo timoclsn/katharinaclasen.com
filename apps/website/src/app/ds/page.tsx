@@ -10,7 +10,7 @@ import { Tag } from "../../design-system/Tag/Tag";
 
 const DesignSystemPage = () => {
   return (
-    <div className="mt-32 flex flex-col gap-8 p-6">
+    <div className="mt-32 flex flex-col gap-8 px-6 py-28">
       <Heading level="1">Design System</Heading>
 
       <section>

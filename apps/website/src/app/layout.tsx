@@ -31,7 +31,14 @@ const RootLayout = ({ children }: Props) => {
       <Script data-no-cookie data-api="/_hive" src="/bee.js" />
       <html
         lang="en"
-        className={cx(sansFont.variable, serifFont.variable, "min-h-screen")}
+        className={cx(
+          sansFont.variable,
+          serifFont.variable,
+          "min-h-screen",
+          "bg-background-primary",
+          "[html:has(.home-page)&]:bg-background-secondary",
+          "[html:has(.about-page)&]:bg-background-red-candy"
+        )}
       >
         <head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />

@@ -5,13 +5,13 @@ import { Header } from "./Header/Header";
 
 const AboutPage = () => {
   return (
-    <>
+    <div className="about-page">
       <Header />
       <AboutMe />
       <AboutAccordion />
       {/* @ts-expect-error Server Component */}
       <MyClients />
-    </>
+    </div>
   );
 };
 

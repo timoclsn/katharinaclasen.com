@@ -9,7 +9,7 @@ import portraitImg from "./assets/portrait.png";
 export const AboutMe = () => {
   return (
     <section>
-      <Container className="flex flex-col gap-8 py-40 lg:flex-row">
+      <Container className="flex flex-col gap-8 bg-background-primary py-40 lg:flex-row">
         <Container inset className="flex flex-1 items-start justify-center">
           <Image src={portraitImg} alt="Portait of Katharina Clasen" />
         </Container>

@@ -39,7 +39,7 @@ const ProjectsPage = async () => {
   );
 
   return (
-    <div className="pt-40">
+    <div className="py-28">
       <Container inset>
         <Heading>Have a look at my projects:</Heading>
         <section className="py-20">

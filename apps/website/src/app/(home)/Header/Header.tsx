@@ -13,7 +13,7 @@ import serviceUxResearchImg from "./assets/service-ux-research.png";
 
 export const Header = () => {
   return (
-    <section className="bg-background-secondary pb-28 pt-40">
+    <section className="py-28">
       <Container inset>
         <div className="flex flex-col gap-14 md:flex-row">
           <div className="flex w-full flex-col items-start gap-10 md:w-2/3">

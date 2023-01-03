@@ -15,7 +15,7 @@ import { ArrowRight } from "lucide-react";
 
 export const AboutAccordion = () => {
   return (
-    <section className="py-32">
+    <section className="bg-background-primary py-32">
       <Container inset>
         <Accordion type="single" defaultValue="item-1">
           <Accordion.Item value="item-1" color="mint" className="lg:h-[600px]">

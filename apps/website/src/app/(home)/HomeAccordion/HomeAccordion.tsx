@@ -14,7 +14,7 @@ import philosophyImg from "./assets/philosophy.png";
 
 export const HomeAccordion = () => {
   return (
-    <section className="py-32">
+    <section className="bg-background-primary py-32">
       <Container inset>
         <Accordion type="single" defaultValue="item-1">
           <Accordion.Item

@@ -11,10 +11,10 @@ import laptopImg from "./assets/laptop.png";
 export const Header = () => {
   return (
     <>
-      <section className="h-screen bg-background-red-candy">
+      <section className="h-screen">
         <Container
           inset
-          className="relative flex h-screen flex-col justify-between pb-28 pt-40"
+          className="relative flex h-screen flex-col justify-between py-28"
         >
           <Heading level="1" className="max-w-4xl">
             Let&apos;s use digital for good and create{" "}
