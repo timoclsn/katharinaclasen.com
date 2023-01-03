@@ -1,16 +1,12 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import { Accordion } from "../../../design-system/Accordion/Accordion";
 import { Body } from "../../../design-system/Body/Body";
 import { Button } from "../../../design-system/Button/Button";
 import { Container } from "../../../design-system/Container/Container";
 import { Heading } from "../../../design-system/Heading/Heading";
-import aboutMeImg from "./assets/about-me.png";
-import differentiatorsImg from "./assets/differentiators.png";
-import howIWorkImg from "./assets/how-i-work.png";
-import philosophyImg from "./assets/philosophy.png";
+import { Bolt, Hand, Heart, Phone } from "../../../illustrations";
 
 export const HomeAccordion = () => {
   return (
@@ -23,7 +19,11 @@ export const HomeAccordion = () => {
             className="lg:h-[600px]"
           >
             <Accordion.Trigger className="flex items-center gap-5 sm:gap-10 lg:flex-col-reverse">
-              <Image src={aboutMeImg} alt="Illustration of a hand" />
+              <Hand
+                className="text-contrast-secondary-light opacity-60"
+                width={75}
+                height={75}
+              />
               <Heading color="light" className="lg:writing-vertical">
                 About me!
               </Heading>
@@ -47,7 +47,11 @@ export const HomeAccordion = () => {
             className="lg:h-[600px]"
           >
             <Accordion.Trigger className="flex items-center gap-5 sm:gap-10 lg:flex-col-reverse">
-              <Image src={philosophyImg} alt="Illustration of a heart" />
+              <Heart
+                className="text-contrast-secondary-dark opacity-60"
+                width={75}
+                height={75}
+              />
               <Heading className="lg:writing-vertical">Philosophy</Heading>
             </Accordion.Trigger>
             <Accordion.Content>
@@ -74,9 +78,10 @@ export const HomeAccordion = () => {
 
           <Accordion.Item value="item-3" color="stone" className="lg:h-[600px]">
             <Accordion.Trigger className="flex items-center gap-5 sm:gap-10 lg:flex-col-reverse">
-              <Image
-                src={differentiatorsImg}
-                alt="Illustration of a lightning bolt"
+              <Bolt
+                className="text-contrast-secondary-dark opacity-60"
+                width={75}
+                height={75}
               />
               <Heading className="lg:writing-vertical">Differentiators</Heading>
             </Accordion.Trigger>
@@ -95,9 +100,10 @@ export const HomeAccordion = () => {
 
           <Accordion.Item value="item-4" color="dark" className="lg:h-[600px]">
             <Accordion.Trigger className="flex items-center gap-5 sm:gap-10 lg:flex-col-reverse">
-              <Image
-                src={howIWorkImg}
-                alt="Illustration of a hand and a smartphone"
+              <Phone
+                className="text-contrast-secondary-light opacity-60"
+                width={75}
+                height={75}
               />
               <Heading color="light" className="lg:writing-vertical">
                 How I work

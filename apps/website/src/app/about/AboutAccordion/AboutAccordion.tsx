@@ -1,17 +1,12 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import { Accordion } from "../../../design-system/Accordion/Accordion";
-import { Container } from "../../../design-system/Container/Container";
-import Image from "next/image";
-import educationImg from "./assets/education.png";
-import lectureImg from "./assets/lecture.png";
-import nonProfitImg from "./assets/non-profit.png";
-import freelancingImg from "./assets/freelancing.png";
-import sideprojectsImg from "./assets/sideprojects.png";
-import { Heading } from "../../../design-system/Heading/Heading";
 import { Body } from "../../../design-system/Body/Body";
 import { Button } from "../../../design-system/Button/Button";
-import { ArrowRight } from "lucide-react";
+import { Container } from "../../../design-system/Container/Container";
+import { Heading } from "../../../design-system/Heading/Heading";
+import { Bolt, Hand, Head, Heart, Phone } from "../../../illustrations";
 
 export const AboutAccordion = () => {
   return (
@@ -20,9 +15,10 @@ export const AboutAccordion = () => {
         <Accordion type="single" defaultValue="item-1">
           <Accordion.Item value="item-1" color="mint" className="lg:h-[600px]">
             <Accordion.Trigger className="flex items-center gap-5 sm:gap-10 lg:flex-col-reverse">
-              <Image
-                src={educationImg}
-                alt="Illustration of a head with thought bubbles"
+              <Head
+                className="text-contrast-secondary-dark opacity-60"
+                width={75}
+                height={75}
               />
               <Heading color="dark" className="lg:writing-vertical">
                 Education
@@ -47,7 +43,11 @@ export const AboutAccordion = () => {
             className="lg:h-[600px]"
           >
             <Accordion.Trigger className="flex items-center gap-5 sm:gap-10 lg:flex-col-reverse">
-              <Image src={lectureImg} alt="Illustration of a hand" />
+              <Hand
+                className="text-contrast-secondary-light opacity-60"
+                width={75}
+                height={75}
+              />
               <Heading color="light" className="lg:writing-vertical">
                 Lecture
               </Heading>
@@ -80,7 +80,11 @@ export const AboutAccordion = () => {
             className="lg:h-[600px]"
           >
             <Accordion.Trigger className="flex items-center gap-5 sm:gap-10 lg:flex-col-reverse">
-              <Image src={nonProfitImg} alt="Illustration of a heart" />
+              <Heart
+                className="text-contrast-secondary-dark opacity-60"
+                width={75}
+                height={75}
+              />
               <Heading className="lg:writing-vertical">Non-profit</Heading>
             </Accordion.Trigger>
             <Accordion.Content>
@@ -105,9 +109,10 @@ export const AboutAccordion = () => {
 
           <Accordion.Item value="item-4" color="stone" className="lg:h-[600px]">
             <Accordion.Trigger className="flex items-center gap-5 sm:gap-10 lg:flex-col-reverse">
-              <Image
-                src={freelancingImg}
-                alt="Illustration of a lightning bolt"
+              <Bolt
+                className="text-contrast-secondary-dark opacity-60"
+                width={75}
+                height={75}
               />
               <Heading color="dark" className="lg:writing-vertical">
                 Freelancing
@@ -128,9 +133,10 @@ export const AboutAccordion = () => {
 
           <Accordion.Item value="item-5" color="dark" className="lg:h-[600px]">
             <Accordion.Trigger className="flex items-center gap-5 sm:gap-10 lg:flex-col-reverse">
-              <Image
-                src={sideprojectsImg}
-                alt="Illustration of a hand and a smartphone"
+              <Phone
+                className="text-contrast-secondary-light opacity-60"
+                width={75}
+                height={75}
               />
               <Heading color="light" className="lg:writing-vertical">
                 Sideprojects

@@ -22,7 +22,7 @@ const buttonVariants = cva(
       },
       color: {
         dark: null,
-        white: null,
+        light: null,
       },
       size: {
         normal: [
@@ -51,7 +51,7 @@ const buttonVariants = cva(
       },
       {
         style: "solid",
-        color: "white",
+        color: "light",
         className: [
           "bg-background-primary text-contrast-primary-dark",
           "px-6 py-3",
@@ -67,7 +67,7 @@ const buttonVariants = cva(
       },
       {
         style: "outline",
-        color: "white",
+        color: "light",
         className: [
           "ring-contrast-primary-light text-contrast-primary-light",
           ,
@@ -81,7 +81,7 @@ const buttonVariants = cva(
       },
       {
         style: "text",
-        color: "white",
+        color: "light",
         className: ["text-contrast-primary-light"],
       },
     ],

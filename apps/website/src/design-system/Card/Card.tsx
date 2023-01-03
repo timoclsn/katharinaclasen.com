@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
 import { ReactNode } from "react";
 
-const cardVariants = cva("rounded-5xl", {
+const cardVariants = cva("rounded-5xl relative", {
   variants: {
     inset: {
       true: "px-8 py-10",
@@ -12,17 +12,32 @@ const cardVariants = cva("rounded-5xl", {
       redCandy: "bg-background-red-candy",
       stone: "bg-background-stone",
       dark: "bg-background-dark",
+      salmon: "bg-background-salmon",
+      lilacExtreme: "bg-background-lilac-extreme",
+      pinkCandy: "bg-background-pink-candy",
+      mint: "bg-background-mint",
+    },
+    border: {
+      true: "ring-2 ring-outline-light-dark ring-inset",
     },
   },
 });
 
-interface Props extends VariantProps<typeof cardVariants> {
+export interface CardProps extends VariantProps<typeof cardVariants> {
   children: ReactNode;
   className?: string;
 }
 
-export const Card = ({ children, inset, color, className }: Props) => {
+export const Card = ({
+  children,
+  inset,
+  color,
+  border,
+  className,
+}: CardProps) => {
   return (
-    <div className={cardVariants({ inset, color, className })}>{children}</div>
+    <div className={cardVariants({ inset, color, border, className })}>
+      {children}
+    </div>
   );
 };

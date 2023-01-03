@@ -53,8 +53,19 @@ export const client = defineType({
       name: 'quote',
       title: 'Zitat',
       description: 'Zitate des Kunden.',
-      type: 'reference',
-      to: [{ type: 'quote' }]
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'text',
+          title: 'Text',
+          type: 'text',
+        }),
+        defineField({
+          name: 'author',
+          title: 'Author',
+          type: 'string',
+        }),
+      ]
     }),
   ],
 })

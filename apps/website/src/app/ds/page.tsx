@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowDown, ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { ContentCard } from "../../components/ContentCard/ContentCard";
 import { Accordion } from "../../design-system/Accordion/Accordion";
 import { Body } from "../../design-system/Body/Body";
 import { Button } from "../../design-system/Button/Button";
@@ -12,6 +12,20 @@ const DesignSystemPage = () => {
   return (
     <div className="mt-32 flex flex-col gap-8 px-6 py-28">
       <Heading level="1">Design System</Heading>
+
+      <section>
+        <ContentCard
+          illustration="bolt"
+          title="Flexibility"
+          description="I offer a high amount of flexibility to my clients. I extend their team only when and only as long as they need me. On top of that, I help with coaching and mentoring junior designers. While bringing this flexibility, I still try to be as close to my client and the team as possible."
+          backgroundColor="dark"
+          color="light"
+          button={{
+            label: "Button",
+            href: "/",
+          }}
+        />
+      </section>
 
       <section>
         <Accordion type="single" defaultValue="item-1">
@@ -88,20 +102,20 @@ const DesignSystemPage = () => {
           <Heading className="text-contrast-primary-light">
             Buttton Light
           </Heading>
-          <Button style="solid" color="white">
+          <Button style="solid" color="light">
             Solid
           </Button>
-          <Button style="solid" color="white">
+          <Button style="solid" color="light">
             Solid + Icon
             <ArrowRight />
           </Button>
-          <Button style="solid" size="large" color="white">
+          <Button style="solid" size="large" color="light">
             Solid large
           </Button>
-          <Button style="outline" color="white">
+          <Button style="outline" color="light">
             Outline
           </Button>
-          <Button style="text" color="white">
+          <Button style="text" color="light">
             Text
           </Button>
         </div>
@@ -139,21 +153,6 @@ const DesignSystemPage = () => {
           <Tag color="dark" outline="solid" size="normal" prepend={1}>
             Tag number
           </Tag>
-          <Tag
-            color="dark"
-            outline="solid"
-            size="normal"
-            prepend={
-              <Image
-                src="/clients/bauder.png"
-                alt="logo"
-                width={94}
-                height={30}
-              />
-            }
-          >
-            Tag normal Client
-          </Tag>
           <Tag color="dark" outline="solid" size="large">
             <ArrowDown />
             Tag large
@@ -165,21 +164,6 @@ const DesignSystemPage = () => {
           <Tag color="dark" outline="solid" size="xxl">
             <ArrowDown />
             Tag xxl
-          </Tag>
-          <Tag
-            color="dark"
-            outline="solid"
-            size="xxl"
-            prepend={
-              <Image
-                src="/clients/bauder.png"
-                alt="logo"
-                width={100}
-                height={30}
-              />
-            }
-          >
-            Tag Client
           </Tag>
           <Tag color="dark" outline="solid" size="xxl" state="deselected">
             <ArrowDown />
@@ -241,21 +225,6 @@ const DesignSystemPage = () => {
           <Tag color="light" outline="solid" size="normal" prepend={1}>
             Tag number
           </Tag>
-          <Tag
-            color="light"
-            outline="solid"
-            size="normal"
-            prepend={
-              <Image
-                src="/clients/bauder.png"
-                alt="logo"
-                width={94}
-                height={30}
-              />
-            }
-          >
-            Tag normal Client
-          </Tag>
           <Tag color="light" outline="solid" size="large">
             <ArrowDown />
             Tag large
@@ -267,21 +236,6 @@ const DesignSystemPage = () => {
           <Tag color="light" outline="solid" size="xxl">
             <ArrowDown />
             Tag xxl
-          </Tag>
-          <Tag
-            color="light"
-            outline="solid"
-            size="xxl"
-            prepend={
-              <Image
-                src="/clients/bauder.png"
-                alt="logo"
-                width={94}
-                height={30}
-              />
-            }
-          >
-            Tag Client
           </Tag>
           <Tag color="light" outline="solid" size="xxl" state="deselected">
             <ArrowDown />
