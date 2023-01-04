@@ -5,27 +5,55 @@ import { Container } from "../../../design-system/Container/Container";
 import { Heading } from "../../../design-system/Heading/Heading";
 import { queryContent } from "../../../lib/sanity";
 
+const illustrations = [
+  "bolt",
+  "hand",
+  "head",
+  "heart",
+  "phone",
+  "geometry",
+] as const;
+
 export const MyPhilosophy = async () => {
   const philosophies = await queryContent(
     `
       *[_type == 'philosophy']
       {
-          _id,
+          orderRank,
+          illustration,
           title,
           description,
+          button{label, href},
+          illustration2,
+          title2,
+          description2,
+          button2{label, href},
           backgroundColor,
           color,
           border,
-          illustration,
-          button{label, href},
           backgroundImage{'url': asset->url, alt},
-      } | order(title asc)
+      } | order(orderRank)
   `,
     z.array(
       z.object({
-        _id: z.string(),
+        illustration: z.enum(illustrations).nullable(),
         title: z.string().nullable(),
         description: z.string().nullable(),
+        button: z
+          .object({
+            label: z.string(),
+            href: z.string(),
+          })
+          .nullable(),
+        illustration2: z.enum(illustrations).nullable(),
+        title2: z.string().nullable(),
+        description2: z.string().nullable(),
+        button2: z
+          .object({
+            label: z.string(),
+            href: z.string(),
+          })
+          .nullable(),
         backgroundColor: z
           .enum([
             "primary",
@@ -41,15 +69,6 @@ export const MyPhilosophy = async () => {
           .nullable(),
         color: z.enum(["light", "dark"]).nullable(),
         border: z.boolean().nullable(),
-        illustration: z
-          .enum(["bolt", "hand", "head", "heart", "phone", "geometry"])
-          .nullable(),
-        button: z
-          .object({
-            label: z.string(),
-            href: z.string(),
-          })
-          .nullable(),
         backgroundImage: z
           .object({
             src: z.string(),
@@ -69,20 +88,36 @@ export const MyPhilosophy = async () => {
           These are the principles that guide my thinking and doing:
         </Body>
         <ul className="flex flex-wrap justify-between gap-3">
-          {philosophies.map((philosophy, idx) => (
-            <li key={idx} className="w-full flex-grow md:w-2/5 lg:w-1/4">
-              <ContentCard
-                illustration={philosophy.illustration || undefined}
-                title={philosophy.title || undefined}
-                description={philosophy.description || undefined}
-                button={philosophy.button || undefined}
-                backgroundColor={philosophy.backgroundColor || undefined}
-                color={philosophy.color || undefined}
-                border={philosophy.border || undefined}
-                backgroundImage={philosophy.backgroundImage || undefined}
-              />
-            </li>
-          ))}
+          {philosophies.map((philosophy, idx) => {
+            const isTwoCards =
+              philosophy.illustration2 ||
+              philosophy.title2 ||
+              philosophy.description2 ||
+              philosophy.button2;
+            return (
+              <li
+                key={idx}
+                className={`w-full flex-grow ${
+                  isTwoCards ? "md:w-4/5 lg:w-2/4" : "md:w-2/5 lg:w-1/4"
+                }`}
+              >
+                <ContentCard
+                  illustration={philosophy.illustration || undefined}
+                  title={philosophy.title || undefined}
+                  description={philosophy.description || undefined}
+                  button={philosophy.button || undefined}
+                  illustration2={philosophy.illustration2 || undefined}
+                  title2={philosophy.title2 || undefined}
+                  description2={philosophy.description2 || undefined}
+                  button2={philosophy.button2 || undefined}
+                  backgroundColor={philosophy.backgroundColor || undefined}
+                  color={philosophy.color || undefined}
+                  border={philosophy.border || undefined}
+                  backgroundImage={philosophy.backgroundImage || undefined}
+                />
+              </li>
+            );
+          })}
         </ul>
       </Container>
     </section>

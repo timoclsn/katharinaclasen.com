@@ -7,9 +7,6 @@ import { Heading } from "../../design-system/Heading/Heading";
 import { illustrations, Illustrations } from "../../illustrations";
 
 interface Props {
-  backgroundColor?: CardProps["color"];
-  color?: "dark" | "light";
-  border?: CardProps["border"];
   illustration?: Illustrations;
   title?: string;
   description?: string;
@@ -17,6 +14,16 @@ interface Props {
     label: string;
     href: string;
   };
+  illustration2?: Illustrations;
+  title2?: string;
+  description2?: string;
+  button2?: {
+    label: string;
+    href: string;
+  };
+  backgroundColor?: CardProps["color"];
+  color?: "dark" | "light";
+  border?: CardProps["border"];
   backgroundImage?: {
     src: string;
     alt: string;
@@ -24,16 +31,24 @@ interface Props {
 }
 
 export const ContentCard = ({
-  backgroundColor = "dark",
-  color = "light",
-  border = false,
   illustration,
   title,
   description,
   button,
+  illustration2,
+  title2,
+  description2,
+  button2,
+  backgroundColor = "dark",
+  color = "light",
+  border = false,
   backgroundImage,
 }: Props) => {
   const Illustration = illustration ? illustrations[illustration] : undefined;
+  const Illustration2 = illustration2
+    ? illustrations[illustration2]
+    : undefined;
+  const isTwoCards = illustration2 || title2 || description2 || button2;
   return (
     <Card
       color={backgroundColor}
@@ -49,8 +64,12 @@ export const ContentCard = ({
           className="absolute inset-0 h-full w-full object-cover"
         />
       )}
-      <div className="relative flex flex-col items-start gap-10 px-8 py-10">
-        <>
+      <div
+        className={`flex flex-col gap-16 px-8 pt-10 md:flex-row ${
+          backgroundImage ? "pb-20" : "pb-10"
+        }`}
+      >
+        <div className="flex flex-1 flex-col items-start gap-10">
           {Illustration && (
             <Illustration
               className={`opacity-60 ${
@@ -80,7 +99,40 @@ export const ContentCard = ({
               {button.label}
             </Button>
           )}
-        </>
+        </div>
+        {isTwoCards && (
+          <div className="flex flex-1 flex-col items-start gap-10">
+            {Illustration2 && (
+              <Illustration2
+                className={`opacity-60 ${
+                  color === "light"
+                    ? "text-contrast-secondary-light"
+                    : "text-contrast-secondary-dark"
+                }`}
+                width={75}
+                height={75}
+              />
+            )}
+            <div className="flex flex-col gap-3">
+              {title2 && (
+                <Heading level="3" color={color}>
+                  {title2}
+                </Heading>
+              )}
+              {description2 && (
+                <Body as="p" priority="secondary" color={color}>
+                  {description2}
+                </Body>
+              )}
+            </div>
+            {button2 && (
+              <Button color={color} href={button2.href}>
+                <ArrowRight />
+                {button2.label}
+              </Button>
+            )}
+          </div>
+        )}
       </div>
     </Card>
   );
