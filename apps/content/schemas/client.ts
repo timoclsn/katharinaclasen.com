@@ -59,11 +59,23 @@ export const client = defineType({
           name: 'text',
           title: 'Text',
           type: 'text',
+          validation: Rule => Rule.custom((text, context) => {
+            // @ts-expect-error
+            const author = context.document.quote.author;
+            if (!text && author) return 'Text and Author can only be used together.';
+            return true;
+          })
         }),
         defineField({
           name: 'author',
           title: 'Author',
           type: 'string',
+          validation: Rule => Rule.custom((author, context) => {
+            // @ts-expect-error
+            const text = context.document.quote.text;
+            if (!author && text) return 'Text and Author can only be used together.';
+            return true;
+          })
         }),
       ]
     }),
