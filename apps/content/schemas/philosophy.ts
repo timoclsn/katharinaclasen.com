@@ -53,11 +53,23 @@ export const philosophy = defineType({
           name: 'label',
           title: 'Label',
           type: 'string',
+          validation: Rule => Rule.custom((label, context) => {
+            // @ts-expect-error
+            const href = context.document.button.href;
+            if (!label && href) return 'Label and Link can only be used together.';
+            return true;
+          })
         }),
         defineField({
           name: 'href',
           title: 'Link',
-          type: 'string'
+          type: 'string',
+          validation: Rule => Rule.custom((href, context) => {
+            // @ts-expect-error
+            const label = context.document.button.label;
+            if (!href && label) return 'Label and Link can only be used together.';
+            return true;
+          })
         }),
       ],
     }),

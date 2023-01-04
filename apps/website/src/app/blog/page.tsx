@@ -1,15 +1,28 @@
-import { CalendarDays, Clock, Contact, User } from "lucide-react";
+import { format } from "date-fns";
+import { CalendarDays, Clock, User } from "lucide-react";
 import Link from "next/link";
+import readingTime from "reading-time";
 import { z } from "zod";
 import { ArticlePreview } from "../../components/ArticlePreview/ArticlePreview";
 import { Container } from "../../design-system/Container/Container";
 import { queryContent } from "../../lib/sanity";
-import { format } from "date-fns";
-import readingTime from "reading-time";
 
 const BlogPage = async () => {
   const blogPosts = await queryContent(
-    "*[_type == 'blogPost']{_id, title, 'slug': slug.current, 'image': {'url': image.asset->url, 'alt': image.alt}, author, date, services[]->{title}, topics[]->{title}, content} | order(date desc)",
+    `
+      *[_type == 'blogPost']
+      {
+        _id,
+        title,
+        'slug': slug.current,
+        image{'url': asset->url, alt},
+        author,
+        date,
+        services[]->{title},
+        topics[]->{title},
+        content
+      } | order(date desc)
+    `,
     z.array(
       z.object({
         _id: z.string(),

@@ -10,7 +10,12 @@ import { queryContent } from "../../../lib/sanity";
 
 export const generateStaticParams = async () => {
   const blogPosts = await queryContent(
-    "*[_type == 'blogPost']{'slug': slug.current}",
+    `
+      *[_type == 'blogPost']
+      {
+        'slug': slug.current
+      }
+    `,
     z.array(
       z.object({
         slug: z.string(),
@@ -32,7 +37,19 @@ interface Props {
 const BlogPostPage = async ({ params }: Props) => {
   const { slug } = params;
   const result = await queryContent(
-    `*[_type == 'blogPost' && slug.current == '${slug}']{_id, title, 'image': {'url': image.asset->url, 'alt': image.alt}, author, date, services[]->{title}, topics[]->{title}, content}`,
+    `
+      *[_type == 'blogPost' && slug.current == '${slug}']
+      {
+        _id,
+        title,
+        image{'url': asset->url, alt},
+        author,
+        date,
+        services[]->{title},
+        topics[]->{title},
+        content
+      }
+    `,
     z.array(
       z.object({
         _id: z.string(),

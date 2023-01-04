@@ -17,14 +17,8 @@ export const MyPhilosophy = async () => {
           color,
           border,
           illustration,
-          'button': {
-            label,
-            href
-          },
-          'backgroundImage': {
-            'src': backgroundImage.asset->url,
-            'alt': backgroundImage.alt
-          }
+          button{label, href},
+          backgroundImage{'url': asset->url, alt},
       } | order(title asc)
   `,
     z.array(
@@ -50,14 +44,18 @@ export const MyPhilosophy = async () => {
         illustration: z
           .enum(["bolt", "hand", "head", "heart", "phone", "geometry"])
           .nullable(),
-        button: z.object({
-          label: z.string().nullable(),
-          href: z.string().nullable(),
-        }),
-        backgroundImage: z.object({
-          src: z.string().nullable(),
-          alt: z.string().nullable(),
-        }),
+        button: z
+          .object({
+            label: z.string(),
+            href: z.string(),
+          })
+          .nullable(),
+        backgroundImage: z
+          .object({
+            src: z.string(),
+            alt: z.string(),
+          })
+          .nullable(),
       })
     )
   );
@@ -77,26 +75,11 @@ export const MyPhilosophy = async () => {
                 illustration={philosophy.illustration || undefined}
                 title={philosophy.title || undefined}
                 description={philosophy.description || undefined}
-                button={
-                  philosophy.button.label && philosophy.button.href
-                    ? {
-                        label: philosophy.button.label,
-                        href: philosophy.button.href,
-                      }
-                    : undefined
-                }
+                button={philosophy.button || undefined}
                 backgroundColor={philosophy.backgroundColor || undefined}
                 color={philosophy.color || undefined}
                 border={philosophy.border || undefined}
-                backgroundImage={
-                  philosophy.backgroundImage.src &&
-                  philosophy.backgroundImage.alt
-                    ? {
-                        src: philosophy.backgroundImage.src,
-                        alt: philosophy.backgroundImage.alt,
-                      }
-                    : undefined
-                }
+                backgroundImage={philosophy.backgroundImage || undefined}
               />
             </li>
           ))}

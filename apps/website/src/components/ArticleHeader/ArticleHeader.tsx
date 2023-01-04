@@ -19,7 +19,10 @@ interface Props {
     outline: TagProps["outline"];
     text: string;
   }>;
-  website?: string;
+  externalLink?: {
+    label: string | null;
+    href: string | null;
+  };
 }
 
 export const ArticleHeader = ({
@@ -27,7 +30,7 @@ export const ArticleHeader = ({
   titleImage,
   metaData,
   tags,
-  website,
+  externalLink,
 }: Props) => {
   return (
     <div>
@@ -62,10 +65,10 @@ export const ArticleHeader = ({
           ))}
         </div>
       )}
-      {website && (
-        <Button href={website} external className="mt-12">
+      {externalLink?.label && externalLink.href && (
+        <Button href={externalLink.href} external className="mt-12">
           <Link2 />
-          Website
+          {externalLink.label}
         </Button>
       )}
     </div>

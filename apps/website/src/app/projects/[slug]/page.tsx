@@ -8,7 +8,11 @@ import { queryContent } from "../../../lib/sanity";
 
 export const generateStaticParams = async () => {
   const projects = await queryContent(
-    "*[_type == 'project']{'slug': slug.current}",
+    `
+      *[_type == 'project']
+      {
+        'slug': slug.current
+      }`,
     z.array(
       z.object({
         slug: z.string(),
@@ -30,7 +34,23 @@ interface Props {
 const ProjectPage = async ({ params }: Props) => {
   const { slug } = params;
   const result = await queryContent(
-    `*[_type == 'project' && slug.current == '${slug}']{_id, title, 'image': {'url': image.asset->url, 'alt': image.alt}, 'client': client->name, date, website, services[]->{title}, topics[]->{title}, content}`,
+    `
+      *[_type == 'project' && slug.current == '${slug}']
+      {
+        _id,
+        title,
+        'image': {
+          'url': image.asset->url,
+          'alt': image.alt
+        },
+        'client': client->shortName,
+        date,
+        externalLink{label, href},
+        services[]->{title},
+        topics[]->{title},
+        content
+      }
+    `,
     z.array(
       z.object({
         _id: z.string(),
@@ -41,7 +61,10 @@ const ProjectPage = async ({ params }: Props) => {
         }),
         client: z.string(),
         date: z.string(),
-        website: z.string().url().nullable(),
+        externalLink: z.object({
+          label: z.string().nullable(),
+          href: z.string().nullable(),
+        }),
         services: z
           .array(
             z.object({
@@ -103,7 +126,7 @@ const ProjectPage = async ({ params }: Props) => {
                 )
               : []),
           ]}
-          website={project.website || undefined}
+          externalLink={project.externalLink}
         />
         <div className="prose mx-auto mt-32 max-w-none text-contrast-secondary-dark">
           <MDXContent {...mdxContent} />

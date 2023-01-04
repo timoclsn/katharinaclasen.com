@@ -1,6 +1,6 @@
 import { CalendarDays, Contact } from "lucide-react";
 import Link from "next/link";
-import { z } from "zod";
+import { nullable, z } from "zod";
 import { ArticlePreview } from "../../components/ArticlePreview/ArticlePreview";
 import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";
@@ -8,7 +8,22 @@ import { queryContent } from "../../lib/sanity";
 
 const ProjectsPage = async () => {
   const projects = await queryContent(
-    "*[_type == 'project']{_id, title, 'slug': slug.current, 'image': {'url': image.asset->url, 'alt': image.alt}, 'client': client->name, date, services[]->{title}, topics[]->{title}} | order(date desc)",
+    `
+      *[_type == 'project']
+      {
+        _id,
+        title,
+        'slug': slug.current,
+        'image': {
+          'url': image.asset->url,
+          'alt': image.alt
+        },
+        'client': client->shortName,
+        date,
+        services[]->{title},
+        topics[]->{title}
+      } | order(date desc)
+    `,
     z.array(
       z.object({
         _id: z.string(),

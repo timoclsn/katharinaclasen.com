@@ -51,9 +51,33 @@ export const project = defineType({
       }
     }),
     defineField({
-      name: 'website',
-      title: 'Website',
-      type: 'url',
+      name: 'externalLink',
+      title: 'External Link',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'label',
+          title: 'Label',
+          type: 'string',
+          validation: Rule => Rule.custom((label, context) => {
+            // @ts-expect-error
+            const href = context.document.externalLink.href;
+            if (!label && href) return 'Label and Link can only be used together.';
+            return true;
+          })
+        }),
+        defineField({
+          name: 'href',
+          title: 'URL',
+          type: 'url',
+          validation: Rule => Rule.custom((href, context) => {
+            // @ts-expect-error
+            const label = context.document.externalLink.label;
+            if (!href && label) return 'Label and Link can only be used together.';
+            return true;
+          })
+        }),
+      ],
     }),
     defineField({
       name: 'services',
