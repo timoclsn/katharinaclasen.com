@@ -62,7 +62,7 @@ export const client = defineType({
           validation: Rule => Rule.custom((text, context) => {
             // @ts-expect-error
             const author = context.document.quote.author;
-            if (!text && author) return 'Text and Author can only be used together.';
+            if (!text && author) return 'Required';
             return true;
           })
         }),
@@ -73,9 +73,14 @@ export const client = defineType({
           validation: Rule => Rule.custom((author, context) => {
             // @ts-expect-error
             const text = context.document.quote.text;
-            if (!author && text) return 'Text and Author can only be used together.';
+            if (!author && text) return 'Required';
             return true;
           })
+        }),
+        defineField({
+          name: 'philosophy',
+          title: 'My Philosophy',
+          type: 'boolean',
         }),
       ]
     }),

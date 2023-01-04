@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { ContentCard } from "../../../components/ContentCard/ContentCard";
+import { Quote } from "../../../components/Quote/Quote";
 import { Body } from "../../../design-system/Body/Body";
 import { Container } from "../../../design-system/Container/Container";
 import { Heading } from "../../../design-system/Heading/Heading";
@@ -78,6 +79,22 @@ export const MyPhilosophy = async () => {
       })
     )
   );
+  const quotes = await queryContent(
+    `
+      *[_type == 'client' && quote.philosophy == true]
+      {
+        shortName,
+        'text': quote.text,
+        'author': quote.author,
+      } | order(shortName asc)
+  `,
+    z.array(
+      z.object({
+        text: z.string(),
+        author: z.string(),
+      })
+    )
+  );
   return (
     <section className="bg-background-secondary py-32">
       <Container inset>
@@ -119,6 +136,15 @@ export const MyPhilosophy = async () => {
             );
           })}
         </ul>
+        {quotes.length > 0 && (
+          <ul className="mt-12 grid grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-3">
+            {quotes.map((quote, idx) => (
+              <li key={idx}>
+                <Quote text={quote.text} author={quote.author} size="normal" />
+              </li>
+            ))}
+          </ul>
+        )}
       </Container>
     </section>
   );

@@ -74,11 +74,11 @@ interface ComponentProps {
   className?: string;
 }
 
-type Props = ComponentProps & BodyVariants;
+export type BodyProps = ComponentProps & BodyVariants;
 
 type ElementType = HTMLHeadingElement & HTMLParagraphElement & HTMLSpanElement;
 
-export const Body = forwardRef<ElementType, Props>(
+export const Body = forwardRef<ElementType, BodyProps>(
   (
     {
       children,

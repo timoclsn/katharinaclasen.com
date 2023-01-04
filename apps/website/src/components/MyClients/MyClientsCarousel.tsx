@@ -10,6 +10,7 @@ import { Card } from "../../design-system/Card/Card";
 import { Heading } from "../../design-system/Heading/Heading";
 import { Tag } from "../../design-system/Tag/Tag";
 import { usePrevious } from "../../hooks/usePrevious";
+import { Quote } from "../Quote/Quote";
 import { Clients } from "./MyClients";
 
 const variants: Variants = {
@@ -146,20 +147,10 @@ export const MyClientsCarousel = ({ clients }: Props) => {
               </div>
               <div className="flex flex-1 flex-col items-start justify-center">
                 {client.quote && (
-                  <div className="border-l-4 border-background-salmon pl-3">
-                    <Body
-                      as="p"
-                      family="serif"
-                      size="large"
-                      style="italic"
-                      className="mb-3"
-                    >
-                      {client.quote.text}
-                    </Body>
-                    <p className="font-sans text-sm text-contrast-secondary-dark">
-                      {client.quote.author}
-                    </p>
-                  </div>
+                  <Quote
+                    text={client.quote.text}
+                    author={client.quote.author}
+                  />
                 )}
               </div>
             </m.div>
