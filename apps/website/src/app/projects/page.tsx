@@ -1,6 +1,6 @@
 import { CalendarDays, Contact } from "lucide-react";
 import Link from "next/link";
-import { nullable, z } from "zod";
+import { z } from "zod";
 import { ArticlePreview } from "../../components/ArticlePreview/ArticlePreview";
 import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";

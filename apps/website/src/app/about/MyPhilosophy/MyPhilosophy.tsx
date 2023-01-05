@@ -1,5 +1,6 @@
 import { z } from "zod";
-import { ContentCard } from "../../../components/ContentCard/ContentCard";
+import { CardGrid } from "../../../components/CardGrid/CardGrid";
+import { CardGridItem } from "../../../components/CardGridItem/CardGridItem";
 import { Quote } from "../../../components/Quote/Quote";
 import { Body } from "../../../design-system/Body/Body";
 import { Container } from "../../../design-system/Container/Container";
@@ -113,42 +114,29 @@ export const MyPhilosophy = async () => {
         <Body as="p" size="large" priority="secondary" className="mb-16">
           These are the principles that guide my thinking and doing:
         </Body>
-        <ul className="flex flex-wrap justify-between gap-3">
-          {philosophies.map((philosophy, idx) => {
-            const isTwoCards =
-              philosophy.illustration2 ||
-              philosophy.title2 ||
-              philosophy.description2 ||
-              philosophy.button2;
-            return (
-              <li
-                key={idx}
-                className={`w-full flex-grow ${
-                  isTwoCards ? "md:w-4/5 lg:w-2/4" : "md:w-2/5 lg:w-1/4"
-                }`}
-              >
-                <ContentCard
-                  illustration={philosophy.illustration || undefined}
-                  title={philosophy.title || undefined}
-                  description={philosophy.description || undefined}
-                  button={philosophy.button || undefined}
-                  illustration2={philosophy.illustration2 || undefined}
-                  title2={philosophy.title2 || undefined}
-                  description2={philosophy.description2 || undefined}
-                  button2={philosophy.button2 || undefined}
-                  backgroundColor={philosophy.backgroundColor || undefined}
-                  color={philosophy.color || undefined}
-                  customBackgroundColor={
-                    philosophy.customBackgroundColor || undefined
-                  }
-                  border={philosophy.border || undefined}
-                  backgroundImage={philosophy.backgroundImage || undefined}
-                  image={philosophy.image || undefined}
-                />
-              </li>
-            );
-          })}
-        </ul>
+        <CardGrid>
+          {philosophies.map((philosophy, idx) => (
+            <CardGridItem
+              key={idx}
+              illustration={philosophy.illustration || undefined}
+              title={philosophy.title || undefined}
+              description={philosophy.description || undefined}
+              button={philosophy.button || undefined}
+              illustration2={philosophy.illustration2 || undefined}
+              title2={philosophy.title2 || undefined}
+              description2={philosophy.description2 || undefined}
+              button2={philosophy.button2 || undefined}
+              backgroundColor={philosophy.backgroundColor || undefined}
+              color={philosophy.color || undefined}
+              customBackgroundColor={
+                philosophy.customBackgroundColor || undefined
+              }
+              border={philosophy.border || undefined}
+              backgroundImage={philosophy.backgroundImage || undefined}
+              image={philosophy.image || undefined}
+            />
+          ))}
+        </CardGrid>
         {quotes.length > 0 && (
           <ul className="mt-12 grid grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-3">
             {quotes.map((quote, idx) => (

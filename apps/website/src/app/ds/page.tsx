@@ -1,7 +1,8 @@
 "use client";
 
 import { ArrowDown, ArrowRight } from "lucide-react";
-import { ContentCard } from "../../components/ContentCard/ContentCard";
+import { CardGrid } from "../../components/CardGrid/CardGrid";
+import { CardGridItem } from "../../components/CardGridItem/CardGridItem";
 import { Accordion } from "../../design-system/Accordion/Accordion";
 import { Body } from "../../design-system/Body/Body";
 import { Button } from "../../design-system/Button/Button";
@@ -14,17 +15,41 @@ const DesignSystemPage = () => {
       <Heading level="1">Design System</Heading>
 
       <section>
-        <ContentCard
-          illustration="bolt"
-          title="Flexibility"
-          description="I offer a high amount of flexibility to my clients. I extend their team only when and only as long as they need me. On top of that, I help with coaching and mentoring junior designers. While bringing this flexibility, I still try to be as close to my client and the team as possible."
-          backgroundColor="dark"
-          color="light"
-          button={{
-            label: "Button",
-            href: "/",
-          }}
-        />
+        <CardGrid>
+          <CardGridItem
+            illustration="bolt"
+            title="Flexibility"
+            description="I offer a high amount of flexibility to my clients. I extend their team only when and only as long as they need me. On top of that, I help with coaching and mentoring junior designers. While bringing this flexibility, I still try to be as close to my client and the team as possible."
+            backgroundColor="dark"
+            color="light"
+            button={{
+              label: "Button",
+              href: "/",
+            }}
+          />
+          <CardGridItem
+            illustration="geometry"
+            title="Flexibility"
+            description="I offer a high amount of flexibility to my clients. I extend their team only when and only as long as they need me. On top of that, I help with coaching and mentoring junior designers. While bringing this flexibility, I still try to be as close to my client and the team as possible."
+            backgroundColor="pinkCandy"
+            color="dark"
+            button={{
+              label: "Button",
+              href: "/",
+            }}
+          />
+          <CardGridItem
+            illustration="phone"
+            title="Flexibility"
+            description="I offer a high amount of flexibility to my clients. I extend their team only when and only as long as they need me. On top of that, I help with coaching and mentoring junior designers. While bringing this flexibility, I still try to be as close to my client and the team as possible."
+            backgroundColor="salmon"
+            color="dark"
+            button={{
+              label: "Button",
+              href: "/",
+            }}
+          />
+        </CardGrid>
       </section>
 
       <section>
