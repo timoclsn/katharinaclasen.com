@@ -2,6 +2,7 @@ import { Differentiators } from "./Differentiators/Differentiators";
 import { Header } from "./Header/Header";
 import Image from "next/image";
 import wireframesImg from "./wireframes.png";
+import { HowIWorkAccordion } from "./HowIWorkAccordion/HowIWorkAccordion";
 
 const ServicesPage = () => {
   return (
@@ -16,6 +17,7 @@ const ServicesPage = () => {
         sizes="100vw"
         priority
       />
+      <HowIWorkAccordion />
     </>
   );
 };

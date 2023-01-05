@@ -1,6 +1,6 @@
 import { defineField } from "sanity";
 
-const illustrations = ["bolt", "hand", "head", "heart", "phone", "geometry"];
+const illustrations = ["bolt", "hand", "head", "heart", "phone", "geometry", 'magnifier', 'phone2', 'test'];
 
 export const cardGridItemGroups = [
   {

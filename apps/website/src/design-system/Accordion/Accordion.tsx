@@ -3,6 +3,7 @@
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { cva, cx, VariantProps } from "class-variance-authority";
 import { forwardRef } from "react";
+import { backgroundColorsMap } from "../../lib/colors";
 import styles from "./Accordion.module.css";
 
 export const Accordion = ({
@@ -22,11 +23,7 @@ const itemVariants = cva(
   {
     variants: {
       color: {
-        blueExtreme: "bg-background-blue-extreme",
-        redCandy: "bg-background-red-candy",
-        stone: "bg-background-stone",
-        dark: "bg-background-dark",
-        mint: "bg-background-mint",
+        ...backgroundColorsMap,
       },
     },
   }
