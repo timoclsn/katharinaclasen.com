@@ -82,6 +82,11 @@ export const client = defineType({
           title: 'My Philosophy',
           type: 'boolean',
         }),
+        defineField({
+          name: 'differentiators',
+          title: 'Differentiators',
+          type: 'boolean',
+        }),
       ]
     }),
   ],

@@ -9,10 +9,10 @@ import { backgroundColorsList } from "../../../lib/colors";
 import { illustrationsList } from "../../../lib/illustrations/illustrations";
 import { queryContent } from "../../../lib/sanity";
 
-export const MyPhilosophy = async () => {
+export const Differentiators = async () => {
   const philosophies = await queryContent(
     `
-      *[_type == 'philosophy']
+      *[_type == 'differentiator']
       {
           orderRank,
           illustration,
@@ -72,7 +72,7 @@ export const MyPhilosophy = async () => {
   );
   const quotes = await queryContent(
     `
-      *[_type == 'client' && quote.philosophy == true]
+      *[_type == 'client' && quote.differentiators == true]
       {
         shortName,
         'text': quote.text,
@@ -90,10 +90,10 @@ export const MyPhilosophy = async () => {
     <section className="bg-background-primary py-32">
       <Container inset>
         <Heading as="h2" level="1" className="mb-6">
-          My philosophy
+          Differentiators
         </Heading>
         <Body as="p" size="large" priority="secondary" className="mb-16">
-          These are the principles that guide my thinking and doing:
+          This is what makes working with me special:
         </Body>
         <CardGrid>
           {philosophies.map((philosophy, idx) => (

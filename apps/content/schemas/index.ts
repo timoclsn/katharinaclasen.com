@@ -1,5 +1,6 @@
 import { blogPost } from "./blogPost";
 import { client } from "./client";
+import { differentiator } from "./differentiator";
 import { philosophy } from "./philosophy";
 import { project } from "./project";
 import { service } from "./service";
@@ -11,5 +12,6 @@ export const schemaTypes = [
   topic,
   project,
   blogPost,
-  philosophy
+  philosophy,
+  differentiator,
 ]

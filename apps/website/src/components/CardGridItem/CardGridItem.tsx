@@ -4,7 +4,10 @@ import { Body } from "../../design-system/Body/Body";
 import { Button } from "../../design-system/Button/Button";
 import { Card, CardProps } from "../../design-system/Card/Card";
 import { Heading } from "../../design-system/Heading/Heading";
-import { illustrations, Illustrations } from "../../illustrations";
+import {
+  illustrationsMap,
+  Illustrations,
+} from "../../lib/illustrations/illustrations";
 
 interface Props {
   illustration?: Illustrations;
@@ -51,9 +54,11 @@ export const CardGridItem = ({
   backgroundImage,
   image,
 }: Props) => {
-  const Illustration = illustration ? illustrations[illustration] : undefined;
+  const Illustration = illustration
+    ? illustrationsMap[illustration]
+    : undefined;
   const Illustration2 = illustration2
-    ? illustrations[illustration2]
+    ? illustrationsMap[illustration2]
     : undefined;
   const isTwoCards = illustration2 || title2 || description2 || button2;
   return (

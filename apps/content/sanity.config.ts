@@ -21,7 +21,8 @@ export default defineConfig({
           .title('Content')
           .items([
             orderableDocumentListDeskItem({ type: 'philosophy', title: 'Philosophy', S, context }),
-            ...S.documentTypeListItems().filter((item) => !['philosophy'].includes(item.getId()!))
+            orderableDocumentListDeskItem({ type: 'differentiator', title: 'Differentiator', S, context }),
+            ...S.documentTypeListItems().filter((item) => !['philosophy', 'differentiator'].includes(item.getId()!))
           ])
       },
     }),

@@ -6,7 +6,13 @@ import { Body } from "../../../design-system/Body/Body";
 import { Button } from "../../../design-system/Button/Button";
 import { Container } from "../../../design-system/Container/Container";
 import { Heading } from "../../../design-system/Heading/Heading";
-import { Bolt, Hand, Head, Heart, Phone } from "../../../illustrations";
+import {
+  Bolt,
+  Hand,
+  Head,
+  Heart,
+  Phone,
+} from "../../../lib/illustrations/illustrations";
 
 export const AboutAccordion = () => {
   return (

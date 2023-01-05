@@ -2,10 +2,10 @@ import { orderRankField } from "@sanity/orderable-document-list";
 import { defineType } from "sanity";
 import { cardGridItemFields, cardGridItemGroups } from "../fields/cardGridItem";
 
-export const philosophy = defineType({
-  name: "philosophy",
-  title: "Philosophy",
+export const differentiator = defineType({
+  name: "differentiator",
+  title: "Differentiator",
   type: "document",
   groups: [...cardGridItemGroups],
-  fields: [orderRankField({ type: "philosophy" }), ...cardGridItemFields],
+  fields: [orderRankField({ type: "differentiator" }), ...cardGridItemFields],
 });
