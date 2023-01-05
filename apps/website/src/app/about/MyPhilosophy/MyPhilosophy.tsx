@@ -96,7 +96,7 @@ export const MyPhilosophy = async () => {
     )
   );
   return (
-    <section className="bg-background-secondary py-32">
+    <section className="bg-background-primary py-32">
       <Container inset>
         <Heading as="h2" level="1" className="mb-6">
           My philosophy
