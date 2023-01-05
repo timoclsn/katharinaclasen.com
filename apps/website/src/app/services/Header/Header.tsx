@@ -8,7 +8,7 @@ export const Header = () => {
       <Container inset>Header</Container>
       <Image
         src={codeImg}
-        alt="Image of a mostly closed laptop."
+        alt="Image of computer code on a screen."
         className="h-[320px] w-full object-cover"
         sizes="100vw"
         priority
