@@ -1,23 +1,19 @@
-.AccordionContent {
-  overflow: hidden;
-}
-
 .AccordionContent[data-state="open"] {
-  animation: slideDown 300ms ease-out;
+  animation: slideDown 300ms linear;
   opacity: 1;
 }
 .AccordionContent[data-state="closed"] {
-  animation: slideUp 300ms ease-out;
+  animation: slideUp 300ms linear;
   opacity: 0;
 }
 
 @media (min-width: 1024px) {
   .AccordionContent[data-state="open"] {
-    animation: openHorizontal 600ms ease-out;
+    animation: openHorizontal 600ms linear;
     opacity: 1;
   }
   .AccordionContent[data-state="closed"] {
-    animation: closeHorizontal 300ms ease-out;
+    animation: closeHorizontal 300ms linear;
     opacity: 0;
   }
 }

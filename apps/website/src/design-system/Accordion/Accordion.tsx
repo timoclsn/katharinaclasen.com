@@ -19,7 +19,7 @@ export const Accordion = ({
 };
 
 const itemVariants = cva(
-  "rounded-4xl flex flex-col lg:flex-row lg:data-[state=open]:flex-1 px-10 py-8 gap-10",
+  "rounded-4xl flex flex-col lg:flex-row lg:data-[state=open]:flex-1",
   {
     variants: {
       color: {
@@ -50,7 +50,7 @@ Accordion.Trigger = forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <AccordionPrimitive.Trigger
-      className={cx("flex-none", className)}
+      className={cx("flex-none px-10 py-8", className)}
       {...props}
       ref={ref}
     />
@@ -65,7 +65,11 @@ Accordion.Content = forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <AccordionPrimitive.Content
-      className={cx(styles.AccordionContent, className)}
+      className={cx(
+        styles.AccordionContent,
+        "overflow-hidden py-8 pr-10",
+        className
+      )}
       {...props}
       ref={ref}
     />
