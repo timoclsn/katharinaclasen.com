@@ -14,7 +14,7 @@ export const philosophy = defineType({
     },
     {
       name: 'content2',
-      title: 'Content2',
+      title: 'Content 2',
     },
     {
       name: 'visual',
@@ -135,6 +135,12 @@ export const philosophy = defineType({
       group: 'visual',
     }),
     defineField({
+      name: 'customBackgroundColor',
+      title: 'Custom Background Color',
+      type: 'string',
+      group: 'visual',
+    }),
+    defineField({
       name: 'color',
       title: 'Color',
       type: 'string',
@@ -152,6 +158,20 @@ export const philosophy = defineType({
     defineField({
       name: 'backgroundImage',
       title: 'Background Image',
+      type: 'image',
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          validation: Rule => Rule.required()
+        })
+      ],
+      group: 'visual',
+    }),
+    defineField({
+      name: 'image',
+      title: 'Image',
       type: 'image',
       fields: [
         defineField({

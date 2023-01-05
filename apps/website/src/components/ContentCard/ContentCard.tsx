@@ -22,9 +22,14 @@ interface Props {
     href: string;
   };
   backgroundColor?: CardProps["color"];
+  customBackgroundColor?: CardProps["customColor"];
   color?: "dark" | "light";
   border?: CardProps["border"];
   backgroundImage?: {
+    src: string;
+    alt: string;
+  };
+  image?: {
     src: string;
     alt: string;
   };
@@ -40,9 +45,11 @@ export const ContentCard = ({
   description2,
   button2,
   backgroundColor = "dark",
+  customBackgroundColor,
   color = "light",
   border = false,
   backgroundImage,
+  image,
 }: Props) => {
   const Illustration = illustration ? illustrations[illustration] : undefined;
   const Illustration2 = illustration2
@@ -52,6 +59,7 @@ export const ContentCard = ({
   return (
     <Card
       color={backgroundColor}
+      customColor={customBackgroundColor}
       border={border}
       className="relative h-full overflow-hidden"
     >
@@ -65,8 +73,8 @@ export const ContentCard = ({
         />
       )}
       <div
-        className={`flex flex-col gap-16 px-8 pt-10 md:flex-row ${
-          backgroundImage ? "pb-20" : "pb-10"
+        className={`flex flex-col gap-16 px-8 pt-10 md:flex-row${
+          image ? "" : " pb-10"
         }`}
       >
         <div className="flex flex-1 flex-col items-start gap-10">
@@ -134,6 +142,15 @@ export const ContentCard = ({
           </div>
         )}
       </div>
+      {image && (
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={500}
+          height={500}
+          className="h-auto w-full"
+        />
+      )}
     </Card>
   );
 };

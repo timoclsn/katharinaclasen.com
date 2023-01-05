@@ -26,6 +26,7 @@ const cardVariants = cva("rounded-5xl relative", {
 export interface CardProps extends VariantProps<typeof cardVariants> {
   children: ReactNode;
   className?: string;
+  customColor?: string;
 }
 
 export const Card = ({
@@ -34,9 +35,20 @@ export const Card = ({
   color,
   border,
   className,
+  customColor,
 }: CardProps) => {
   return (
-    <div className={cardVariants({ inset, color, border, className })}>
+    <div
+      className={cardVariants({
+        inset,
+        color: !customColor ? color : undefined,
+        border,
+        className,
+      })}
+      style={{
+        backgroundColor: customColor,
+      }}
+    >
       {children}
     </div>
   );

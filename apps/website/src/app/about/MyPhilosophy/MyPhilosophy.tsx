@@ -30,9 +30,11 @@ export const MyPhilosophy = async () => {
           description2,
           button2{label, href},
           backgroundColor,
+          customBackgroundColor,
           color,
           border,
           backgroundImage{'url': asset->url, alt},
+          image{'url': asset->url, alt},
       } | order(orderRank)
   `,
     z.array(
@@ -68,9 +70,16 @@ export const MyPhilosophy = async () => {
             "mint",
           ])
           .nullable(),
+        customBackgroundColor: z.string().nullable(),
         color: z.enum(["light", "dark"]).nullable(),
         border: z.boolean().nullable(),
         backgroundImage: z
+          .object({
+            src: z.string(),
+            alt: z.string(),
+          })
+          .nullable(),
+        image: z
           .object({
             src: z.string(),
             alt: z.string(),
@@ -129,8 +138,12 @@ export const MyPhilosophy = async () => {
                   button2={philosophy.button2 || undefined}
                   backgroundColor={philosophy.backgroundColor || undefined}
                   color={philosophy.color || undefined}
+                  customBackgroundColor={
+                    philosophy.customBackgroundColor || undefined
+                  }
                   border={philosophy.border || undefined}
                   backgroundImage={philosophy.backgroundImage || undefined}
+                  image={philosophy.image || undefined}
                 />
               </li>
             );
