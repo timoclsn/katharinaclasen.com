@@ -11,5 +11,11 @@ export const topic = defineType({
       type: 'string',
       validation: Rule => Rule.required()
     }),
+    defineField({
+      name: 'service',
+      title: 'Service',
+      type: 'reference',
+      to: [{ type: 'service' }],
+    }),
   ]
 });
