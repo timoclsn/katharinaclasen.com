@@ -7,16 +7,38 @@ import { Heading } from "../../design-system/Heading/Heading";
 import { InfoBox } from "../InfoBox/InfoBox";
 
 const components = {
-  img: (props: HTMLProps<HTMLImageElement>) => (
-    <Image
-      src={props.src!}
-      alt={props.alt!}
-      width={1000}
-      height={1000}
-      className="h-auto w-full rounded-6xl"
-      sizes="100vw"
-    />
-  ),
+  p: (props: HTMLProps<HTMLParagraphElement>) => {
+    // If child is image and has title, strip p tag and wrap with figure tag
+    const child = props.children as JSX.Element;
+    if (child?.type?.name === "img" && child?.props?.title) {
+      return (
+        <figure>
+          <Image
+            src={child.props.src}
+            alt={child.props.alt}
+            width={1000}
+            height={1000}
+            className="h-auto w-full rounded-6xl"
+            sizes="100vw"
+          />
+          <figcaption className="text-right">{child.props.title}</figcaption>
+        </figure>
+      );
+    }
+    return <p>{props.children}</p>;
+  },
+  img: (props: HTMLProps<HTMLImageElement>) => {
+    return (
+      <Image
+        src={props.src!}
+        alt={props.alt!}
+        width={1000}
+        height={1000}
+        className="h-auto w-full rounded-6xl"
+        sizes="100vw"
+      />
+    );
+  },
   h2: (props: HTMLProps<HTMLHeadingElement>) => (
     <span className="not-prose">
       <Heading level="2">{props.children!}</Heading>
