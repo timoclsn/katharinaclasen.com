@@ -34,6 +34,11 @@ export const blogPost = defineType({
           title: 'Alt Text',
           type: 'string',
           validation: Rule => Rule.required(),
+        }),
+        defineField({
+          name: 'border',
+          title: 'Border',
+          type: 'boolean',
         })
       ],
     }),

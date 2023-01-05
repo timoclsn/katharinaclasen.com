@@ -10,6 +10,7 @@ interface Props {
   titleImage: {
     url: string;
     alt: string;
+    border?: boolean | null;
   };
   metaData?: Array<{
     icon: Icon;
@@ -40,7 +41,9 @@ export const ArticleHeader = ({
         width={500}
         height={500}
         sizes="100vw"
-        className="mb-8 h-auto w-full rounded-6xl"
+        className={`mb-8 h-auto w-full rounded-6xl${
+          titleImage.border ? " ring-2 ring-outline-light-dark" : ""
+        }`}
         priority
       />
       {tags && (

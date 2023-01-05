@@ -9,6 +9,7 @@ interface Props {
   titleImage: {
     url: string;
     alt: string;
+    border?: boolean | null;
   };
   metaData?: Array<{
     icon: Icon;
@@ -35,7 +36,9 @@ export const ArticlePreview = ({
           width={500}
           height={500}
           sizes="100vw, (min-width: 768px) 50vw"
-          className="h-auto w-full rounded-6xl @5xl:w-1/3"
+          className={`h-auto w-full rounded-6xl @5xl:w-1/3${
+            titleImage.border ? " ring-2 ring-outline-light-dark" : ""
+          }`}
         />
         <div className="flex-1">
           <Heading className="mb-6">{title}</Heading>

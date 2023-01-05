@@ -42,7 +42,7 @@ const BlogPostPage = async ({ params }: Props) => {
       {
         _id,
         title,
-        image{'url': asset->url, alt},
+        image{'url': asset->url, alt, border},
         author,
         date,
         services[]->{title},
@@ -57,6 +57,7 @@ const BlogPostPage = async ({ params }: Props) => {
         image: z.object({
           url: z.string(),
           alt: z.string(),
+          border: z.boolean().nullable(),
         }),
         author: z.string(),
         date: z.string(),

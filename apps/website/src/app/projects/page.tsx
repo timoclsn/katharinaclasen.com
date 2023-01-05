@@ -14,10 +14,7 @@ const ProjectsPage = async () => {
         _id,
         title,
         'slug': slug.current,
-        'image': {
-          'url': image.asset->url,
-          'alt': image.alt
-        },
+        image{'url': asset->url, alt, border},
         'client': client->shortName,
         date,
         services[]->{title},
@@ -32,6 +29,7 @@ const ProjectsPage = async () => {
         image: z.object({
           url: z.string(),
           alt: z.string(),
+          border: z.boolean().nullable(),
         }),
         client: z.string(),
         date: z.string(),

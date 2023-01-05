@@ -39,10 +39,7 @@ const ProjectPage = async ({ params }: Props) => {
       {
         _id,
         title,
-        'image': {
-          'url': image.asset->url,
-          'alt': image.alt
-        },
+        image{'url': asset->url, alt, border},
         'client': client->shortName,
         date,
         externalLink{label, href},
@@ -58,6 +55,7 @@ const ProjectPage = async ({ params }: Props) => {
         image: z.object({
           url: z.string(),
           alt: z.string(),
+          border: z.boolean().nullable(),
         }),
         client: z.string(),
         date: z.string(),

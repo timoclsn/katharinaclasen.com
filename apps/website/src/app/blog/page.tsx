@@ -15,7 +15,7 @@ const BlogPage = async () => {
         _id,
         title,
         'slug': slug.current,
-        image{'url': asset->url, alt},
+        image{'url': asset->url, alt, border},
         author,
         date,
         services[]->{title},
@@ -31,6 +31,7 @@ const BlogPage = async () => {
         image: z.object({
           url: z.string(),
           alt: z.string(),
+          border: z.boolean().nullable(),
         }),
         author: z.string(),
         date: z.string(),
