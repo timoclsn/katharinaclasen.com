@@ -9,7 +9,7 @@ export const Navigation = () => {
         <a href="#skip" className="sr-only">
           Skip to content
         </a>
-        <ul className="flex gap-10">
+        <ul className="flex items-center gap-10">
           <li className="flex-1">
             <Link
               href="/"
