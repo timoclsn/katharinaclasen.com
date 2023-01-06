@@ -1,8 +1,4 @@
-"use client";
-
 import { ArrowDown, ArrowRight } from "lucide-react";
-import { CardGrid } from "../../components/CardGrid/CardGrid";
-import { CardGridItem } from "../../components/CardGridItem/CardGridItem";
 import { Body } from "../../design-system/Body/Body";
 import { Button } from "../../design-system/Button/Button";
 import { Heading } from "../../design-system/Heading/Heading";
@@ -12,44 +8,6 @@ const DesignSystemPage = () => {
   return (
     <div className="mt-32 flex flex-col gap-8 px-6 py-28">
       <Heading level="1">Design System</Heading>
-
-      <section>
-        <CardGrid>
-          <CardGridItem
-            illustration="bolt"
-            title="Flexibility"
-            description="I offer a high amount of flexibility to my clients. I extend their team only when and only as long as they need me. On top of that, I help with coaching and mentoring junior designers. While bringing this flexibility, I still try to be as close to my client and the team as possible."
-            backgroundColor="dark"
-            color="light"
-            button={{
-              label: "Button",
-              href: "/",
-            }}
-          />
-          <CardGridItem
-            illustration="geometry"
-            title="Flexibility"
-            description="I offer a high amount of flexibility to my clients. I extend their team only when and only as long as they need me. On top of that, I help with coaching and mentoring junior designers. While bringing this flexibility, I still try to be as close to my client and the team as possible."
-            backgroundColor="pinkCandy"
-            color="dark"
-            button={{
-              label: "Button",
-              href: "/",
-            }}
-          />
-          <CardGridItem
-            illustration="phone"
-            title="Flexibility"
-            description="I offer a high amount of flexibility to my clients. I extend their team only when and only as long as they need me. On top of that, I help with coaching and mentoring junior designers. While bringing this flexibility, I still try to be as close to my client and the team as possible."
-            backgroundColor="salmon"
-            color="dark"
-            button={{
-              label: "Button",
-              href: "/",
-            }}
-          />
-        </CardGrid>
-      </section>
 
       <section className="flex w-full gap-8">
         <div className="flex flex-1 flex-col items-start gap-4 p-4 ring-2 ring-contrast-primary-dark">
