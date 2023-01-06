@@ -1,11 +1,11 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { Body } from "../../design-system/Body/Body";
 import { Button } from "../../design-system/Button/Button";
 import { Card } from "../../design-system/Card/Card";
 import { Heading } from "../../design-system/Heading/Heading";
 import { illustrationsMap } from "../../lib/illustrations/illustrations";
 import { CardGridItems } from "../../lib/queries";
+import { MDXContent } from "../MDXContent/MDXContent";
 
 interface Props {
   items: CardGridItems;
@@ -85,9 +85,15 @@ export const CardGrid = ({ items }: Props) => {
                       </Heading>
                     )}
                     {description && (
-                      <Body as="p" priority="secondary" color={color}>
-                        {description}
-                      </Body>
+                      <div
+                        className={`prose ${
+                          color === "dark"
+                            ? "text-contrast-secondary-dark"
+                            : "text-contrast-secondary-light"
+                        }`}
+                      >
+                        <MDXContent {...description} />
+                      </div>
                     )}
                   </div>
                   {button && (
@@ -117,9 +123,15 @@ export const CardGrid = ({ items }: Props) => {
                         </Heading>
                       )}
                       {description2 && (
-                        <Body as="p" priority="secondary" color={color}>
-                          {description2}
-                        </Body>
+                        <div
+                          className={`prose ${
+                            color === "dark"
+                              ? "text-contrast-secondary-dark"
+                              : "text-contrast-secondary-light"
+                          }`}
+                        >
+                          <MDXContent {...description2} />
+                        </div>
                       )}
                     </div>
                     {button2 && (

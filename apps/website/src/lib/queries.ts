@@ -1,3 +1,4 @@
+import { serialize } from "next-mdx-remote/serialize";
 import { z } from "zod";
 import { backgroundColorsList, colorsList } from "./colors";
 import { illustrationsList } from "./illustrations/illustrations";
@@ -26,7 +27,11 @@ export const getAccordionItems = async (id: string) => {
           z.object({
             illustration: z.enum(illustrationsList),
             title: z.string(),
-            description: z.string(),
+            description: z.string().transform(async (value) => await serialize(value, {
+              mdxOptions: {
+                development: false
+              },
+            })),
             button: z
               .object({
                 label: z.string(),
@@ -74,7 +79,11 @@ export const getCardGridItems = async (id: string) => {
           z.object({
             illustration: z.enum(illustrationsList).nullable(),
             title: z.string().nullable(),
-            description: z.string().nullable(),
+            description: z.string().transform(async (value) => await serialize(value, {
+              mdxOptions: {
+                development: false
+              },
+            })).nullable(),
             button: z
               .object({
                 label: z.string(),
@@ -83,7 +92,11 @@ export const getCardGridItems = async (id: string) => {
               .nullable(),
             illustration2: z.enum(illustrationsList).nullable(),
             title2: z.string().nullable(),
-            description2: z.string().nullable(),
+            description2: z.string().transform(async (value) => await serialize(value, {
+              mdxOptions: {
+                development: false
+              },
+            })).nullable(),
             button2: z
               .object({
                 label: z.string(),

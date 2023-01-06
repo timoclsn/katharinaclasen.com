@@ -39,7 +39,7 @@ export const cardGridItem = defineType({
     defineField({
       name: "description",
       title: "Description",
-      type: "text",
+      type: "markdown",
       group: "content",
     }),
     defineField({
@@ -92,7 +92,7 @@ export const cardGridItem = defineType({
     defineField({
       name: "description2",
       title: "Description 2",
-      type: "text",
+      type: "markdown",
       group: "content2",
     }),
     defineField({

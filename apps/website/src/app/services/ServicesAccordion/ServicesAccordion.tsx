@@ -16,7 +16,7 @@ export const ServicesAccordion = async () => {
         <Body as="p" size="large" priority="secondary" className="mb-16">
           These are the general modes you&amp;ll find me working in:
         </Body>
-        <Accordion items={items} />
+        <Accordion items={items} itemsClassName="lg:h-[600px]" />
       </Container>
     </section>
   );

@@ -9,6 +9,7 @@ import { Heading } from "../../design-system/Heading/Heading";
 import { backgroundColorsMap } from "../../lib/colors";
 import { illustrationsMap } from "../../lib/illustrations/illustrations";
 import { AccordeonItems } from "../../lib/queries";
+import { MDXContent } from "../MDXContent/MDXContent";
 import styles from "./Accordion.module.css";
 
 const itemVariants = cva(
@@ -75,13 +76,19 @@ export const Accordion = ({
             <AccordionPrimitive.Content
               className={cx(
                 styles.AccordionContent,
-                "overflow-hidden py-8 pr-10"
+                "overflow-hidden py-8 pr-10 pl-10 lg:pl-0"
               )}
             >
-              <div className="flex h-full flex-col lg:justify-end">
-                <Body as="p" size="large" priority="secondary" color={color}>
-                  {description}
-                </Body>
+              <div className="flex h-full flex-col items-start lg:justify-end">
+                <div
+                  className={`prose-2xl ${
+                    color === "dark"
+                      ? "text-contrast-secondary-dark"
+                      : "text-contrast-secondary-light"
+                  }`}
+                >
+                  <MDXContent {...description} />
+                </div>
                 {button && (
                   <Button color={color} href={button.href} className="mt-4">
                     <ArrowRight />
