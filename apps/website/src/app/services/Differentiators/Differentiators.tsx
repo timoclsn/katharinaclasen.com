@@ -1,74 +1,15 @@
 import { z } from "zod";
 import { CardGrid } from "../../../components/CardGrid/CardGrid";
-import { CardGridItem } from "../../../components/CardGridItem/CardGridItem";
 import { Quote } from "../../../components/Quote/Quote";
 import { Body } from "../../../design-system/Body/Body";
 import { Container } from "../../../design-system/Container/Container";
 import { Heading } from "../../../design-system/Heading/Heading";
-import { backgroundColorsList } from "../../../lib/colors";
-import { illustrationsList } from "../../../lib/illustrations/illustrations";
+import { getCardGridItems } from "../../../lib/queries";
 import { queryContent } from "../../../lib/sanity";
 
 export const Differentiators = async () => {
-  const philosophies = await queryContent(
-    `
-      *[_type == 'differentiator']
-      {
-          orderRank,
-          illustration,
-          title,
-          description,
-          button{label, href},
-          illustration2,
-          title2,
-          description2,
-          button2{label, href},
-          backgroundColor,
-          customBackgroundColor,
-          color,
-          border,
-          backgroundImage{'url': asset->url, alt},
-          image{'url': asset->url, alt},
-      } | order(orderRank)
-  `,
-    z.array(
-      z.object({
-        illustration: z.enum(illustrationsList).nullable(),
-        title: z.string().nullable(),
-        description: z.string().nullable(),
-        button: z
-          .object({
-            label: z.string(),
-            href: z.string(),
-          })
-          .nullable(),
-        illustration2: z.enum(illustrationsList).nullable(),
-        title2: z.string().nullable(),
-        description2: z.string().nullable(),
-        button2: z
-          .object({
-            label: z.string(),
-            href: z.string(),
-          })
-          .nullable(),
-        backgroundColor: z.enum(backgroundColorsList).nullable(),
-        customBackgroundColor: z.string().nullable(),
-        color: z.enum(["light", "dark"]).nullable(),
-        border: z.boolean().nullable(),
-        backgroundImage: z
-          .object({
-            src: z.string(),
-            alt: z.string(),
-          })
-          .nullable(),
-        image: z
-          .object({
-            src: z.string(),
-            alt: z.string(),
-          })
-          .nullable(),
-      })
-    )
+  const differentiators = await getCardGridItems(
+    "f82aeac9-95d4-4f49-a8f8-ec2c7f207c44"
   );
   const quotes = await queryContent(
     `
@@ -95,29 +36,7 @@ export const Differentiators = async () => {
         <Body as="p" size="large" priority="secondary" className="mb-16">
           This is what makes working with me special:
         </Body>
-        <CardGrid>
-          {philosophies.map((philosophy, idx) => (
-            <CardGridItem
-              key={idx}
-              illustration={philosophy.illustration || undefined}
-              title={philosophy.title || undefined}
-              description={philosophy.description || undefined}
-              button={philosophy.button || undefined}
-              illustration2={philosophy.illustration2 || undefined}
-              title2={philosophy.title2 || undefined}
-              description2={philosophy.description2 || undefined}
-              button2={philosophy.button2 || undefined}
-              backgroundColor={philosophy.backgroundColor || undefined}
-              color={philosophy.color || undefined}
-              customBackgroundColor={
-                philosophy.customBackgroundColor || undefined
-              }
-              border={philosophy.border || undefined}
-              backgroundImage={philosophy.backgroundImage || undefined}
-              image={philosophy.image || undefined}
-            />
-          ))}
-        </CardGrid>
+        <CardGrid items={differentiators} />
         {quotes.length > 0 && (
           <ul className="mt-12 grid grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-3">
             {quotes.map((quote, idx) => (

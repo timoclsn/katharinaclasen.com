@@ -1,4 +1,3 @@
-import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list';
 import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
@@ -15,17 +14,7 @@ export default defineConfig({
   dataset: 'production',
 
   plugins: [
-    deskTool({
-      structure: (S, context) => {
-        return S.list()
-          .title('Content')
-          .items([
-            orderableDocumentListDeskItem({ type: 'philosophy', title: 'Philosophy', S, context }),
-            orderableDocumentListDeskItem({ type: 'differentiator', title: 'Differentiator', S, context }),
-            ...S.documentTypeListItems().filter((item) => !['philosophy', 'differentiator'].includes(item.getId()!))
-          ])
-      },
-    }),
+    deskTool(),
     visionTool(),
     markdownSchema(),
     media(),
