@@ -51,6 +51,7 @@ export const Accordion = ({
         const Illustration = illustrationsMap[illustration];
         return (
           <AccordionPrimitive.Item
+            key={idx}
             value={(idx + 1).toString()}
             className={itemVariants({
               backgroundColor,
