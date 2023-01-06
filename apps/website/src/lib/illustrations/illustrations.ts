@@ -53,4 +53,4 @@ export const illustrationsList = [
   "test",
 ] as const;
 
-export type Illustrations = keyof typeof illustrationsMap;
+export type Illustration = keyof typeof illustrationsMap;

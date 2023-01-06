@@ -7,6 +7,7 @@ const Home = async () => {
   return (
     <div className="home-page">
       <Header />
+      {/* @ts-expect-error Server Component */}
       <HomeAccordion />
       <LcdTeaser />
       {/* @ts-expect-error Server Component */}

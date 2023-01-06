@@ -9,6 +9,7 @@ const AboutPage = () => {
     <div className="about-page">
       <Header />
       <AboutMe />
+      {/* @ts-expect-error Server Component */}
       <AboutAccordion />
       {/* @ts-expect-error Server Component */}
       <MyClients />

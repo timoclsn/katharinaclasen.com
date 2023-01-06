@@ -1,6 +1,6 @@
 import { defineField } from "sanity";
-
-const illustrations = ["bolt", "hand", "head", "heart", "phone", "geometry", 'magnifier', 'phone2', 'test'];
+import { backgroundColors, colors } from "../lib/colors";
+import { illustrations } from "../lib/illustration";
 
 export const cardGridItemGroups = [
   {
@@ -129,21 +129,7 @@ export const cardGridItemFields = [
     title: "Background Color",
     type: "string",
     options: {
-      list: [
-        "primary",
-        "secondary",
-        "dark",
-        'lilac',
-        "pinkCandy",
-        "redCandy",
-        "stone",
-        "mint",
-        'oceanFoam',
-        "salmon",
-        'sun',
-        "blueExtreme",
-        "lilacExtreme",
-      ],
+      list: [...backgroundColors],
     },
     group: "visual",
   }),
@@ -158,7 +144,7 @@ export const cardGridItemFields = [
     title: "Color",
     type: "string",
     options: {
-      list: ["light", "dark"],
+      list: [...colors],
     },
     group: "visual",
   }),

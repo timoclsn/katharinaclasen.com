@@ -6,18 +6,18 @@ import { Card, CardProps } from "../../design-system/Card/Card";
 import { Heading } from "../../design-system/Heading/Heading";
 import {
   illustrationsMap,
-  Illustrations,
+  Illustration,
 } from "../../lib/illustrations/illustrations";
 
 interface Props {
-  illustration?: Illustrations;
+  illustration?: Illustration;
   title?: string;
   description?: string;
   button?: {
     label: string;
     href: string;
   };
-  illustration2?: Illustrations;
+  illustration2?: Illustration;
   title2?: string;
   description2?: string;
   button2?: {

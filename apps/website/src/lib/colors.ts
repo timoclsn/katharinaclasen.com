@@ -31,3 +31,7 @@ export const backgroundColorsMap = {
 } as const;
 
 export type BackgroundColor = keyof typeof backgroundColorsMap;
+
+export const colorsList = ['light', 'dark'] as const;
+
+export type Color = typeof colorsList[number];

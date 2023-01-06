@@ -2,7 +2,8 @@ import { Differentiators } from "./Differentiators/Differentiators";
 import { Header } from "./Header/Header";
 import Image from "next/image";
 import wireframesImg from "./wireframes.png";
-import { HowIWorkAccordion } from "./HowIWorkAccordion/HowIWorkAccordion";
+import { ServicesAccordion } from "./ServicesAccordion/ServicesAccordion";
+import { AboutMyServices } from "./AboutMyServices/AboutMyServices";
 
 const ServicesPage = () => {
   return (
@@ -17,7 +18,9 @@ const ServicesPage = () => {
         sizes="100vw"
         priority
       />
-      <HowIWorkAccordion />
+      <AboutMyServices />
+      {/* @ts-expect-error Server Component */}
+      <ServicesAccordion />
     </>
   );
 };

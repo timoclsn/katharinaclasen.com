@@ -3,7 +3,6 @@
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { CardGrid } from "../../components/CardGrid/CardGrid";
 import { CardGridItem } from "../../components/CardGridItem/CardGridItem";
-import { Accordion } from "../../design-system/Accordion/Accordion";
 import { Body } from "../../design-system/Body/Body";
 import { Button } from "../../design-system/Button/Button";
 import { Heading } from "../../design-system/Heading/Heading";
@@ -50,62 +49,6 @@ const DesignSystemPage = () => {
             }}
           />
         </CardGrid>
-      </section>
-
-      <section>
-        <Accordion type="single" defaultValue="item-1">
-          <Accordion.Item value="item-1" color="blueExtreme">
-            <Accordion.Trigger className="flex flex-col justify-end">
-              <Heading color="light" className="lg:writing-vertical">
-                Trigger
-              </Heading>
-            </Accordion.Trigger>
-            <Accordion.Content>
-              <div className="flex h-full flex-col lg:justify-end">
-                <Body as="p" color="light">
-                  Content
-                </Body>
-              </div>
-            </Accordion.Content>
-          </Accordion.Item>
-
-          <Accordion.Item value="item-2" color="redCandy">
-            <Accordion.Trigger className="flex flex-col justify-end">
-              <Heading className="lg:writing-vertical">Trigger</Heading>
-            </Accordion.Trigger>
-            <Accordion.Content>
-              <div className="flex h-full flex-col lg:justify-end">
-                <Body as="p">Content</Body>
-              </div>
-            </Accordion.Content>
-          </Accordion.Item>
-
-          <Accordion.Item value="item-3" color="stone">
-            <Accordion.Trigger className="flex flex-col justify-end">
-              <Heading className="lg:writing-vertical">Trigger</Heading>
-            </Accordion.Trigger>
-            <Accordion.Content>
-              <div className="flex h-full flex-col lg:justify-end">
-                <Body as="p">Content</Body>
-              </div>
-            </Accordion.Content>
-          </Accordion.Item>
-
-          <Accordion.Item value="item-4" color="dark">
-            <Accordion.Trigger className="flex flex-col justify-end">
-              <Heading color="light" className="lg:writing-vertical">
-                Trigger
-              </Heading>
-            </Accordion.Trigger>
-            <Accordion.Content>
-              <div className="flex h-full flex-col lg:justify-end">
-                <Body as="p" color="light">
-                  Content
-                </Body>
-              </div>
-            </Accordion.Content>
-          </Accordion.Item>
-        </Accordion>
       </section>
 
       <section className="flex w-full gap-8">

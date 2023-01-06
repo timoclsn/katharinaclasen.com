@@ -1,3 +1,5 @@
+import { accordion } from "./accordion";
+import { accordionItem } from "./accordionItem";
 import { blogPost } from "./blogPost";
 import { client } from "./client";
 import { differentiator } from "./differentiator";
@@ -14,4 +16,6 @@ export const schemaTypes = [
   blogPost,
   philosophy,
   differentiator,
+  accordionItem,
+  accordion
 ]
