@@ -126,9 +126,11 @@ const ProjectPage = async ({ params }: Props) => {
           ]}
           externalLink={project.externalLink}
         />
-        <div className="prose mx-auto mt-32 max-w-none text-contrast-secondary-dark">
-          <MDXContent {...mdxContent} />
-        </div>
+        <MDXContent
+          MDXRemoteProps={mdxContent}
+          color="dark"
+          className="mx-auto mt-32 max-w-none"
+        />
       </Container>
     </article>
   );

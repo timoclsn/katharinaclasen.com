@@ -85,15 +85,7 @@ export const CardGrid = ({ items }: Props) => {
                       </Heading>
                     )}
                     {description && (
-                      <div
-                        className={`prose ${
-                          color === "dark"
-                            ? "text-contrast-secondary-dark"
-                            : "text-contrast-secondary-light"
-                        }`}
-                      >
-                        <MDXContent {...description} />
-                      </div>
+                      <MDXContent MDXRemoteProps={description} color={color} />
                     )}
                   </div>
                   {button && (
@@ -123,15 +115,10 @@ export const CardGrid = ({ items }: Props) => {
                         </Heading>
                       )}
                       {description2 && (
-                        <div
-                          className={`prose ${
-                            color === "dark"
-                              ? "text-contrast-secondary-dark"
-                              : "text-contrast-secondary-light"
-                          }`}
-                        >
-                          <MDXContent {...description2} />
-                        </div>
+                        <MDXContent
+                          MDXRemoteProps={description2}
+                          color={color}
+                        />
                       )}
                     </div>
                     {button2 && (

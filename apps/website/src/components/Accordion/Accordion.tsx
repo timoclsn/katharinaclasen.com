@@ -80,15 +80,11 @@ export const Accordion = ({
               )}
             >
               <div className="flex h-full flex-col items-start lg:justify-end">
-                <div
-                  className={`prose-2xl ${
-                    color === "dark"
-                      ? "text-contrast-secondary-dark"
-                      : "text-contrast-secondary-light"
-                  }`}
-                >
-                  <MDXContent {...description} />
-                </div>
+                <MDXContent
+                  MDXRemoteProps={description}
+                  size="large"
+                  color={color}
+                />
                 {button && (
                   <Button color={color} href={button.href} className="mt-4">
                     <ArrowRight />
