@@ -18,6 +18,7 @@ const ServicesPage = () => {
         sizes="100vw"
         priority
       />
+      {/* @ts-expect-error Server Component */}
       <AboutMyServices />
       {/* @ts-expect-error Server Component */}
       <ServicesAccordion />
