@@ -25,7 +25,7 @@ export interface CardProps extends VariantProps<typeof cardVariants> {
 export const Card = ({
   children,
   inset,
-  color,
+  color = "dark",
   border,
   className,
   customColor,

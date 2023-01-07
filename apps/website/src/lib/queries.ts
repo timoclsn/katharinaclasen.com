@@ -139,3 +139,63 @@ export const getCardGridItems = async (id: string) => {
 
   return result[0];
 };
+
+export type Service = Awaited<ReturnType<typeof getService>>;
+
+export const getService = async (id: string) => {
+  const result = await queryContent(
+    `
+    *[_id == '${id}']
+    {
+      title,
+        description,
+        quote->{text, author},
+        image{'url': asset->url, alt},
+    }
+  `,
+    z.array(
+      z.object({
+        title: z.string(),
+        description: z
+          .string()
+          .transform(async (value) =>
+            serialize(value, {
+              mdxOptions: {
+                development: false,
+              },
+            })
+          )
+          .nullable(),
+        quote: z
+          .object({
+            text: z.string(),
+            author: z.string(),
+          })
+          .nullable(),
+        image: z.object({
+          url: z.string(),
+          alt: z.string(),
+        }).nullable(),
+      })
+    )
+  );
+  return result[0];
+};
+
+export type ServiceTopics = Awaited<ReturnType<typeof getServiceTopics>>;
+
+export const getServiceTopics = async (id: string) => {
+  return await queryContent(
+    `
+    *[_type == 'topic' && service->_id == '${id}']
+    {
+      title
+    }
+  `,
+    z.array(
+      z.object({
+        title: z.string(),
+      })
+    )
+  );
+};

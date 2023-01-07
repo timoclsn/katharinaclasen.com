@@ -1,15 +1,28 @@
 import Image from "next/image";
 import { Body } from "../../../design-system/Body/Body";
-import { Card } from "../../../design-system/Card/Card";
 import { Container } from "../../../design-system/Container/Container";
 import { Heading } from "../../../design-system/Heading/Heading";
+import { getService, getServiceTopics } from "../../../lib/queries";
+import { AboutMyServicesCard } from "./AboutMyServicesCard";
 import uiDesignImg from "./ui-design.png";
 
-export const AboutMyServices = () => {
+const uxResearchId = "1b47fa99-2dde-4150-bf5f-51ecab11fe59";
+const uxDesignId = "1a76253b-1bb2-485c-ace8-bf95a2f0ca5d";
+const uiDesignId = "a01649bf-92e5-494f-ac6f-8db56650e7b8";
+
+export const AboutMyServices = async () => {
+  const uxResearch = await getService(uxResearchId);
+  const uxResearchTopics = await getServiceTopics(uxResearchId);
+
+  const uxDesign = await getService(uxDesignId);
+  const uxDesignTopics = await getServiceTopics(uiDesignId);
+
+  const uiDesign = await getService(uiDesignId);
+  const uiDesignTopics = await getServiceTopics(uiDesignId);
   return (
-    <section className="bg-background-primary py-32">
+    <section className="bg-background-secondary py-32">
       <Container inset>
-        <div className="flex gap-12">
+        <div className="lg_flex-row flex flex-col gap-12">
           <div className="flex-1 pb-24">
             <Heading className="mb-8">About my services</Heading>
             <Body as="p" priority="secondary">
@@ -40,7 +53,7 @@ export const AboutMyServices = () => {
               open to their feedback.
             </Body>
           </div>
-          <div className="flex-1 pr-20">
+          <div className="flex-1 pl-20 pr-20 lg:pl-0">
             <Image
               src={uiDesignImg}
               alt="Hands holding a iPad Pro showing a UI Design"
@@ -48,9 +61,24 @@ export const AboutMyServices = () => {
             />
           </div>
         </div>
-        <Card color="lilac" inset>
-          <Heading level="3">UX Research</Heading>
-        </Card>
+        <div className="flex flex-col gap-6">
+          <AboutMyServicesCard
+            color="lilac"
+            service={uxResearch}
+            topics={uxResearchTopics}
+          />
+          <AboutMyServicesCard
+            color="lilac"
+            service={uxDesign}
+            topics={uxDesignTopics}
+            quoteColor="sun"
+          />
+          <AboutMyServicesCard
+            color="primary"
+            service={uiDesign}
+            topics={uiDesignTopics}
+          />
+        </div>
       </Container>
     </section>
   );
