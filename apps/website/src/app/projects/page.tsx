@@ -17,6 +17,7 @@ const ProjectsPage = async () => {
         image{'url': asset->url, alt, border},
         'client': client->shortName,
         date,
+        period,
         services[]->{title},
         topics[]->{title}
       } | order(date desc)
@@ -33,6 +34,7 @@ const ProjectsPage = async () => {
         }),
         client: z.string(),
         date: z.string(),
+        period: z.string().nullable(),
         services: z
           .array(
             z.object({
@@ -71,7 +73,9 @@ const ProjectsPage = async () => {
                         },
                         {
                           icon: CalendarDays,
-                          text: new Date(project.date).getFullYear().toString(),
+                          text: project.period
+                            ? project.period
+                            : new Date(project.date).getFullYear().toString(),
                         },
                       ]}
                       tags={[

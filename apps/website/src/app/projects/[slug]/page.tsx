@@ -42,6 +42,7 @@ const ProjectPage = async ({ params }: Props) => {
         image{'url': asset->url, alt, border},
         'client': client->shortName,
         date,
+        period,
         externalLink{label, href},
         services[]->{title},
         topics[]->{title},
@@ -59,6 +60,7 @@ const ProjectPage = async ({ params }: Props) => {
         }),
         client: z.string(),
         date: z.string(),
+        period: z.string().nullable(),
         externalLink: z.object({
           label: z.string().nullable(),
           href: z.string().nullable(),
@@ -101,7 +103,9 @@ const ProjectPage = async ({ params }: Props) => {
             },
             {
               icon: CalendarDays,
-              text: new Date(project.date).getFullYear().toString(),
+              text: project.period
+                ? project.period
+                : new Date(project.date).getFullYear().toString(),
             },
           ]}
           tags={[

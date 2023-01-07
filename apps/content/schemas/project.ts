@@ -56,6 +56,11 @@ export const project = defineType({
       }
     }),
     defineField({
+      name: 'period',
+      title: 'Period',
+      type: 'string',
+    }),
+    defineField({
       name: 'externalLink',
       title: 'External Link',
       type: 'object',
