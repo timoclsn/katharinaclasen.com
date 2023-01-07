@@ -11,7 +11,7 @@ export const getAccordionItems = async (id: string) => {
     `
     *[_id == '${id}']
     {
-      item[]->{
+      items[]->{
         illustration,
         title,
         description,
@@ -23,7 +23,7 @@ export const getAccordionItems = async (id: string) => {
     `,
     z.array(
       z.object({
-        item: z.array(
+        items: z.array(
           z.object({
             illustration: z.enum(illustrationsList),
             title: z.string(),
@@ -45,17 +45,19 @@ export const getAccordionItems = async (id: string) => {
       })
     )
   );
-  return result[0].item;
+  return result[0].items;
 };
 
-export type CardGridItems = Awaited<ReturnType<typeof getCardGridItems>>;
+export type CardGridItems = Awaited<ReturnType<typeof getCardGridItems>>['items'];
 
 export const getCardGridItems = async (id: string) => {
   const result = await queryContent(
     `
     *[_id == '${id}']
     {
-      item[]->{
+      title,
+      subtitle,
+      items[]->{
         illustration,
         title,
         description,
@@ -70,12 +72,18 @@ export const getCardGridItems = async (id: string) => {
         border,
         backgroundImage{'url': asset->url, alt},
         image{'url': asset->url, alt},
+      },
+      quotes[]->{
+        text,
+        author
       }
     }
     `,
     z.array(
       z.object({
-        item: z.array(
+        title: z.string(),
+        subtitle: z.string(),
+        items: z.array(
           z.object({
             illustration: z.enum(illustrationsList).nullable(),
             title: z.string().nullable(),
@@ -121,9 +129,13 @@ export const getCardGridItems = async (id: string) => {
               .nullable(),
           })
         ),
+        quotes: z.array(z.object({
+          text: z.string(),
+          author: z.string(),
+        }))
       })
     )
   );
 
-  return result[0].item;
+  return result[0];
 };

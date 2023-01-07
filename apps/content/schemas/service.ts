@@ -11,5 +11,10 @@ export const service = defineType({
       type: 'string',
       validation: Rule => Rule.required()
     }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'markdown',
+    }),
   ]
 });

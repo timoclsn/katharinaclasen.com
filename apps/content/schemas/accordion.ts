@@ -11,8 +11,8 @@ export const accordion = defineType({
       type: "string",
     }),
     defineField({
-      name: "item",
-      title: "Item",
+      name: "items",
+      title: "Items",
       type: "array",
       of: [
         {

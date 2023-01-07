@@ -9,10 +9,17 @@ export const cardGrid = defineType({
       name: "title",
       title: "Titel",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "item",
-      title: "Item",
+      name: "subtitle",
+      title: "Subtitle",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "items",
+      title: "Items",
       type: "array",
       of: [
         {
@@ -20,6 +27,18 @@ export const cardGrid = defineType({
           to: [{ type: "cardGridItem" }],
         },
       ],
+    }),
+    defineField({
+      name: "quotes",
+      title: "Quotes",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "quote" }],
+        },
+      ],
+      validation: (Rule) => Rule.max(3),
     }),
   ],
 });

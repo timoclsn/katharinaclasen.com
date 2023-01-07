@@ -52,42 +52,8 @@ export const client = defineType({
     defineField({
       name: 'quote',
       title: 'Zitat',
-      description: 'Zitate des Kunden.',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'text',
-          title: 'Text',
-          type: 'text',
-          validation: Rule => Rule.custom((text, context) => {
-            // @ts-expect-error
-            const author = context.document.quote.author;
-            if (!text && author) return 'Required';
-            return true;
-          })
-        }),
-        defineField({
-          name: 'author',
-          title: 'Author',
-          type: 'string',
-          validation: Rule => Rule.custom((author, context) => {
-            // @ts-expect-error
-            const text = context.document.quote.text;
-            if (!author && text) return 'Required';
-            return true;
-          })
-        }),
-        defineField({
-          name: 'philosophy',
-          title: 'My Philosophy',
-          type: 'boolean',
-        }),
-        defineField({
-          name: 'differentiators',
-          title: 'Differentiators',
-          type: 'boolean',
-        }),
-      ]
+      type: 'reference',
+      to: [{ type: 'quote' }]
     }),
   ],
 })

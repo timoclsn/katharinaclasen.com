@@ -19,7 +19,7 @@ const queryClients = async () => {
         description,
         website,
         caseStudy,
-        quote{text, author},
+        quote->{text, author},
       } | order(shortName asc)
     `,
     z.array(

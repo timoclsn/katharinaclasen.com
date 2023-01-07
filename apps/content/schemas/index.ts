@@ -5,6 +5,7 @@ import { cardGrid } from "./cardGrid";
 import { cardGridItem } from "./cardGridItem";
 import { client } from "./client";
 import { project } from "./project";
+import { quote } from "./quote";
 import { service } from "./service";
 import { topic } from "./topic";
 
@@ -18,4 +19,5 @@ export const schemaTypes = [
   accordion,
   cardGridItem,
   cardGrid,
+  quote
 ];
