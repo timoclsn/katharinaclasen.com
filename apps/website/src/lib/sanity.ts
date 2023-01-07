@@ -11,7 +11,7 @@ const sanityClient = createClient({
 
 export const queryContent = async <T extends z.ZodTypeAny>(query: string, schema: T): Promise<z.infer<T>> => {
   const result = await sanityClient.fetch(query);
-  return schema.parseAsync(result);
+  return await schema.parseAsync(result);
 };
 
 const imageBuilder = imageUrlBuilder(sanityClient)
