@@ -22,7 +22,7 @@ export const AboutMyServices = async () => {
   return (
     <section className="bg-background-secondary py-32">
       <Container inset>
-        <div className="lg_flex-row flex flex-col gap-12">
+        <div className="flex flex-col gap-12 lg:flex-row">
           <div className="flex-1 pb-24">
             <Heading className="mb-8">About my services</Heading>
             <Body as="p" priority="secondary">
