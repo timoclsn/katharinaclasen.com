@@ -31,7 +31,7 @@ export const AboutMyServicesCard = ({
           className="absolute inset-0 h-full w-full object-cover"
         />
       )}
-      <div className="lg_flex-row relative flex flex-col gap-12">
+      <div className="relative flex flex-col gap-12 lg:flex-row">
         <div className="flex flex-1 items-center justify-center">
           <div className="flex flex-col gap-6">
             <Heading level="3">{title}</Heading>
