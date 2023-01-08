@@ -1,11 +1,51 @@
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { Container } from "../../../design-system/Container/Container";
+import { Body } from "../../../design-system/Body/Body";
+import { Button } from "../../../design-system/Button/Button";
+import { Heading } from "../../../design-system/Heading/Heading";
+import { Tag } from "../../../design-system/Tag/Tag";
 import codeImg from "./code.png";
+import memojiImg from "./memoji.png";
+import stonesImg from "./stones.png";
 
 export const Header = () => {
   return (
     <section>
-      <Container inset>Header</Container>
+      <div className="relative flex gap-12 py-24">
+        <div className="hidden w-1/3 justify-end lg:flex">
+          <Image
+            src={stonesImg}
+            alt="Gems in a grid with a plus in the center."
+            sizes="30vw"
+            className="flex-none"
+            priority
+          />
+        </div>
+        <div className="flex w-full flex-col justify-between gap-10 bg-background-stone px-16 py-10 lg:w-2/3 lg:rounded-l-6xl">
+          <Heading level="1" className="max-w-4xl">
+            I am the <Tag size="xxl">flexible</Tag> UX-Design{" "}
+            <Tag size="xxl">extension</Tag> to your digital team
+          </Heading>
+          <div>
+            <Body as="p" priority="secondary" className="mb-8 max-w-md">
+              I believe that we need to start to go beyond short-term desires,
+              think holistically and create value in a greater sense in order to
+              build sustainable businesses and become future-ready.
+            </Body>
+            <Button>
+              <ArrowRight />
+              My philosophy
+            </Button>
+          </div>
+        </div>
+        <Image
+          src={memojiImg}
+          alt="Memoji of Katharina Clasen forming a victory sign with her hands."
+          className="absolute bottom-0 right-0 -mb-40 mr-40"
+          sizes="30vw"
+          priority
+        />
+      </div>
       <Image
         src={codeImg}
         alt="Image of computer code on a screen."
