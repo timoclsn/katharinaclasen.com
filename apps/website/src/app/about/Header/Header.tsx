@@ -33,7 +33,7 @@ export const Header = () => {
         <Image
           src={memojiImg}
           alt="Memoji of Katharina Clasen forming a heart with her hands."
-          className="absolute bottom-0 right-0"
+          className="absolute bottom-0 right-0 hidden lg:block"
           sizes="30vw"
           priority
         />

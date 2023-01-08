@@ -37,7 +37,8 @@ const RootLayout = ({ children }: Props) => {
           "min-h-screen",
           "bg-background-primary",
           "[html:has(.home-page)&]:bg-background-secondary",
-          "[html:has(.about-page)&]:bg-background-red-candy"
+          "[html:has(.about-page)&]:bg-background-red-candy",
+          "[html:has(.lcd-page)&]:bg-background-ocean-foam"
         )}
       >
         <head>
