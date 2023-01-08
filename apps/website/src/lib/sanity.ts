@@ -6,7 +6,7 @@ const sanityClient = createClient({
   projectId: 'dk9hv6ix',
   dataset: "production",
   apiVersion: "2022-12-21",
-  useCdn: typeof document !== 'undefined',
+  useCdn: false,
 });
 
 export const queryContent = async <T extends z.ZodTypeAny>(query: string, schema: T): Promise<z.infer<T>> => {
