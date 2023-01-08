@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { CalendarDays, Clock, User } from "lucide-react";
 import { serialize } from "next-mdx-remote/serialize";
+import { groq } from "next-sanity";
 import readingTime from "reading-time";
 import { z } from "zod";
 import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
@@ -10,7 +11,7 @@ import { queryContent } from "../../../lib/sanity";
 
 export const generateStaticParams = async () => {
   const blogPosts = await queryContent(
-    `
+    groq`
       *[_type == 'blogPost']
       {
         'slug': slug.current
@@ -37,7 +38,7 @@ interface Props {
 const BlogPostPage = async ({ params }: Props) => {
   const { slug } = params;
   const result = await queryContent(
-    `
+    groq`
       *[_type == 'blogPost' && slug.current == '${slug}']
       {
         _id,

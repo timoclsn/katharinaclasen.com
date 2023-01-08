@@ -1,4 +1,5 @@
 import { CalendarDays, Contact } from "lucide-react";
+import { groq } from "next-sanity";
 import Link from "next/link";
 import { z } from "zod";
 import { ArticlePreview } from "../../components/ArticlePreview/ArticlePreview";
@@ -8,7 +9,7 @@ import { queryContent } from "../../lib/sanity";
 
 const ProjectsPage = async () => {
   const projects = await queryContent(
-    `
+    groq`
       *[_type == 'project']
       {
         _id,

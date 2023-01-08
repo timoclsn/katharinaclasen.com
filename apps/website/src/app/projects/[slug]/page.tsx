@@ -1,5 +1,6 @@
 import { CalendarDays, Contact } from "lucide-react";
 import { serialize } from "next-mdx-remote/serialize";
+import { groq } from "next-sanity";
 import { z } from "zod";
 import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
@@ -8,7 +9,7 @@ import { queryContent } from "../../../lib/sanity";
 
 export const generateStaticParams = async () => {
   const projects = await queryContent(
-    `
+    groq`
       *[_type == 'project']
       {
         'slug': slug.current
@@ -34,7 +35,7 @@ interface Props {
 const ProjectPage = async ({ params }: Props) => {
   const { slug } = params;
   const result = await queryContent(
-    `
+    groq`
       *[_type == 'project' && slug.current == '${slug}']
       {
         _id,

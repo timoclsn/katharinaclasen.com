@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import { CalendarDays, Clock, User } from "lucide-react";
+import { groq } from "next-sanity";
 import Link from "next/link";
 import readingTime from "reading-time";
 import { z } from "zod";
@@ -9,7 +10,7 @@ import { queryContent } from "../../lib/sanity";
 
 const BlogPage = async () => {
   const blogPosts = await queryContent(
-    `
+    groq`
       *[_type == 'blogPost']
       {
         _id,

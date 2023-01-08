@@ -1,3 +1,4 @@
+import { groq } from "next-sanity";
 import { z } from "zod";
 import { Body } from "../../design-system/Body/Body";
 import { Container } from "../../design-system/Container/Container";
@@ -9,7 +10,7 @@ export type Clients = Awaited<ReturnType<typeof queryClients>>;
 
 const queryClients = async () => {
   return await queryContent(
-    `
+    groq`
       *[_type == 'client']
       {
         _id,

@@ -1,4 +1,5 @@
 import { serialize } from "next-mdx-remote/serialize";
+import { groq } from "next-sanity";
 import { z } from "zod";
 import { backgroundColorsList, colorsList } from "./colors";
 import { illustrationsList } from "./illustrations/illustrations";
@@ -8,7 +9,7 @@ export type AccordeonItems = Awaited<ReturnType<typeof getAccordionItems>>
 
 export const getAccordionItems = async (id: string) => {
   const result = await queryContent(
-    `
+    groq`
     *[_id == '${id}']
     {
       items[]->{
@@ -48,7 +49,7 @@ export type CardGridItems = Awaited<ReturnType<typeof getCardGridItems>>['items'
 
 export const getCardGridItems = async (id: string) => {
   const result = await queryContent(
-    `
+    groq`
     *[_id == '${id}']
     {
       title,
@@ -132,7 +133,7 @@ export type Service = Awaited<ReturnType<typeof getService>>;
 
 export const getService = async (id: string) => {
   const result = await queryContent(
-    `
+    groq`
     *[_id == '${id}']
     {
       title,
@@ -170,7 +171,7 @@ export type ServiceTopics = Awaited<ReturnType<typeof getServiceTopics>>;
 
 export const getServiceTopics = async (id: string) => {
   return await queryContent(
-    `
+    groq`
     *[_type == 'topic' && service->_id == '${id}']
     {
       title
