@@ -117,13 +117,13 @@ export const getCardGridItems = async (id: string) => {
             border: z.boolean().nullable(),
             backgroundImage: z
               .object({
-                src: z.string(),
+                url: z.string(),
                 alt: z.string(),
               })
               .nullable(),
             image: z
               .object({
-                src: z.string(),
+                url: z.string(),
                 alt: z.string(),
               })
               .nullable(),

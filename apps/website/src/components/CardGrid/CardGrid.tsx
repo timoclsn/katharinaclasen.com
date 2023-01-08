@@ -50,11 +50,11 @@ export const CardGrid = ({ items }: Props) => {
               color={backgroundColor}
               customColor={customBackgroundColor || undefined}
               border={border}
-              className="relative h-full overflow-hidden"
+              className="relative flex h-full flex-col justify-between overflow-hidden"
             >
               {backgroundImage && (
                 <Image
-                  src={backgroundImage.src}
+                  src={backgroundImage.url}
                   alt={backgroundImage.alt}
                   width={500}
                   height={500}
@@ -132,7 +132,7 @@ export const CardGrid = ({ items }: Props) => {
               </div>
               {image && (
                 <Image
-                  src={image.src}
+                  src={image.url}
                   alt={image.alt}
                   width={500}
                   height={500}
