@@ -27,11 +27,7 @@ export const getAccordionItems = async (id: string) => {
           z.object({
             illustration: z.enum(illustrationsList),
             title: z.string(),
-            description: z.string().transform(async (value) => await serialize(value, {
-              mdxOptions: {
-                development: false
-              },
-            })),
+            description: z.string().transform(async (value) => await serialize(value)),
             button: z
               .object({
                 label: z.string(),
@@ -87,11 +83,7 @@ export const getCardGridItems = async (id: string) => {
           z.object({
             illustration: z.enum(illustrationsList).nullable(),
             title: z.string().nullable(),
-            description: z.string().transform(async (value) => await serialize(value, {
-              mdxOptions: {
-                development: false
-              },
-            })).nullable(),
+            description: z.string().transform(async (value) => await serialize(value)).nullable(),
             button: z
               .object({
                 label: z.string(),
@@ -100,11 +92,7 @@ export const getCardGridItems = async (id: string) => {
               .nullable(),
             illustration2: z.enum(illustrationsList).nullable(),
             title2: z.string().nullable(),
-            description2: z.string().transform(async (value) => await serialize(value, {
-              mdxOptions: {
-                development: false
-              },
-            })).nullable(),
+            description2: z.string().transform(async (value) => await serialize(value)).nullable(),
             button2: z
               .object({
                 label: z.string(),
@@ -159,11 +147,7 @@ export const getService = async (id: string) => {
         description: z
           .string()
           .transform(async (value) =>
-            serialize(value, {
-              mdxOptions: {
-                development: false,
-              },
-            })
+            serialize(value)
           )
           .nullable(),
         quote: z

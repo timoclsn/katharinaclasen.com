@@ -84,11 +84,7 @@ const ProjectPage = async ({ params }: Props) => {
     )
   );
   const project = result[0];
-  const mdxContent = await serialize(project.content, {
-    mdxOptions: {
-      development: false, // Needed because of bug in mdx lib when using next.js 13 (https://github.com/hashicorp/next-mdx-remote/issues/307)
-    },
-  });
+  const mdxContent = await serialize(project.content);
 
   return (
     <article className="py-28">

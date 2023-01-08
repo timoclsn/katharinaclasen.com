@@ -80,11 +80,7 @@ const BlogPostPage = async ({ params }: Props) => {
     )
   );
   const blogPost = result[0];
-  const mdxContent = await serialize(blogPost.content, {
-    mdxOptions: {
-      development: false, // Needed because of bug in mdx lib when using next.js 13 (https://github.com/hashicorp/next-mdx-remote/issues/307)
-    },
-  });
+  const mdxContent = await serialize(blogPost.content);
   const stats = readingTime(blogPost.content);
 
   return (
