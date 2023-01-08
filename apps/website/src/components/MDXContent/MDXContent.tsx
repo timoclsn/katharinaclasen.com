@@ -7,15 +7,15 @@ import { HTMLProps } from "react";
 import { Heading } from "../../design-system/Heading/Heading";
 import { InfoBox } from "../InfoBox/InfoBox";
 
-const MDXContentVariants = cva("font-sans prose leading-6", {
+const MDXContentVariants = cva("font-sans prose", {
   variants: {
     color: {
       light: "text-contrast-secondary-light",
       dark: "text-contrast-secondary-dark",
     },
     size: {
-      normal: "text-base",
-      large: "text-2xl",
+      normal: "text-base leading-6",
+      large: "text-2xl leading-8",
     },
   },
 });
