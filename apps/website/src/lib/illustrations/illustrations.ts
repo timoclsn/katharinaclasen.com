@@ -29,6 +29,15 @@ export const Phone2: Icon = Phone2Illu;
 import TestIllu from "./test.svg";
 export const Test: Icon = TestIllu;
 
+import ClockIllu from "./clock.svg";
+export const Clock: Icon = ClockIllu;
+
+import HugIllu from "./hug.svg";
+export const Hug: Icon = HugIllu;
+
+import UniverseIllu from "./universe.svg";
+export const Universe: Icon = UniverseIllu;
+
 export const illustrationsMap = {
   bolt: Bolt,
   hand: Hand,
@@ -39,6 +48,9 @@ export const illustrationsMap = {
   phone2: Phone2,
   magnifier: Magnifier,
   test: Test,
+  clock: Clock,
+  hug: Hug,
+  universe: Universe,
 } as const;
 
 export const illustrationsList = [
@@ -51,6 +63,9 @@ export const illustrationsList = [
   "phone2",
   "magnifier",
   "test",
+  "clock",
+  "hug",
+  "universe",
 ] as const;
 
 export type Illustration = keyof typeof illustrationsMap;
