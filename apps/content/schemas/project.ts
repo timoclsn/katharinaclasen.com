@@ -112,6 +112,11 @@ export const project = defineType({
       ],
     }),
     defineField({
+      name: 'summary',
+      title: 'Summary',
+      type: 'markdown',
+    }),
+    defineField({
       name: 'content',
       title: 'Inhalt',
       type: 'markdown',

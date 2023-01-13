@@ -3,6 +3,7 @@ import { accordionItem } from "./accordionItem";
 import { blogPost } from "./blogPost";
 import { cardGrid } from "./cardGrid";
 import { cardGridItem } from "./cardGridItem";
+import { carousel } from "./carousel";
 import { client } from "./client";
 import { project } from "./project";
 import { quote } from "./quote";
@@ -19,5 +20,6 @@ export const schemaTypes = [
   accordion,
   cardGridItem,
   cardGrid,
-  quote
+  quote,
+  carousel,
 ];

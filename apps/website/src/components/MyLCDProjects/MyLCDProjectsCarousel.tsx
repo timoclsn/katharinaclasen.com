@@ -11,7 +11,7 @@ import { Tag } from "../../design-system/Tag/Tag";
 import { useCarousel } from "../../hooks/useCarousel";
 import { MDXContent } from "../MDXContent/MDXContent";
 import { Quote } from "../Quote/Quote";
-import { Clients } from "./MyClients";
+import { Projects } from "./MyLCDProjects";
 
 const variants: Variants = {
   enter: (direction: number) => ({
@@ -24,10 +24,10 @@ const variants: Variants = {
 };
 
 interface Props {
-  clients: Clients;
+  projects: Projects;
 }
 
-export const MyClientsCarousel = ({ clients }: Props) => {
+export const MyLCDProjectsCarousel = ({ projects }: Props) => {
   const {
     selectedItem,
     selectedItemIndex,
@@ -35,12 +35,12 @@ export const MyClientsCarousel = ({ clients }: Props) => {
     direction,
     nextItem,
     prevItem,
-  } = useCarousel(clients);
+  } = useCarousel(projects);
 
   return (
     <div>
       <ul className="mb-16 flex flex-wrap gap-2">
-        {clients.map((client, idx) => {
+        {projects.map((project, idx) => {
           const selected = idx === selectedItemIndex;
           return (
             <li key={idx}>
@@ -52,16 +52,9 @@ export const MyClientsCarousel = ({ clients }: Props) => {
                   size="xl"
                   outline="solid"
                   state={selected ? "selected" : "deselected"}
-                  prepend={
-                    <Image
-                      src={client.logo}
-                      alt={`Logo of company ${client.shortName}`}
-                      width={50}
-                      height={50}
-                    />
-                  }
+                  prepend={idx + 1}
                 >
-                  {client.shortName}
+                  {project.title}
                 </Tag>
               </button>
             </li>
@@ -89,49 +82,42 @@ export const MyClientsCarousel = ({ clients }: Props) => {
               }}
             >
               <div className="flex-1">
-                <Image
-                  src={selectedItem.logo}
-                  alt={`Logo of company ${selectedItem.shortName}`}
-                  width={50}
-                  height={50}
-                  className="mb-10 h-[40px] w-auto"
-                />
-
                 <Heading level="3" className="mb-6">
-                  {selectedItem.name || selectedItem.shortName}
+                  {selectedItem.title}
                 </Heading>
-                <MDXContent
-                  MDXRemoteProps={selectedItem.description}
-                  size="large"
-                />
-                {(selectedItem.caseStudy || selectedItem.website) && (
-                  <div className="mt-16 flex flex-col gap-6 sm:flex-row">
-                    {selectedItem.caseStudy && (
-                      <Button href={selectedItem.caseStudy}>
-                        <Files />
-                        Case study
-                      </Button>
-                    )}
-                    {selectedItem.website && (
-                      <Button
-                        style="outline"
-                        href={selectedItem.website}
-                        external
-                      >
-                        <Link2 />
-                        {`${selectedItem.shortName} website`}
-                      </Button>
-                    )}
-                  </div>
-                )}
-              </div>
-              <div className="flex flex-1 flex-col items-start justify-center">
-                {selectedItem.quote && (
-                  <Quote
-                    text={selectedItem.quote.text}
-                    author={selectedItem.quote.author}
+                {selectedItem.summary && (
+                  <MDXContent
+                    MDXRemoteProps={selectedItem.summary}
+                    size="large"
                   />
                 )}
+                <div className="mt-16 flex flex-col gap-6 sm:flex-row">
+                  {selectedItem.slug && (
+                    <Button href={`/projects/${selectedItem.slug}`}>
+                      <Files />
+                      Case study
+                    </Button>
+                  )}
+                  {selectedItem.externalLink && (
+                    <Button
+                      style="outline"
+                      href={selectedItem.externalLink.href}
+                      external
+                    >
+                      <Link2 />
+                      {selectedItem.externalLink.label}
+                    </Button>
+                  )}
+                </div>
+              </div>
+              <div className="flex flex-1 flex-col items-start justify-center">
+                <Image
+                  src={selectedItem.image.url}
+                  alt={selectedItem.image.alt}
+                  width={500}
+                  height={500}
+                  className="h-auto w-full"
+                />
               </div>
             </m.div>
           </AnimatePresence>

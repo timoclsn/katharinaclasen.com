@@ -1,3 +1,4 @@
+import { MyLCDProjects } from "../../components/MyLCDProjects/MyLCDProjects";
 import { Header } from "./Header/Header";
 import { LcdAccordion } from "./LcdAccordion/LcdAccordion";
 import { LcdJourney } from "./LcdJourney/LcdJourney";
@@ -10,6 +11,8 @@ const LcdPage = () => {
     <div className="lcd-page">
       <Header />
       <WhatIsLcd />
+      {/* @ts-expect-error Server Component */}
+      <MyLCDProjects />
       {/* @ts-expect-error Server Component */}
       <LcdPrinciples />
       <LcdJourney />

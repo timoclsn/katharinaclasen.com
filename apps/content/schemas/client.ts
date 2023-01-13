@@ -34,7 +34,7 @@ export const client = defineType({
       name: 'description',
       title: 'Beschreibung',
       description: 'Beschreibung der Tätigkeit für den Kunden.',
-      type: 'text',
+      type: 'markdown',
       validation: Rule => Rule.required()
     }),
     defineField({

@@ -5,25 +5,23 @@ import { Body } from "../../design-system/Body/Body";
 import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";
 import { queryContent } from "../../lib/sanity";
-import { MyClientsCarousel } from "./MyClientsCarousel";
+import { MyLCDProjectsCarousel } from "./MyLCDProjectsCarousel";
 
-export type Clients = Awaited<ReturnType<typeof queryCarousel>>["items"];
+export type Projects = Awaited<ReturnType<typeof queryCarousel>>["items"];
 
 const queryCarousel = async () => {
   const result = await queryContent(
     groq`
-    *[_id == '908fb376-7834-4b39-9c9a-8927976fa4e4']
+    *[_id == 'b3ecfa0d-e710-4955-b798-136dedc97b37']
     {
       title,
       subtitle,
       items[]->{
-        shortName,
-        name,
-        'logo': logo.asset->url,
-        description,
-        website,
-        caseStudy,
-        quote->{text, author},
+        title,
+        summary,
+        externalLink{label, href},
+        'slug': slug.current,
+        image{'url': asset->url, alt},
       },
     }
     `,
@@ -33,20 +31,22 @@ const queryCarousel = async () => {
         subtitle: z.string(),
         items: z.array(
           z.object({
-            shortName: z.string(),
-            name: z.string().nullable(),
-            logo: z.string(),
-            description: z
+            title: z.string(),
+            summary: z
               .string()
-              .transform(async (value) => await serialize(value)),
-            website: z.string().nullable(),
-            caseStudy: z.string().nullable(),
-            quote: z
+              .transform(async (value) => await serialize(value))
+              .nullable(),
+            externalLink: z
               .object({
-                text: z.string(),
-                author: z.string(),
+                label: z.string(),
+                href: z.string(),
               })
               .nullable(),
+            slug: z.string().nullable(),
+            image: z.object({
+              url: z.string(),
+              alt: z.string(),
+            }),
           })
         ),
       })
@@ -56,7 +56,7 @@ const queryCarousel = async () => {
   return result[0];
 };
 
-export const MyClients = async () => {
+export const MyLCDProjects = async () => {
   const { title, subtitle, items } = await queryCarousel();
   return (
     <section className="bg-background-secondary py-32">
@@ -67,7 +67,7 @@ export const MyClients = async () => {
         <Body as="p" size="large" priority="secondary" className="mb-16">
           {subtitle}
         </Body>
-        <MyClientsCarousel clients={items} />
+        <MyLCDProjectsCarousel projects={items} />
       </Container>
     </section>
   );
