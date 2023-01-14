@@ -62,7 +62,7 @@ export const CardGrid = ({ items }: Props) => {
                 />
               )}
               <div
-                className={`flex flex-col gap-16 px-8 pt-10 md:flex-row${
+                className={`relative flex flex-col gap-16 px-8 pt-10 md:flex-row${
                   image ? "" : " pb-10"
                 }`}
               >
