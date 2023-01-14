@@ -8,7 +8,7 @@ export const AboutAccordion = async () => {
   return (
     <section className="bg-background-primary py-32">
       <Container inset>
-        <Accordion items={items} itemsClassName="lg:h-[600px]" />
+        <Accordion items={items} />
       </Container>
     </section>
   );

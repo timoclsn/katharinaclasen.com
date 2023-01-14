@@ -3,7 +3,6 @@
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { cva, cx } from "class-variance-authority";
 import { ArrowRight } from "lucide-react";
-import { Body } from "../../design-system/Body/Body";
 import { Button } from "../../design-system/Button/Button";
 import { Heading } from "../../design-system/Heading/Heading";
 import { backgroundColorsMap } from "../../lib/colors";
@@ -13,7 +12,7 @@ import { MDXContent } from "../MDXContent/MDXContent";
 import styles from "./Accordion.module.css";
 
 const itemVariants = cva(
-  "rounded-4xl flex flex-col lg:flex-row lg:data-[state=open]:flex-1",
+  "rounded-4xl flex flex-col lg:flex-row lg:data-[state=open]:flex-1 lg:h-[600px]",
   {
     variants: {
       backgroundColor: {
@@ -26,14 +25,9 @@ const itemVariants = cva(
 interface Props {
   defaultValue?: number;
   items: AccordeonItems;
-  itemsClassName?: string;
 }
 
-export const Accordion = ({
-  defaultValue = 1,
-  items,
-  itemsClassName,
-}: Props) => {
+export const Accordion = ({ defaultValue = 1, items }: Props) => {
   return (
     <AccordionPrimitive.Root
       type="single"
@@ -54,10 +48,7 @@ export const Accordion = ({
           <AccordionPrimitive.Item
             key={idx}
             value={(idx + 1).toString()}
-            className={itemVariants({
-              backgroundColor,
-              className: itemsClassName,
-            })}
+            className={itemVariants({ backgroundColor })}
           >
             <AccordionPrimitive.Trigger className="flex flex-none items-center gap-5 px-10 py-8 sm:gap-10 lg:flex-col-reverse">
               <Illustration
@@ -79,11 +70,12 @@ export const Accordion = ({
                 "overflow-hidden py-8 pr-10 pl-10 lg:pl-0"
               )}
             >
-              <div className="flex h-full flex-col items-start lg:justify-end">
+              <div className="flex h-full flex-col items-start overflow-auto">
                 <MDXContent
                   MDXRemoteProps={description}
                   size="large"
                   color={color}
+                  className="mt-auto"
                 />
                 {button && (
                   <Button color={color} href={button.href} className="mt-4">
