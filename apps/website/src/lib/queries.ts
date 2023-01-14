@@ -184,3 +184,21 @@ export const getServiceTopics = async (id: string) => {
     )
   );
 };
+
+export const getTextSnippet = async (id: string) => {
+  const result = await queryContent(
+    groq`
+    *[_id == '${id}']
+    {
+      content,
+    }
+    `,
+    z.array(
+      z.object({
+        content: z.string().transform(async (value) => await serialize(value)),
+      })
+    )
+  );
+
+  return result[0];
+};

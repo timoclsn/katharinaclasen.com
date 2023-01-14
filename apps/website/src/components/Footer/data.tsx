@@ -111,12 +111,12 @@ export const data = [
     links: [
       {
         title: "Impressum",
-        link: "",
+        link: "/imprint",
         icon: null,
       },
       {
         title: "Datenschutz",
-        link: "",
+        link: "/privacy-policy",
         icon: null,
       },
     ],

@@ -63,6 +63,11 @@ export const MDXContent = ({
         />
       );
     },
+    h1: (props: HTMLProps<HTMLHeadingElement>) => (
+      <Heading level="1" color={color}>
+        {props.children!}
+      </Heading>
+    ),
     h2: (props: HTMLProps<HTMLHeadingElement>) => (
       <Heading level="2" color={color}>
         {props.children!}
