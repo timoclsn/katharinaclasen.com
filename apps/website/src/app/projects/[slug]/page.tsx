@@ -5,6 +5,7 @@ import { z } from "zod";
 import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Container } from "../../../design-system/Container/Container";
+import { context, contexts } from "../../../lib/projects";
 import { queryContent } from "../../../lib/sanity";
 
 export const generateStaticParams = async () => {
@@ -41,6 +42,7 @@ const ProjectPage = async ({ params }: Props) => {
         _id,
         title,
         image{'url': asset->url, alt, border},
+        context,
         'client': client->shortName,
         date,
         period,
@@ -59,7 +61,8 @@ const ProjectPage = async ({ params }: Props) => {
           alt: z.string(),
           border: z.boolean().nullable(),
         }),
-        client: z.string(),
+        context: z.enum(contexts),
+        client: z.string().nullable(),
         date: z.string(),
         period: z.string().nullable(),
         externalLink: z.object({
@@ -96,7 +99,7 @@ const ProjectPage = async ({ params }: Props) => {
           metaData={[
             {
               icon: Contact,
-              text: project.client,
+              text: context(project.context, project.client || ""),
             },
             {
               icon: CalendarDays,

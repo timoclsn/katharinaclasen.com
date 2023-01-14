@@ -5,6 +5,7 @@ import { z } from "zod";
 import { ArticlePreview } from "../../components/ArticlePreview/ArticlePreview";
 import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";
+import { context, contexts } from "../../lib/projects";
 import { queryContent } from "../../lib/sanity";
 
 const ProjectsPage = async () => {
@@ -16,6 +17,7 @@ const ProjectsPage = async () => {
         title,
         'slug': slug.current,
         image{'url': asset->url, alt, border},
+        context,
         'client': client->shortName,
         date,
         period,
@@ -33,7 +35,8 @@ const ProjectsPage = async () => {
           alt: z.string(),
           border: z.boolean().nullable(),
         }),
-        client: z.string(),
+        context: z.enum(contexts),
+        client: z.string().nullable(),
         date: z.string(),
         period: z.string().nullable(),
         services: z
@@ -70,7 +73,7 @@ const ProjectsPage = async () => {
                       metaData={[
                         {
                           icon: Contact,
-                          text: project.client,
+                          text: context(project.context, project.client || ""),
                         },
                         {
                           icon: CalendarDays,
