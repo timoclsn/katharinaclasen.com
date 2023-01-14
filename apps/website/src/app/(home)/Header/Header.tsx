@@ -55,7 +55,7 @@ export const Header = () => {
                     UX Research
                   </Heading>
                 </div>
-                <div className="relative overflow-hidden rounded-4xl">
+                <div className="relative overflow-hidden rounded-4xl border-2 border-outline-light-dark">
                   <Image
                     src={serviceUxDesignImg}
                     alt="Mobile app wireframes"
