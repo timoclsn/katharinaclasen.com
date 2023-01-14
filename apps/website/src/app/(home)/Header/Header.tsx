@@ -100,6 +100,7 @@ export const Header = () => {
               alt="Hand holding a iPhone with a app design"
               priority
               placeholder="blur"
+              className="h-full w-full rounded-6xl object-cover"
             />
             <Button className="absolute top-8 right-8">
               <ArrowRight />
