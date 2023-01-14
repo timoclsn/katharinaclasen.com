@@ -32,7 +32,7 @@ export const NavigationLink = ({
   highlighted = false,
 }: Props) => {
   const pathname = usePathname();
-  const isActive = pathname?.includes(href);
+  const isActive = pathname === href || pathname?.includes(`${href}/`);
   return (
     <Link
       href={href}
