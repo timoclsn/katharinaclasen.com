@@ -40,7 +40,7 @@ export const Header = () => {
             </Button>
             <div className="flex w-full flex-col gap-6">
               <div className="flex justify-between gap-2">
-                <div className="relative">
+                <div className="relative overflow-hidden rounded-4xl">
                   <Image
                     src={serviceUxResearchImg}
                     alt="Pattern of Icons"
@@ -55,7 +55,7 @@ export const Header = () => {
                     UX Research
                   </Heading>
                 </div>
-                <div className="relative">
+                <div className="relative overflow-hidden rounded-4xl">
                   <Image
                     src={serviceUxDesignImg}
                     alt="Mobile app wireframes"
@@ -70,7 +70,7 @@ export const Header = () => {
                     UX Design
                   </Heading>
                 </div>
-                <div className="relative">
+                <div className="relative overflow-hidden rounded-4xl">
                   <Image
                     src={serviceUiDesign}
                     alt="Hand holding a mockup iPhone"
