@@ -65,10 +65,12 @@ const ProjectPage = async ({ params }: Props) => {
         client: z.string().nullable(),
         date: z.string(),
         period: z.string().nullable(),
-        externalLink: z.object({
-          label: z.string().nullable(),
-          href: z.string().nullable(),
-        }),
+        externalLink: z
+          .object({
+            label: z.string(),
+            href: z.string(),
+          })
+          .nullable(),
         services: z
           .array(
             z.object({
@@ -128,7 +130,7 @@ const ProjectPage = async ({ params }: Props) => {
                 )
               : []),
           ]}
-          externalLink={project.externalLink}
+          externalLink={project.externalLink || undefined}
         />
         <MDXContent
           MDXRemoteProps={mdxContent}
