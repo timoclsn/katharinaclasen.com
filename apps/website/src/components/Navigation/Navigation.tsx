@@ -1,46 +1,182 @@
+"use client";
+
+import { cva, cx } from "class-variance-authority";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { Container } from "../../design-system/Container/Container";
-import { NavigationLink } from "../NavigationLink/NavigationLink";
+import { useActiveLink } from "../../hooks/useActiveLink";
+import styles from "./Navigation.module.css";
+
+const title = "Katharina Clasen";
+
+const items = [
+  {
+    label: "About",
+    href: "/about",
+    highlighted: false,
+  },
+  {
+    label: "Projects",
+    href: "/projects",
+    highlighted: false,
+  },
+  {
+    label: "Services",
+    href: "/services",
+    highlighted: false,
+  },
+  {
+    label: "Life-centered Design",
+    href: "/lifecentereddesign",
+    highlighted: false,
+  },
+  {
+    label: "Blog",
+    href: "/blog",
+    highlighted: false,
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+    highlighted: true,
+  },
+] as const;
+
+const navigationLinkVariants = cva("font-sans hover:opacity-80", {
+  variants: {
+    active: {
+      true: "underline",
+    },
+    highlighted: {
+      true: "font-medium text-contrast-primary-dark",
+      false: "text-contrast-secondary-dark",
+    },
+  },
+});
+
+const mobileNavigationLinkVariants = cva(
+  "font-serif text-4xl w-full text-center py-4 hover:opacity-80",
+  {
+    variants: {
+      active: {
+        true: "underline",
+      },
+      highlighted: {
+        true: "font-medium text-contrast-primary-dark",
+        false: "text-contrast-secondary-dark",
+      },
+    },
+  }
+);
 
 export const Navigation = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isActive = useActiveLink();
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    document.body.style.overflow = "";
+  };
+
+  const openMenu = () => {
+    setIsMenuOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const toggleMenu = () => {
+    if (isMenuOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
   return (
     <Container inset>
       <nav role="navigation" className="py-6">
         <a href="#skip" className="sr-only">
           Skip to content
         </a>
-        <ul className="flex items-center gap-10">
-          <li className="flex-1">
-            <Link
-              href="/"
-              className="font-sans text-2xl font-medium text-contrast-primary-dark"
-            >
-              Katharina Clasen
-            </Link>
-          </li>
-          <li>
-            <NavigationLink href="/about">About</NavigationLink>
-          </li>
-          <li>
-            <NavigationLink href="/projects">Projects</NavigationLink>
-          </li>
-          <li>
-            <NavigationLink href="/services">Services</NavigationLink>
-          </li>
-          <li>
-            <NavigationLink href="/lifecentereddesign">
-              Life-centered Design
-            </NavigationLink>
-          </li>
-          <li>
-            <NavigationLink href="/blog">Blog</NavigationLink>
-          </li>
-          <li>
-            <NavigationLink highlighted href="/contact">
-              Contact
-            </NavigationLink>
-          </li>
-        </ul>
+
+        {/* Home Link */}
+        <div className="flex items-center justify-between">
+          <Link
+            href="/"
+            onClick={closeMenu}
+            className="relative z-20 font-sans text-2xl font-medium text-contrast-primary-dark"
+          >
+            {title}
+          </Link>
+
+          {/* Desktop Menu */}
+          <ul className="hidden items-center gap-10 lg:flex">
+            <li className="flex-1"></li>
+            {items.map((item, index) => (
+              <Link
+                key={index}
+                href={item.href}
+                onClick={closeMenu}
+                className={navigationLinkVariants({
+                  active: isActive(item.href),
+                  highlighted: item.highlighted,
+                })}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </ul>
+
+          {/* Mobile Menu Button*/}
+          <button
+            type="button"
+            className={cx(
+              "relative z-20 h-8 w-8 text-contrast-secondary-dark hover:opacity-80 focus:outline-none lg:hidden",
+              styles.menuIcon
+            )}
+            aria-controls="mobile-menu"
+            aria-expanded={isMenuOpen ? "true" : "false"}
+            onClick={toggleMenu}
+          >
+            <span className="sr-only">
+              {isMenuOpen ? "Menü schließen" : "Menü öffnen"}
+            </span>
+            <Menu data-hide={isMenuOpen} />
+            <X data-hide={!isMenuOpen} />
+          </button>
+
+          {/* Mobile Menu */}
+          <div
+            data-open={isMenuOpen}
+            className={cx(
+              "absolute top-0 left-full z-10 h-full w-full bg-background-secondary lg:hidden",
+              styles.mobileMenu
+            )}
+          >
+            <Container inset className="h-full w-full">
+              <ul className="flex h-full w-full flex-col items-center justify-center gap-4">
+                {items.map((item, index) => (
+                  <Link
+                    key={index}
+                    href={item.href}
+                    onClick={closeMenu}
+                    className={mobileNavigationLinkVariants({
+                      active: isActive(item.href),
+                      highlighted: item.highlighted,
+                    })}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </ul>
+            </Container>
+          </div>
+        </div>
       </nav>
     </Container>
   );
