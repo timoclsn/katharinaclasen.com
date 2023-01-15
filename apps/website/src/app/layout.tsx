@@ -36,9 +36,9 @@ const RootLayout = ({ children }: Props) => {
           serifFont.variable,
           "min-h-screen",
           "bg-background-primary",
-          "[html:has(.home-page)&]:bg-background-secondary",
-          "[html:has(.about-page)&]:bg-background-red-candy",
-          "[html:has(.lcd-page)&]:bg-background-ocean-foam"
+          "[&:has(.home-page)_.mobile-nav]:bg-background-secondary [&:has(.home-page)]:bg-background-secondary",
+          "[&:has(.about-page)]:bg-background-red-candy [&:has(.about-page)_.mobile-nav]:bg-background-red-candy",
+          "[&:has(.lcd-page)_.mobile-nav]:bg-background-ocean-foam [&:has(.lcd-page)]:bg-background-ocean-foam"
         )}
       >
         <head>
@@ -51,7 +51,7 @@ const RootLayout = ({ children }: Props) => {
           />
           <link rel="manifest" href="/favicons/manifest.webmanifest" />
         </head>
-        <body className="flex min-h-screen flex-col">
+        <body className="flex min-h-screen flex-col overflow-x-hidden">
           <Providers>
             <Navigation />
             <main id="skip" className="flex-1">

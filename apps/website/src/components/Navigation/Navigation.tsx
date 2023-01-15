@@ -154,7 +154,7 @@ export const Navigation = () => {
           <div
             data-open={isMenuOpen}
             className={cx(
-              "absolute top-0 left-full z-10 h-full w-full bg-background-secondary lg:hidden",
+              "mobile-nav absolute top-0 left-full z-10 h-full w-full bg-background-primary lg:hidden",
               styles.mobileMenu
             )}
           >
