@@ -56,7 +56,7 @@ const navigationLinkVariants = cva("font-sans hover:opacity-80", {
 });
 
 const mobileNavigationLinkVariants = cva(
-  "font-serif text-4xl w-full text-center py-4 hover:opacity-80",
+  "font-serif text-2xl sm:text-4xl w-full text-center py-4 hover:opacity-80",
   {
     variants: {
       active: {
@@ -154,12 +154,12 @@ export const Navigation = () => {
           <div
             data-open={isMenuOpen}
             className={cx(
-              "mobile-nav absolute top-0 left-full z-10 h-full w-full bg-background-primary lg:hidden",
+              "mobile-nav absolute top-0 left-full z-10 h-screen w-full bg-background-primary lg:hidden",
               styles.mobileMenu
             )}
           >
             <Container inset className="h-full w-full">
-              <ul className="flex h-full w-full flex-col items-center justify-center gap-4">
+              <ul className="flex h-full flex-col items-center justify-center gap-2 sm:gap-4">
                 {items.map((item, index) => (
                   <Link
                     key={index}
