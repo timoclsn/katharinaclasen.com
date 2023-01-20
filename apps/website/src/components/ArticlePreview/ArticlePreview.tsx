@@ -36,7 +36,7 @@ export const ArticlePreview = ({
           width={500}
           height={500}
           sizes="100vw, (min-width: 768px) 50vw"
-          className={`h-auto w-full rounded-6xl @5xl:w-1/3${
+          className={`aspect-4/3 w-full rounded-6xl object-cover @5xl:w-1/3${
             titleImage.border ? " ring-2 ring-outline-light-dark" : ""
           }`}
         />
