@@ -69,7 +69,7 @@ export const MyClientsCarousel = ({ clients }: Props) => {
         })}
       </ul>
 
-      <Card color="primary" className="flex h-[600px] overflow-y-auto">
+      <Card color="primary" className="flex h-[600px]">
         <button className="px-4 hover:opacity-80 lg:px-10" onClick={prevItem}>
           <ArrowLeft />
         </button>
@@ -88,7 +88,7 @@ export const MyClientsCarousel = ({ clients }: Props) => {
                 duration: 0.5,
               }}
             >
-              <div className="flex-1">
+              <div className="flex-1 overflow-y-auto">
                 <Image
                   src={selectedItem.logo}
                   alt={`Logo of company ${selectedItem.shortName}`}
@@ -126,12 +126,14 @@ export const MyClientsCarousel = ({ clients }: Props) => {
                 )}
               </div>
               <div className="flex flex-1 flex-col items-start justify-center">
-                {selectedItem.quote && (
-                  <Quote
-                    text={selectedItem.quote.text}
-                    author={selectedItem.quote.author}
-                  />
-                )}
+                <div className="overflow-y-auto">
+                  {selectedItem.quote && (
+                    <Quote
+                      text={selectedItem.quote.text}
+                      author={selectedItem.quote.author}
+                    />
+                  )}
+                </div>
               </div>
             </m.div>
           </AnimatePresence>

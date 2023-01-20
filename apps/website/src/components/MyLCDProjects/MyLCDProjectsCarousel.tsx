@@ -62,7 +62,7 @@ export const MyLCDProjectsCarousel = ({ projects }: Props) => {
         })}
       </ul>
 
-      <Card color="primary" className="flex h-[600px] overflow-y-auto">
+      <Card color="primary" className="flex h-[600px]">
         <button className="px-4 hover:opacity-80 lg:px-10" onClick={prevItem}>
           <ArrowLeft />
         </button>
@@ -81,7 +81,7 @@ export const MyLCDProjectsCarousel = ({ projects }: Props) => {
                 duration: 0.5,
               }}
             >
-              <div className="flex-1">
+              <div className="flex-1 overflow-y-auto">
                 <Heading level="3" className="mb-6">
                   {selectedItem.title}
                 </Heading>
@@ -110,7 +110,7 @@ export const MyLCDProjectsCarousel = ({ projects }: Props) => {
                   )}
                 </div>
               </div>
-              <div className="flex flex-1 flex-col items-start justify-center">
+              <div className="flex flex-1 flex-col items-start justify-center overflow-y-auto">
                 <Image
                   src={selectedItem.image.url}
                   alt={selectedItem.image.alt}
