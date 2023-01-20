@@ -84,6 +84,9 @@ export const blogPost = defineType({
       title: "Inhalt",
       type: "markdown",
       validation: (Rule) => Rule.required(),
+      options: {
+        imageUrl: (imageAsset) => imageAsset.url,
+      },
     }),
   ],
 });

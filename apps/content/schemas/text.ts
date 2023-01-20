@@ -15,6 +15,9 @@ export const textSnippet = defineType({
       name: "content",
       title: "Content",
       type: "markdown",
+      options: {
+        imageUrl: (imageAsset) => imageAsset.url,
+      },
       validation: (Rule) => Rule.required(),
     }),
   ],

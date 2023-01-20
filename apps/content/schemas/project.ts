@@ -156,6 +156,9 @@ export const project = defineType({
       name: "content",
       title: "Inhalt",
       type: "markdown",
+      options: {
+        imageUrl: (imageAsset) => imageAsset.url,
+      },
       validation: (Rule) => Rule.required(),
     }),
   ],
