@@ -1,10 +1,11 @@
 import { serialize } from "next-mdx-remote/serialize";
 import { groq } from "next-sanity";
 import { z } from "zod";
-import { Body } from "../../design-system/Body/Body";
-import { Container } from "../../design-system/Container/Container";
-import { Heading } from "../../design-system/Heading/Heading";
-import { queryContent } from "../../lib/sanity";
+import { Body } from "../../../design-system/Body/Body";
+import { Container } from "../../../design-system/Container/Container";
+import { Heading } from "../../../design-system/Heading/Heading";
+import { queryContent } from "../../../lib/sanity";
+import { Section } from "../../../components/Section/Section";
 import { MyLCDProjectsCarousel } from "./MyLCDProjectsCarousel";
 
 export type Projects = Awaited<ReturnType<typeof queryCarousel>>["items"];
@@ -59,16 +60,14 @@ const queryCarousel = async () => {
 export const MyLCDProjects = async () => {
   const { title, subtitle, items } = await queryCarousel();
   return (
-    <section className="bg-background-secondary py-32">
-      <Container inset>
-        <Heading as="h2" level="1" className="mb-6">
-          {title}
-        </Heading>
-        <Body as="p" size="large" priority="secondary" className="mb-16">
-          {subtitle}
-        </Body>
-        <MyLCDProjectsCarousel projects={items} />
-      </Container>
-    </section>
+    <Section id="my-lcd-projects" color="secondary">
+      <Heading as="h2" level="1" className="mb-6">
+        {title}
+      </Heading>
+      <Body as="p" size="large" priority="secondary" className="mb-16">
+        {subtitle}
+      </Body>
+      <MyLCDProjectsCarousel projects={items} />
+    </Section>
   );
 };

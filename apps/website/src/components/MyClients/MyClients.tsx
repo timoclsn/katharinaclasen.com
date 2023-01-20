@@ -5,6 +5,7 @@ import { Body } from "../../design-system/Body/Body";
 import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";
 import { queryContent } from "../../lib/sanity";
+import { Section } from "../Section/Section";
 import { MyClientsCarousel } from "./MyClientsCarousel";
 
 export type Clients = Awaited<ReturnType<typeof queryCarousel>>["items"];
@@ -59,7 +60,7 @@ const queryCarousel = async () => {
 export const MyClients = async () => {
   const { title, subtitle, items } = await queryCarousel();
   return (
-    <section className="bg-background-secondary py-32">
+    <Section id="my-clients" color="secondary">
       <Container inset>
         <Heading as="h2" level="1" className="mb-6">
           {title}
@@ -69,6 +70,6 @@ export const MyClients = async () => {
         </Body>
         <MyClientsCarousel clients={items} />
       </Container>
-    </section>
+    </Section>
   );
 };

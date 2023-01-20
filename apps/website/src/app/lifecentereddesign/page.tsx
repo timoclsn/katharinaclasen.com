@@ -1,4 +1,4 @@
-import { MyLCDProjects } from "../../components/MyLCDProjects/MyLCDProjects";
+import { MyLCDProjects } from "./MyLCDProjects/MyLCDProjects";
 import { Header } from "./Header/Header";
 import { LcdAccordion } from "./LcdAccordion/LcdAccordion";
 import { LcdJourney } from "./LcdJourney/LcdJourney";

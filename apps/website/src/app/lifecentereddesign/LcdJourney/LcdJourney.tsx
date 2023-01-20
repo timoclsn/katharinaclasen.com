@@ -1,13 +1,13 @@
 import Image from "next/image";
+import { Section } from "../../../components/Section/Section";
 import { Body } from "../../../design-system/Body/Body";
-import { Container } from "../../../design-system/Container/Container";
 import { Heading } from "../../../design-system/Heading/Heading";
 import journeyImg from "./journey.png";
 
 export const LcdJourney = () => {
   return (
-    <section className="bg-background-secondary py-32">
-      <Container inset className="flex flex-col items-center gap-8 lg:flex-row">
+    <Section id="my-lcd-journey" color="secondary">
+      <div className="flex flex-col items-center gap-8 lg:flex-row">
         <Image
           src={journeyImg}
           alt="Image of a path"
@@ -45,7 +45,7 @@ export const LcdJourney = () => {
             with so many amazing people!
           </Body>
         </div>
-      </Container>
-    </section>
+      </div>
+    </Section>
   );
 };

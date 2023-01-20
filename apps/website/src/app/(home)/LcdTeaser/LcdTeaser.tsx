@@ -1,15 +1,15 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { Section } from "../../../components/Section/Section";
 import { Body } from "../../../design-system/Body/Body";
 import { Button } from "../../../design-system/Button/Button";
-import { Container } from "../../../design-system/Container/Container";
 import { Heading } from "../../../design-system/Heading/Heading";
-import earthImg from "./assets/earth.png";
+import earthImg from "./earth.png";
 
 export const LcdTeaser = () => {
   return (
-    <section className="bg-background-dark py-32">
-      <Container inset className="flex flex-col gap-8 lg:flex-row">
+    <Section color="dark">
+      <div className="flex flex-col gap-8 lg:flex-row">
         <Image
           src={earthImg}
           alt="Image of the earth from space"
@@ -33,7 +33,7 @@ export const LcdTeaser = () => {
             More about Life-centered Design
           </Button>
         </div>
-      </Container>
-    </section>
+      </div>
+    </Section>
   );
 };

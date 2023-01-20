@@ -1,15 +1,16 @@
 import { Clipboard } from "lucide-react";
 import Image from "next/image";
+import { Section } from "../../../components/Section/Section";
 import { Body } from "../../../design-system/Body/Body";
 import { Button } from "../../../design-system/Button/Button";
 import { Container } from "../../../design-system/Container/Container";
 import { Heading } from "../../../design-system/Heading/Heading";
-import portraitImg from "./assets/portrait.png";
+import portraitImg from "./portrait.png";
 
 export const AboutMe = () => {
   return (
-    <section className="bg-background-primary">
-      <Container className="flex flex-col gap-8 py-40 lg:flex-row">
+    <Section id="about-me" color="primary">
+      <div className="flex flex-col gap-8 lg:flex-row">
         <Container inset className="flex flex-1 items-start justify-center">
           <Image src={portraitImg} alt="Portait of Katharina Clasen" />
         </Container>
@@ -40,7 +41,7 @@ export const AboutMe = () => {
             </Button>
           </div>
         </Container>
-      </Container>
-    </section>
+      </div>
+    </Section>
   );
 };

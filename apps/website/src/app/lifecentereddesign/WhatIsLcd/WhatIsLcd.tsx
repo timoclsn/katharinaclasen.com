@@ -1,13 +1,13 @@
-import { Container } from "../../../design-system/Container/Container";
 import Image from "next/image";
-import { Heading } from "../../../design-system/Heading/Heading";
+import { Section } from "../../../components/Section/Section";
 import { Body } from "../../../design-system/Body/Body";
+import { Heading } from "../../../design-system/Heading/Heading";
 import earthImg from "./earth.png";
 
 export const WhatIsLcd = () => {
   return (
-    <section className="bg-background-dark py-32">
-      <Container inset className="flex flex-col gap-8 lg:flex-row">
+    <Section id="what-is-lcd" color="dark">
+      <div className="flex flex-col gap-8 lg:flex-row">
         <div className="flex flex-col items-start justify-center gap-8 lg:w-1/2">
           <Heading color="light">What is Life-centered Design?</Heading>
           <Body as="p" color="light" priority="secondary" family="serif">
@@ -33,7 +33,7 @@ export const WhatIsLcd = () => {
           className="max-h-[500px] object-contain lg:w-1/2"
           placeholder="blur"
         />
-      </Container>
-    </section>
+      </div>
+    </Section>
   );
 };
