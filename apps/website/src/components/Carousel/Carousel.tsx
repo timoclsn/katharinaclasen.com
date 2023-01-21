@@ -2,7 +2,7 @@
 
 import { AnimatePresence, m, Variants } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Card } from "../../design-system/Card/Card";
 import { usePrevious } from "../../hooks/usePrevious";
 
@@ -67,6 +67,8 @@ export const Carousel = <Item extends {}>({
       setSelectedIndex(selectedItemIndex - 1);
     }
   };
+
+  console.log("RERENDER");
   return (
     <div>
       <ul className="mb-16 flex flex-wrap gap-2">
@@ -92,7 +94,7 @@ export const Carousel = <Item extends {}>({
           <AnimatePresence initial={false} custom={direction()}>
             <m.div
               className="absolute flex h-full w-full flex-col gap-12 bg-background-primary py-16 lg:flex-row"
-              key={selectedItemIndex}
+              key={Math.random()}
               variants={variants}
               initial="enter"
               animate="center"
