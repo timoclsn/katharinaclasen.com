@@ -41,7 +41,6 @@ export const useCarousel = <Item>(items: Array<Item>) => {
     setSelectedIndex,
     direction,
     nextItem,
-    prevItem
-
+    prevItem,
   }
 };
