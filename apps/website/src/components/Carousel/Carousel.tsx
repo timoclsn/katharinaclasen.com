@@ -2,7 +2,7 @@
 
 import { AnimatePresence, m, Variants } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 import { Card } from "../../design-system/Card/Card";
 import { usePrevious } from "../../hooks/usePrevious";
 
@@ -67,8 +67,6 @@ export const Carousel = <Item extends {}>({
       setSelectedIndex(selectedItemIndex - 1);
     }
   };
-
-  console.log("RERENDER");
   return (
     <div>
       <ul className="mb-16 flex flex-wrap gap-2">
