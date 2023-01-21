@@ -3,14 +3,12 @@
 import { AnimatePresence, m, Variants } from "framer-motion";
 import { ArrowLeft, ArrowRight, Files, Link2 } from "lucide-react";
 import Image from "next/image";
-import { Body } from "../../../design-system/Body/Body";
+import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Button } from "../../../design-system/Button/Button";
 import { Card } from "../../../design-system/Card/Card";
 import { Heading } from "../../../design-system/Heading/Heading";
 import { Tag } from "../../../design-system/Tag/Tag";
 import { useCarousel } from "../../../hooks/useCarousel";
-import { MDXContent } from "../../../components/MDXContent/MDXContent";
-import { Quote } from "../../../components/Quote/Quote";
 import { Projects } from "./MyLCDProjects";
 
 const variants: Variants = {
