@@ -27,7 +27,8 @@ export const MyLCDProjectsCarousel = ({ projects }: Props) => {
           {project.title}
         </Tag>
       )}
-      content={({ item: project }) => (
+    >
+      {({ item: project }) => (
         <>
           <div className="flex-1 overflow-y-auto">
             <Heading level="3" className="mb-6">
@@ -66,6 +67,6 @@ export const MyLCDProjectsCarousel = ({ projects }: Props) => {
           </div>
         </>
       )}
-    />
+    </Carousel>
   );
 };

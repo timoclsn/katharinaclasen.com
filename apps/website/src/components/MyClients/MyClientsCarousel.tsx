@@ -35,7 +35,8 @@ export const MyClientsCarousel = ({ clients }: Props) => {
           {client.shortName}
         </Tag>
       )}
-      content={({ item: client }) => (
+    >
+      {({ item: client }) => (
         <>
           <div className="flex-1 overflow-y-auto">
             <Image
@@ -76,6 +77,6 @@ export const MyClientsCarousel = ({ clients }: Props) => {
           </div>
         </>
       )}
-    />
+    </Carousel>
   );
 };

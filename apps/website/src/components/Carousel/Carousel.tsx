@@ -27,13 +27,13 @@ interface Props<Item> {
     selected: boolean;
     index: number;
   }) => ReactNode;
-  content: ({ item }: { item: Item }) => ReactNode;
+  children: ({ item }: { item: Item }) => ReactNode;
 }
 
 export const Carousel = <Item extends {}>({
   items,
   tag,
-  content,
+  children,
 }: Props<Item>) => {
   const [selectedItemIndex, setSelectedIndex] = useState(0);
   const prevSelectedItemIndex = usePrevious(selectedItemIndex);
@@ -103,7 +103,7 @@ export const Carousel = <Item extends {}>({
                 duration: 0.5,
               }}
             >
-              {content({ item: selectedItem })}
+              {children({ item: selectedItem })}
             </m.div>
           </AnimatePresence>
         </div>
