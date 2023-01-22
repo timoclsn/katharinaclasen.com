@@ -1,24 +1,26 @@
 import { cva, VariantProps } from "class-variance-authority";
+import { ReactNode } from "react";
 
-export const markdownVariants = cva(
-  "font-sans prose-headings:font-serif prose",
-  {
-    variants: {
-      color: {
-        light:
-          "text-contrast-secondary-light prose-headings:text-contrast-primary-light",
-        dark: "text-contrast-secondary-dark prose-headings:text-contrast-primary-dark",
-      },
-      size: {
-        normal: "text-base leading-6",
-        large: "text-2xl leading-8",
-      },
+const markdownVariants = cva("prose", {
+  variants: {
+    color: {
+      light:
+        "text-contrast-secondary-light prose-headings:text-contrast-primary-light",
+      dark: "text-contrast-secondary-dark prose-headings:text-contrast-primary-dark",
     },
-  }
-);
+    size: {
+      normal: "text-base leading-6",
+      large: "text-2xl leading-8",
+    },
+    family: {
+      sans: "font-sans prose-headings:font-serif",
+      serif: "font-serif prose-headings:font-serif",
+    },
+  },
+});
 
-interface Props extends VariantProps<typeof markdownVariants> {
-  children: string;
+export interface MarkdownProps extends VariantProps<typeof markdownVariants> {
+  children: string | ReactNode;
   className?: string;
 }
 
@@ -26,12 +28,15 @@ export const Markdown = ({
   children,
   color = "dark",
   size = "normal",
+  family = "sans",
   className,
-}: Props) => {
+}: MarkdownProps) => {
   return (
     <div
-      className={markdownVariants({ color, size, className })}
-      dangerouslySetInnerHTML={{ __html: children }}
+      className={markdownVariants({ color, size, family, className })}
+      {...(typeof children === "string"
+        ? { dangerouslySetInnerHTML: { __html: children } }
+        : { children })}
     />
   );
 };

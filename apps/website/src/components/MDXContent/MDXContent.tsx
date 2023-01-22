@@ -1,20 +1,20 @@
-import { VariantProps } from "class-variance-authority";
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import { HTMLProps } from "react";
 import { Heading } from "../../design-system/Heading/Heading";
 import { InfoBox } from "../InfoBox/InfoBox";
-import { markdownVariants } from "../Markdown/Markdown";
+import { Link } from "../Link/Link";
+import { Markdown, MarkdownProps } from "../Markdown/Markdown";
 
-interface Props extends VariantProps<typeof markdownVariants> {
+interface Props extends Omit<MarkdownProps, "children"> {
   source: MDXRemoteProps["source"];
-  className?: string;
 }
 
 export const MDXContent = ({
   source,
   color = "dark",
   size = "normal",
+  family = "sans",
   className,
 }: Props) => {
   const components = {
@@ -75,13 +75,14 @@ export const MDXContent = ({
         {props.children!}
       </Heading>
     ),
+    a: Link,
     InfoBox,
   };
 
   return (
-    <div className={markdownVariants({ color, size, className })}>
+    <Markdown color={color} size={size} family={family} className={className}>
       {/* @ts-expect-error Server Component */}
       <MDXRemote source={source} components={components} />
-    </div>
+    </Markdown>
   );
 };

@@ -38,7 +38,8 @@ const RootLayout = ({ children }: Props) => {
           "bg-background-primary",
           "[&:has(.home-page)_.mobile-nav]:bg-background-secondary [&:has(.home-page)]:bg-background-secondary",
           "[&:has(.about-page)]:bg-background-red-candy [&:has(.about-page)_.mobile-nav]:bg-background-red-candy",
-          "[&:has(.lcd-page)_.mobile-nav]:bg-background-ocean-foam [&:has(.lcd-page)]:bg-background-ocean-foam"
+          "[&:has(.lcd-page)_.mobile-nav]:bg-background-ocean-foam [&:has(.lcd-page)]:bg-background-ocean-foam",
+          "[&:has(.contact-page)_.mobile-nav]:bg-background-pink-candy [&:has(.contact-page)]:bg-background-pink-candy"
         )}
       >
         <head>
