@@ -34,7 +34,7 @@ const queryCarousel = async () => {
             title: z.string(),
             summary: z
               .string()
-              .transform(async (value) => markdownToHtml(value))
+              .transform((value) => markdownToHtml(value))
               .nullable(),
             externalLink: z
               .object({
