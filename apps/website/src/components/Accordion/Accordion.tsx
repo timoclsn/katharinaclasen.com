@@ -8,7 +8,7 @@ import { Heading } from "../../design-system/Heading/Heading";
 import { backgroundColorsMap } from "../../lib/colors";
 import { illustrationsMap } from "../../lib/illustrations/illustrations";
 import { AccordeonItems } from "../../lib/queries";
-import { MDXContent } from "../MDXContent/MDXContent";
+import { Markdown } from "../Markdown/Markdown";
 import styles from "./Accordion.module.css";
 
 const itemVariants = cva(
@@ -71,12 +71,9 @@ export const Accordion = ({ defaultValue = 1, items }: Props) => {
               )}
             >
               <div className="flex h-full flex-col items-start overflow-auto">
-                <MDXContent
-                  MDXRemoteProps={description}
-                  size="large"
-                  color={color}
-                  className="mt-auto"
-                />
+                <Markdown size="large" color={color} className="mt-auto">
+                  {description}
+                </Markdown>
                 {button && (
                   <Button color={color} href={button.href} className="mt-4">
                     <ArrowRight />

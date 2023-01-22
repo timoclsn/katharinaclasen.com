@@ -1,9 +1,9 @@
-import { serialize } from "next-mdx-remote/serialize";
 import { groq } from "next-sanity";
 import { z } from "zod";
 import { Body } from "../../design-system/Body/Body";
 import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";
+import { markdownToHtml } from "../../lib/markdown";
 import { queryContent } from "../../lib/sanity";
 import { Section } from "../Section/Section";
 import { MyClientsCarousel } from "./MyClientsCarousel";
@@ -37,9 +37,7 @@ const queryCarousel = async () => {
             shortName: z.string(),
             name: z.string().nullable(),
             logo: z.string(),
-            description: z
-              .string()
-              .transform(async (value) => await serialize(value)),
+            description: z.string().transform((value) => markdownToHtml(value)),
             website: z.string().nullable(),
             caseStudy: z.string().nullable(),
             quote: z

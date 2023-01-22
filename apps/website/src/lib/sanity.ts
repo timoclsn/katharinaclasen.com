@@ -13,5 +13,5 @@ export const queryContent = async <Schema extends z.ZodTypeAny>(
   schema: Schema
 ): Promise<z.infer<Schema>> => {
   const result = await sanityClient.fetch(query);
-  return await schema.parseAsync(result);
+  return await schema.parse(result);
 };

@@ -1,5 +1,4 @@
 import { CalendarDays, Contact } from "lucide-react";
-import { serialize } from "next-mdx-remote/serialize";
 import { groq } from "next-sanity";
 import { z } from "zod";
 import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
@@ -90,7 +89,6 @@ const ProjectPage = async ({ params }: Props) => {
     )
   );
   const project = result[0];
-  const mdxContent = await serialize(project.content);
 
   return (
     <article className="py-28">
@@ -133,7 +131,7 @@ const ProjectPage = async ({ params }: Props) => {
           externalLink={project.externalLink || undefined}
         />
         <MDXContent
-          MDXRemoteProps={mdxContent}
+          source={project.content}
           color="dark"
           className="mx-auto mt-32 max-w-none"
         />

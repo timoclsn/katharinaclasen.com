@@ -3,7 +3,7 @@
 import { Files, Link2 } from "lucide-react";
 import Image from "next/image";
 import { Carousel } from "../../../components/Carousel/Carousel";
-import { MDXContent } from "../../../components/MDXContent/MDXContent";
+import { Markdown } from "../../../components/Markdown/Markdown";
 import { Button } from "../../../design-system/Button/Button";
 import { Heading } from "../../../design-system/Heading/Heading";
 import { Tag } from "../../../design-system/Tag/Tag";
@@ -34,7 +34,7 @@ export const MyLCDProjectsCarousel = ({ projects }: Props) => {
               {project.title}
             </Heading>
             {project.summary && (
-              <MDXContent MDXRemoteProps={project.summary} size="large" />
+              <Markdown size="large">{project.summary}</Markdown>
             )}
             <div className="mt-16 flex flex-col gap-6 sm:flex-row">
               {project.slug && (

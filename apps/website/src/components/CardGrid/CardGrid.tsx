@@ -85,7 +85,7 @@ export const CardGrid = ({ items }: Props) => {
                       </Heading>
                     )}
                     {description && (
-                      <MDXContent MDXRemoteProps={description} color={color} />
+                      <MDXContent source={description} color={color} />
                     )}
                   </div>
                   {button && (
@@ -115,10 +115,7 @@ export const CardGrid = ({ items }: Props) => {
                         </Heading>
                       )}
                       {description2 && (
-                        <MDXContent
-                          MDXRemoteProps={description2}
-                          color={color}
-                        />
+                        <MDXContent source={description2} color={color} />
                       )}
                     </div>
                     {button2 && (

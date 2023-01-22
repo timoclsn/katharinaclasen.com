@@ -1,11 +1,10 @@
-import { serialize } from "next-mdx-remote/serialize";
 import { groq } from "next-sanity";
 import { z } from "zod";
-import { Body } from "../../../design-system/Body/Body";
-import { Container } from "../../../design-system/Container/Container";
-import { Heading } from "../../../design-system/Heading/Heading";
-import { queryContent } from "../../../lib/sanity";
 import { Section } from "../../../components/Section/Section";
+import { Body } from "../../../design-system/Body/Body";
+import { Heading } from "../../../design-system/Heading/Heading";
+import { markdownToHtml } from "../../../lib/markdown";
+import { queryContent } from "../../../lib/sanity";
 import { MyLCDProjectsCarousel } from "./MyLCDProjectsCarousel";
 
 export type Projects = Awaited<ReturnType<typeof queryCarousel>>["items"];
@@ -35,7 +34,7 @@ const queryCarousel = async () => {
             title: z.string(),
             summary: z
               .string()
-              .transform(async (value) => await serialize(value))
+              .transform(async (value) => markdownToHtml(value))
               .nullable(),
             externalLink: z
               .object({

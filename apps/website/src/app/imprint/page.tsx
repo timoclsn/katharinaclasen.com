@@ -9,7 +9,7 @@ const ImprintPage = async () => {
 
   return (
     <Container inset className="py-40">
-      <MDXContent MDXRemoteProps={textSnippet.content} />
+      <MDXContent source={textSnippet.content} />
     </Container>
   );
 };

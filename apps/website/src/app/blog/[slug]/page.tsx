@@ -1,6 +1,5 @@
 import { format } from "date-fns";
 import { CalendarDays, Clock, User } from "lucide-react";
-import { serialize } from "next-mdx-remote/serialize";
 import { groq } from "next-sanity";
 import readingTime from "reading-time";
 import { z } from "zod";
@@ -81,7 +80,6 @@ const BlogPostPage = async ({ params }: Props) => {
     )
   );
   const blogPost = result[0];
-  const mdxContent = await serialize(blogPost.content);
   const stats = readingTime(blogPost.content);
 
   return (
@@ -126,7 +124,7 @@ const BlogPostPage = async ({ params }: Props) => {
           ]}
         />
         <MDXContent
-          MDXRemoteProps={mdxContent}
+          source={blogPost.content}
           color="dark"
           className="mx-auto mt-32 max-w-none"
         />

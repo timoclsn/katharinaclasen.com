@@ -36,7 +36,7 @@ export const AboutMyServicesCard = ({
           <div className="flex flex-col gap-6">
             <Heading level="3">{title}</Heading>
             {description && (
-              <MDXContent MDXRemoteProps={description} className="max-w-none" />
+              <MDXContent source={description} className="max-w-none" />
             )}
           </div>
         </div>

@@ -6,7 +6,7 @@ import { Button } from "../../design-system/Button/Button";
 import { Heading } from "../../design-system/Heading/Heading";
 import { Tag } from "../../design-system/Tag/Tag";
 import { Carousel } from "../Carousel/Carousel";
-import { MDXContent } from "../MDXContent/MDXContent";
+import { Markdown } from "../Markdown/Markdown";
 import { Quote } from "../Quote/Quote";
 import { Clients } from "./MyClients";
 
@@ -49,7 +49,7 @@ export const MyClientsCarousel = ({ clients }: Props) => {
             <Heading level="3" className="mb-6">
               {client.name || client.shortName}
             </Heading>
-            <MDXContent MDXRemoteProps={client.description} size="large" />
+            <Markdown size="large">{client.description}</Markdown>
             {(client.caseStudy || client.website) && (
               <div className="mt-16 flex flex-col gap-6 sm:flex-row">
                 {client.caseStudy && (

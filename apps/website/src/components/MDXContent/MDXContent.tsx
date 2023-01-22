@@ -1,13 +1,11 @@
-"use client";
-
 import { cva, VariantProps } from "class-variance-authority";
-import { MDXRemote, MDXRemoteProps } from "next-mdx-remote";
+import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import { HTMLProps } from "react";
 import { Heading } from "../../design-system/Heading/Heading";
 import { InfoBox } from "../InfoBox/InfoBox";
 
-const MDXContentVariants = cva("font-sans prose", {
+export const MDXContentVariants = cva("font-sans prose", {
   variants: {
     color: {
       light: "text-contrast-secondary-light",
@@ -19,17 +17,13 @@ const MDXContentVariants = cva("font-sans prose", {
     },
   },
 });
+
 interface Props extends VariantProps<typeof MDXContentVariants> {
-  MDXRemoteProps: MDXRemoteProps;
+  source: MDXRemoteProps["source"];
   className?: string;
 }
 
-export const MDXContent = ({
-  MDXRemoteProps,
-  color,
-  size,
-  className,
-}: Props) => {
+export const MDXContent = ({ source, color, size, className }: Props) => {
   const components = {
     p: (props: HTMLProps<HTMLParagraphElement>) => {
       // If child is image and has title, strip p tag and wrap with figure tag
@@ -93,7 +87,8 @@ export const MDXContent = ({
 
   return (
     <div className={MDXContentVariants({ color, size, className })}>
-      <MDXRemote {...MDXRemoteProps} components={components} />
+      {/* @ts-expect-error Server Component */}
+      <MDXRemote source={source} components={components} />
     </div>
   );
 };
