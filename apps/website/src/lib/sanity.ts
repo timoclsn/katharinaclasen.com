@@ -1,4 +1,5 @@
 import { createClient } from "next-sanity";
+import "server-only";
 import { z } from "zod";
 
 const sanityClient = createClient({

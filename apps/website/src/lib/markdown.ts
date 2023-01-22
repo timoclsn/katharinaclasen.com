@@ -1,4 +1,5 @@
-import showdown from 'showdown'
+import "server-only";
+import showdown from 'showdown';
 
 const converter = new showdown.Converter({
   noHeaderId: true

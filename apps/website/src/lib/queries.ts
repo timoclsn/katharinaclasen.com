@@ -1,4 +1,5 @@
 import { groq } from "next-sanity";
+import "server-only";
 import { z } from "zod";
 import { backgroundColorsList, colorsList } from "./colors";
 import { illustrationsList } from "./illustrations/illustrations";
