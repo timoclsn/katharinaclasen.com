@@ -5,7 +5,8 @@ import { backgroundColorsMap } from "../../lib/colors";
 const cardVariants = cva("rounded-5xl relative", {
   variants: {
     inset: {
-      true: "px-8 py-10",
+      normal: "px-8 py-10",
+      large: "p-16",
     },
     color: {
       ...backgroundColorsMap,

@@ -20,7 +20,7 @@ export const AboutMyServices = async () => {
   const uiDesign = await getService(uiDesignId);
   const uiDesignTopics = await getServiceTopics(uiDesignId);
   return (
-    <Section id="about-my-services" color="primary">
+    <Section id="about-my-services" color="secondary">
       <div className="flex flex-col gap-12 lg:flex-row">
         <div className="flex-1 pb-24">
           <Heading className="mb-8">About my services</Heading>
@@ -66,6 +66,7 @@ export const AboutMyServices = async () => {
           color="lilac"
           service={uxResearch}
           topics={uxResearchTopics}
+          quoteColor="lilcaExtreme"
         />
         <AboutMyServicesCard
           id="ux-design"

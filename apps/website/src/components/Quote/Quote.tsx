@@ -6,6 +6,7 @@ const quoteVariants = cva("border-l-4 pl-3", {
     color: {
       salmon: "border-background-salmon",
       sun: "border-background-sun",
+      lilcaExtreme: "border-background-lilac-extreme",
     },
   },
 });

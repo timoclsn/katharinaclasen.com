@@ -23,7 +23,12 @@ export const AboutMyServicesCard = ({
 }: Props) => {
   const { title, description, quote, image } = service;
   return (
-    <Card id={id} color={color} inset className="relative overflow-hidden">
+    <Card
+      id={id}
+      color={color}
+      inset="large"
+      className="relative overflow-hidden"
+    >
       {image && (
         <Image
           src={image.url}

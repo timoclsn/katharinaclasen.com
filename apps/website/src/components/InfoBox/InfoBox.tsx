@@ -9,7 +9,11 @@ interface Props {
 
 export const InfoBox = ({ children }: Props) => {
   return (
-    <Card color="blueExtreme" inset className="text-contrast-primary-light">
+    <Card
+      color="blueExtreme"
+      inset="normal"
+      className="text-contrast-primary-light"
+    >
       <Info />
       <Body size="large" color="light">
         {children}
