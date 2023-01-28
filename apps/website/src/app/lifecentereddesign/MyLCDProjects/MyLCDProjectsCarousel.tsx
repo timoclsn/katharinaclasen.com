@@ -29,13 +29,13 @@ export const MyLCDProjectsCarousel = ({ projects }: Props) => {
       )}
     >
       {({ item: project }) => (
-        <>
-          <div className="flex-1 overflow-y-auto">
+        <div className="flex h-full w-full flex-col gap-12 overflow-y-auto lg:flex-row">
+          <div className="flex-1">
             <Heading level="3" className="mb-6">
               {project.title}
             </Heading>
             {project.summary && (
-              <Markdown size="large">{project.summary}</Markdown>
+              <Markdown size="normal">{project.summary}</Markdown>
             )}
             <div className="mt-16 flex flex-col gap-6 sm:flex-row">
               {project.slug && (
@@ -56,7 +56,7 @@ export const MyLCDProjectsCarousel = ({ projects }: Props) => {
               )}
             </div>
           </div>
-          <div className="flex flex-1 flex-col items-start justify-center overflow-y-auto">
+          <div className="hidden flex-1 flex-col items-start justify-center lg:flex">
             <Image
               src={project.image.url}
               alt={project.image.alt}
@@ -65,7 +65,7 @@ export const MyLCDProjectsCarousel = ({ projects }: Props) => {
               className="h-auto w-full"
             />
           </div>
-        </>
+        </div>
       )}
     </Carousel>
   );
