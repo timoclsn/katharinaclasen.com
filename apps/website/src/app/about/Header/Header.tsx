@@ -17,7 +17,7 @@ export const Header = () => {
       >
         <Heading level="1" className="max-w-4xl !leading-[1.1]">
           Let&apos;s use digital for good and create{" "}
-          <Tag size="xxl" align="baseline">
+          <Tag size="xxl" align="bottom">
             truly positive
           </Tag>{" "}
           experiences!

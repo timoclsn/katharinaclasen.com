@@ -22,9 +22,16 @@ export const Header = () => {
           />
         </div>
         <div className="flex w-full flex-col justify-between gap-10 bg-background-stone px-16 py-10 lg:w-2/3 lg:rounded-l-6xl">
-          <Heading level="1" className="max-w-4xl">
-            I am the <Tag size="xxl">flexible</Tag> UX-Design{" "}
-            <Tag size="xxl">extension</Tag> to your digital team
+          <Heading level="1" className="max-w-4xl !leading-[1.1]">
+            I am the{" "}
+            <Tag size="xxl" align="bottom">
+              flexible
+            </Tag>{" "}
+            UX-Design{" "}
+            <Tag size="xxl" align="bottom">
+              extension
+            </Tag>{" "}
+            to your digital team
           </Heading>
           <div>
             <Body as="p" priority="secondary" className="mb-8 max-w-md">
