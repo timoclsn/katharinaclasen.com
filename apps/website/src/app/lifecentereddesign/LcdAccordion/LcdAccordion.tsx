@@ -5,7 +5,7 @@ import { Heading } from "../../../design-system/Heading/Heading";
 import { getAccordionItems } from "../../../lib/queries";
 
 export const LcdAccordion = async () => {
-  const items = await getAccordionItems("922d0552-0090-40fb-bf92-3710cf3e9c17");
+  const items = await getAccordionItems("af776ab1-1d56-4434-ae50-fbda4b706422");
   return (
     <Section id="how-lcd-changes-how-we-design" color="primary">
       <Heading as="h2" level="1" className="mb-6">

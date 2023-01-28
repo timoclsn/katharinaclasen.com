@@ -8,7 +8,7 @@
 
 @layer utilities {
   .writing-vertical {
-    writing-mode: vertical-lr;
+    writing-mode: vertical-rl;
     rotate: 180deg;
   }
 }

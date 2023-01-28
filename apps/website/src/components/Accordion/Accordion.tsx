@@ -71,7 +71,7 @@ export const Accordion = ({
                 width={75}
                 height={75}
               />
-              <Heading color={color} className="lg:writing-vertical">
+              <Heading color={color} className="lg:writing-vertical text-start">
                 {title}
               </Heading>
             </AccordionPrimitive.Trigger>
