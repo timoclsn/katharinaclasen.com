@@ -3,6 +3,7 @@ import { Instagram, Linkedin } from "lucide-react";
 export const data = [
   {
     title: "About",
+    link: "/about",
     links: [
       {
         title: "About me",
@@ -16,84 +17,83 @@ export const data = [
       },
       {
         title: "My clients",
-        link: "",
+        link: "/about#my-clients",
         icon: null,
       },
       {
         title: "My philosophy",
-        link: "",
+        link: "/about#my-philosophy",
         icon: null,
       },
     ],
   },
   {
     title: "Services",
+    link: "/services",
     links: [
       {
         title: "Differentiators",
-        link: "",
+        link: "/services#differentiators",
         icon: null,
       },
       {
         title: "My services",
-        link: "",
+        link: "/services#my-services",
         icon: null,
       },
       {
         title: "How I work",
-        link: "",
+        link: "/services#how-i-work",
         icon: null,
       },
     ],
   },
   {
     title: "Projects",
+    link: "/projects",
     links: [
       {
         title: "All Case Studies",
-        link: "",
+        link: "/projects",
         icon: null,
       },
     ],
   },
   {
     title: "Life-centered Design",
+    link: "/lifecentereddesign",
     links: [
       {
         title: "What is Life-centered Design?",
-        link: "",
+        link: "/lifecentereddesign#what-is-lcd",
         icon: null,
       },
       {
         title: "My Life-centered projects",
-        link: "",
+        link: "/lifecentereddesign#my-lcd-projects",
         icon: null,
       },
       {
         title: "My Life-centered Design principles",
-        link: "",
+        link: "/lifecentereddesign#my-lcd-principles",
         icon: null,
       },
       {
         title: "My Life-centered Design journey",
-        link: "",
+        link: "/lifecentereddesign#my-lcd-journey",
         icon: null,
       },
       {
         title: "How Life-centered Design changes the way we design",
-        link: "",
+        link: "/lifecentereddesign#how-lcd-changes-how-we-design",
         icon: null,
       },
     ],
   },
   {
-    title: "Kontakt",
+    title: "Contact",
+    link: "/contact",
     links: [
-      {
-        title: "Kontakt",
-        link: "",
-        icon: null,
-      },
       {
         title: "Instagram",
         link: "",
@@ -107,15 +107,15 @@ export const data = [
     ],
   },
   {
-    title: "Rechtliches",
+    title: "Legal",
     links: [
       {
-        title: "Impressum",
+        title: "Imprint",
         link: "/imprint",
         icon: null,
       },
       {
-        title: "Datenschutz",
+        title: "Privacy Policy",
         link: "/privacy-policy",
         icon: null,
       },
