@@ -20,6 +20,7 @@ export interface CardProps extends VariantProps<typeof cardVariants> {
   children: ReactNode;
   className?: string;
   customColor?: string;
+  id?: string;
 }
 
 export const Card = ({
@@ -29,9 +30,11 @@ export const Card = ({
   border,
   className,
   customColor,
+  id,
 }: CardProps) => {
   return (
     <div
+      id={id}
       className={cardVariants({
         inset,
         color: !customColor ? color : undefined,

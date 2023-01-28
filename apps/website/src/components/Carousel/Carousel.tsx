@@ -91,7 +91,7 @@ export const Carousel = <Item extends {}>({
         <div className="relative flex-1 overflow-x-hidden">
           <AnimatePresence initial={false} custom={direction()}>
             <m.div
-              className="absolute flex h-full w-full flex-col gap-12 bg-background-primary py-16 lg:flex-row"
+              className="absolute h-full w-full bg-background-primary py-16"
               key={Math.random()}
               variants={variants}
               initial="enter"

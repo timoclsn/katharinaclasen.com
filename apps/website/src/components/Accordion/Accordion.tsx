@@ -71,7 +71,7 @@ export const Accordion = ({ defaultValue = 1, items }: Props) => {
               )}
             >
               <div className="flex h-full flex-col items-start overflow-auto">
-                <Markdown size="large" color={color} className="mt-auto">
+                <Markdown size="normal" color={color} className="mt-auto">
                   {description}
                 </Markdown>
                 {button && (

@@ -25,6 +25,10 @@ const tagVariants = cva(
         xl: "text-3xl gap-2 [&>svg]:w-[24px] [&>svg]:h-[24px] border-3",
         xxl: "text-5xl gap-2 [&>svg]:w-[32px] [&>svg]:h-[32px] border-4",
       },
+      align: {
+        baseline: "align-baseline",
+        bottom: "align-bottom",
+      },
     },
 
     compoundVariants: [
@@ -95,10 +99,11 @@ export const Tag = ({
   color = "dark",
   state,
   size = "normal",
+  align = "baseline",
   prepend,
 }: TagProps) => {
   return (
-    <span className={tagVariants({ outline, color, state, size })}>
+    <span className={tagVariants({ outline, color, state, size, align })}>
       {prepend !== undefined && (
         <div className={prependVariants({ size, color })}>
           {prepend}

@@ -60,6 +60,9 @@ module.exports = {
       aspectRatio: {
         "4/3": "4 / 3",
       },
+      fontWeight: {
+        semilight: "350",
+      },
     },
   },
   plugins: [

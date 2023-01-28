@@ -37,8 +37,8 @@ export const MyClientsCarousel = ({ clients }: Props) => {
       )}
     >
       {({ item: client }) => (
-        <>
-          <div className="flex-1 overflow-y-auto">
+        <div className="flex h-full w-full flex-col gap-12 overflow-y-auto lg:flex-row">
+          <div className="flex-1">
             <Image
               src={client.logo}
               alt={`Logo of company ${client.shortName}`}
@@ -50,7 +50,7 @@ export const MyClientsCarousel = ({ clients }: Props) => {
             <Heading level="3" className="mb-6">
               {client.name || client.shortName}
             </Heading>
-            <Markdown size="large">{client.description}</Markdown>
+            <Markdown size="normal">{client.description}</Markdown>
             {(client.caseStudy || client.website) && (
               <div className="mt-16 flex flex-col gap-6 sm:flex-row">
                 {client.caseStudy && (
@@ -68,14 +68,16 @@ export const MyClientsCarousel = ({ clients }: Props) => {
               </div>
             )}
           </div>
-          <div className="clients-start flex flex-1 flex-col justify-center">
-            <div className="overflow-y-auto">
-              {client.quote && (
-                <Quote text={client.quote.text} author={client.quote.author} />
-              )}
-            </div>
+          <div className="flex flex-1 flex-col items-start justify-center">
+            {client.quote && (
+              <Quote
+                size="normal"
+                text={client.quote.text}
+                author={client.quote.author}
+              />
+            )}
           </div>
-        </>
+        </div>
       )}
     </Carousel>
   );

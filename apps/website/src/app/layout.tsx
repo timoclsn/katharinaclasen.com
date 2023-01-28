@@ -1,4 +1,4 @@
-import { DM_Sans, Source_Serif_4 } from "@next/font/google";
+import { Source_Serif_4, Source_Sans_3 } from "@next/font/google";
 import { cx } from "class-variance-authority";
 import Script from "next/script";
 import { ReactNode } from "react";
@@ -13,8 +13,7 @@ const serifFont = Source_Serif_4({
   variable: "--serif-font",
 });
 
-const sansFont = DM_Sans({
-  weight: ["400", "500", "700"],
+const sansFont = Source_Sans_3({
   style: ["normal", "italic"],
   display: "optional",
   subsets: ["latin"],

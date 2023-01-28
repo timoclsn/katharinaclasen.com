@@ -19,6 +19,7 @@ const bodyVariants = cva("antialiased", {
       large: "text-2xl",
     },
     weight: {
+      light: "font-light",
       normal: "font-normal",
       medium: "font-medium",
       bold: "font-bold",
@@ -70,7 +71,7 @@ type BodyVariants = VariantProps<typeof bodyVariants>;
 
 interface ComponentProps {
   children: ReactNode;
-  as?: typeof validElements[number];
+  as?: (typeof validElements)[number];
   className?: string;
 }
 

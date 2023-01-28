@@ -11,6 +11,7 @@ interface Props {
   quoteColor?: QuoteProps["color"];
   service: Service;
   topics?: ServiceTopics;
+  id?: string;
 }
 
 export const AboutMyServicesCard = ({
@@ -18,10 +19,11 @@ export const AboutMyServicesCard = ({
   quoteColor,
   service,
   topics,
+  id,
 }: Props) => {
   const { title, description, quote, image } = service;
   return (
-    <Card color={color} inset className="relative overflow-hidden">
+    <Card id={id} color={color} inset className="relative overflow-hidden">
       {image && (
         <Image
           src={image.url}
@@ -44,6 +46,7 @@ export const AboutMyServicesCard = ({
           <div className="flex flex-col gap-10">
             {quote && (
               <Quote
+                size="normal"
                 text={quote.text}
                 author={quote.author}
                 color={quoteColor}

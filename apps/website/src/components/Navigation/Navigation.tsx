@@ -109,7 +109,7 @@ export const Navigation = () => {
           <Link
             href="/"
             onClick={closeMenu}
-            className="relative z-20 font-sans text-2xl font-medium text-contrast-primary-dark"
+            className="relative z-20 font-sans text-2xl font-medium text-contrast-primary-dark hover:opacity-80"
           >
             {title}
           </Link>

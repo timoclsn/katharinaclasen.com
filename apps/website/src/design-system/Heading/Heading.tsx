@@ -2,9 +2,9 @@ import { cva, VariantProps } from "class-variance-authority";
 import { forwardRef, ReactNode } from "react";
 
 const validElements = ["h1", "h2", "h3", "h4", "span"] as const;
-type ValidElements = typeof validElements[number];
+type ValidElements = (typeof validElements)[number];
 
-const headingVariants = cva("font-serif antialiased", {
+const headingVariants = cva("font-serif antialiased font-semilight", {
   variants: {
     color: {
       dark: "text-contrast-primary-dark",

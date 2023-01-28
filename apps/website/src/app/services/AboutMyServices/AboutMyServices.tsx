@@ -62,17 +62,20 @@ export const AboutMyServices = async () => {
       </div>
       <div className="flex flex-col gap-6">
         <AboutMyServicesCard
+          id="ux-research"
           color="lilac"
           service={uxResearch}
           topics={uxResearchTopics}
         />
         <AboutMyServicesCard
+          id="ux-design"
           color="lilac"
           service={uxDesign}
           topics={uxDesignTopics}
           quoteColor="sun"
         />
         <AboutMyServicesCard
+          id="ui-design"
           color="primary"
           service={uiDesign}
           topics={uiDesignTopics}
