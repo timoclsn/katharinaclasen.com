@@ -29,7 +29,7 @@ export const MDXContent = ({
               alt={child.props.alt}
               width={1000}
               height={1000}
-              className="h-auto w-full rounded-6xl"
+              className="h-auto w-full"
               sizes="100vw"
             />
             <figcaption className="text-right">{child.props.title}</figcaption>
@@ -45,7 +45,7 @@ export const MDXContent = ({
           alt={props.alt!}
           width={1000}
           height={1000}
-          className="h-auto w-full rounded-6xl"
+          className="h-auto w-full"
           sizes="100vw"
         />
       );
