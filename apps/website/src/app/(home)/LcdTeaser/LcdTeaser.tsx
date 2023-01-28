@@ -28,7 +28,7 @@ export const LcdTeaser = () => {
             topic by clicking on the button below. Reach out if you have
             questions or want to collaborate!
           </Body>
-          <Button color="light">
+          <Button color="light" href="/lifecentereddesign">
             <ArrowRight />
             More about Life-centered Design
           </Button>
