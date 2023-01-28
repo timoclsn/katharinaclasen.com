@@ -16,7 +16,7 @@ export const ContactMe = () => {
           <ul className="pl-0">
             <li className="list-none">
               💌 Send me an{" "}
-              <Link href="mailto:hello@katharinaclasen.com">Email</Link>{" "}
+              <Link href="mailto:hello@katharinaclasen.com">email</Link>{" "}
               (hello@katharinaclasen.com)
             </li>
             <li className="list-none">
