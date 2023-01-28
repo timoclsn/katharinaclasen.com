@@ -108,6 +108,7 @@ export const data = [
   },
   {
     title: "Legal",
+    link: "/imprint",
     links: [
       {
         title: "Imprint",
