@@ -2,13 +2,13 @@ import { cva, VariantProps } from "class-variance-authority";
 import { ReactNode } from "react";
 
 const markdownVariants = cva(
-  "prose font-normal prose-headings:font-semilight",
+  "prose font-normal prose-headings:font-semilight max-w-none prose-a:underline",
   {
     variants: {
       color: {
         light:
-          "text-contrast-secondary-light prose-headings:text-contrast-primary-light",
-        dark: "text-contrast-secondary-dark prose-headings:text-contrast-primary-dark",
+          "text-contrast-secondary-light prose-headings:text-contrast-primary-light prose-a:text-contrast-secondary-light",
+        dark: "text-contrast-secondary-dark prose-headings:text-contrast-primary-dark prose-a:text-contrast-secondary-dark",
       },
       size: {
         normal: "text-base leading-6",

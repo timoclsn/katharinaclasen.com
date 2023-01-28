@@ -11,13 +11,19 @@ import { AccordeonItems } from "../../lib/queries";
 import { Markdown } from "../Markdown/Markdown";
 import styles from "./Accordion.module.css";
 
+const size = {
+  normal: "lg:h-[600px]",
+  small: "lg:h-[400px]",
+} as const;
+
 const itemVariants = cva(
-  "rounded-4xl flex flex-col lg:flex-row lg:data-[state=open]:flex-1 lg:h-[600px]",
+  "rounded-4xl flex flex-col lg:flex-row lg:data-[state=open]:flex-1",
   {
     variants: {
       backgroundColor: {
         ...backgroundColorsMap,
       },
+      size,
     },
   }
 );
@@ -25,9 +31,14 @@ const itemVariants = cva(
 interface Props {
   defaultValue?: number;
   items: AccordeonItems;
+  size?: keyof typeof size;
 }
 
-export const Accordion = ({ defaultValue = 1, items }: Props) => {
+export const Accordion = ({
+  defaultValue = 1,
+  items,
+  size = "normal",
+}: Props) => {
   return (
     <AccordionPrimitive.Root
       type="single"
@@ -48,9 +59,9 @@ export const Accordion = ({ defaultValue = 1, items }: Props) => {
           <AccordionPrimitive.Item
             key={idx}
             value={(idx + 1).toString()}
-            className={itemVariants({ backgroundColor })}
+            className={itemVariants({ backgroundColor, size })}
           >
-            <AccordionPrimitive.Trigger className="flex flex-none items-center gap-5 px-10 py-8 sm:gap-10 lg:flex-col-reverse">
+            <AccordionPrimitive.Trigger className="flex flex-none items-center gap-5 p-10 sm:gap-10 lg:flex-col-reverse">
               <Illustration
                 className={`opacity-60 ${
                   color === "dark"
@@ -67,7 +78,7 @@ export const Accordion = ({ defaultValue = 1, items }: Props) => {
             <AccordionPrimitive.Content
               className={cx(
                 styles.AccordionContent,
-                "overflow-hidden py-8 pr-10 pl-10 lg:pl-0"
+                "overflow-hidden py-10 pr-10 pl-10 lg:pl-0"
               )}
             >
               <div className="flex h-full flex-col items-start overflow-auto">
@@ -75,7 +86,7 @@ export const Accordion = ({ defaultValue = 1, items }: Props) => {
                   {description}
                 </Markdown>
                 {button && (
-                  <Button color={color} href={button.href} className="mt-4">
+                  <Button color={color} href={button.href} className="mt-10">
                     <ArrowRight />
                     {button.label}
                   </Button>
