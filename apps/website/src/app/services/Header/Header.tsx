@@ -32,9 +32,9 @@ export const Header = () => {
               think holistically and create value in a greater sense in order to
               build sustainable businesses and become future-ready.
             </Body>
-            <Button>
+            <Button href="/services#about-my-services">
               <ArrowRight />
-              My philosophy
+              My services
             </Button>
           </div>
         </div>
