@@ -28,7 +28,7 @@ export const Header = () => {
             think holistically and create value in a greater sense in order to
             build sustainable businesses and become future-ready.
           </Body>
-          <Button href="#my-philosophy">
+          <Button href="/about#my-philosophy">
             <ArrowRight />
             My philosophy
           </Button>
