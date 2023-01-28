@@ -62,7 +62,7 @@ const ProjectsPage = async () => {
       <Container inset>
         <Heading>Have a look at my projects:</Heading>
         <section className="py-20">
-          <ul className="grid grid-cols-1 gap-14 md:grid-cols-2">
+          <ul className="grid grid-cols-1 gap-x-14 gap-y-28 md:grid-cols-2">
             {projects.map((project) => {
               return (
                 <li key={project._id}>
