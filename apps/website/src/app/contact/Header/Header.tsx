@@ -15,9 +15,11 @@ export const Header = () => {
         inset
         className="relative flex flex-1 flex-col justify-between gap-10 py-20"
       >
-        <Heading level="1" className="max-w-4xl">
-          With any questions or just to have a coffee – feel free to
-          <Tag size="xxl">Get in touch</Tag>
+        <Heading level="1" className="max-w-4xl !leading-[1.1]">
+          With any questions or just to have a coffee – feel free to{" "}
+          <Tag size="xxl" align="bottom">
+            Get in touch
+          </Tag>
         </Heading>
         <div>
           <Body as="p" priority="secondary" className="mb-8 max-w-md">
