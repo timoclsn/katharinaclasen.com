@@ -38,6 +38,18 @@ export const Hug: Icon = HugIllu;
 import UniverseIllu from "./universe.svg";
 export const Universe: Icon = UniverseIllu;
 
+import HcdIllu from "./hcd.svg";
+export const Hcd: Icon = HcdIllu;
+
+import LcdIllu from "./lcd.svg";
+export const Lcd: Icon = LcdIllu;
+
+import LongTermIllu from "./long-term.svg";
+export const LongTerm: Icon = LongTermIllu;
+
+import ShortTermIllu from "./short-term.svg";
+export const ShortTerm: Icon = ShortTermIllu;
+
 export const illustrationsMap = {
   bolt: Bolt,
   hand: Hand,
@@ -51,6 +63,10 @@ export const illustrationsMap = {
   clock: Clock,
   hug: Hug,
   universe: Universe,
+  hcd: Hcd,
+  lcd: Lcd,
+  longTerm: LongTerm,
+  shortTerm: ShortTerm,
 } as const;
 
 export const illustrationsList = [
@@ -66,6 +82,10 @@ export const illustrationsList = [
   "clock",
   "hug",
   "universe",
+  "hcd",
+  "lcd",
+  "longTerm",
+  "shortTerm",
 ] as const;
 
 export type Illustration = keyof typeof illustrationsMap;

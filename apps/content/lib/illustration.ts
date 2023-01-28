@@ -11,4 +11,8 @@ export const illustrations = [
   "clock",
   "hug",
   "universe",
+  "hcd",
+  "lcd",
+  "longTerm",
+  "shortTerm",
 ];
