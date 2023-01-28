@@ -15,9 +15,12 @@ export const Header = () => {
         inset
         className="relative flex flex-1 flex-col justify-between gap-10 py-20"
       >
-        <Heading level="1" className="max-w-4xl">
+        <Heading level="1" className="max-w-4xl !leading-[1.1]">
           Let&apos;s use digital for good and create{" "}
-          <Tag size="xxl">truly positive</Tag> experiences!
+          <Tag size="xxl" align="baseline">
+            truly positive
+          </Tag>{" "}
+          experiences!
         </Heading>
         <div>
           <Body as="p" priority="secondary" className="mb-8 max-w-md">
@@ -25,7 +28,7 @@ export const Header = () => {
             think holistically and create value in a greater sense in order to
             build sustainable businesses and become future-ready.
           </Body>
-          <Button>
+          <Button href="#my-philosophy">
             <ArrowRight />
             My philosophy
           </Button>
