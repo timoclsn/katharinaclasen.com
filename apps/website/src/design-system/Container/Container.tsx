@@ -8,7 +8,7 @@ const containerVariants = cva("mx-auto w-full", {
       small: "max-w-screen-lg",
     },
     inset: {
-      true: "px-6 sm:px-8",
+      true: "px-4 sm:px-8",
     },
   },
 });

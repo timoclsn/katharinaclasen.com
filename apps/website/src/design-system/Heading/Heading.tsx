@@ -14,7 +14,7 @@ const headingVariants = cva("font-serif antialiased font-semilight", {
       "1": "text-5xl sm:text-7xl",
       "2": "text-3xl sm:text-5xl",
       "3": "text-2xl sm:text-3xl",
-      "4": "text-xl sm:text-2xl",
+      "4": "text-lg sm:text-2xl",
       "5": "text-base",
     },
   },

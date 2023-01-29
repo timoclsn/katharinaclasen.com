@@ -14,11 +14,11 @@ import serviceUxResearchImg from "./assets/service-ux-research.png";
 
 export const Header = () => {
   return (
-    <section className="py-28">
+    <section className="py-20 sm:py-28">
       <Container inset>
-        <div className="flex flex-col gap-14 md:flex-row">
-          <div className="flex w-full flex-col items-start gap-10 md:w-2/3">
-            <Heading level="1" className="!leading-[1.1]">
+        <div className="flex flex-col gap-14 lg:flex-row">
+          <div className="flex w-full flex-col items-start gap-10 lg:w-2/3">
+            <Heading level="1" className="!leading-[1.2]">
               <Tag size="xxl" align="bottom">
                 UX Design
               </Tag>{" "}
@@ -47,29 +47,31 @@ export const Header = () => {
             <div className="flex w-full flex-col gap-6">
               <div className="flex justify-between gap-2">
                 <Link href="/services#ux-research" className="hover:opacity-80">
-                  <div className="relative overflow-hidden rounded-4xl">
+                  <div className="relative overflow-hidden rounded-3xl sm:rounded-4xl">
                     <Image
                       src={serviceUxResearchImg}
                       alt="Pattern of Icons"
                       priority
                       placeholder="blur"
+                      className="h-auto w-full"
                     />
                     <Heading
                       as="h2"
                       level="4"
-                      className="absolute bottom-2 w-full text-center"
+                      className="absolute bottom-2 w-full px-2 text-center"
                     >
                       UX Research
                     </Heading>
                   </div>
                 </Link>
                 <Link href="/services#ux-design" className="hover:opacity-80">
-                  <div className="relative overflow-hidden rounded-4xl border-2 border-outline-light-dark">
+                  <div className="relative overflow-hidden rounded-3xl sm:rounded-4xl">
                     <Image
-                      src={serviceUxDesignImg}
-                      alt="Mobile app wireframes"
+                      src={serviceUiDesign}
+                      alt="Hand holding a mockup iPhone"
                       priority
                       placeholder="blur"
+                      className="h-auto w-full"
                     />
                     <Heading
                       as="h2"
@@ -81,12 +83,13 @@ export const Header = () => {
                   </div>
                 </Link>
                 <Link href="/services#ui-design" className="hover:opacity-80">
-                  <div className="relative overflow-hidden rounded-4xl">
+                  <div className="relative overflow-hidden rounded-3xl border-2 border-outline-light-dark sm:rounded-4xl">
                     <Image
-                      src={serviceUiDesign}
-                      alt="Hand holding a mockup iPhone"
+                      src={serviceUxDesignImg}
+                      alt="Mobile app wireframes"
                       priority
                       placeholder="blur"
+                      className="h-auto w-full"
                     />
                     <Heading
                       as="h2"
@@ -112,9 +115,12 @@ export const Header = () => {
               alt="Hand holding a iPhone with a app design"
               priority
               placeholder="blur"
-              className="h-full w-full rounded-6xl object-cover"
+              className="aspect-4/3 h-full w-full rounded-3xl object-cover sm:rounded-6xl lg:aspect-auto"
             />
-            <Button href="/projects" className="absolute top-8 right-8">
+            <Button
+              href="/projects"
+              className="absolute bottom-4 right-4 sm:top-8 sm:right-8 sm:bottom-auto"
+            >
               <ArrowRight />
               Find more projects
             </Button>

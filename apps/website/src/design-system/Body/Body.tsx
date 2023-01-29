@@ -16,7 +16,7 @@ const bodyVariants = cva("antialiased", {
     },
     size: {
       normal: "text-base",
-      large: "text-2xl",
+      large: "text-xl sm:text-2xl",
     },
     weight: {
       light: "font-light",

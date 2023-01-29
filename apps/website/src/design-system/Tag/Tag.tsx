@@ -21,9 +21,10 @@ const tagVariants = cva(
       },
       size: {
         normal: "text-base gap-2 [&>svg]:w-[16px] [&>svg]:h-[16px] border-2",
-        large: "text-2xl gap-2 [&>svg]:w-[20px] [&>svg]:h-[20px] border-3",
-        xl: "text-3xl gap-2 [&>svg]:w-[24px] [&>svg]:h-[24px] border-3",
-        xxl: "text-5xl gap-2 [&>svg]:w-[32px] [&>svg]:h-[32px] border-4",
+        large:
+          "text-lg sm:text-2xl gap-2 [&>svg]:w-[20px] [&>svg]:h-[20px] border-3",
+        xl: "text-xl sm:text-3xl gap-2 [&>svg]:w-[24px] [&>svg]:h-[24px] border-3",
+        xxl: "text-3xl sm:text-5xl gap-2 [&>svg]:w-[32px] [&>svg]:h-[32px] border-4",
       },
       align: {
         baseline: "align-baseline",
@@ -60,7 +61,7 @@ const tagVariants = cva(
       {
         outline: ["solid", "dash"],
         size: ["large", "xl", "xxl"],
-        className: "px-6 py-2",
+        className: "px-4 py-1 sm:px-6 sm:py-2",
       },
     ],
   }
