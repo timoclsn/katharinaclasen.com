@@ -1,8 +1,8 @@
 import { cva, VariantProps } from "class-variance-authority";
-import { ReactNode } from "react";
+import { forwardRef, ReactNode } from "react";
 import { backgroundColorsMap } from "../../lib/colors";
 
-const cardVariants = cva("rounded-5xl relative", {
+const cardVariants = cva("rounded-3xl sm:rounded-5xl relative", {
   variants: {
     inset: {
       normal: "px-8 py-10",
@@ -24,29 +24,29 @@ export interface CardProps extends VariantProps<typeof cardVariants> {
   id?: string;
 }
 
-export const Card = ({
-  children,
-  inset,
-  color = "dark",
-  border,
-  className,
-  customColor,
-  id,
-}: CardProps) => {
-  return (
-    <div
-      id={id}
-      className={cardVariants({
-        inset,
-        color: !customColor ? color : undefined,
-        border,
-        className,
-      })}
-      style={{
-        backgroundColor: customColor,
-      }}
-    >
-      {children}
-    </div>
-  );
-};
+export const Card = forwardRef<HTMLDivElement, CardProps>(
+  (
+    { children, inset, color = "dark", border, className, customColor, id },
+    ref
+  ) => {
+    return (
+      <div
+        ref={ref}
+        id={id}
+        className={cardVariants({
+          inset,
+          color: !customColor ? color : undefined,
+          border,
+          className,
+        })}
+        style={{
+          backgroundColor: customColor,
+        }}
+      >
+        {children}
+      </div>
+    );
+  }
+);
+
+Card.displayName = "Card";

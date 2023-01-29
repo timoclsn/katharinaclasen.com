@@ -8,9 +8,7 @@ export const HomeAccordion = async () => {
 
   return (
     <Section color="primary">
-      <Container inset>
-        <Accordion items={items} size="normal" />
-      </Container>
+      <Accordion items={items} />
     </Section>
   );
 };

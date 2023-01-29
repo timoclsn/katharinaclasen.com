@@ -12,7 +12,7 @@ import { Markdown } from "../Markdown/Markdown";
 import styles from "./Accordion.module.css";
 
 const itemVariants = cva(
-  "rounded-4xl flex flex-col lg:flex-row lg:data-[state=open]:flex-1 lg:h-[600px]",
+  "rounded-3xl sm:rounded-4xl flex flex-col lg:flex-row lg:data-[state=open]:flex-1 lg:h-[600px]",
   {
     variants: {
       backgroundColor: {
@@ -50,7 +50,7 @@ export const Accordion = ({ defaultValue = 1, items }: Props) => {
             value={(idx + 1).toString()}
             className={itemVariants({ backgroundColor })}
           >
-            <AccordionPrimitive.Trigger className="flex flex-none items-center gap-5 p-10 sm:gap-10 lg:flex-col-reverse">
+            <AccordionPrimitive.Trigger className="flex flex-none items-center gap-5 p-6 sm:gap-10 sm:p-10 lg:flex-col-reverse">
               <Illustration
                 className={`opacity-60 ${
                   color === "dark"
@@ -67,7 +67,7 @@ export const Accordion = ({ defaultValue = 1, items }: Props) => {
             <AccordionPrimitive.Content
               className={cx(
                 styles.AccordionContent,
-                "overflow-hidden py-10 pr-10 pl-10 lg:pl-0"
+                "overflow-hidden p-6 sm:p-10 lg:pl-0"
               )}
             >
               <div className="flex h-full flex-col items-start overflow-auto">

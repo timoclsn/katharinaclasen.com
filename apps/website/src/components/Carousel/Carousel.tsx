@@ -2,7 +2,7 @@
 
 import { AnimatePresence, m, Variants } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { ReactNode, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 import { Card } from "../../design-system/Card/Card";
 import { usePrevious } from "../../hooks/usePrevious";
 
@@ -35,6 +35,7 @@ export const Carousel = <Item extends {}>({
   tag,
   children,
 }: Props<Item>) => {
+  const cardRef = useRef<HTMLDivElement>(null);
   const [selectedItemIndex, setSelectedIndex] = useState(0);
   const prevSelectedItemIndex = usePrevious(selectedItemIndex);
 
@@ -54,19 +55,28 @@ export const Carousel = <Item extends {}>({
 
   const nextItem = () => {
     if (isLastItem) {
-      setSelectedIndex(0);
+      selectItem(0);
     } else {
-      setSelectedIndex(selectedItemIndex + 1);
+      selectItem(selectedItemIndex + 1);
     }
   };
 
   const prevItem = () => {
     if (isFirstItem) {
-      setSelectedIndex(items.length - 1);
+      selectItem(items.length - 1);
     } else {
-      setSelectedIndex(selectedItemIndex - 1);
+      selectItem(selectedItemIndex - 1);
     }
   };
+
+  const selectItem = (index: number) => {
+    setSelectedIndex(index);
+    cardRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+    });
+  };
+
   return (
     <div>
       <ul className="mb-16 flex flex-wrap gap-2">
@@ -75,7 +85,7 @@ export const Carousel = <Item extends {}>({
           return (
             <li key={index}>
               <button
-                onClick={() => setSelectedIndex(index)}
+                onClick={() => selectItem(index)}
                 className="hover:opacity-80"
               >
                 {tag({ item, selected, index })}
@@ -84,7 +94,11 @@ export const Carousel = <Item extends {}>({
           );
         })}
       </ul>
-      <Card color="primary" className="flex h-[600px]">
+      <Card
+        ref={cardRef}
+        color="primary"
+        className="flex h-[800px] sm:h-[600px]"
+      >
         <button className="px-4 hover:opacity-80 lg:px-10" onClick={prevItem}>
           <ArrowLeft />
         </button>

@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { Container } from "../../design-system/Container/Container";
 import { backgroundColorsMap } from "../../lib/colors";
 
-const sectionVariants = cva("py-32", {
+const sectionVariants = cva("py-20 sm:py-32", {
   variants: {
     color: {
       ...backgroundColorsMap,
