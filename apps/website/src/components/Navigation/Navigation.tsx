@@ -104,8 +104,8 @@ export const Navigation = () => {
           Skip to content
         </a>
 
-        {/* Home Link */}
         <div className="flex items-center justify-between">
+          {/* Home Link */}
           <Link
             href="/"
             onClick={closeMenu}
@@ -154,7 +154,7 @@ export const Navigation = () => {
           <div
             data-open={isMenuOpen}
             className={cx(
-              "mobile-nav absolute top-0 left-full z-10 h-screen w-full bg-background-primary lg:hidden",
+              "mobile-nav fixed top-0 left-full z-10 h-screen w-full bg-background-primary lg:hidden",
               styles.mobileMenu
             )}
           >
