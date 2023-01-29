@@ -27,8 +27,8 @@ export const MyClientsCarousel = ({ clients }: Props) => {
             <Image
               src={client.logo}
               alt={`Logo of company ${client.shortName}`}
-              width={50}
-              height={50}
+              width={100}
+              height={16}
             />
           }
         >
@@ -42,9 +42,9 @@ export const MyClientsCarousel = ({ clients }: Props) => {
             <Image
               src={client.logo}
               alt={`Logo of company ${client.shortName}`}
-              width={50}
-              height={50}
               className="mb-10 h-[40px] w-auto"
+              height={40}
+              width={250}
             />
 
             <Heading level="3" className="mb-6">
