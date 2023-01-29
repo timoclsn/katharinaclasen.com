@@ -11,19 +11,13 @@ import { AccordeonItems } from "../../lib/queries";
 import { Markdown } from "../Markdown/Markdown";
 import styles from "./Accordion.module.css";
 
-const size = {
-  normal: "lg:h-[600px]",
-  small: "lg:h-[400px]",
-} as const;
-
 const itemVariants = cva(
-  "rounded-4xl flex flex-col lg:flex-row lg:data-[state=open]:flex-1",
+  "rounded-4xl flex flex-col lg:flex-row lg:data-[state=open]:flex-1 lg:h-[600px]",
   {
     variants: {
       backgroundColor: {
         ...backgroundColorsMap,
       },
-      size,
     },
   }
 );
@@ -31,14 +25,9 @@ const itemVariants = cva(
 interface Props {
   defaultValue?: number;
   items: AccordeonItems;
-  size?: keyof typeof size;
 }
 
-export const Accordion = ({
-  defaultValue = 1,
-  items,
-  size = "normal",
-}: Props) => {
+export const Accordion = ({ defaultValue = 1, items }: Props) => {
   return (
     <AccordionPrimitive.Root
       type="single"
@@ -59,7 +48,7 @@ export const Accordion = ({
           <AccordionPrimitive.Item
             key={idx}
             value={(idx + 1).toString()}
-            className={itemVariants({ backgroundColor, size })}
+            className={itemVariants({ backgroundColor })}
           >
             <AccordionPrimitive.Trigger className="flex flex-none items-center gap-5 p-10 sm:gap-10 lg:flex-col-reverse">
               <Illustration
