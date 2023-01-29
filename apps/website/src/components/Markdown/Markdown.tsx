@@ -12,7 +12,7 @@ const markdownVariants = cva(
       },
       size: {
         normal: "text-base leading-6",
-        large: "text-2xl leading-8",
+        large: "text-xl sm:text-2xl leading-8",
       },
       family: {
         sans: "font-sans prose-headings:font-serif",

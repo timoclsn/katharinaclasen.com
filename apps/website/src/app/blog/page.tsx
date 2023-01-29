@@ -55,62 +55,57 @@ const BlogPage = async () => {
     )
   );
   return (
-    <div className="py-28">
+    <div className="py-20 sm:py-32">
       <Container inset>
-        <section className="py-20">
-          <ul className="grid grid-cols-1 gap-14">
-            {blogPosts.map((blogPost) => {
-              const stats = readingTime(blogPost.content);
-              return (
-                <li key={blogPost._id}>
-                  <Link href={`/blog/${blogPost.slug}`}>
-                    <ArticlePreview
-                      title={blogPost.title}
-                      titleImage={blogPost.image}
-                      metaData={[
-                        {
-                          icon: User,
-                          text: blogPost.author,
-                        },
-                        {
-                          icon: Clock,
-                          text: `${Math.ceil(stats.minutes)} min`,
-                        },
-                        {
-                          icon: CalendarDays,
-                          text: format(
-                            new Date(blogPost.date),
-                            "LLLL dd, yyyy"
-                          ),
-                        },
-                      ]}
-                      tags={[
-                        ...(blogPost.services
-                          ? blogPost.services.map(
-                              (service) =>
-                                ({
-                                  outline: "solid",
-                                  text: service.title,
-                                } as const)
-                            )
-                          : []),
-                        ...(blogPost.topics
-                          ? blogPost.topics.map(
-                              (topic) =>
-                                ({
-                                  outline: "dash",
-                                  text: topic.title,
-                                } as const)
-                            )
-                          : []),
-                      ]}
-                    />
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
+        <ul className="grid grid-cols-1 gap-14">
+          {blogPosts.map((blogPost) => {
+            const stats = readingTime(blogPost.content);
+            return (
+              <li key={blogPost._id}>
+                <Link href={`/blog/${blogPost.slug}`}>
+                  <ArticlePreview
+                    title={blogPost.title}
+                    titleImage={blogPost.image}
+                    metaData={[
+                      {
+                        icon: User,
+                        text: blogPost.author,
+                      },
+                      {
+                        icon: Clock,
+                        text: `${Math.ceil(stats.minutes)} min`,
+                      },
+                      {
+                        icon: CalendarDays,
+                        text: format(new Date(blogPost.date), "LLLL dd, yyyy"),
+                      },
+                    ]}
+                    tags={[
+                      ...(blogPost.services
+                        ? blogPost.services.map(
+                            (service) =>
+                              ({
+                                outline: "solid",
+                                text: service.title,
+                              } as const)
+                          )
+                        : []),
+                      ...(blogPost.topics
+                        ? blogPost.topics.map(
+                            (topic) =>
+                              ({
+                                outline: "dash",
+                                text: topic.title,
+                              } as const)
+                          )
+                        : []),
+                    ]}
+                  />
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </Container>
     </div>
   );

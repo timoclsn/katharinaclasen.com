@@ -91,7 +91,7 @@ const ProjectPage = async ({ params }: Props) => {
   const project = result[0];
 
   return (
-    <article className="py-28">
+    <article className="py-20 sm:py-32">
       <Container size="small" inset>
         <ArticleHeader
           title={project.title}

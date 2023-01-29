@@ -58,57 +58,55 @@ const ProjectsPage = async () => {
   );
 
   return (
-    <div className="py-28">
+    <div className="py-20 sm:py-32">
       <Container inset>
-        <Heading>Have a look at my projects:</Heading>
-        <section className="py-20">
-          <ul className="grid grid-cols-1 gap-x-14 gap-y-28 md:grid-cols-2">
-            {projects.map((project) => {
-              return (
-                <li key={project._id}>
-                  <Link href={`/projects/${project.slug}`}>
-                    <ArticlePreview
-                      title={project.title}
-                      titleImage={project.image}
-                      metaData={[
-                        {
-                          icon: Contact,
-                          text: context(project.context, project.client || ""),
-                        },
-                        {
-                          icon: CalendarDays,
-                          text: project.period
-                            ? project.period
-                            : new Date(project.date).getFullYear().toString(),
-                        },
-                      ]}
-                      tags={[
-                        ...(project.services
-                          ? project.services.map(
-                              (service) =>
-                                ({
-                                  outline: "solid",
-                                  text: service.title,
-                                } as const)
-                            )
-                          : []),
-                        ...(project.topics
-                          ? project.topics.map(
-                              (topic) =>
-                                ({
-                                  outline: "dash",
-                                  text: topic.title,
-                                } as const)
-                            )
-                          : []),
-                      ]}
-                    />
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
+        <Heading className="mb-20">Have a look at my projects:</Heading>
+        <ul className="grid grid-cols-1 gap-x-14 gap-y-28 md:grid-cols-2">
+          {projects.map((project) => {
+            return (
+              <li key={project._id}>
+                <Link href={`/projects/${project.slug}`}>
+                  <ArticlePreview
+                    title={project.title}
+                    titleImage={project.image}
+                    metaData={[
+                      {
+                        icon: Contact,
+                        text: context(project.context, project.client || ""),
+                      },
+                      {
+                        icon: CalendarDays,
+                        text: project.period
+                          ? project.period
+                          : new Date(project.date).getFullYear().toString(),
+                      },
+                    ]}
+                    tags={[
+                      ...(project.services
+                        ? project.services.map(
+                            (service) =>
+                              ({
+                                outline: "solid",
+                                text: service.title,
+                              } as const)
+                          )
+                        : []),
+                      ...(project.topics
+                        ? project.topics.map(
+                            (topic) =>
+                              ({
+                                outline: "dash",
+                                text: topic.title,
+                              } as const)
+                          )
+                        : []),
+                    ]}
+                  />
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </Container>
     </div>
   );

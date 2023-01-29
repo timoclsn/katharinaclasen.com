@@ -7,7 +7,7 @@ import { AboutMyServices } from "./AboutMyServices/AboutMyServices";
 
 const ServicesPage = () => {
   return (
-    <>
+    <div className="services-page">
       <Header />
       {/* @ts-expect-error Server Component */}
       <Differentiators />
@@ -22,7 +22,7 @@ const ServicesPage = () => {
       <AboutMyServices />
       {/* @ts-expect-error Server Component */}
       <ServicesAccordion />
-    </>
+    </div>
   );
 };
 

@@ -11,7 +11,7 @@ export const LcdThinking = () => {
         color="secondary"
         className="flex flex-col overflow-hidden lg:flex-row"
       >
-        <div className="p-20">
+        <div className="p-6 sm:p-16">
           <Heading level="3" className="mb-8">
             Life-centered Design expands our thinking and doing along two axes
           </Heading>

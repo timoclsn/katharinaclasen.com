@@ -83,7 +83,7 @@ const BlogPostPage = async ({ params }: Props) => {
   const stats = readingTime(blogPost.content);
 
   return (
-    <article className="py-40">
+    <article className="py-20 sm:py-32">
       <Container size="small" inset>
         <ArticleHeader
           title={blogPost.title}

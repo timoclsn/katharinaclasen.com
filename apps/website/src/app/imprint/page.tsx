@@ -8,7 +8,7 @@ const ImprintPage = async () => {
   );
 
   return (
-    <Container inset className="py-40">
+    <Container inset size="small" className="py-40">
       <MDXContent source={textSnippet.content} />
     </Container>
   );

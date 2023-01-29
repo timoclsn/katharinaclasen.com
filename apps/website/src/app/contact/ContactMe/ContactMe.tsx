@@ -37,7 +37,7 @@ export const ContactMe = () => {
             </li>
           </ul>
         </Markdown>
-        <div className="flex items-center justify-start gap-8">
+        <div className="flex flex-col items-center justify-start gap-8 md:flex-row">
           <Button>
             <Phone />
             Book a call

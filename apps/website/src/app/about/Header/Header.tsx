@@ -10,12 +10,12 @@ import laptopImg from "./laptop.png";
 
 export const Header = () => {
   return (
-    <section className="flex h-[calc(100vh-80px)] flex-col">
+    <section className="flex min-h-[calc(100vh-80px)] flex-col">
       <Container
         inset
         className="relative flex flex-1 flex-col justify-between gap-10 py-20"
       >
-        <Heading level="1" className="max-w-4xl !leading-[1.1]">
+        <Heading level="1" className="max-w-4xl !leading-[1.2]">
           Let&apos;s use digital for good and create{" "}
           <Tag size="xxl" align="bottom">
             truly positive
@@ -36,7 +36,7 @@ export const Header = () => {
         <Image
           src={memojiImg}
           alt="Memoji of Katharina Clasen forming a heart with her hands."
-          className="absolute bottom-0 right-0 h-auto w-[150px] sm:w-auto"
+          className="absolute bottom-0 right-0 h-auto w-[150px] sm:w-[250px] lg:w-[350px]"
           sizes="30vw"
           priority
         />
