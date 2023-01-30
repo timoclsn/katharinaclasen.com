@@ -17,7 +17,7 @@ export const Header = () => {
     <section className="py-20 sm:py-32">
       <Container inset>
         <div className="flex flex-col gap-14 lg:flex-row">
-          <div className="flex w-full flex-col items-start gap-10 lg:w-2/3">
+          <div className="flex w-full flex-col items-start gap-10 lg:w-3/5">
             <Heading level="1" className="!leading-[1.2]">
               <Tag size="xxl" align="bottom">
                 UX Design
@@ -45,60 +45,63 @@ export const Header = () => {
               More about me
             </Button>
             <div className="flex w-full flex-col gap-6">
-              <div className="flex justify-between gap-2">
-                <Link href="/services#ux-research" className="hover:opacity-80">
-                  <div className="relative overflow-hidden rounded-3xl sm:rounded-4xl">
-                    <Image
-                      src={serviceUxResearchImg}
-                      alt="Pattern of Icons"
-                      priority
-                      placeholder="blur"
-                      className="h-auto w-full"
-                    />
-                    <Heading
-                      as="h2"
-                      level="4"
-                      className="absolute bottom-2 w-full px-2 text-center"
-                    >
-                      UX Research
-                    </Heading>
-                  </div>
+              <div className="flex gap-2">
+                <Link
+                  href="/services#ux-research"
+                  className="relative flex-1 overflow-hidden rounded-3xl hover:opacity-80 sm:rounded-4xl"
+                >
+                  <Image
+                    src={serviceUxResearchImg}
+                    alt="Pattern of Icons"
+                    priority
+                    placeholder="blur"
+                    className="h-auto w-full"
+                  />
+                  <Heading
+                    as="h2"
+                    level="4"
+                    className="absolute bottom-2 w-full px-2 text-center"
+                  >
+                    UX Research
+                  </Heading>
                 </Link>
-                <Link href="/services#ux-design" className="hover:opacity-80">
-                  <div className="relative overflow-hidden rounded-3xl sm:rounded-4xl">
-                    <Image
-                      src={serviceUiDesign}
-                      alt="Hand holding a mockup iPhone"
-                      priority
-                      placeholder="blur"
-                      className="h-auto w-full"
-                    />
-                    <Heading
-                      as="h2"
-                      level="4"
-                      className="absolute bottom-2 w-full text-center"
-                    >
-                      UX Design
-                    </Heading>
-                  </div>
+                <Link
+                  href="/services#ux-design"
+                  className="relative flex-1 overflow-hidden rounded-3xl hover:opacity-80 sm:rounded-4xl"
+                >
+                  <Image
+                    src={serviceUiDesign}
+                    alt="Hand holding a mockup iPhone"
+                    priority
+                    placeholder="blur"
+                    className="h-auto w-full"
+                  />
+                  <Heading
+                    as="h2"
+                    level="4"
+                    className="absolute bottom-2 w-full text-center"
+                  >
+                    UX Design
+                  </Heading>
                 </Link>
-                <Link href="/services#ui-design" className="hover:opacity-80">
-                  <div className="relative overflow-hidden rounded-3xl border-2 border-outline-light-dark sm:rounded-4xl">
-                    <Image
-                      src={serviceUxDesignImg}
-                      alt="Mobile app wireframes"
-                      priority
-                      placeholder="blur"
-                      className="h-auto w-full"
-                    />
-                    <Heading
-                      as="h2"
-                      level="4"
-                      className="absolute bottom-2 w-full text-center"
-                    >
-                      UI Design
-                    </Heading>
-                  </div>
+                <Link
+                  href="/services#ui-design"
+                  className="relative flex-1 overflow-hidden rounded-3xl border-2 border-outline-light-dark hover:opacity-80 sm:rounded-4xl"
+                >
+                  <Image
+                    src={serviceUxDesignImg}
+                    alt="Mobile app wireframes"
+                    priority
+                    placeholder="blur"
+                    className="h-auto w-full"
+                  />
+                  <Heading
+                    as="h2"
+                    level="4"
+                    className="absolute bottom-2 w-full text-center"
+                  >
+                    UI Design
+                  </Heading>
                 </Link>
               </div>
               <div className="self-end">
@@ -109,7 +112,7 @@ export const Header = () => {
               </div>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative lg:w-2/5">
             <Image
               src={projectsImg}
               alt="Hand holding a iPhone with a app design"
