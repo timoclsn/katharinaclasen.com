@@ -5,6 +5,12 @@ import { Button } from "../../../design-system/Button/Button";
 import { Container } from "../../../design-system/Container/Container";
 import { Heading } from "../../../design-system/Heading/Heading";
 import { Tag } from "../../../design-system/Tag/Tag";
+import {
+  CALENDLY_URL,
+  EMAIL,
+  INSTAGRAL_URL,
+  LINKEDIN_URL,
+} from "../../../lib/contact";
 import memojiImg from "./memoji.png";
 import smartphoneImg from "./smartphone.png";
 
@@ -28,19 +34,19 @@ export const Header = () => {
             touch via your prefered channel!
           </Body>
           <div className="flex flex-wrap items-center justify-start gap-6">
-            <Button>
+            <Button href={CALENDLY_URL} external>
               <Phone />
               Book a call
             </Button>
-            <Button style="outline">
+            <Button style="outline" href={`mailto:${EMAIL}`}>
               <Mail />
               Email me
             </Button>
-            <Button style="outline">
+            <Button style="outline" href={INSTAGRAL_URL}>
               <Instagram />
               Instagram
             </Button>
-            <Button style="outline">
+            <Button style="outline" href={LINKEDIN_URL}>
               <Linkedin />
               LinkedIn
             </Button>

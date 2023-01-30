@@ -1,4 +1,5 @@
-import { Instagram, Linkedin } from "lucide-react";
+import { Instagram, Linkedin, Phone } from "lucide-react";
+import { CALENDLY_URL, INSTAGRAL_URL, LINKEDIN_URL } from "../../lib/contact";
 
 export const data = [
   {
@@ -95,13 +96,18 @@ export const data = [
     link: "/contact",
     links: [
       {
+        title: "Book a call",
+        link: CALENDLY_URL,
+        icon: <Phone />,
+      },
+      {
         title: "Instagram",
-        link: "",
+        link: INSTAGRAL_URL,
         icon: <Instagram />,
       },
       {
         title: "LinkedIn",
-        link: "",
+        link: LINKEDIN_URL,
         icon: <Linkedin />,
       },
     ],
