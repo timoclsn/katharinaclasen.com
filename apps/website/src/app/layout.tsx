@@ -1,5 +1,6 @@
 import { Source_Sans_3, Source_Serif_4 } from "@next/font/google";
 import { cx } from "class-variance-authority";
+import { Metadata } from "next";
 import Script from "next/script";
 import { ReactNode } from "react";
 import { Footer } from "../components/Footer/Footer";
@@ -20,12 +21,47 @@ const sansFont = Source_Sans_3({
   variable: "--sans-font",
 });
 
-export const metadata = {
+const title = "Katharina Clasen";
+const description = "Website of Katharina Clasen";
+
+export const metadata: Metadata = {
   title: {
-    default: "Katharina Clasen",
+    default: title,
     template: "%s | Katharina Clasen",
   },
-  description: "Website of Katharina Clasen",
+  description,
+  icons: "/favicon.png",
+  openGraph: {
+    type: "website",
+    title: {
+      default: title,
+      template: "%s | Katharina Clasen",
+    },
+    url: "https://katharinaclasen.com",
+    siteName: "Katharina Clasen",
+    description,
+    images: {
+      url: "https://katharinaclasen.com/og-image.png",
+      alt: "Website of Katharina Clasen",
+      width: 1200,
+      height: 630,
+    },
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: {
+      default: title,
+      template: "%s | Katharina Clasen",
+    },
+    description,
+    site: "@KatharinaClasen",
+    creator: "@KatharinaClasen",
+  },
+  viewport: "width=device-width, initial-scale=1",
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 interface Props {
@@ -50,16 +86,6 @@ const RootLayout = ({ children }: Props) => {
           "[&:has(.contact-page)_.mobile-nav]:bg-background-pink-candy [&:has(.contact-page)]:bg-background-pink-candy"
         )}
       >
-        <head>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" type="image/png" href="/favicons/favicon.png" />
-          <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" />
-          <link
-            rel="apple-touch-icon"
-            href="/favicons/favicon-apple-touch.png"
-          />
-          <link rel="manifest" href="/favicons/manifest.webmanifest" />
-        </head>
         <body className="relative flex min-h-screen flex-col overflow-x-hidden">
           <Providers>
             <Navigation />

@@ -1,10 +1,11 @@
+import { Metadata } from "next";
 import { MyClients } from "../../components/MyClients/MyClients";
 import { AboutAccordion } from "./AboutAccordion/AboutAccordion";
 import { AboutMe } from "./AboutMe/AboutMe";
 import { Header } from "./Header/Header";
 import { MyPhilosophy } from "./MyPhilosophy/MyPhilosophy";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "About",
   description: "About Katharina Clasen",
 };

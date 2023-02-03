@@ -1,4 +1,5 @@
 import { CalendarDays, Contact } from "lucide-react";
+import { Metadata } from "next";
 import { groq } from "next-sanity";
 import { z } from "zod";
 import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
@@ -7,7 +8,7 @@ import { Container } from "../../../design-system/Container/Container";
 import { context, contexts } from "../../../lib/projects";
 import { queryContent } from "../../../lib/sanity";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Project",
   description: "Project from Katharina Clasen",
 };

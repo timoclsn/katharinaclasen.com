@@ -1,8 +1,9 @@
+import { Metadata } from "next";
 import { MDXContent } from "../../components/MDXContent/MDXContent";
 import { Container } from "../../design-system/Container/Container";
 import { getTextSnippet } from "../../lib/queries";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Privacy policy",
   description: "Privacy policy from Katharina Clasen",
 };

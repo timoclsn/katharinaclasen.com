@@ -5,8 +5,9 @@ import { LcdJourney } from "./LcdJourney/LcdJourney";
 import { LcdPrinciples } from "./LcdPrinciples/LcdPrinciples";
 import { LcdThinking } from "./LcdThinking/LcdThinking";
 import { WhatIsLcd } from "./WhatIsLcd/WhatIsLcd";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Life-centered Design",
   description: "Life-centered Design from Katharina Clasen",
 };

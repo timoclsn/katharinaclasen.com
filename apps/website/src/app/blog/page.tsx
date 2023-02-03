@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import { CalendarDays, Clock, User } from "lucide-react";
+import { Metadata } from "next";
 import { groq } from "next-sanity";
 import Link from "next/link";
 import readingTime from "reading-time";
@@ -8,7 +9,7 @@ import { ArticlePreview } from "../../components/ArticlePreview/ArticlePreview";
 import { Container } from "../../design-system/Container/Container";
 import { queryContent } from "../../lib/sanity";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Blog",
   description: "Blog Katharina Clasen",
 };

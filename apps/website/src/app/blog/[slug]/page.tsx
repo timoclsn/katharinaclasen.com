@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import { CalendarDays, Clock, User } from "lucide-react";
+import { Metadata } from "next";
 import { groq } from "next-sanity";
 import readingTime from "reading-time";
 import { z } from "zod";
@@ -8,7 +9,7 @@ import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Container } from "../../../design-system/Container/Container";
 import { queryContent } from "../../../lib/sanity";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Blogpost",
   description: "Blogpost from Katharina Clasen",
 };

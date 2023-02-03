@@ -4,8 +4,9 @@ import Image from "next/image";
 import wireframesImg from "./wireframes.png";
 import { ServicesAccordion } from "./ServicesAccordion/ServicesAccordion";
 import { AboutMyServices } from "./AboutMyServices/AboutMyServices";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Services",
   description: "Services from Katharina Clasen",
 };
