@@ -6,10 +6,16 @@ import { LcdPrinciples } from "./LcdPrinciples/LcdPrinciples";
 import { LcdThinking } from "./LcdThinking/LcdThinking";
 import { WhatIsLcd } from "./WhatIsLcd/WhatIsLcd";
 import { Metadata } from "next";
+import { getMetadata } from "../../lib/queries";
 
-export const metadata: Metadata = {
-  title: "Life-centered Design",
-  description: "Life-centered Design from Katharina Clasen",
+export const generateMetadata = async (): Promise<Metadata> => {
+  const { title, description } = await getMetadata(
+    "43e8e79b-aac5-4043-b968-1f34b07a74c7"
+  );
+  return {
+    title,
+    description,
+  };
 };
 
 const LcdPage = () => {

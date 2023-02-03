@@ -7,11 +7,17 @@ import readingTime from "reading-time";
 import { z } from "zod";
 import { ArticlePreview } from "../../components/ArticlePreview/ArticlePreview";
 import { Container } from "../../design-system/Container/Container";
+import { getMetadata } from "../../lib/queries";
 import { queryContent } from "../../lib/sanity";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description: "Blog Katharina Clasen",
+export const generateMetadata = async (): Promise<Metadata> => {
+  const { title, description } = await getMetadata(
+    "104cc2a8-c804-44a9-a8ff-2f195a85b8be"
+  );
+  return {
+    title,
+    description,
+  };
 };
 
 const BlogPage = async () => {

@@ -1,4 +1,5 @@
 import { CalendarDays, Contact } from "lucide-react";
+import { Metadata } from "next";
 import { groq } from "next-sanity";
 import Link from "next/link";
 import { z } from "zod";
@@ -6,11 +7,17 @@ import { ArticlePreview } from "../../components/ArticlePreview/ArticlePreview";
 import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";
 import { context, contexts } from "../../lib/projects";
+import { getMetadata } from "../../lib/queries";
 import { queryContent } from "../../lib/sanity";
 
-export const metadata = {
-  title: "Projects",
-  description: "Projects from Katharina Clasen",
+export const generateMetadata = async (): Promise<Metadata> => {
+  const { title, description } = await getMetadata(
+    "74d12002-8c85-433c-ab61-e5680554813c"
+  );
+  return {
+    title,
+    description,
+  };
 };
 
 const ProjectsPage = async () => {

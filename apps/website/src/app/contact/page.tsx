@@ -1,10 +1,16 @@
 import { Metadata } from "next";
+import { getMetadata } from "../../lib/queries";
 import { ContactMe } from "./ContactMe/ContactMe";
 import { Header } from "./Header/Header";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "Contact Katharina Clasen",
+export const generateMetadata = async (): Promise<Metadata> => {
+  const { title, description } = await getMetadata(
+    "a7ffcb58-2923-453d-9de0-e3891de1b685"
+  );
+  return {
+    title,
+    description,
+  };
 };
 
 const ContactPage = () => {

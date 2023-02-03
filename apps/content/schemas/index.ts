@@ -5,6 +5,7 @@ import { cardGrid } from "./cardGrid";
 import { cardGridItem } from "./cardGridItem";
 import { carousel } from "./carousel";
 import { client } from "./client";
+import { metadata } from "./metaData";
 import { project } from "./project";
 import { quote } from "./quote";
 import { service } from "./service";
@@ -23,5 +24,6 @@ export const schemaTypes = [
   cardGrid,
   quote,
   carousel,
-  textSnippet
+  textSnippet,
+  metadata,
 ];

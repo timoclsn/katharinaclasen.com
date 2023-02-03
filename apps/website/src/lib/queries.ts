@@ -6,7 +6,7 @@ import { illustrationsList } from "./illustrations/illustrations";
 import { markdownToHtml } from "./markdown";
 import { queryContent } from "./sanity";
 
-export type AccordeonItems = Awaited<ReturnType<typeof getAccordionItems>>
+export type AccordeonItems = Awaited<ReturnType<typeof getAccordionItems>>;
 
 export const getAccordionItems = async (id: string) => {
   const result = await queryContent(
@@ -46,7 +46,9 @@ export const getAccordionItems = async (id: string) => {
   return result[0].items;
 };
 
-export type CardGridItems = Awaited<ReturnType<typeof getCardGridItems>>['items'];
+export type CardGridItems = Awaited<
+  ReturnType<typeof getCardGridItems>
+>["items"];
 
 export const getCardGridItems = async (id: string) => {
   const result = await queryContent(
@@ -119,10 +121,12 @@ export const getCardGridItems = async (id: string) => {
               .nullable(),
           })
         ),
-        quotes: z.array(z.object({
-          text: z.string(),
-          author: z.string(),
-        }))
+        quotes: z.array(
+          z.object({
+            text: z.string(),
+            author: z.string(),
+          })
+        ),
       })
     )
   );
@@ -146,19 +150,19 @@ export const getService = async (id: string) => {
     z.array(
       z.object({
         title: z.string(),
-        description: z
-          .string()
-          .nullable(),
+        description: z.string().nullable(),
         quote: z
           .object({
             text: z.string(),
             author: z.string(),
           })
           .nullable(),
-        image: z.object({
-          url: z.string(),
-          alt: z.string(),
-        }).nullable(),
+        image: z
+          .object({
+            url: z.string(),
+            alt: z.string(),
+          })
+          .nullable(),
       })
     )
   );
@@ -194,6 +198,26 @@ export const getTextSnippet = async (id: string) => {
     z.array(
       z.object({
         content: z.string(),
+      })
+    )
+  );
+
+  return result[0];
+};
+
+export const getMetadata = async (id: string) => {
+  const result = await queryContent(
+    groq`
+    *[_id == '${id}']
+    {
+      title,
+      description,
+    }
+    `,
+    z.array(
+      z.object({
+        title: z.string(),
+        description: z.string(),
       })
     )
   );

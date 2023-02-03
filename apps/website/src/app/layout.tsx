@@ -5,6 +5,7 @@ import Script from "next/script";
 import { ReactNode } from "react";
 import { Footer } from "../components/Footer/Footer";
 import { Navigation } from "../components/Navigation/Navigation";
+import { getMetadata } from "../lib/queries";
 import "../styles/global.css";
 import { Providers } from "./Providers";
 
@@ -21,47 +22,49 @@ const sansFont = Source_Sans_3({
   variable: "--sans-font",
 });
 
-const title = "Katharina Clasen";
-const description = "Website of Katharina Clasen";
-
-export const metadata: Metadata = {
-  title: {
-    default: title,
-    template: "%s | Katharina Clasen",
-  },
-  description,
-  icons: "/favicon.png",
-  openGraph: {
-    type: "website",
-    title: {
-      default: title,
-      template: "%s | Katharina Clasen",
-    },
-    url: "https://katharinaclasen.com",
-    siteName: "Katharina Clasen",
-    description,
-    images: {
-      url: "https://katharinaclasen.com/og-image.png",
-      alt: "Website of Katharina Clasen",
-      width: 1200,
-      height: 630,
-    },
-  },
-  twitter: {
-    card: "summary_large_image",
+export const generateMetadata = async (): Promise<Metadata> => {
+  const { title, description } = await getMetadata(
+    "3c9f2256-cc4a-4e79-bfa7-4dcda1263376"
+  );
+  return {
     title: {
       default: title,
       template: "%s | Katharina Clasen",
     },
     description,
-    site: "@KatharinaClasen",
-    creator: "@KatharinaClasen",
-  },
-  viewport: "width=device-width, initial-scale=1",
-  robots: {
-    index: true,
-    follow: true,
-  },
+    icons: "/favicon.png",
+    openGraph: {
+      type: "website",
+      title: {
+        default: title,
+        template: "%s | Katharina Clasen",
+      },
+      url: "https://katharinaclasen.com",
+      siteName: "Katharina Clasen",
+      description,
+      images: {
+        url: "https://katharinaclasen.com/og-image.png",
+        alt: "Website of Katharina Clasen",
+        width: 1200,
+        height: 630,
+      },
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: {
+        default: title,
+        template: "%s | Katharina Clasen",
+      },
+      description,
+      site: "@KatharinaClasen",
+      creator: "@KatharinaClasen",
+    },
+    viewport: "width=device-width, initial-scale=1",
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
 };
 
 interface Props {

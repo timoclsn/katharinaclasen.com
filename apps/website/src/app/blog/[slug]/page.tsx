@@ -9,9 +9,12 @@ import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Container } from "../../../design-system/Container/Container";
 import { queryContent } from "../../../lib/sanity";
 
-export const metadata: Metadata = {
-  title: "Blogpost",
-  description: "Blogpost from Katharina Clasen",
+// Todo make dynamic
+export const generateMetadata = async (): Promise<Metadata> => {
+  return {
+    title: "Blogpost",
+    description: "Blogpost from Katharina Clasen",
+  };
 };
 
 export const generateStaticParams = async () => {

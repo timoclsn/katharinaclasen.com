@@ -5,10 +5,16 @@ import wireframesImg from "./wireframes.png";
 import { ServicesAccordion } from "./ServicesAccordion/ServicesAccordion";
 import { AboutMyServices } from "./AboutMyServices/AboutMyServices";
 import { Metadata } from "next";
+import { getMetadata } from "../../lib/queries";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description: "Services from Katharina Clasen",
+export const generateMetadata = async (): Promise<Metadata> => {
+  const { title, description } = await getMetadata(
+    "75ef70cb-03db-478a-a5f6-c20899229f73"
+  );
+  return {
+    title,
+    description,
+  };
 };
 
 const ServicesPage = () => {
