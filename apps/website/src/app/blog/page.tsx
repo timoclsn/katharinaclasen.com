@@ -8,6 +8,11 @@ import { ArticlePreview } from "../../components/ArticlePreview/ArticlePreview";
 import { Container } from "../../design-system/Container/Container";
 import { queryContent } from "../../lib/sanity";
 
+export const metadata = {
+  title: "Blog",
+  description: "Blog Katharina Clasen",
+};
+
 const BlogPage = async () => {
   const blogPosts = await queryContent(
     groq`

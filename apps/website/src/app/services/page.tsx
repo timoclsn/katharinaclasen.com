@@ -5,6 +5,11 @@ import wireframesImg from "./wireframes.png";
 import { ServicesAccordion } from "./ServicesAccordion/ServicesAccordion";
 import { AboutMyServices } from "./AboutMyServices/AboutMyServices";
 
+export const metadata = {
+  title: "Services",
+  description: "Services from Katharina Clasen",
+};
+
 const ServicesPage = () => {
   return (
     <div className="services-page">

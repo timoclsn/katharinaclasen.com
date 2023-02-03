@@ -6,6 +6,11 @@ import { LcdPrinciples } from "./LcdPrinciples/LcdPrinciples";
 import { LcdThinking } from "./LcdThinking/LcdThinking";
 import { WhatIsLcd } from "./WhatIsLcd/WhatIsLcd";
 
+export const metadata = {
+  title: "Life-centered Design",
+  description: "Life-centered Design from Katharina Clasen",
+};
+
 const LcdPage = () => {
   return (
     <div className="lcd-page">

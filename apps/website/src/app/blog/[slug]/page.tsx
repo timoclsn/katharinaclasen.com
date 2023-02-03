@@ -8,6 +8,11 @@ import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Container } from "../../../design-system/Container/Container";
 import { queryContent } from "../../../lib/sanity";
 
+export const metadata = {
+  title: "Blogpost",
+  description: "Blogpost from Katharina Clasen",
+};
+
 export const generateStaticParams = async () => {
   const blogPosts = await queryContent(
     groq`

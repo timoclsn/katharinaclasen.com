@@ -7,6 +7,11 @@ import { Container } from "../../../design-system/Container/Container";
 import { context, contexts } from "../../../lib/projects";
 import { queryContent } from "../../../lib/sanity";
 
+export const metadata = {
+  title: "Project",
+  description: "Project from Katharina Clasen",
+};
+
 export const generateStaticParams = async () => {
   const projects = await queryContent(
     groq`

@@ -8,6 +8,11 @@ import { Heading } from "../../design-system/Heading/Heading";
 import { context, contexts } from "../../lib/projects";
 import { queryContent } from "../../lib/sanity";
 
+export const metadata = {
+  title: "Projects",
+  description: "Projects from Katharina Clasen",
+};
+
 const ProjectsPage = async () => {
   const projects = await queryContent(
     groq`

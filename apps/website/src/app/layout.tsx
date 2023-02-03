@@ -1,4 +1,4 @@
-import { Source_Serif_4, Source_Sans_3 } from "@next/font/google";
+import { Source_Sans_3, Source_Serif_4 } from "@next/font/google";
 import { cx } from "class-variance-authority";
 import Script from "next/script";
 import { ReactNode } from "react";
@@ -19,6 +19,14 @@ const sansFont = Source_Sans_3({
   subsets: ["latin"],
   variable: "--sans-font",
 });
+
+export const metadata = {
+  title: {
+    default: "Katharina Clasen",
+    template: "%s | Katharina Clasen",
+  },
+  description: "Website of Katharina Clasen",
+};
 
 interface Props {
   children: ReactNode;

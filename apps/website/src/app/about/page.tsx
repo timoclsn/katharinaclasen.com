@@ -4,6 +4,11 @@ import { AboutMe } from "./AboutMe/AboutMe";
 import { Header } from "./Header/Header";
 import { MyPhilosophy } from "./MyPhilosophy/MyPhilosophy";
 
+export const metadata = {
+  title: "About",
+  description: "About Katharina Clasen",
+};
+
 const AboutPage = () => {
   return (
     <div className="about-page">
