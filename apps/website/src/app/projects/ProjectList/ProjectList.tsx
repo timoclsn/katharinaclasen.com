@@ -1,5 +1,6 @@
 "use client";
 
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { CalendarDays, Contact } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export const ProjectList = ({ projects }: Props) => {
+  const [listRef] = useAutoAnimate<HTMLUListElement>();
   const searchParams = useSearchParams();
   const serviceFilter = searchParams.get("service");
   const topicFilter = searchParams.get("topic");
@@ -44,7 +46,10 @@ export const ProjectList = ({ projects }: Props) => {
   return (
     <div>
       {filteredProjects.length > 0 ? (
-        <ul className="grid grid-cols-1 gap-x-14 gap-y-28 md:grid-cols-2">
+        <ul
+          ref={listRef}
+          className="grid grid-cols-1 gap-x-14 gap-y-28 md:grid-cols-2"
+        >
           {filteredProjects.map((project) => {
             return (
               <li key={project._id}>
