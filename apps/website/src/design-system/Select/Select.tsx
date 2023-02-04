@@ -17,19 +17,21 @@ export const Select = ({
 Select.Trigger = forwardRef<
   ElementRef<typeof SelectPrimitive.Trigger>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ ...props }, ref) => {
+>(function SelectTrigger({ ...props }, ref) {
   return <SelectPrimitive.Trigger {...props} ref={ref} />;
 });
 
 Select.Value = forwardRef<
   ElementRef<typeof SelectPrimitive.Value>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Value>
->(({ ...props }, ref) => <SelectPrimitive.Value {...props} ref={ref} />);
+>(function SelectValue({ ...props }, ref) {
+  return <SelectPrimitive.Value {...props} ref={ref} />;
+});
 
 Select.Icon = forwardRef<
   ElementRef<typeof SelectPrimitive.Icon>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Icon>
->(({ className, ...props }, ref) => {
+>(function SelectIcon({ className, ...props }, ref) {
   return (
     <SelectPrimitive.Icon
       className={cx("text-contrast-primary-dark", className)}
@@ -39,16 +41,16 @@ Select.Icon = forwardRef<
   );
 });
 
-Select.Portal = ({
+Select.Portal = function SelectPortal({
   ...props
-}: ComponentProps<typeof SelectPrimitive.Portal>) => (
-  <SelectPrimitive.Portal {...props} />
-);
+}: ComponentProps<typeof SelectPrimitive.Portal>) {
+  return <SelectPrimitive.Portal {...props} />;
+};
 
 Select.Content = forwardRef<
   ElementRef<typeof SelectPrimitive.Content>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
->(({ className, ...props }, ref) => {
+>(function SelectContent({ className, ...props }, ref) {
   return (
     <SelectPrimitive.Content
       className={cx(
@@ -64,7 +66,7 @@ Select.Content = forwardRef<
 Select.Viewport = forwardRef<
   ElementRef<typeof SelectPrimitive.Viewport>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Viewport>
->(({ className, ...props }, ref) => {
+>(function SelectViewport({ className, ...props }, ref) {
   return (
     <SelectPrimitive.Viewport
       className={cx("flex flex-col gap-1", className)}
@@ -77,7 +79,7 @@ Select.Viewport = forwardRef<
 Select.Item = forwardRef<
   ElementRef<typeof SelectPrimitive.Item>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
->(({ children, className, ...props }, ref) => {
+>(function SelectItem({ children, className, ...props }, ref) {
   return (
     <SelectPrimitive.Item
       className={cx(
@@ -98,7 +100,7 @@ Select.Item = forwardRef<
 Select.ItemIndicator = forwardRef<
   ElementRef<typeof SelectPrimitive.ItemIndicator>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.ItemIndicator>
->(({ className, ...props }, ref) => {
+>(function SelectItemIndicator({ className, ...props }, ref) {
   return (
     <SelectPrimitive.ItemIndicator
       className={cx(
@@ -114,7 +116,7 @@ Select.ItemIndicator = forwardRef<
 Select.ItemText = forwardRef<
   ElementRef<typeof SelectPrimitive.ItemText>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.ItemText>
->(({ className, ...props }, ref) => {
+>(function SelectItemText({ className, ...props }, ref) {
   return (
     <SelectPrimitive.ItemText
       className={cx("whitespace-nowrap", className)}
