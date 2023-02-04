@@ -15,13 +15,12 @@ export const ProjectFilter = ({ services, topics }: Props) => {
   const nextSearchParams = useSearchParams();
   const searchParams = new URLSearchParams(nextSearchParams);
 
-  const { replace, refresh } = useRouter();
+  const { replace } = useRouter();
   const pathname = usePathname();
 
   const filter = () => {
     const searchParamsString = searchParams.toString();
     replace(`${pathname}${searchParamsString ? "?" : ""}${searchParamsString}`);
-    refresh();
   };
 
   const handleValueChange = (param: string, value: string) => {
