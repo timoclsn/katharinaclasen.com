@@ -3,7 +3,6 @@ import { groq } from "next-sanity";
 import { z } from "zod";
 import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";
-import { useTypedSearchParams } from "../../hooks/useTypedSearchParams";
 import { contexts } from "../../lib/projects";
 import { getMetadata } from "../../lib/queries";
 import { queryContent } from "../../lib/sanity";
@@ -72,28 +71,7 @@ const getProjects = async () => {
   );
 };
 
-const filtersSchema = z.object({
-  service: z.coerce.string().optional(),
-  topic: z.coerce.string().optional(),
-  sort: z.enum(["dateDesc", "dateAsc", "title"]).optional(),
-});
-
-export type Sort = z.infer<typeof sortSchema>["sort"];
-
-const sortSchema = z.object({
-  sort: z.enum(["dateDesc", "dateAsc", "title"]).optional(),
-});
-
-interface Props {
-  searchParams?: {
-    [key: string]: string | string[] | undefined;
-  };
-}
-
-const ProjectsPage = async ({ searchParams }: Props) => {
-  const filter = useTypedSearchParams(searchParams, filtersSchema);
-  const { sort } = useTypedSearchParams(searchParams, sortSchema);
-
+const ProjectsPage = async () => {
   const projects = await getProjects();
 
   const services = Array.from(
@@ -129,7 +107,7 @@ const ProjectsPage = async ({ searchParams }: Props) => {
           </Heading>
           <ProjectFilter services={services} topics={topics} />
         </div>
-        <ProjectList projects={projects} filter={filter} sort={sort} />
+        <ProjectList projects={projects} />
       </Container>
     </div>
   );

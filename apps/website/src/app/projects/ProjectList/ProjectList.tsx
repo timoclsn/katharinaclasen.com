@@ -1,21 +1,22 @@
+"use client";
+
 import { CalendarDays, Contact } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { ArticlePreview } from "../../../components/ArticlePreview/ArticlePreview";
 import { Heading } from "../../../design-system/Heading/Heading";
 import { context } from "../../../lib/projects";
-import { Projects, Sort } from "../page";
+import { Projects } from "../page";
 
 interface Props {
   projects: Projects;
-  filter?: {
-    service?: string;
-    topic?: string;
-  };
-  sort?: Sort;
 }
 
-export const ProjectList = ({ projects, filter = {}, sort }: Props) => {
-  const { service: serviceFilter, topic: topicFilter } = filter;
+export const ProjectList = ({ projects }: Props) => {
+  const searchParams = useSearchParams();
+  const serviceFilter = searchParams.get("service");
+  const topicFilter = searchParams.get("topic");
+  const sort = searchParams.get("sort");
 
   const filteredProjects = projects
     .filter((project) => {
