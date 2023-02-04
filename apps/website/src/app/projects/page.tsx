@@ -1,14 +1,14 @@
-import { CalendarDays, Contact } from "lucide-react";
 import { Metadata } from "next";
 import { groq } from "next-sanity";
-import Link from "next/link";
 import { z } from "zod";
-import { ArticlePreview } from "../../components/ArticlePreview/ArticlePreview";
 import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";
-import { context, contexts } from "../../lib/projects";
+import { useTypedSearchParams } from "../../hooks/useTypedSearchParams";
+import { contexts } from "../../lib/projects";
 import { getMetadata } from "../../lib/queries";
 import { queryContent } from "../../lib/sanity";
+import { ProjectFilter } from "./ProjectFilter/ProjectFilter";
+import { ProjectList } from "./ProjectList/ProjectList";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const { title, description } = await getMetadata(
@@ -20,8 +20,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
   };
 };
 
-const ProjectsPage = async () => {
-  const projects = await queryContent(
+export type Projects = Awaited<ReturnType<typeof getProjects>>;
+
+const getProjects = async () => {
+  return await queryContent(
     groq`
       *[_type == 'project']
       {
@@ -68,57 +70,66 @@ const ProjectsPage = async () => {
       })
     )
   );
+};
+
+const filtersSchema = z.object({
+  service: z.coerce.string().optional(),
+  topic: z.coerce.string().optional(),
+  sort: z.enum(["dateDesc", "dateAsc", "title"]).optional(),
+});
+
+export type Sort = z.infer<typeof sortSchema>["sort"];
+
+const sortSchema = z.object({
+  sort: z.enum(["dateDesc", "dateAsc", "title"]).optional(),
+});
+
+interface Props {
+  searchParams?: {
+    [key: string]: string | string[] | undefined;
+  };
+}
+
+const ProjectsPage = async ({ searchParams }: Props) => {
+  const filter = useTypedSearchParams(searchParams, filtersSchema);
+  const { sort } = useTypedSearchParams(searchParams, sortSchema);
+
+  const projects = await getProjects();
+
+  const services = Array.from(
+    new Set(
+      projects
+        .map((project) => {
+          return project.services
+            ? project.services.map((service) => service.title)
+            : [];
+        })
+        .flat()
+    )
+  );
+
+  const topics = Array.from(
+    new Set(
+      projects
+        .map((project) => {
+          return project.topics
+            ? project.topics.map((topic) => topic.title)
+            : [];
+        })
+        .flat()
+    )
+  );
 
   return (
     <div className="py-20 sm:py-32">
       <Container inset>
-        <Heading className="mb-20">Have a look at my projects:</Heading>
-        <ul className="grid grid-cols-1 gap-x-14 gap-y-28 md:grid-cols-2">
-          {projects.map((project) => {
-            return (
-              <li key={project._id}>
-                <Link href={`/projects/${project.slug}`}>
-                  <ArticlePreview
-                    title={project.title}
-                    titleImage={project.image}
-                    metaData={[
-                      {
-                        icon: Contact,
-                        text: context(project.context, project.client || ""),
-                      },
-                      {
-                        icon: CalendarDays,
-                        text: project.period
-                          ? project.period
-                          : new Date(project.date).getFullYear().toString(),
-                      },
-                    ]}
-                    tags={[
-                      ...(project.services
-                        ? project.services.map(
-                            (service) =>
-                              ({
-                                outline: "solid",
-                                text: service.title,
-                              } as const)
-                          )
-                        : []),
-                      ...(project.topics
-                        ? project.topics.map(
-                            (topic) =>
-                              ({
-                                outline: "dash",
-                                text: topic.title,
-                              } as const)
-                          )
-                        : []),
-                    ]}
-                  />
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="mb-20">
+          <Heading className="mb-6 max-w-2xl">
+            Have a look at my projects, and filter them by:
+          </Heading>
+          <ProjectFilter services={services} topics={topics} />
+        </div>
+        <ProjectList projects={projects} filter={filter} sort={sort} />
       </Container>
     </div>
   );

@@ -11,20 +11,20 @@ const tagVariants = cva(
         none: "border-none",
       },
       color: {
-        dark: "border-outline-normal-dark text-contrast-primary-dark [&>svg]:text-contrast-secondary-dark",
+        dark: "border-outline-normal-dark text-contrast-primary-dark [&_svg]:text-contrast-secondary-dark",
         light:
-          "border-outline-normal-light text-contrast-primary-light [&>svg]:text-contrast-secondary-light",
+          "border-outline-normal-light text-contrast-primary-light [&_svg]:text-contrast-secondary-light",
       },
       state: {
         deselected: null,
         selected: null,
       },
       size: {
-        normal: "text-base gap-2 [&>svg]:w-[16px] [&>svg]:h-[16px] border-2",
+        normal: "text-base gap-2 [&_svg]:w-[16px] [&_svg]:h-[16px] border-2",
         large:
-          "text-lg sm:text-2xl gap-2 [&>svg]:w-[20px] [&>svg]:h-[20px] border-3",
-        xl: "text-xl sm:text-3xl gap-2 [&>svg]:w-[24px] [&>svg]:h-[24px] border-3",
-        xxl: "text-3xl sm:text-5xl gap-2 [&>svg]:w-[32px] [&>svg]:h-[32px] border-4",
+          "text-lg sm:text-2xl gap-2 [&_svg]:w-[20px] [&_svg]:h-[20px] border-3",
+        xl: "text-xl sm:text-3xl gap-2 [&_svg]:w-[24px] [&_svg]:h-[24px] border-3",
+        xxl: "text-3xl sm:text-5xl gap-2 [&_svg]:w-[32px] [&_svg]:h-[32px] border-4",
       },
       align: {
         baseline: "align-baseline",
@@ -70,7 +70,7 @@ const tagVariants = cva(
 type TagVariants = VariantProps<typeof tagVariants>;
 
 const prependVariants = cva(
-  "font-serif font-normal rounded-full flex items-center justify-center text-contrast-primary-dark [&>img]:w-auto leading-none",
+  "font-serif font-normal rounded-full flex items-center justify-center text-contrast-primary-dark [&_img]:w-auto leading-none",
   {
     variants: {
       color: {
@@ -78,10 +78,10 @@ const prependVariants = cva(
         light: "bg-background-secondary",
       },
       size: {
-        normal: "text-base [&>img]:h-[14px] px-3 py-0.5",
-        large: "tetx-base [&>img]:h-[16px] px-3 py-1",
-        xl: "text-base [&>img]:h-[16px] px-4 py-1.5",
-        xxl: "text-3xl [&>img]:h-[24px] px-4 py-2",
+        normal: "text-base [&_img]:h-[14px] px-3 py-0.5",
+        large: "tetx-base [&_img]:h-[16px] px-3 py-1",
+        xl: "text-base [&_img]:h-[16px] px-4 py-1.5",
+        xxl: "text-3xl [&_img]:h-[24px] px-4 py-2",
       },
     },
   }

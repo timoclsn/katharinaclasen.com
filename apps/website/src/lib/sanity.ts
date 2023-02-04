@@ -9,10 +9,10 @@ const sanityClient = createClient({
   useCdn: false,
 });
 
-export const queryContent = async <Schema extends z.ZodTypeAny>(
+export const queryContent = async <TSchema extends z.ZodTypeAny>(
   query: string,
-  schema: Schema
-): Promise<z.infer<Schema>> => {
+  schema: TSchema
+) => {
   const result = await sanityClient.fetch(query);
-  return await schema.parse(result);
+  return schema.parse(result) as z.infer<TSchema>;
 };
