@@ -74,7 +74,10 @@ const BlogPage = async () => {
             const stats = readingTime(blogPost.content);
             return (
               <li key={blogPost._id}>
-                <Link href={`/blog/${blogPost.slug}`}>
+                <Link
+                  href={`/blog/${blogPost.slug}`}
+                  className="transition-opacity hover:opacity-80"
+                >
                   <ArticlePreview
                     title={blogPost.title}
                     titleImage={blogPost.image}

@@ -54,7 +54,7 @@ Select.Content = forwardRef<
   return (
     <SelectPrimitive.Content
       className={cx(
-        "z-20 rounded-2xl bg-background-dark px-4 py-6 text-contrast-primary-light animate-in fade-in-75 zoom-in-90 duration-100 ease-out",
+        "z-20 rounded-2xl bg-background-dark px-4 py-6 text-contrast-primary-light animate-in fade-in-75 zoom-in-90 duration-100 ease-in",
         className
       )}
       {...props}

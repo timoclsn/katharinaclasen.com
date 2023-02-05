@@ -36,7 +36,7 @@ export const Header = () => {
         <Image
           src={memojiImg}
           alt="Memoji of Katharina Clasen forming a heart with her hands."
-          className="absolute bottom-0 right-0 h-auto w-[150px] sm:w-[250px] lg:w-[350px]"
+          className="absolute bottom-0 right-0 h-auto w-[150px] animate-in fade-in slide-in-from-bottom-full duration-700 ease-out sm:w-[250px] lg:w-[350px]"
           sizes="30vw"
           priority
         />
@@ -44,7 +44,7 @@ export const Header = () => {
       <Image
         src={laptopImg}
         alt="Image of a mostly closed laptop."
-        className="h-[150px] w-full object-cover sm:h-[320px]"
+        className="relative z-10 h-[150px] w-full object-cover sm:h-[320px]"
         sizes="100vw"
         priority
       />

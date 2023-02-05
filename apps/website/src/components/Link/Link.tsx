@@ -11,7 +11,10 @@ interface Props {
 
 export const Link = forwardRef<HTMLAnchorElement, Props>(
   ({ children, href, external, className }, ref) => {
-    const styles = cx("underline hover:opacity-80", className);
+    const styles = cx(
+      "underline hover:opacity-80 transition-opacity",
+      className
+    );
     return (
       <NextLink
         href={href}

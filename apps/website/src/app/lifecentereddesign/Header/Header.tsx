@@ -31,7 +31,7 @@ export const Header = () => {
         <Image
           src={memoji}
           alt="Memoji of Katharina Clasen wavin gher hand"
-          className="absolute bottom-0 left-auto h-auto w-[150px] md:w-[250px] lg:w-[350px] xl:left-0 xl:right-0"
+          className="absolute bottom-0 left-auto h-auto w-[150px] animate-in fade-in slide-in-from-bottom-full duration-700 ease-out md:w-[250px] lg:w-[350px] xl:left-0 xl:right-0"
           sizes="30vw"
           priority
         />

@@ -10,17 +10,15 @@ const buttonVariants = cva(
     "items-center",
     "justify-center",
     "gap-2",
-    "hover:opacity-80",
+    "transition-transform ease-in duration-100 will-change-transform",
     "disabled:opacity-60",
   ],
   {
     variants: {
       style: {
-        solid:
-          "hover:scale-105 transition-transform ease-in duration-100 active:scale-95",
-        outline:
-          "ring-2 ring-inset hover:scale-105 transition-transform ease-in duration-100 active:scale-95",
-        text: null,
+        solid: "hover:scale-105 active:scale-95",
+        outline: "ring-2 ring-inset hover:scale-105 active:scale-95",
+        text: "hover:opacity-80",
       },
       color: {
         dark: null,

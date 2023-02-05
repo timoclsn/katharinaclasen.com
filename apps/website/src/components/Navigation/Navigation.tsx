@@ -44,20 +44,23 @@ const items = [
   },
 ] as const;
 
-const navigationLinkVariants = cva("font-sans hover:opacity-80", {
-  variants: {
-    active: {
-      true: "underline",
+const navigationLinkVariants = cva(
+  "font-sans hover:opacity-80 transition-opacity",
+  {
+    variants: {
+      active: {
+        true: "underline",
+      },
+      highlighted: {
+        true: "font-medium text-contrast-primary-dark",
+        false: "text-contrast-secondary-dark",
+      },
     },
-    highlighted: {
-      true: "font-medium text-contrast-primary-dark",
-      false: "text-contrast-secondary-dark",
-    },
-  },
-});
+  }
+);
 
 const mobileNavigationLinkVariants = cva(
-  "font-serif text-2xl sm:text-4xl w-full text-center py-4 hover:opacity-80",
+  "font-serif text-2xl sm:text-4xl w-full text-center py-4 hover:opacity-80 transition-opacity",
   {
     variants: {
       active: {
@@ -118,7 +121,7 @@ export const Navigation = () => {
             <Link
               href="/"
               onClick={closeMenu}
-              className="relative z-20 font-sans text-2xl font-medium text-contrast-primary-dark hover:opacity-80"
+              className="relative z-20 font-sans text-2xl font-medium text-contrast-primary-dark transition-opacity hover:opacity-80"
             >
               {title}
             </Link>
@@ -145,7 +148,7 @@ export const Navigation = () => {
             <button
               type="button"
               className={cx(
-                "relative z-20 h-8 w-8 text-contrast-secondary-dark hover:opacity-80 focus:outline-none lg:hidden",
+                "relative z-20 h-8 w-8 text-contrast-secondary-dark transition-opacity hover:opacity-80 focus:outline-none lg:hidden",
                 styles.menuIcon
               )}
               aria-controls="mobile-menu"

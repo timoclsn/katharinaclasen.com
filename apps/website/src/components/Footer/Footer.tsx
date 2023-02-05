@@ -10,7 +10,10 @@ export const Footer = () => {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
           {data.map((column, idx) => (
             <div key={idx}>
-              <Link href={column.link} className="hover:opacity-80">
+              <Link
+                href={column.link}
+                className="transition-opacity hover:opacity-80"
+              >
                 <Heading as="h2" level="4" color="light" className="mb-4">
                   {column.title}
                 </Heading>
@@ -20,7 +23,7 @@ export const Footer = () => {
                   <li key={idx}>
                     <Link
                       href={link.link}
-                      className="flex items-center gap-2 text-contrast-secondary-light hover:opacity-80 [&>svg]:h-[20px] [&>svg]:w-[20px]"
+                      className="flex items-center gap-2 text-contrast-secondary-light transition-opacity hover:opacity-80 [&>svg]:h-[20px] [&>svg]:w-[20px]"
                     >
                       {link.icon}
                       {link.title}

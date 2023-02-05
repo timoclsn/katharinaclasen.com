@@ -32,7 +32,7 @@ export const Header = () => {
                 src={memojiImg}
                 alt="Memoji of Katharina Clasen"
                 priority
-                placeholder="blur"
+                className="animate-in fade-in slide-in-from-left-full duration-700 ease-in-out"
               />
               <Body as="p" size="large" priority="secondary">
                 Hi! I am a freelance UX Designer with 10+ years experience
@@ -48,7 +48,7 @@ export const Header = () => {
               <div className="flex gap-2">
                 <Link
                   href="/services#ux-research"
-                  className="relative flex-1 overflow-hidden rounded-3xl hover:opacity-80 sm:rounded-4xl"
+                  className="group relative flex-1 overflow-hidden rounded-3xl transition-opacity hover:opacity-80 sm:rounded-4xl"
                 >
                   <Image
                     src={serviceUxResearchImg}
@@ -60,14 +60,14 @@ export const Header = () => {
                   <Heading
                     as="h2"
                     level="4"
-                    className="absolute bottom-2 w-full px-2 text-center"
+                    className="absolute bottom-2 w-full px-2 text-center transition-transform duration-100 ease-in group-hover:-translate-y-1 group-hover:scale-105 group-active:-translate-y-1 group-active:scale-95"
                   >
                     UX Research
                   </Heading>
                 </Link>
                 <Link
                   href="/services#ux-design"
-                  className="relative flex-1 overflow-hidden rounded-3xl hover:opacity-80 sm:rounded-4xl"
+                  className="group relative flex-1 overflow-hidden rounded-3xl transition-opacity hover:opacity-80 sm:rounded-4xl"
                 >
                   <Image
                     src={serviceUiDesign}
@@ -79,14 +79,14 @@ export const Header = () => {
                   <Heading
                     as="h2"
                     level="4"
-                    className="absolute bottom-2 w-full text-center"
+                    className="absolute bottom-2 w-full text-center transition-transform duration-100 ease-in group-hover:-translate-y-1 group-hover:scale-105 group-active:-translate-y-1 group-active:scale-95"
                   >
                     UX Design
                   </Heading>
                 </Link>
                 <Link
                   href="/services#ui-design"
-                  className="relative flex-1 overflow-hidden rounded-3xl border-2 border-outline-light-dark hover:opacity-80 sm:rounded-4xl"
+                  className="group relative flex-1 overflow-hidden rounded-3xl border-2 border-outline-light-dark transition-opacity hover:opacity-80 sm:rounded-4xl"
                 >
                   <Image
                     src={serviceUxDesignImg}
@@ -98,7 +98,7 @@ export const Header = () => {
                   <Heading
                     as="h2"
                     level="4"
-                    className="absolute bottom-2 w-full text-center"
+                    className="absolute bottom-2 w-full text-center transition-transform duration-100 ease-in group-hover:-translate-y-1 group-hover:scale-105 group-active:-translate-y-1 group-active:scale-95"
                   >
                     UI Design
                   </Heading>
