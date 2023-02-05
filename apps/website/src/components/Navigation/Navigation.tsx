@@ -119,7 +119,7 @@ export const Navigation = () => {
       )}
     >
       <Container inset>
-        <nav role="navigation" className="py-6">
+        <nav role="navigation" className="py-4 sm:py-6">
           <a href="#skip" className="sr-only">
             Skip to content
           </a>
