@@ -98,6 +98,14 @@ export const Navigation = () => {
   };
 
   useEffect(() => {
+    if (isScrolled) {
+      document
+        .querySelector('meta[name="theme-color"]')
+        ?.setAttribute("content", "#FFFFFF");
+    }
+  }, [isScrolled]);
+
+  useEffect(() => {
     return () => {
       document.body.style.overflow = "";
     };

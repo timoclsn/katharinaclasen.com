@@ -10,6 +10,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title,
     description,
+    other: {
+      "theme-color": "#F7E4F2",
+    },
   };
 };
 

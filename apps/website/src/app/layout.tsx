@@ -64,6 +64,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
       index: true,
       follow: true,
     },
+    other: {
+      "theme-color": "#FFFFFF",
+    },
   };
 };
 
