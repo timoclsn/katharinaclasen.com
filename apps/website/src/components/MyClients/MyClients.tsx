@@ -59,15 +59,13 @@ export const MyClients = async () => {
   const { title, subtitle, items } = await queryCarousel();
   return (
     <Section id="my-clients" color="secondary">
-      <Container inset>
-        <Heading as="h2" level="1" className="mb-6">
-          {title}
-        </Heading>
-        <Body as="p" size="large" priority="secondary" className="mb-16">
-          {subtitle}
-        </Body>
-        <MyClientsCarousel clients={items} />
-      </Container>
+      <Heading as="h2" level="1" className="mb-6">
+        {title}
+      </Heading>
+      <Body as="p" size="large" priority="secondary" className="mb-16">
+        {subtitle}
+      </Body>
+      <MyClientsCarousel clients={items} />
     </Section>
   );
 };
