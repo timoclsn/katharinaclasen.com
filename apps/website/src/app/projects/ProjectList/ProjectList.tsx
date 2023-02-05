@@ -53,7 +53,10 @@ export const ProjectList = ({ projects }: Props) => {
           {filteredProjects.map((project) => {
             return (
               <li key={project._id}>
-                <Link href={`/projects/${project.slug}`}>
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="transition-opacity hover:opacity-80"
+                >
                   <ArticlePreview
                     title={project.title}
                     titleImage={project.image}

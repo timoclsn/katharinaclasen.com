@@ -41,7 +41,7 @@ export const ProjectFilter = ({ services, topics }: Props) => {
             handleValueChange("service", value);
           }}
         >
-          <Select.Trigger className="outline-none hover:opacity-80">
+          <Select.Trigger className="outline-none transition-transform duration-100 ease-in hover:scale-105 hover:opacity-80">
             <Tag color="dark" size="xxl" outline="solid">
               <Select.Value />
               <Select.Icon>
@@ -71,7 +71,7 @@ export const ProjectFilter = ({ services, topics }: Props) => {
             handleValueChange("topic", value);
           }}
         >
-          <Select.Trigger className="outline-none hover:opacity-80">
+          <Select.Trigger className="outline-none transition-transform duration-100 ease-in hover:scale-105 hover:opacity-80">
             <Tag color="dark" size="xxl" outline="dash">
               <Select.Value />
               <Select.Icon>

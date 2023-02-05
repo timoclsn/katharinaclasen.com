@@ -50,7 +50,7 @@ export const Accordion = ({ defaultValue = 1, items }: Props) => {
             value={(idx + 1).toString()}
             className={itemVariants({ backgroundColor })}
           >
-            <AccordionPrimitive.Trigger className="flex flex-none items-center gap-5 p-6 sm:gap-10 sm:p-10 lg:flex-col-reverse">
+            <AccordionPrimitive.Trigger className="flex flex-none items-center gap-5 p-6 transition-opacity hover:opacity-80 sm:gap-10 sm:p-10 lg:flex-col-reverse">
               <Illustration
                 className={`opacity-60 ${
                   color === "dark"

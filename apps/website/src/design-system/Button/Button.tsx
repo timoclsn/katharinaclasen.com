@@ -16,8 +16,10 @@ const buttonVariants = cva(
   {
     variants: {
       style: {
-        solid: null,
-        outline: "ring-2 ring-inset",
+        solid:
+          "hover:scale-105 transition-transform ease-in duration-100 active:scale-95",
+        outline:
+          "ring-2 ring-inset hover:scale-105 transition-transform ease-in duration-100 active:scale-95",
         text: null,
       },
       color: {

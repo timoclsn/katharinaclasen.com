@@ -86,7 +86,7 @@ export const Carousel = <Item extends {}>({
             <li key={index}>
               <button
                 onClick={() => selectItem(index)}
-                className="hover:opacity-80"
+                className="transition-transform duration-100 ease-in hover:scale-105 hover:opacity-80 active:scale-95"
               >
                 {tag({ item, selected, index })}
               </button>
@@ -99,7 +99,10 @@ export const Carousel = <Item extends {}>({
         color="primary"
         className="flex h-[800px] sm:h-[600px]"
       >
-        <button className="px-4 hover:opacity-80 lg:px-10" onClick={prevItem}>
+        <button
+          className="px-4 transition-transform duration-100 ease-in hover:-translate-x-1 hover:opacity-80 active:-translate-x-2 lg:px-10"
+          onClick={prevItem}
+        >
           <ArrowLeft />
         </button>
         <div className="relative flex-1 overflow-x-hidden">
@@ -121,7 +124,10 @@ export const Carousel = <Item extends {}>({
             </m.div>
           </AnimatePresence>
         </div>
-        <button className="px-4 hover:opacity-80 lg:px-10" onClick={nextItem}>
+        <button
+          className="px-4 transition-transform duration-100 ease-in hover:translate-x-1 hover:opacity-80 active:translate-x-2 lg:px-10"
+          onClick={nextItem}
+        >
           <ArrowRight />
         </button>
       </Card>
