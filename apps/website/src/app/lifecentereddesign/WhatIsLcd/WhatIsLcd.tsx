@@ -30,7 +30,7 @@ export const WhatIsLcd = () => {
         <Image
           src={earthImg}
           alt="Image of the earth from space"
-          className="max-h-[500px] object-contain lg:w-1/2"
+          className="max-h-[500px] w-full object-contain lg:w-1/2"
           placeholder="blur"
         />
       </div>
