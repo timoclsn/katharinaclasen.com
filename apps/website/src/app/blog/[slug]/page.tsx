@@ -9,11 +9,32 @@ import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Container } from "../../../design-system/Container/Container";
 import { queryContent } from "../../../lib/sanity";
 
-// Todo make dynamic
-export const generateMetadata = async (): Promise<Metadata> => {
+// Todo add more og tags
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> => {
+  const { slug } = params;
+  const result = await queryContent(
+    groq`
+      *[_type == 'blogPost' && slug.current == '${slug}']
+      {
+        title,
+        summary
+      }
+    `,
+    z.array(
+      z.object({
+        title: z.string(),
+        summary: z.string().nullable(),
+      })
+    )
+  );
+  const blogPost = result[0];
   return {
-    title: "Blogpost",
-    description: "Blogpost from Katharina Clasen",
+    title: blogPost.title,
+    description: blogPost.summary || "Blog post by Katharina Clasen",
   };
 };
 

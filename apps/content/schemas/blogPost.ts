@@ -80,6 +80,11 @@ export const blogPost = defineType({
       ],
     }),
     defineField({
+      name: "summary",
+      title: "Summary",
+      type: "text",
+    }),
+    defineField({
       name: "content",
       title: "Inhalt",
       type: "markdown",

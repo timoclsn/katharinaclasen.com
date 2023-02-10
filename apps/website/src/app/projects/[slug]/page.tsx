@@ -8,11 +8,31 @@ import { Container } from "../../../design-system/Container/Container";
 import { context, contexts } from "../../../lib/projects";
 import { queryContent } from "../../../lib/sanity";
 
-// Todo make dynamic
-export const generateMetadata = async (): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> => {
+  const { slug } = params;
+  const result = await queryContent(
+    groq`
+      *[_type == 'project' && slug.current == '${slug}']
+      {
+        title,
+        summary
+      }
+    `,
+    z.array(
+      z.object({
+        title: z.string(),
+        summary: z.string(),
+      })
+    )
+  );
+  const project = result[0];
   return {
-    title: "Project",
-    description: "Project from Katharina Clasen",
+    title: project.title,
+    description: project.summary || "Project by Katharina Clasen",
   };
 };
 
