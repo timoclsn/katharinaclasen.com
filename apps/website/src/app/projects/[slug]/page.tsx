@@ -25,7 +25,7 @@ export const generateMetadata = async ({
     z.array(
       z.object({
         title: z.string(),
-        summary: z.string(),
+        summary: z.string().nullable(),
       })
     )
   );
