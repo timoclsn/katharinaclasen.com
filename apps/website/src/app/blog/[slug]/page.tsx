@@ -1,20 +1,16 @@
 import { format } from "date-fns";
 import { CalendarDays, Clock, User } from "lucide-react";
-import { Metadata } from "next";
 import { groq } from "next-sanity";
 import readingTime from "reading-time";
 import { z } from "zod";
 import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Container } from "../../../design-system/Container/Container";
+import { createGenerateMetadata } from "../../../lib/metadata";
 import { queryContent } from "../../../lib/sanity";
 
 // Todo add more og tags
-export const generateMetadata = async ({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> => {
+export const generateMetadata = createGenerateMetadata(async ({ params }) => {
   const { slug } = params;
   const result = await queryContent(
     groq`
@@ -36,7 +32,7 @@ export const generateMetadata = async ({
     title: blogPost.title,
     description: blogPost.summary || "Blog post by Katharina Clasen",
   };
-};
+});
 
 export const generateStaticParams = async () => {
   const blogPosts = await queryContent(

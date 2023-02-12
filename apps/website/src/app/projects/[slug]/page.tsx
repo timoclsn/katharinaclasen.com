@@ -1,18 +1,14 @@
 import { CalendarDays, Contact } from "lucide-react";
-import { Metadata } from "next";
 import { groq } from "next-sanity";
 import { z } from "zod";
 import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Container } from "../../../design-system/Container/Container";
+import { createGenerateMetadata } from "../../../lib/metadata";
 import { context, contexts } from "../../../lib/projects";
 import { queryContent } from "../../../lib/sanity";
 
-export const generateMetadata = async ({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> => {
+export const generateMetadata = createGenerateMetadata(async ({ params }) => {
   const { slug } = params;
   const result = await queryContent(
     groq`
@@ -34,7 +30,7 @@ export const generateMetadata = async ({
     title: project.title,
     description: project.summary || "Project by Katharina Clasen",
   };
-};
+});
 
 export const generateStaticParams = async () => {
   const projects = await queryContent(
