@@ -24,7 +24,7 @@
     opacity: 0;
   }
   50% {
-    width: var(--radix-collapsible-content-width);
+    width: var(--radix-accordion-content-width);
   }
   75% {
     opacity: 0;
@@ -36,7 +36,7 @@
 
 @keyframes closeHorizontal {
   0% {
-    width: var(--radix-collapsible-content-width);
+    width: var(--radix-accordion-content-width);
   }
   100% {
     width: 0;
