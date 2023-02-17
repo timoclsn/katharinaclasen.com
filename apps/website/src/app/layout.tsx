@@ -1,6 +1,6 @@
-import { Source_Sans_3, Source_Serif_4 } from "@next/font/google";
 import { cx } from "class-variance-authority";
 import { Metadata } from "next";
+import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
 import Script from "next/script";
 import { ReactNode } from "react";
 import { Footer } from "../components/Footer/Footer";
@@ -85,11 +85,11 @@ const RootLayout = ({ children }: Props) => {
           serifFont.variable,
           "min-h-screen",
           "bg-background-primary",
-          "[&:has(.home-page)_.mobile-nav]:bg-background-secondary [&:has(.home-page)]:bg-background-secondary",
+          "[&:has(.home-page)]:bg-background-secondary [&:has(.home-page)_.mobile-nav]:bg-background-secondary",
           "[&:has(.about-page)]:bg-background-red-candy [&:has(.about-page)_.mobile-nav]:bg-background-red-candy",
           "[&:has(.services-page)]:bg-background-stone lg:[&:has(.services-page)]:!bg-background-primary [&:has(.services-page)_.mobile-nav]:bg-background-stone",
-          "[&:has(.lcd-page)_.mobile-nav]:bg-background-ocean-foam [&:has(.lcd-page)]:bg-background-ocean-foam",
-          "[&:has(.contact-page)_.mobile-nav]:bg-background-pink-candy [&:has(.contact-page)]:bg-background-pink-candy"
+          "[&:has(.lcd-page)]:bg-background-ocean-foam [&:has(.lcd-page)_.mobile-nav]:bg-background-ocean-foam",
+          "[&:has(.contact-page)]:bg-background-pink-candy [&:has(.contact-page)_.mobile-nav]:bg-background-pink-candy"
         )}
       >
         <body className="relative flex min-h-screen flex-col overflow-x-hidden">

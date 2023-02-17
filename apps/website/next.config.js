@@ -5,6 +5,7 @@ const nextConfig = {
     domains: ["cdn.sanity.io"],
   },
   experimental: {
+    serverComponentsExternalPackages: ["next-sanity"],
     scrollRestoration: true,
     appDir: true,
   },
