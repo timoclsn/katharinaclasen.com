@@ -4,7 +4,7 @@ import { Section } from "../../../components/Section/Section";
 import { Body } from "../../../design-system/Body/Body";
 import { Button } from "../../../design-system/Button/Button";
 import { Heading } from "../../../design-system/Heading/Heading";
-import earthImg from "./earth.png";
+import earthImg from "./earth.jpg";
 
 export const LcdTeaser = () => {
   return (
@@ -14,7 +14,6 @@ export const LcdTeaser = () => {
           src={earthImg}
           alt="Image of the earth from space"
           className="max-h-[500px] object-contain lg:w-1/2"
-          placeholder="blur"
         />
         <div className="flex flex-col items-start justify-center gap-8 lg:w-1/2">
           <Heading color="light">Life-centered Design</Heading>

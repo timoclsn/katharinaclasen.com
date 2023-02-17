@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Section } from "../../../components/Section/Section";
 import { Card } from "../../../design-system/Card/Card";
 import { Heading } from "../../../design-system/Heading/Heading";
-import thinkingImg from "./thinking.png";
+import thinkingImg from "./thinking.jpg";
 
 export const LcdThinking = () => {
   return (

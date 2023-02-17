@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Section } from "../../../components/Section/Section";
 import { Body } from "../../../design-system/Body/Body";
 import { Heading } from "../../../design-system/Heading/Heading";
-import earthImg from "./earth.png";
+import earthImg from "./earth.jpg";
 
 export const WhatIsLcd = () => {
   return (
@@ -31,7 +31,6 @@ export const WhatIsLcd = () => {
           src={earthImg}
           alt="Image of the earth from space"
           className="max-h-[500px] w-full object-contain lg:w-1/2"
-          placeholder="blur"
         />
       </div>
     </Section>

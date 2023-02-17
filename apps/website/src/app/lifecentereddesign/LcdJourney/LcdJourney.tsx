@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Section } from "../../../components/Section/Section";
 import { Body } from "../../../design-system/Body/Body";
 import { Heading } from "../../../design-system/Heading/Heading";
-import journeyImg from "./journey.png";
+import journeyImg from "./journey.jpg";
 
 export const LcdJourney = () => {
   return (
@@ -12,7 +12,6 @@ export const LcdJourney = () => {
           src={journeyImg}
           alt="Image of a path"
           className="max-h-[500px] object-contain lg:w-1/2"
-          placeholder="blur"
         />
         <div className="flex flex-col items-start justify-center gap-8 lg:w-1/2">
           <Heading>My Life-centered Design journey</Heading>

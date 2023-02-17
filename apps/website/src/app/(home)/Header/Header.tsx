@@ -6,11 +6,11 @@ import { Button } from "../../../design-system/Button/Button";
 import { Container } from "../../../design-system/Container/Container";
 import { Heading } from "../../../design-system/Heading/Heading";
 import { Tag } from "../../../design-system/Tag/Tag";
-import projectsImg from "./assets/hero.png";
-import memojiImg from "./assets/memoji.png";
-import serviceUiDesign from "./assets/service-ui-design.png";
-import serviceUxDesignImg from "./assets/service-ux-design.png";
-import serviceUxResearchImg from "./assets/service-ux-research.png";
+import projectsImg from "./hero.png";
+import memojiImg from "./memoji.png";
+import serviceUiDesign from "./service-ui-design.png";
+import serviceUxDesignImg from "./service-ux-design.png";
+import serviceUxResearchImg from "./service-ux-research.png";
 
 export const Header = () => {
   return (
@@ -32,7 +32,7 @@ export const Header = () => {
                 src={memojiImg}
                 alt="Memoji of Katharina Clasen"
                 priority
-                className="animate-in fade-in slide-in-from-left-full duration-700 ease-in-out"
+                className="h-auto w-[100px] animate-in fade-in slide-in-from-left-full duration-700 ease-in-out"
               />
               <Body as="p" size="large" priority="secondary">
                 Hi! I am a freelance UX Designer with 10+ years experience
@@ -54,7 +54,6 @@ export const Header = () => {
                     src={serviceUxResearchImg}
                     alt="Pattern of Icons"
                     priority
-                    placeholder="blur"
                     className="h-auto w-full"
                   />
                   <Heading
@@ -73,7 +72,6 @@ export const Header = () => {
                     src={serviceUiDesign}
                     alt="Hand holding a mockup iPhone"
                     priority
-                    placeholder="blur"
                     className="h-auto w-full"
                   />
                   <Heading
@@ -92,7 +90,6 @@ export const Header = () => {
                     src={serviceUxDesignImg}
                     alt="Mobile app wireframes"
                     priority
-                    placeholder="blur"
                     className="h-auto w-full"
                   />
                   <Heading
@@ -117,7 +114,6 @@ export const Header = () => {
               src={projectsImg}
               alt="Hand holding a iPhone with a app design"
               priority
-              placeholder="blur"
               className="aspect-4/3 h-full w-full rounded-3xl object-cover sm:rounded-6xl lg:aspect-auto"
             />
             <Button

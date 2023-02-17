@@ -12,12 +12,12 @@ export const Header = () => {
   return (
     <section className="flex min-h-[calc(100vh-80px)] flex-col">
       <div className="relative flex flex-1 gap-12 py-24">
-        <div className="hidden w-1/3 justify-end lg:flex">
+        <div className="relative hidden w-1/3 justify-end lg:flex">
           <Image
             src={stonesImg}
             alt="Gems in a grid with a plus in the center."
             sizes="30vw"
-            className="h-full w-auto flex-none"
+            className="absolute inset-0 h-full w-full object-contain object-right"
             priority
           />
         </div>
