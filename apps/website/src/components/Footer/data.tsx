@@ -39,7 +39,7 @@ export const data = [
       },
       {
         title: "My services",
-        link: "/services#my-services",
+        link: "/services#about-my-services",
         icon: null,
       },
       {
