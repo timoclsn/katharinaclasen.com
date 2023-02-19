@@ -1,15 +1,15 @@
-import { Metadata } from "next";
 import { groq } from "next-sanity";
 import { z } from "zod";
 import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";
+import { createGenerateMetadata } from "../../lib/metadata";
 import { contexts } from "../../lib/projects";
 import { getMetadata } from "../../lib/queries";
 import { queryContent } from "../../lib/sanity";
 import { ProjectFilter } from "./ProjectFilter/ProjectFilter";
 import { ProjectList } from "./ProjectList/ProjectList";
 
-export const generateMetadata = async (): Promise<Metadata> => {
+export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description } = await getMetadata(
     "74d12002-8c85-433c-ab61-e5680554813c"
   );
@@ -17,7 +17,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     title,
     description,
   };
-};
+});
 
 export type Projects = Awaited<ReturnType<typeof getProjects>>;
 

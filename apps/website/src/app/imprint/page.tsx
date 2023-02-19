@@ -1,9 +1,9 @@
-import { Metadata } from "next";
 import { MDXContent } from "../../components/MDXContent/MDXContent";
 import { Container } from "../../design-system/Container/Container";
+import { createGenerateMetadata } from "../../lib/metadata";
 import { getMetadata, getTextSnippet } from "../../lib/queries";
 
-export const generateMetadata = async (): Promise<Metadata> => {
+export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description } = await getMetadata(
     "284418b6-bffc-4dd8-ac18-97c7c6e0bc1b"
   );
@@ -11,7 +11,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     title,
     description,
   };
-};
+});
 
 const ImprintPage = async () => {
   const textSnippet = await getTextSnippet(

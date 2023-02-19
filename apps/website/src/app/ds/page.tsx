@@ -3,6 +3,12 @@ import { Body } from "../../design-system/Body/Body";
 import { Button } from "../../design-system/Button/Button";
 import { Heading } from "../../design-system/Heading/Heading";
 import { Tag } from "../../design-system/Tag/Tag";
+import { createGenerateMetadata } from "../../lib/metadata";
+
+export const generateMetadata = createGenerateMetadata(async () => ({
+  title: "Design System Playground",
+  description: "Playground for the katharinaclasen.com Design System.",
+}));
 
 const DesignSystemPage = () => {
   return (

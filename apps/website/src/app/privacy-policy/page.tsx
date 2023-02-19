@@ -1,9 +1,9 @@
-import { Metadata } from "next";
 import { MDXContent } from "../../components/MDXContent/MDXContent";
 import { Container } from "../../design-system/Container/Container";
+import { createGenerateMetadata } from "../../lib/metadata";
 import { getMetadata, getTextSnippet } from "../../lib/queries";
 
-export const generateMetadata = async (): Promise<Metadata> => {
+export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description } = await getMetadata(
     "d55aa383-149f-4b32-a7ae-4b640483d033"
   );
@@ -11,7 +11,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     title,
     description,
   };
-};
+});
 
 const PrivacyPage = async () => {
   const textSnippet = await getTextSnippet(

@@ -1,16 +1,16 @@
 import { format } from "date-fns";
 import { CalendarDays, Clock, User } from "lucide-react";
-import { Metadata } from "next";
 import { groq } from "next-sanity";
 import Link from "next/link";
 import readingTime from "reading-time";
 import { z } from "zod";
 import { ArticlePreview } from "../../components/ArticlePreview/ArticlePreview";
 import { Container } from "../../design-system/Container/Container";
+import { createGenerateMetadata } from "../../lib/metadata";
 import { getMetadata } from "../../lib/queries";
 import { queryContent } from "../../lib/sanity";
 
-export const generateMetadata = async (): Promise<Metadata> => {
+export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description } = await getMetadata(
     "104cc2a8-c804-44a9-a8ff-2f195a85b8be"
   );
@@ -18,7 +18,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     title,
     description,
   };
-};
+});
 
 const BlogPage = async () => {
   const blogPosts = await queryContent(

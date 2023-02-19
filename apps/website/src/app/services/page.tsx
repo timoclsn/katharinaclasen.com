@@ -1,13 +1,13 @@
+import Image from "next/image";
+import { createGenerateMetadata } from "../../lib/metadata";
+import { getMetadata } from "../../lib/queries";
+import { AboutMyServices } from "./AboutMyServices/AboutMyServices";
 import { Differentiators } from "./Differentiators/Differentiators";
 import { Header } from "./Header/Header";
-import Image from "next/image";
-import wireframesImg from "./wireframes.png";
 import { ServicesAccordion } from "./ServicesAccordion/ServicesAccordion";
-import { AboutMyServices } from "./AboutMyServices/AboutMyServices";
-import { Metadata } from "next";
-import { getMetadata } from "../../lib/queries";
+import wireframesImg from "./wireframes.png";
 
-export const generateMetadata = async (): Promise<Metadata> => {
+export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description } = await getMetadata(
     "75ef70cb-03db-478a-a5f6-c20899229f73"
   );
@@ -15,7 +15,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     title,
     description,
   };
-};
+});
 
 const ServicesPage = () => {
   return (
