@@ -7,9 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@formkit/auto-animate": "1.0.0-beta.6",
