@@ -19,17 +19,21 @@ export const Footer = () => {
                 </Heading>
               </Link>
               <ul className="flex flex-col gap-3">
-                {column.links.map((link, idx) => (
-                  <li key={idx}>
-                    <Link
-                      href={link.link}
-                      className="flex items-center gap-2 text-contrast-secondary-light transition-opacity hover:opacity-80 [&>svg]:h-[20px] [&>svg]:w-[20px]"
-                    >
-                      {link.icon}
-                      {link.title}
-                    </Link>
-                  </li>
-                ))}
+                {column.links.map((link, idx) => {
+                  // link.link.includes("#") is a workaround, because jumping to a anchor doesn't work with Link currently
+                  const Element = link.link.includes("#") ? "a" : Link;
+                  return (
+                    <li key={idx}>
+                      <Element
+                        href={link.link}
+                        className="flex items-center gap-2 text-contrast-secondary-light transition-opacity hover:opacity-80 [&>svg]:h-[20px] [&>svg]:w-[20px]"
+                      >
+                        {link.icon}
+                        {link.title}
+                      </Element>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
