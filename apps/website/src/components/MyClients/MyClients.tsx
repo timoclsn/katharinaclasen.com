@@ -1,7 +1,6 @@
 import { groq } from "next-sanity";
 import { z } from "zod";
 import { Body } from "../../design-system/Body/Body";
-import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";
 import { markdownToHtml } from "../../lib/markdown";
 import { queryContent } from "../../lib/sanity";

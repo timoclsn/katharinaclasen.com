@@ -11,10 +11,14 @@ import {
   INSTAGRAL_URL,
   LINKEDIN_URL,
 } from "../../../lib/contact";
+import { getTextSnippet } from "../../../lib/queries";
 import memojiImg from "./memoji.png";
 import smartphoneImg from "./smartphone.png";
 
-export const Header = () => {
+export const Header = async () => {
+  const { content } = await getTextSnippet(
+    "e0c78e26-6cdb-4f2e-b147-fb6ef99b5bd2"
+  );
   return (
     <section className="flex min-h-[calc(100vh-80px)] flex-col">
       <Container
@@ -29,9 +33,7 @@ export const Header = () => {
         </Heading>
         <div>
           <Body as="p" priority="secondary" className="mb-8 max-w-md">
-            I am here for any questions you might have regarding my services or
-            the way I work. You have the option to book a call or just get in
-            touch via your prefered channel!
+            {content}
           </Body>
           <div className="flex flex-wrap items-center justify-start gap-6">
             <Button href={CALENDLY_URL} external>

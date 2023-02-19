@@ -24,15 +24,19 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const LcdPage = () => {
   return (
     <div className="lcd-page">
+      {/* @ts-expect-error Server Component */}
       <Header />
+      {/* @ts-expect-error Server Component */}
       <WhatIsLcd />
       {/* @ts-expect-error Server Component */}
       <MyLCDProjects />
       {/* @ts-expect-error Server Component */}
       <LcdPrinciples />
+      {/* @ts-expect-error Server Component */}
       <LcdJourney />
       {/* @ts-expect-error Server Component */}
       <LcdAccordion />
+      {/* @ts-expect-error Server Component */}
       <LcdThinking />
     </div>
   );

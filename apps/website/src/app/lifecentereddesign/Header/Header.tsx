@@ -5,9 +5,13 @@ import { Button } from "../../../design-system/Button/Button";
 import { Container } from "../../../design-system/Container/Container";
 import { Heading } from "../../../design-system/Heading/Heading";
 import { Tag } from "../../../design-system/Tag/Tag";
+import { getTextSnippet } from "../../../lib/queries";
 import memoji from "./memoji.png";
 
-export const Header = () => {
+export const Header = async () => {
+  const { content } = await getTextSnippet(
+    "d9eb0dcb-2fee-4855-a2f1-c985cc6c7836"
+  );
   return (
     <section className="flex min-h-[calc(100vh-80px)] flex-col">
       <Container inset className="relative flex flex-1 flex-col items-end">
@@ -18,9 +22,7 @@ export const Header = () => {
           </Heading>
           <div>
             <Body as="p" priority="secondary" className="mb-8 max-w-md">
-              I believe that we need to start to go beyond short-term desires,
-              think holistically and create value in a greater sense in order to
-              build sustainable businesses and become future-ready.
+              {content}
             </Body>
             <Button href="/lifecentereddesign#my-lcd-projects">
               <ArrowRight />

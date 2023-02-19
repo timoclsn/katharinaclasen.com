@@ -13,9 +13,11 @@ export const metadata: Metadata = {
 const Home = async () => {
   return (
     <div className="home-page">
+      {/* @ts-expect-error Server Component */}
       <Header />
       {/* @ts-expect-error Server Component */}
       <HomeAccordion />
+      {/* @ts-expect-error Server Component */}
       <LcdTeaser />
       {/* @ts-expect-error Server Component */}
       <MyClients />

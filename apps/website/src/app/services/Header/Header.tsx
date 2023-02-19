@@ -4,11 +4,15 @@ import { Body } from "../../../design-system/Body/Body";
 import { Button } from "../../../design-system/Button/Button";
 import { Heading } from "../../../design-system/Heading/Heading";
 import { Tag } from "../../../design-system/Tag/Tag";
+import { getTextSnippet } from "../../../lib/queries";
 import codeImg from "./code.png";
 import memojiImg from "./memoji.png";
 import stonesImg from "./stones.png";
 
-export const Header = () => {
+export const Header = async () => {
+  const { content } = await getTextSnippet(
+    "4b272c72-97ad-4e93-b5a1-fe9e9caa4956"
+  );
   return (
     <section className="flex min-h-[calc(100vh-80px)] flex-col">
       <div className="relative flex flex-1 gap-12 py-24">
@@ -35,9 +39,7 @@ export const Header = () => {
           </Heading>
           <div>
             <Body as="p" priority="secondary" className="mb-8 max-w-md">
-              I believe that we need to start to go beyond short-term desires,
-              think holistically and create value in a greater sense in order to
-              build sustainable businesses and become future-ready.
+              {content}
             </Body>
             <Button href="/services#about-my-services">
               <ArrowRight />

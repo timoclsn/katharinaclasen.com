@@ -7,8 +7,12 @@ import { Heading } from "../../../design-system/Heading/Heading";
 import { Tag } from "../../../design-system/Tag/Tag";
 import memojiImg from "./memoji.png";
 import laptopImg from "./laptop.png";
+import { getTextSnippet } from "../../../lib/queries";
 
-export const Header = () => {
+export const Header = async () => {
+  const { content } = await getTextSnippet(
+    "e1621db5-a950-467f-b6fd-2c0dfa735e3e"
+  );
   return (
     <section className="flex min-h-[calc(100vh-80px)] flex-col">
       <Container

@@ -20,6 +20,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const ServicesPage = () => {
   return (
     <div className="services-page">
+      {/* @ts-expect-error Server Component */}
       <Header />
       {/* @ts-expect-error Server Component */}
       <Differentiators />

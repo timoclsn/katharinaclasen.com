@@ -1,31 +1,20 @@
 import Image from "next/image";
+import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Section } from "../../../components/Section/Section";
-import { Body } from "../../../design-system/Body/Body";
 import { Heading } from "../../../design-system/Heading/Heading";
+import { getTextSnippet } from "../../../lib/queries";
 import earthImg from "./earth.jpg";
 
-export const WhatIsLcd = () => {
+export const WhatIsLcd = async () => {
+  const { content } = await getTextSnippet(
+    "c249368d-64c2-4640-bfb1-81ab7ae01255"
+  );
   return (
     <Section id="what-is-lcd" color="dark">
       <div className="flex flex-col gap-8 lg:flex-row">
         <div className="flex flex-col items-start justify-center gap-8 lg:w-1/2">
           <Heading color="light">What is Life-centered Design?</Heading>
-          <Body as="p" color="light" priority="secondary" family="serif">
-            Life-centered Design is an emergin design thinking that considers
-            all life while designing products, systems, or services. It
-            acknowledges, that we live in a co-dependent system and therefor
-            need to act this way. Life-centered Design is an holistic approach
-            that considers the whole life-cycle of a solution, all stakeholders
-            – including non-human ones – and short-term as well as long-term
-            effects. There is an ever growing community that is developing and
-            promoting the principles of life-centered design and creating
-            practical tools to help make it applicable. One example is the
-            Life-centered Design Collective we foundeed in 2022. Some tools,
-            like the non-human persona, have been used and perfected quite a lot
-            already, others are just being developed. If you want to stay up to
-            date on resources around LCD, I want to recommend my repository
-            called LifeCenteredDesign.Net
-          </Body>
+          <MDXContent source={content} color="light" family="serif" />
         </div>
         <Image
           src={earthImg}

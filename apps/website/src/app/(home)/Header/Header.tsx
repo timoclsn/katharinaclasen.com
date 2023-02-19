@@ -6,13 +6,17 @@ import { Button } from "../../../design-system/Button/Button";
 import { Container } from "../../../design-system/Container/Container";
 import { Heading } from "../../../design-system/Heading/Heading";
 import { Tag } from "../../../design-system/Tag/Tag";
+import { getTextSnippet } from "../../../lib/queries";
 import projectsImg from "./hero.png";
 import memojiImg from "./memoji.png";
 import serviceUiDesign from "./service-ui-design.png";
 import serviceUxDesignImg from "./service-ux-design.png";
 import serviceUxResearchImg from "./service-ux-research.png";
 
-export const Header = () => {
+export const Header = async () => {
+  const { content } = await getTextSnippet(
+    "32e5e0f0-a6fc-444f-96c5-86119e3f2204"
+  );
   return (
     <section className="py-20 sm:py-32">
       <Container inset>
@@ -35,9 +39,7 @@ export const Header = () => {
                 className="h-auto w-[100px] animate-in fade-in slide-in-from-left-full duration-700 ease-in-out"
               />
               <Body as="p" size="large" priority="secondary">
-                Hi! I am a freelance UX Designer with 10+ years experience
-                working with companies of all sizes on their digitization
-                projects.
+                {content}
               </Body>
             </div>
             <Button href="/about">

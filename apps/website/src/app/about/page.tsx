@@ -22,7 +22,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const AboutPage = () => {
   return (
     <div className="about-page">
+      {/* @ts-expect-error Server Component */}
       <Header />
+      {/* @ts-expect-error Server Component */}
       <AboutMe />
       {/* @ts-expect-error Server Component */}
       <AboutAccordion />
