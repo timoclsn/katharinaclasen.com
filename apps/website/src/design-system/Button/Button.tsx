@@ -2,17 +2,8 @@ import { cva, VariantProps } from "class-variance-authority";
 import Link from "next/link";
 import { forwardRef, ReactNode } from "react";
 
-const buttonVariants = cva(
-  [
-    "font-sans",
-    "font-medium",
-    "inline-flex",
-    "items-center",
-    "justify-center",
-    "gap-2",
-    "transition-transform ease-in duration-100 will-change-transform",
-    "disabled:opacity-60",
-  ],
+const styles = cva(
+  "font-sans font-medium inline-flex items-center justify-center gap-2 transition-transform ease-in duration-100 will-change-transform disabled:opacity-60",
   {
     variants: {
       style: {
@@ -25,70 +16,48 @@ const buttonVariants = cva(
         light: null,
       },
       size: {
-        normal: [
-          "text-base",
-          "leading-6",
-          "[&>svg]:w-[16px]",
-          "[&>svg]:h-[16px]",
-        ],
-        large: [
-          "text-2xl",
-          "leading-8",
-          "[&>svg]:w-[24px]",
-          "[&>svg]:h-[24px]",
-        ],
+        normal: "text-base leading-6 [&>svg]:w-[16px] [&>svg]:h-[16px]",
+        large: "text-2xl leading-8 [&>svg]:w-[24px] [&>svg]:h-[24px]",
       },
     },
-
     compoundVariants: [
       {
         style: "solid",
         color: "dark",
-        className: [
-          "bg-background-dark text-contrast-primary-light",
-          "px-6 py-3",
-        ],
+        className: "bg-background-dark text-contrast-primary-light px-6 py-3",
       },
       {
         style: "solid",
         color: "light",
-        className: [
-          "bg-background-primary text-contrast-primary-dark",
-          "px-6 py-3",
-        ],
+        className: "bg-background-primary text-contrast-primary-dark px-6 py-3",
       },
       {
         style: "outline",
         color: "dark",
-        className: [
-          "ring-contrast-primary-dark text-contrast-primary-dark",
-          "px-6 py-3",
-        ],
+        className:
+          "ring-contrast-primary-dark text-contrast-primary-dark px-6 py-3",
       },
       {
         style: "outline",
         color: "light",
-        className: [
-          "ring-contrast-primary-light text-contrast-primary-light",
-          ,
-          "px-6 py-3",
-        ],
+        className:
+          "ring-contrast-primary-light text-contrast-primary-light px-6 py-3",
       },
       {
         style: "text",
         color: "dark",
-        className: ["text-contrast-primary-dark"],
+        className: "text-contrast-primary-dark",
       },
       {
         style: "text",
         color: "light",
-        className: ["text-contrast-primary-light"],
+        className: "text-contrast-primary-light",
       },
     ],
   }
 );
 
-type ButtonVariants = VariantProps<typeof buttonVariants>;
+type Styles = VariantProps<typeof styles>;
 
 interface ComponentProps {
   children: ReactNode;
@@ -111,7 +80,7 @@ type ConditionalProps =
       disabled?: never;
     };
 
-type Props = ComponentProps & ConditionalProps & ButtonVariants;
+type Props = ComponentProps & ConditionalProps & Styles;
 
 export const Button = forwardRef<HTMLAnchorElement & HTMLButtonElement, Props>(
   (
@@ -133,7 +102,7 @@ export const Button = forwardRef<HTMLAnchorElement & HTMLButtonElement, Props>(
     const Element = href ? (href.includes("#") ? "a" : Link) : "button";
     return (
       <Element
-        className={buttonVariants({ size, style, color, className })}
+        className={styles({ size, style, color, className })}
         type={Element === "button" ? type : undefined}
         onClick={onClick}
         disabled={disabled}
