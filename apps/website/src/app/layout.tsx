@@ -1,28 +1,26 @@
 import { cx } from "class-variance-authority";
-import { Metadata } from "next";
 import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
 import Script from "next/script";
 import { ReactNode } from "react";
 import { Footer } from "../components/Footer/Footer";
 import { Navigation } from "../components/Navigation/Navigation";
+import { createGenerateMetadata } from "../lib/metadata";
 import { getMetadata } from "../lib/queries";
 import "../styles/global.css";
 import { Providers } from "./Providers";
 
 const serifFont = Source_Serif_4({
-  display: "optional",
   subsets: ["latin"],
   variable: "--serif-font",
 });
 
 const sansFont = Source_Sans_3({
   style: ["normal", "italic"],
-  display: "optional",
   subsets: ["latin"],
   variable: "--sans-font",
 });
 
-export const generateMetadata = async (): Promise<Metadata> => {
+export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description } = await getMetadata(
     "3c9f2256-cc4a-4e79-bfa7-4dcda1263376"
   );
@@ -35,10 +33,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     icons: "/favicon.png",
     openGraph: {
       type: "website",
-      title: {
-        default: title,
-        template: "%s | Katharina Clasen",
-      },
+      title,
       url: "https://katharinaclasen.com",
       siteName: "Katharina Clasen",
       description,
@@ -51,10 +46,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     },
     twitter: {
       card: "summary_large_image",
-      title: {
-        default: title,
-        template: "%s | Katharina Clasen",
-      },
+      title,
       description,
       site: "@KatharinaClasen",
       creator: "@KatharinaClasen",
@@ -68,7 +60,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       "theme-color": "#FFFFFF",
     },
   };
-};
+});
 
 interface Props {
   children: ReactNode;
