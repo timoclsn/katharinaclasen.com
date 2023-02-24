@@ -9,16 +9,7 @@ import { getMetadata } from "../lib/queries";
 import "../styles/global.css";
 import { Providers } from "./Providers";
 
-const serifFont = Source_Serif_4({
-  subsets: ["latin"],
-  variable: "--serif-font",
-});
-
-const sansFont = Source_Sans_3({
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  variable: "--sans-font",
-});
+export const revalidate = 60;
 
 export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description } = await getMetadata(
@@ -60,6 +51,17 @@ export const generateMetadata = createGenerateMetadata(async () => {
       "theme-color": "#FFFFFF",
     },
   };
+});
+
+const serifFont = Source_Serif_4({
+  subsets: ["latin"],
+  variable: "--serif-font",
+});
+
+const sansFont = Source_Sans_3({
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  variable: "--sans-font",
 });
 
 interface Props {
