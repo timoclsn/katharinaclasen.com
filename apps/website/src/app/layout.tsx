@@ -42,11 +42,6 @@ export const generateMetadata = createGenerateMetadata(async () => {
       site: "@KatharinaClasen",
       creator: "@KatharinaClasen",
     },
-    viewport: "width=device-width, initial-scale=1",
-    robots: {
-      index: true,
-      follow: true,
-    },
     other: {
       "theme-color": "#FFFFFF",
     },
