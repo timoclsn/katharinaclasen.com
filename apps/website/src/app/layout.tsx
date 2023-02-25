@@ -9,8 +9,6 @@ import { getMetadata } from "../lib/queries";
 import "../styles/global.css";
 import { Providers } from "./Providers";
 
-export const revalidate = 60;
-
 export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description } = await getMetadata(
     "3c9f2256-cc4a-4e79-bfa7-4dcda1263376"

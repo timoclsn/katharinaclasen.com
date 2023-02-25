@@ -1,21 +1,27 @@
-import { createClient } from "next-sanity";
-import { cache } from "react";
 import "server-only";
 import { z } from "zod";
 
-const client = createClient({
-  projectId: "dk9hv6ix",
-  dataset: "production",
-  apiVersion: "2022-12-21",
-  useCdn: false,
+const envSchema = z.object({
+  SANITY_PROJECT_ID: z.string(),
 });
 
-const clientFetch = cache(client.fetch.bind(client));
+const { SANITY_PROJECT_ID } = envSchema.parse(process.env);
+
+const DATASET = "production";
+const API_Version = "2022-12-21";
 
 export const queryContent = async <TSchema extends z.ZodTypeAny>(
   query: string,
   schema: TSchema
 ) => {
-  const result = await clientFetch(query);
-  return schema.parse(result) as z.infer<TSchema>;
+  const url = `https://${SANITY_PROJECT_ID}.api.sanity.io/v${API_Version}/data/query/${DATASET}?query=${encodeURIComponent(
+    query
+  )}`;
+  const response = await fetch(url, {
+    next: {
+      revalidate: 60,
+    },
+  });
+  const data = await response.json();
+  return schema.parse(data.result) as z.infer<TSchema>;
 };
