@@ -18,7 +18,7 @@ export const Header = async () => {
     "32e5e0f0-a6fc-444f-96c5-86119e3f2204"
   );
   return (
-    <section className="py-20 sm:py-32">
+    <section className="overflow-hidden py-20 sm:py-32">
       <Container inset>
         <div className="flex flex-col gap-14 lg:flex-row">
           <div className="flex w-full flex-col items-start gap-10 lg:w-3/5">

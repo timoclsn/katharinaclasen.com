@@ -14,7 +14,7 @@ export const Header = async () => {
     "4b272c72-97ad-4e93-b5a1-fe9e9caa4956"
   );
   return (
-    <section className="flex min-h-[calc(100vh-80px)] flex-col">
+    <section className="flex min-h-[calc(100vh-80px)] flex-col overflow-hidden">
       <div className="relative flex flex-1 gap-12 py-24">
         <div className="relative hidden w-1/3 justify-end lg:flex">
           <Image

@@ -14,7 +14,7 @@ export const Header = async () => {
     "e1621db5-a950-467f-b6fd-2c0dfa735e3e"
   );
   return (
-    <section className="flex min-h-[calc(100vh-80px)] flex-col">
+    <section className="flex min-h-[calc(100vh-80px)] flex-col overflow-hidden">
       <Container
         inset
         className="relative flex flex-1 flex-col justify-between gap-10 py-20"
@@ -28,9 +28,7 @@ export const Header = async () => {
         </Heading>
         <div>
           <Body as="p" priority="secondary" className="mb-8 max-w-md">
-            I believe that we need to start to go beyond short-term desires,
-            think holistically and create value in a greater sense in order to
-            build sustainable businesses and become future-ready.
+            {content}
           </Body>
           <Button href="/about#my-philosophy">
             <ArrowRight />

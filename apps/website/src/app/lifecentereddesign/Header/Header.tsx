@@ -13,7 +13,7 @@ export const Header = async () => {
     "d9eb0dcb-2fee-4855-a2f1-c985cc6c7836"
   );
   return (
-    <section className="flex min-h-[calc(100vh-80px)] flex-col">
+    <section className="flex min-h-[calc(100vh-80px)] flex-col overflow-hidden">
       <Container inset className="relative flex flex-1 flex-col items-end">
         <div className="flex h-full flex-1 flex-col justify-between gap-10 py-20 pb-40 sm:pb-20">
           <Heading level="1" className="max-w-4xl !leading-[1.2]">
