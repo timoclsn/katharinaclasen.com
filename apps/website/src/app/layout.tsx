@@ -42,6 +42,11 @@ export const generateMetadata = createGenerateMetadata(async () => {
       site: "@KatharinaClasen",
       creator: "@KatharinaClasen",
     },
+    alternates: {
+      types: {
+        "application/rss+xml": "https://katharinaclasen.com/rss.xml",
+      },
+    },
     other: {
       "theme-color": "#FFFFFF",
     },
