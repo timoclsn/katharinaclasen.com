@@ -30,7 +30,10 @@ export const GET = async (request: Request) => {
       z.object({
         slug: z.string(),
       })
-    )
+    ),
+    {
+      cache: "dynamic",
+    }
   );
 
   projects.forEach((project) => {
@@ -48,7 +51,10 @@ export const GET = async (request: Request) => {
       z.object({
         slug: z.string(),
       })
-    )
+    ),
+    {
+      cache: "dynamic",
+    }
   );
 
   blogPosts.forEach((blogPost) => {

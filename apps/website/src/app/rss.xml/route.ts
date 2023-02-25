@@ -47,7 +47,10 @@ export const GET = async (request: Request) => {
         date: z.string(),
         content: z.string(),
       })
-    )
+    ),
+    {
+      cache: "dynamic",
+    }
   );
 
   blogPosts.forEach((blogPost) => {
