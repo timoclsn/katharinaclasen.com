@@ -5061,7 +5061,7 @@ packages:
       object.values: 1.1.6
       resolve: 1.22.1
       semver: 6.3.0
-      tsconfig-paths: 3.14.1
+      tsconfig-paths: 3.14.2
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
@@ -9167,8 +9167,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /tsconfig-paths/3.14.1:
-    resolution: {integrity: sha512-fxDhWnFSLt3VuTwtvJt5fpwxBHg5AdKWMsgcPOOIilyjymcYVZoCQF8fvFRezCNfblEXmi+PcM1eYHeOAgXCOQ==}
+  /tsconfig-paths/3.14.2:
+    resolution: {integrity: sha512-o/9iXgCYc5L/JxCHPe3Hvh8Q/2xm5Z+p18PESBU6Ff33695QnCHBEjcytY2q19ua7Mbl/DavtBOLq+oG0RCL+g==}
     dependencies:
       '@types/json5': 0.0.29
       json5: 1.0.2
