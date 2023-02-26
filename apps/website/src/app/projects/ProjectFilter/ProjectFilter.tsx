@@ -45,20 +45,15 @@ export const ProjectFilter = ({ services, topics }: Props) => {
               </Select.Icon>
             </Tag>
           </Select.Trigger>
-          <Select.Portal>
-            <Select.Content>
-              <Select.Viewport>
-                <Select.Item value="all">
-                  <Select.ItemText>All Services</Select.ItemText>
-                </Select.Item>
-                {services.map((service) => (
-                  <Select.Item key={service} value={service}>
-                    <Select.ItemText>{service}</Select.ItemText>
-                  </Select.Item>
-                ))}
-              </Select.Viewport>
-            </Select.Content>
-          </Select.Portal>
+          <Select.Content>
+            <Select.Item value="all">All Services</Select.Item>
+            <Select.Separator />
+            {services.map((service) => (
+              <Select.Item key={service} value={service}>
+                {service}
+              </Select.Item>
+            ))}
+          </Select.Content>
         </Select>
 
         <Select
@@ -75,22 +70,18 @@ export const ProjectFilter = ({ services, topics }: Props) => {
               </Select.Icon>
             </Tag>
           </Select.Trigger>
-          <Select.Portal>
-            <Select.Content>
-              <Select.Viewport>
-                <Select.Item value="all">
-                  <Select.ItemText>All Topics</Select.ItemText>
-                </Select.Item>
-                {topics.map((topic) => (
-                  <Select.Item key={topic} value={topic}>
-                    <Select.ItemText>{topic}</Select.ItemText>
-                  </Select.Item>
-                ))}
-              </Select.Viewport>
-            </Select.Content>
-          </Select.Portal>
+          <Select.Content>
+            <Select.Item value="all">All Topics</Select.Item>
+            <Select.Separator />
+            {topics.map((topic) => (
+              <Select.Item key={topic} value={topic}>
+                {topic}
+              </Select.Item>
+            ))}
+          </Select.Content>
         </Select>
       </div>
+
       <div className="flex items-center gap-6 self-end">
         <Body size="large" color="dark" priority="secondary">
           Sort by:
@@ -102,29 +93,17 @@ export const ProjectFilter = ({ services, topics }: Props) => {
             handleValueChange("sort", value);
           }}
         >
-          <Select.Trigger className="outline-none hover:opacity-80">
-            <div className="flex items-center gap-2 text-left text-xl font-medium">
-              <Select.Value />
-              <Select.Icon>
-                <ArrowDown />
-              </Select.Icon>
-            </div>
+          <Select.Trigger className="flex items-center gap-2 text-left text-xl font-medium outline-none hover:opacity-80">
+            <Select.Value />
+            <Select.Icon>
+              <ArrowDown />
+            </Select.Icon>
           </Select.Trigger>
-          <Select.Portal>
-            <Select.Content>
-              <Select.Viewport>
-                <Select.Item value="dateDesc">
-                  <Select.ItemText>Date (newest first)</Select.ItemText>
-                </Select.Item>
-                <Select.Item value="dateAsc">
-                  <Select.ItemText>Date (oldest first)</Select.ItemText>
-                </Select.Item>
-                <Select.Item value="title">
-                  <Select.ItemText>Title</Select.ItemText>
-                </Select.Item>
-              </Select.Viewport>
-            </Select.Content>
-          </Select.Portal>
+          <Select.Content>
+            <Select.Item value="dateDesc">Date (newest first)</Select.Item>
+            <Select.Item value="dateAsc">Date (oldest first)</Select.Item>
+            <Select.Item value="title">Title</Select.Item>
+          </Select.Content>
         </Select>
       </div>
     </div>

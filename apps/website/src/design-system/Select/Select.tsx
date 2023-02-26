@@ -1,6 +1,6 @@
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { cx } from "class-variance-authority";
-import { Check } from "lucide-react";
+import { ArrowDown, ArrowUp, Check } from "lucide-react";
 import {
   ComponentProps,
   ComponentPropsWithoutRef,
@@ -41,38 +41,43 @@ Select.Icon = forwardRef<
   );
 });
 
-Select.Portal = function SelectPortal({
-  ...props
-}: ComponentProps<typeof SelectPrimitive.Portal>) {
-  return <SelectPrimitive.Portal {...props} />;
-};
-
 Select.Content = forwardRef<
   ElementRef<typeof SelectPrimitive.Content>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
->(function SelectContent({ className, ...props }, ref) {
+>(function SelectContent({ children, className, ...props }, ref) {
   return (
-    <SelectPrimitive.Content
-      className={cx(
-        "z-20 rounded-2xl bg-background-dark px-4 py-6 text-contrast-primary-light animate-in fade-in-75 zoom-in-90 duration-100 ease-in",
-        className
-      )}
-      {...props}
-      ref={ref}
-    />
+    <SelectPrimitive.Portal>
+      <SelectPrimitive.Content
+        className="z-50 rounded-2xl bg-background-dark px-4 py-6 text-contrast-primary-light animate-in fade-in-75 zoom-in-90 duration-100 ease-in"
+        ref={ref}
+        {...props}
+      >
+        <SelectPrimitive.ScrollUpButton className="flex cursor-default items-center justify-center">
+          <ArrowUp />
+        </SelectPrimitive.ScrollUpButton>
+        <SelectPrimitive.Viewport className="flex flex-col gap-1">
+          {children}
+        </SelectPrimitive.Viewport>
+        <SelectPrimitive.ScrollDownButton className="flex cursor-default items-center justify-center">
+          <ArrowDown />
+        </SelectPrimitive.ScrollDownButton>
+      </SelectPrimitive.Content>
+    </SelectPrimitive.Portal>
   );
 });
 
-Select.Viewport = forwardRef<
-  ElementRef<typeof SelectPrimitive.Viewport>,
-  ComponentPropsWithoutRef<typeof SelectPrimitive.Viewport>
->(function SelectViewport({ className, ...props }, ref) {
+Select.Separator = forwardRef<
+  ElementRef<typeof SelectPrimitive.Separator>,
+  ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
+>(function SelectSeparator({ className, ...props }, ref) {
   return (
-    <SelectPrimitive.Viewport
-      className={cx("flex flex-col gap-1", className)}
+    <SelectPrimitive.Separator
+      className={cx("m-1 h-[1px] bg-contrast-secondary-light", className)}
       {...props}
       ref={ref}
-    />
+    >
+      &nbsp;
+    </SelectPrimitive.Separator>
   );
 });
 
@@ -89,39 +94,12 @@ Select.Item = forwardRef<
       {...props}
       ref={ref}
     >
-      <Select.ItemIndicator>
+      <SelectPrimitive.ItemIndicator className="absolute left-1 flex h-[25px] w-[25px] items-center justify-center">
         <Check size={18} />
-      </Select.ItemIndicator>
-      {children}
+      </SelectPrimitive.ItemIndicator>
+      <SelectPrimitive.ItemText className="whitespace-nowrap">
+        {children}
+      </SelectPrimitive.ItemText>
     </SelectPrimitive.Item>
-  );
-});
-
-Select.ItemIndicator = forwardRef<
-  ElementRef<typeof SelectPrimitive.ItemIndicator>,
-  ComponentPropsWithoutRef<typeof SelectPrimitive.ItemIndicator>
->(function SelectItemIndicator({ className, ...props }, ref) {
-  return (
-    <SelectPrimitive.ItemIndicator
-      className={cx(
-        "absolute left-1 flex h-[25px] w-[25px] items-center justify-center",
-        className
-      )}
-      {...props}
-      ref={ref}
-    />
-  );
-});
-
-Select.ItemText = forwardRef<
-  ElementRef<typeof SelectPrimitive.ItemText>,
-  ComponentPropsWithoutRef<typeof SelectPrimitive.ItemText>
->(function SelectItemText({ className, ...props }, ref) {
-  return (
-    <SelectPrimitive.ItemText
-      className={cx("whitespace-nowrap", className)}
-      {...props}
-      ref={ref}
-    />
   );
 });
