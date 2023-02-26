@@ -9,6 +9,8 @@ import { queryContent } from "../../lib/sanity";
 import { ProjectFilter } from "./ProjectFilter/ProjectFilter";
 import { ProjectList } from "./ProjectList/ProjectList";
 
+export const dynamic = "force-dynamic";
+
 export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description } = await getMetadata(
     "74d12002-8c85-433c-ab61-e5680554813c"
@@ -71,7 +73,27 @@ const getProjects = async () => {
   );
 };
 
-const ProjectsPage = async () => {
+export type Filter = z.infer<typeof filterSchema>;
+const filterSchema = z.object({
+  service: z.coerce.string().optional(),
+  topic: z.coerce.string().optional(),
+});
+
+export type Sort = z.infer<typeof sortSchema>["sort"];
+const sortSchema = z.object({
+  sort: z.coerce.string().optional(),
+});
+
+interface Props {
+  searchParams?: {
+    [key: string]: string | string[] | undefined;
+  };
+}
+
+const ProjectsPage = async ({ searchParams = {} }: Props) => {
+  const filter = filterSchema.parse(searchParams);
+  const { sort } = sortSchema.parse(searchParams);
+
   const projects = await getProjects();
 
   const services = Array.from(
@@ -107,7 +129,7 @@ const ProjectsPage = async () => {
           </Heading>
           <ProjectFilter services={services} topics={topics} />
         </div>
-        <ProjectList projects={projects} />
+        <ProjectList projects={projects} filter={filter} sort={sort} />
       </Container>
     </div>
   );

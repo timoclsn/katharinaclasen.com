@@ -1,36 +1,29 @@
-"use client";
-
-import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { CalendarDays, Contact } from "lucide-react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { ArticlePreview } from "../../../components/ArticlePreview/ArticlePreview";
+import { AutoAnimate } from "../../../components/AutoAnimate/AutoAnimate";
 import { Heading } from "../../../design-system/Heading/Heading";
 import { context } from "../../../lib/projects";
-import { Projects } from "../page";
+import { Filter, Projects, Sort } from "../page";
 
 interface Props {
   projects: Projects;
+  filter?: Filter;
+  sort?: Sort;
 }
 
-export const ProjectList = ({ projects }: Props) => {
-  const [listRef] = useAutoAnimate<HTMLUListElement>();
-  const searchParams = useSearchParams();
-  const serviceFilter = searchParams.get("service");
-  const topicFilter = searchParams.get("topic");
-  const sort = searchParams.get("sort");
-
+export const ProjectList = ({ projects, filter, sort }: Props) => {
   const filteredProjects = projects
     .filter((project) => {
-      if (!serviceFilter) return true;
+      if (!filter?.service || filter.service === "all") return true;
       return project.services?.some(
-        (service) => service.title === serviceFilter
+        (service) => service.title === filter.service
       );
     })
     .filter((project) => {
-      if (!topicFilter) return true;
+      if (!filter?.topic || filter.topic === "all") return true;
       if (!project.topics) return false;
-      return project.topics.some((service) => service.title === topicFilter);
+      return project.topics.some((service) => service.title === filter.topic);
     })
     .sort((a, b) => {
       if (sort === "dateAsc") {
@@ -46,8 +39,8 @@ export const ProjectList = ({ projects }: Props) => {
   return (
     <div>
       {filteredProjects.length > 0 ? (
-        <ul
-          ref={listRef}
+        <AutoAnimate
+          as="ul"
           className="grid grid-cols-1 gap-x-14 gap-y-28 md:grid-cols-2"
         >
           {filteredProjects.map((project) => {
@@ -97,7 +90,7 @@ export const ProjectList = ({ projects }: Props) => {
               </li>
             );
           })}
-        </ul>
+        </AutoAnimate>
       ) : (
         <Heading>No Projects found…</Heading>
       )}

@@ -24,11 +24,7 @@ export const ProjectFilter = ({ services, topics }: Props) => {
   };
 
   const handleValueChange = (param: string, value: string) => {
-    if (value === "all") {
-      searchParams.delete(param);
-    } else {
-      searchParams.set(param, value);
-    }
+    searchParams.set(param, value);
     filter();
   };
 
@@ -36,14 +32,14 @@ export const ProjectFilter = ({ services, topics }: Props) => {
     <div className="flex flex-wrap justify-between gap-8">
       <div className="flex flex-wrap gap-3">
         <Select
-          value={searchParams.get("service") || "all"}
+          value={searchParams.get("service") || undefined}
           onValueChange={(value) => {
             handleValueChange("service", value);
           }}
         >
           <Select.Trigger className="outline-none transition-transform will-change-transform duration-100 ease-in hover:scale-105">
             <Tag color="dark" size="xxl" outline="solid">
-              <Select.Value />
+              <Select.Value placeholder="Services" />
               <Select.Icon>
                 <ArrowDown />
               </Select.Icon>
@@ -66,14 +62,14 @@ export const ProjectFilter = ({ services, topics }: Props) => {
         </Select>
 
         <Select
-          value={searchParams.get("topic") || "all"}
+          value={searchParams.get("topic") || undefined}
           onValueChange={(value) => {
             handleValueChange("topic", value);
           }}
         >
           <Select.Trigger className="outline-none transition-transform duration-100 ease-in hover:scale-105 hover:opacity-80">
             <Tag color="dark" size="xxl" outline="dash">
-              <Select.Value />
+              <Select.Value placeholder="Topics" />
               <Select.Icon>
                 <ArrowDown />
               </Select.Icon>
@@ -100,7 +96,8 @@ export const ProjectFilter = ({ services, topics }: Props) => {
           Sort by:
         </Body>
         <Select
-          value={searchParams.get("sort") || "dateDesc"}
+          defaultValue="dateDesc"
+          value={searchParams.get("sort") || undefined}
           onValueChange={(value) => {
             handleValueChange("sort", value);
           }}
