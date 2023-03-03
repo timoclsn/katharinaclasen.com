@@ -98,18 +98,24 @@ export const Accordion = ({
               </Heading>
             </AccordionPrimitive.Trigger>
             <AccordionPrimitive.Content
-              className={cx(styles.AccordionContent, contentVariants({ size }))}
+              className={cx(
+                "w-full",
+                styles.AccordionContent,
+                contentVariants({ size })
+              )}
             >
               <div className="flex h-full flex-col items-start overflow-auto">
                 {size === "large" && (
                   <>
-                    <Illustration
-                      className={colorVariants({
-                        dark: color === "dark",
-                        className:
-                          "mx-auto mb-4 h-3/4 w-3/4 max-w-[400px] opacity-60 lg:mb-0",
-                      })}
-                    />
+                    <div className="flex w-full justify-center">
+                      <Illustration
+                        className={colorVariants({
+                          dark: color === "dark",
+                          className:
+                            "mb-4 h-3/4 w-3/4 max-w-[400px] opacity-60 lg:mb-0",
+                        })}
+                      />
+                    </div>
                     <Heading color={color}>{title}</Heading>
                   </>
                 )}
