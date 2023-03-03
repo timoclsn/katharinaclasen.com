@@ -10,9 +10,9 @@ import { MyClientsCarousel } from "./MyClientsCarousel";
 export type Clients = Awaited<ReturnType<typeof queryCarousel>>["items"];
 
 const queryCarousel = async () => {
-  const result = await queryContent(
+  return await queryContent(
     groq`
-    *[_id == '908fb376-7834-4b39-9c9a-8927976fa4e4']
+    *[_id == '908fb376-7834-4b39-9c9a-8927976fa4e4'][0]
     {
       title,
       subtitle,
@@ -27,31 +27,27 @@ const queryCarousel = async () => {
       },
     }
     `,
-    z.array(
-      z.object({
-        title: z.string(),
-        subtitle: z.string(),
-        items: z.array(
-          z.object({
-            shortName: z.string(),
-            name: z.string().nullable(),
-            logo: z.string(),
-            description: z.string().transform((value) => markdownToHtml(value)),
-            website: z.string().nullable(),
-            caseStudy: z.string().nullable(),
-            quote: z
-              .object({
-                text: z.string(),
-                author: z.string(),
-              })
-              .nullable(),
-          })
-        ),
-      })
-    )
+    z.object({
+      title: z.string(),
+      subtitle: z.string(),
+      items: z.array(
+        z.object({
+          shortName: z.string(),
+          name: z.string().nullable(),
+          logo: z.string(),
+          description: z.string().transform((value) => markdownToHtml(value)),
+          website: z.string().nullable(),
+          caseStudy: z.string().nullable(),
+          quote: z
+            .object({
+              text: z.string(),
+              author: z.string(),
+            })
+            .nullable(),
+        })
+      ),
+    })
   );
-
-  return result[0];
 };
 
 export const MyClients = async () => {

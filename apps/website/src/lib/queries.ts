@@ -9,9 +9,9 @@ import { queryContent } from "./sanity";
 export type AccordeonItems = Awaited<ReturnType<typeof getAccordionItems>>;
 
 export const getAccordionItems = async (id: string) => {
-  const result = await queryContent(
+  const { items } = await queryContent(
     groq`
-    *[_id == '${id}']
+    *[_id == '${id}'][0]
     {
       items[]->{
         illustration,
@@ -23,27 +23,25 @@ export const getAccordionItems = async (id: string) => {
       }
     }
     `,
-    z.array(
-      z.object({
-        items: z.array(
-          z.object({
-            illustration: z.enum(illustrationsList),
-            title: z.string(),
-            description: z.string().transform((value) => markdownToHtml(value)),
-            button: z
-              .object({
-                label: z.string(),
-                href: z.string(),
-              })
-              .nullable(),
-            backgroundColor: z.enum(backgroundColorsList).nullable(),
-            color: z.enum(colorsList).nullable(),
-          })
-        ),
-      })
-    )
+    z.object({
+      items: z.array(
+        z.object({
+          illustration: z.enum(illustrationsList),
+          title: z.string(),
+          description: z.string().transform((value) => markdownToHtml(value)),
+          button: z
+            .object({
+              label: z.string(),
+              href: z.string(),
+            })
+            .nullable(),
+          backgroundColor: z.enum(backgroundColorsList).nullable(),
+          color: z.enum(colorsList).nullable(),
+        })
+      ),
+    })
   );
-  return result[0].items;
+  return items;
 };
 
 export type CardGridItems = Awaited<
@@ -51,122 +49,115 @@ export type CardGridItems = Awaited<
 >["items"];
 
 export const getCardGridItems = async (id: string) => {
-  const result = await queryContent(
+  return await queryContent(
     groq`
-    *[_id == '${id}']
-    {
-      title,
-      subtitle,
-      items[]->{
-        illustration,
+      *[_id == '${id}'][0]
+      {
         title,
-        description,
-        button{label, href},
-        illustration2,
-        title2,
-        description2,
-        button2{label, href},
-        backgroundColor,
-        customBackgroundColor,
-        color,
-        border,
-        backgroundImage{'url': asset->url, alt},
-        image{'url': asset->url, alt},
-      },
-      quotes[]->{
-        text,
-        author
+        subtitle,
+        items[]->{
+          illustration,
+          title,
+          description,
+          button{label, href},
+          illustration2,
+          title2,
+          description2,
+          button2{label, href},
+          backgroundColor,
+          customBackgroundColor,
+          color,
+          border,
+          backgroundImage{'url': asset->url, alt},
+          image{'url': asset->url, alt},
+        },
+        quotes[]->{
+          text,
+          author
+        }
       }
-    }
     `,
-    z.array(
-      z.object({
-        title: z.string(),
-        subtitle: z.string(),
-        items: z.array(
-          z.object({
-            illustration: z.enum(illustrationsList).nullable(),
-            title: z.string().nullable(),
-            description: z.string().nullable(),
-            button: z
-              .object({
-                label: z.string(),
-                href: z.string(),
-              })
-              .nullable(),
-            illustration2: z.enum(illustrationsList).nullable(),
-            title2: z.string().nullable(),
-            description2: z.string().nullable(),
-            button2: z
-              .object({
-                label: z.string(),
-                href: z.string(),
-              })
-              .nullable(),
-            backgroundColor: z.enum(backgroundColorsList).nullable(),
-            customBackgroundColor: z.string().nullable(),
-            color: z.enum(colorsList).nullable(),
-            border: z.boolean().nullable(),
-            backgroundImage: z
-              .object({
-                url: z.string(),
-                alt: z.string(),
-              })
-              .nullable(),
-            image: z
-              .object({
-                url: z.string(),
-                alt: z.string(),
-              })
-              .nullable(),
-          })
-        ),
-        quotes: z.array(
-          z.object({
-            text: z.string(),
-            author: z.string(),
-          })
-        ),
-      })
-    )
+    z.object({
+      title: z.string(),
+      subtitle: z.string(),
+      items: z.array(
+        z.object({
+          illustration: z.enum(illustrationsList).nullable(),
+          title: z.string().nullable(),
+          description: z.string().nullable(),
+          button: z
+            .object({
+              label: z.string(),
+              href: z.string(),
+            })
+            .nullable(),
+          illustration2: z.enum(illustrationsList).nullable(),
+          title2: z.string().nullable(),
+          description2: z.string().nullable(),
+          button2: z
+            .object({
+              label: z.string(),
+              href: z.string(),
+            })
+            .nullable(),
+          backgroundColor: z.enum(backgroundColorsList).nullable(),
+          customBackgroundColor: z.string().nullable(),
+          color: z.enum(colorsList).nullable(),
+          border: z.boolean().nullable(),
+          backgroundImage: z
+            .object({
+              url: z.string(),
+              alt: z.string(),
+            })
+            .nullable(),
+          image: z
+            .object({
+              url: z.string(),
+              alt: z.string(),
+            })
+            .nullable(),
+        })
+      ),
+      quotes: z.array(
+        z.object({
+          text: z.string(),
+          author: z.string(),
+        })
+      ),
+    })
   );
-
-  return result[0];
 };
 
 export type Service = Awaited<ReturnType<typeof getService>>;
 
 export const getService = async (id: string) => {
-  const result = await queryContent(
+  return await queryContent(
     groq`
-    *[_id == '${id}']
-    {
-      title,
-        description,
-        quote->{text, author},
-        image{'url': asset->url, alt},
-    }
-  `,
-    z.array(
-      z.object({
-        title: z.string(),
-        description: z.string().nullable(),
-        quote: z
-          .object({
-            text: z.string(),
-            author: z.string(),
-          })
-          .nullable(),
-        image: z
-          .object({
-            url: z.string(),
-            alt: z.string(),
-          })
-          .nullable(),
-      })
-    )
+      *[_id == '${id}'][0]
+      {
+        title,
+          description,
+          quote->{text, author},
+          image{'url': asset->url, alt},
+      }
+    `,
+    z.object({
+      title: z.string(),
+      description: z.string().nullable(),
+      quote: z
+        .object({
+          text: z.string(),
+          author: z.string(),
+        })
+        .nullable(),
+      image: z
+        .object({
+          url: z.string(),
+          alt: z.string(),
+        })
+        .nullable(),
+    })
   );
-  return result[0];
 };
 
 export type ServiceTopics = Awaited<ReturnType<typeof getServiceTopics>>;
@@ -188,39 +179,47 @@ export const getServiceTopics = async (id: string) => {
 };
 
 export const getTextSnippet = async (id: string) => {
-  const result = await queryContent(
+  return await queryContent(
     groq`
-    *[_id == '${id}']
-    {
-      content,
-    }
+      *[_id == '${id}'][0]
+      {
+        content,
+      }
     `,
-    z.array(
-      z.object({
-        content: z.string(),
-      })
-    )
+    z.object({
+      content: z.string(),
+    })
   );
-
-  return result[0];
 };
 
 export const getMetadata = async (id: string) => {
-  const result = await queryContent(
+  return await queryContent(
     groq`
-    *[_id == '${id}']
-    {
-      title,
-      description,
-    }
+      *[_id == '${id}'][0]
+      {
+        title,
+        description,
+      }
     `,
-    z.array(
-      z.object({
-        title: z.string(),
-        description: z.string(),
-      })
-    )
+    z.object({
+      title: z.string(),
+      description: z.string(),
+    })
   );
+};
 
-  return result[0];
+export const getImage = async (id: string) => {
+  return await queryContent(
+    groq`
+      *[_id == '${id}'][0]
+      {
+        'url': image.asset->url,
+        'alt': image.alt,
+      }
+    `,
+    z.object({
+      url: z.string().url(),
+      alt: z.string(),
+    })
+  );
 };

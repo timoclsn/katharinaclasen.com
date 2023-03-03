@@ -10,22 +10,19 @@ import { queryContent } from "../../../lib/sanity";
 
 export const generateMetadata = createGenerateMetadata(async ({ params }) => {
   const { slug } = params;
-  const result = await queryContent(
+  const project = await queryContent(
     groq`
-      *[_type == 'project' && slug.current == '${slug}']
+      *[_type == 'project' && slug.current == '${slug}'][0]
       {
         title,
         summary
       }
     `,
-    z.array(
-      z.object({
-        title: z.string(),
-        summary: z.string().nullable(),
-      })
-    )
+    z.object({
+      title: z.string(),
+      summary: z.string().nullable(),
+    })
   );
-  const project = result[0];
   return {
     title: project.title,
     description: project.summary || "Project by Katharina Clasen",
@@ -59,9 +56,9 @@ interface Props {
 
 const ProjectPage = async ({ params }: Props) => {
   const { slug } = params;
-  const result = await queryContent(
+  const project = await queryContent(
     groq`
-      *[_type == 'project' && slug.current == '${slug}']
+      *[_type == 'project' && slug.current == '${slug}'][0]
       {
         _id,
         title,
@@ -76,44 +73,41 @@ const ProjectPage = async ({ params }: Props) => {
         content
       }
     `,
-    z.array(
-      z.object({
-        _id: z.string(),
-        title: z.string(),
-        image: z.object({
-          url: z.string(),
-          alt: z.string(),
-          border: z.boolean().nullable(),
-        }),
-        context: z.enum(contexts),
-        client: z.string().nullable(),
-        date: z.string(),
-        period: z.string().nullable(),
-        externalLink: z
-          .object({
-            label: z.string(),
-            href: z.string(),
+    z.object({
+      _id: z.string(),
+      title: z.string(),
+      image: z.object({
+        url: z.string(),
+        alt: z.string(),
+        border: z.boolean().nullable(),
+      }),
+      context: z.enum(contexts),
+      client: z.string().nullable(),
+      date: z.string(),
+      period: z.string().nullable(),
+      externalLink: z
+        .object({
+          label: z.string(),
+          href: z.string(),
+        })
+        .nullable(),
+      services: z
+        .array(
+          z.object({
+            title: z.string(),
           })
-          .nullable(),
-        services: z
-          .array(
-            z.object({
-              title: z.string(),
-            })
-          )
-          .nullable(),
-        topics: z
-          .array(
-            z.object({
-              title: z.string(),
-            })
-          )
-          .nullable(),
-        content: z.string(),
-      })
-    )
+        )
+        .nullable(),
+      topics: z
+        .array(
+          z.object({
+            title: z.string(),
+          })
+        )
+        .nullable(),
+      content: z.string(),
+    })
   );
-  const project = result[0];
 
   return (
     <article className="py-20 sm:py-32">

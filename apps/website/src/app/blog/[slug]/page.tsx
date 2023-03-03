@@ -12,22 +12,19 @@ import { queryContent } from "../../../lib/sanity";
 // Todo add more og tags
 export const generateMetadata = createGenerateMetadata(async ({ params }) => {
   const { slug } = params;
-  const result = await queryContent(
+  const blogPost = await queryContent(
     groq`
-      *[_type == 'blogPost' && slug.current == '${slug}']
+      *[_type == 'blogPost' && slug.current == '${slug}'][0]
       {
         title,
         summary
       }
     `,
-    z.array(
-      z.object({
-        title: z.string(),
-        summary: z.string().nullable(),
-      })
-    )
+    z.object({
+      title: z.string(),
+      summary: z.string().nullable(),
+    })
   );
-  const blogPost = result[0];
   return {
     title: blogPost.title,
     description: blogPost.summary || "Blog post by Katharina Clasen",
@@ -62,9 +59,9 @@ interface Props {
 
 const BlogPostPage = async ({ params }: Props) => {
   const { slug } = params;
-  const result = await queryContent(
+  const blogPost = await queryContent(
     groq`
-      *[_type == 'blogPost' && slug.current == '${slug}']
+      *[_type == 'blogPost' && slug.current == '${slug}'][0]
       {
         _id,
         title,
@@ -76,36 +73,33 @@ const BlogPostPage = async ({ params }: Props) => {
         content
       }
     `,
-    z.array(
-      z.object({
-        _id: z.string(),
-        title: z.string(),
-        image: z.object({
-          url: z.string(),
-          alt: z.string(),
-          border: z.boolean().nullable(),
-        }),
-        author: z.string(),
-        date: z.string(),
-        services: z
-          .array(
-            z.object({
-              title: z.string(),
-            })
-          )
-          .nullable(),
-        topics: z
-          .array(
-            z.object({
-              title: z.string(),
-            })
-          )
-          .nullable(),
-        content: z.string(),
-      })
-    )
+    z.object({
+      _id: z.string(),
+      title: z.string(),
+      image: z.object({
+        url: z.string(),
+        alt: z.string(),
+        border: z.boolean().nullable(),
+      }),
+      author: z.string(),
+      date: z.string(),
+      services: z
+        .array(
+          z.object({
+            title: z.string(),
+          })
+        )
+        .nullable(),
+      topics: z
+        .array(
+          z.object({
+            title: z.string(),
+          })
+        )
+        .nullable(),
+      content: z.string(),
+    })
   );
-  const blogPost = result[0];
   const stats = readingTime(blogPost.content);
 
   return (

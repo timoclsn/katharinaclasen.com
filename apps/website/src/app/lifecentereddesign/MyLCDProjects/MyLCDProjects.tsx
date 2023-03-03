@@ -10,9 +10,9 @@ import { MyLCDProjectsCarousel } from "./MyLCDProjectsCarousel";
 export type Projects = Awaited<ReturnType<typeof queryCarousel>>["items"];
 
 const queryCarousel = async () => {
-  const result = await queryContent(
+  return await queryContent(
     groq`
-    *[_id == 'b3ecfa0d-e710-4955-b798-136dedc97b37']
+    *[_id == 'b3ecfa0d-e710-4955-b798-136dedc97b37'][0]
     {
       title,
       subtitle,
@@ -25,35 +25,31 @@ const queryCarousel = async () => {
       },
     }
     `,
-    z.array(
-      z.object({
-        title: z.string(),
-        subtitle: z.string(),
-        items: z.array(
-          z.object({
-            title: z.string(),
-            summary: z
-              .string()
-              .transform((value) => markdownToHtml(value))
-              .nullable(),
-            externalLink: z
-              .object({
-                label: z.string(),
-                href: z.string(),
-              })
-              .nullable(),
-            slug: z.string().nullable(),
-            image: z.object({
-              url: z.string(),
-              alt: z.string(),
-            }),
-          })
-        ),
-      })
-    )
+    z.object({
+      title: z.string(),
+      subtitle: z.string(),
+      items: z.array(
+        z.object({
+          title: z.string(),
+          summary: z
+            .string()
+            .transform((value) => markdownToHtml(value))
+            .nullable(),
+          externalLink: z
+            .object({
+              label: z.string(),
+              href: z.string(),
+            })
+            .nullable(),
+          slug: z.string().nullable(),
+          image: z.object({
+            url: z.string(),
+            alt: z.string(),
+          }),
+        })
+      ),
+    })
   );
-
-  return result[0];
 };
 
 export const MyLCDProjects = async () => {
