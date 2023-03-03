@@ -15,7 +15,7 @@ export const LcdAccordion = async () => {
         This is how Life-centered Design changes the way we create products,
         systems, and services
       </Body>
-      <Accordion items={items} />
+      <Accordion items={items} size="large" />
     </Section>
   );
 };

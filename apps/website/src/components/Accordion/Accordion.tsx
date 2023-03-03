@@ -1,7 +1,7 @@
 "use client";
 
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { cva, cx } from "class-variance-authority";
+import { cva, cx, VariantProps } from "class-variance-authority";
 import { ArrowRight } from "lucide-react";
 import { Button } from "../../design-system/Button/Button";
 import { Heading } from "../../design-system/Heading/Heading";
@@ -10,6 +10,15 @@ import { illustrationsMap } from "../../lib/illustrations/illustrations";
 import { AccordeonItems } from "../../lib/queries";
 import { Markdown } from "../Markdown/Markdown";
 import styles from "./Accordion.module.css";
+
+const colorVariants = cva(null, {
+  variants: {
+    dark: {
+      true: "text-contrast-secondary-dark",
+      false: "text-contrast-secondary-light",
+    },
+  },
+});
 
 const itemVariants = cva(
   "rounded-3xl sm:rounded-4xl flex flex-col lg:flex-row lg:data-[state=open]:flex-1 lg:h-[600px]",
@@ -22,12 +31,37 @@ const itemVariants = cva(
   }
 );
 
-interface Props {
+const triggerVariants = cva(
+  "flex flex-none items-center gap-5 p-6 transition-opacity hover:opacity-80 sm:gap-10 sm:p-10 lg:flex-col-reverse",
+  {
+    variants: {
+      size: {
+        medium: null,
+        large: "data-[state=open]:hidden",
+      },
+    },
+  }
+);
+
+const contentVariants = cva("overflow-hidden p-6 sm:p-10", {
+  variants: {
+    size: {
+      medium: "lg:pl-0",
+      large: null,
+    },
+  },
+});
+
+interface Props extends VariantProps<typeof contentVariants> {
   defaultValue?: number;
   items: AccordeonItems;
 }
 
-export const Accordion = ({ defaultValue = 1, items }: Props) => {
+export const Accordion = ({
+  defaultValue = 1,
+  items,
+  size = "medium",
+}: Props) => {
   return (
     <AccordionPrimitive.Root
       type="single"
@@ -50,27 +84,35 @@ export const Accordion = ({ defaultValue = 1, items }: Props) => {
             value={(idx + 1).toString()}
             className={itemVariants({ backgroundColor })}
           >
-            <AccordionPrimitive.Trigger className="flex flex-none items-center gap-5 p-6 transition-opacity hover:opacity-80 sm:gap-10 sm:p-10 lg:flex-col-reverse">
+            <AccordionPrimitive.Trigger className={triggerVariants({ size })}>
               <Illustration
-                className={`opacity-60 ${
-                  color === "dark"
-                    ? "text-contrast-secondary-dark"
-                    : "text-contrast-secondary-light"
-                }`}
-                width={75}
-                height={75}
+                className={colorVariants({
+                  dark: color === "dark",
+                  className: "opacity-60",
+                })}
+                width={size === "large" ? 125 : 75}
+                height={size === "large" ? 125 : 75}
               />
               <Heading color={color} className="lg:writing-vertical text-start">
                 {title}
               </Heading>
             </AccordionPrimitive.Trigger>
             <AccordionPrimitive.Content
-              className={cx(
-                styles.AccordionContent,
-                "overflow-hidden p-6 sm:p-10 lg:pl-0"
-              )}
+              className={cx(styles.AccordionContent, contentVariants({ size }))}
             >
               <div className="flex h-full flex-col items-start overflow-auto">
+                {size === "large" && (
+                  <>
+                    <Illustration
+                      className={colorVariants({
+                        dark: color === "dark",
+                        className:
+                          "mx-auto mb-4 h-3/4 w-3/4 max-w-[400px] opacity-60 lg:mb-0",
+                      })}
+                    />
+                    <Heading color={color}>{title}</Heading>
+                  </>
+                )}
                 <Markdown size="normal" color={color} className="mt-auto">
                   {description}
                 </Markdown>
