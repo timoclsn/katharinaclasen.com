@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+}
+
+@layer utilities {
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    rotate: 180deg;
+  }
+}

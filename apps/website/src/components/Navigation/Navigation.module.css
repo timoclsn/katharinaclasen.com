@@ -1,0 +1,21 @@
+.menuIcon svg {
+  position: absolute;
+  inset: 0px;
+  margin: auto;
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.menuIcon svg[data-hide="true"] {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.mobileMenu {
+  transition: transform 300ms ease;
+}
+
+.mobileMenu[data-open="true"] {
+  transform: translateX(-100%);
+}

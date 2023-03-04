@@ -1,0 +1,19 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"],
+      "env": ["SANITY_PROJECT_ID"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    },
+    "typecheck": {
+      "cache": false
+    }
+  }
+}
