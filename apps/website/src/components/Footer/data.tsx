@@ -13,7 +13,7 @@ export const data = [
       },
       {
         title: "My CV",
-        link: "",
+        link: LINKEDIN_URL,
         icon: null,
       },
       {
