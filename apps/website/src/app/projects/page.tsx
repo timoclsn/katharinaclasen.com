@@ -1,4 +1,5 @@
 import { groq } from "next-sanity";
+import { Suspense } from "react";
 import { z } from "zod";
 import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";
@@ -127,7 +128,9 @@ const ProjectsPage = async ({ searchParams = {} }: Props) => {
           <Heading className="mb-6 max-w-2xl">
             Have a look at my projects, and filter them by:
           </Heading>
-          <ProjectFilter services={services} topics={topics} />
+          <Suspense fallback={null}>
+            <ProjectFilter services={services} topics={topics} />
+          </Suspense>
         </div>
         <ProjectList projects={projects} filter={filter} sort={sort} />
       </Container>
