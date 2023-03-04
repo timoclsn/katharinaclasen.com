@@ -1,6 +1,5 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { Body } from "../../../design-system/Body/Body";
 import { Button } from "../../../design-system/Button/Button";
 import { Container } from "../../../design-system/Container/Container";
@@ -48,7 +47,7 @@ export const Header = async () => {
             </Button>
             <div className="flex w-full flex-col gap-6">
               <div className="flex gap-2">
-                <Link
+                <a
                   href="/services#ux-research"
                   className="group relative flex-1 overflow-hidden rounded-3xl transition-opacity hover:opacity-80 sm:rounded-4xl"
                 >
@@ -65,8 +64,8 @@ export const Header = async () => {
                   >
                     UX Research
                   </Heading>
-                </Link>
-                <Link
+                </a>
+                <a
                   href="/services#ux-design"
                   className="group relative flex-1 overflow-hidden rounded-3xl transition-opacity hover:opacity-80 sm:rounded-4xl"
                 >
@@ -83,8 +82,8 @@ export const Header = async () => {
                   >
                     UX Design
                   </Heading>
-                </Link>
-                <Link
+                </a>
+                <a
                   href="/services#ui-design"
                   className="group relative flex-1 overflow-hidden rounded-3xl border-2 border-outline-light-dark transition-opacity hover:opacity-80 sm:rounded-4xl"
                 >
@@ -101,7 +100,7 @@ export const Header = async () => {
                   >
                     UI Design
                   </Heading>
-                </Link>
+                </a>
               </div>
               <div className="self-end">
                 <Button style="text" size="large" href="/services">
