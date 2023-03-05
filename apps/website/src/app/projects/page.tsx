@@ -128,7 +128,7 @@ const ProjectsPage = async ({ searchParams = {} }: Props) => {
           <Heading className="mb-6 max-w-2xl">
             Have a look at my projects, and filter them by:
           </Heading>
-          <Suspense fallback={null}>
+          <Suspense fallback={<div>Loading filters...</div>}>
             <ProjectFilter services={services} topics={topics} />
           </Suspense>
         </div>
