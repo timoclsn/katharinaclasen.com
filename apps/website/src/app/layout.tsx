@@ -7,7 +7,6 @@ import { Navigation } from "../components/Navigation/Navigation";
 import { createGenerateMetadata } from "../lib/metadata";
 import { getMetadata } from "../lib/queries";
 import "../styles/global.css";
-import { Providers } from "./Providers";
 
 export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description } = await getMetadata(
@@ -85,13 +84,11 @@ const RootLayout = ({ children }: Props) => {
         )}
       >
         <body className="relative flex min-h-screen flex-col overflow-x-hidden">
-          <Providers>
-            <Navigation />
-            <main id="skip" className="flex-1">
-              {children}
-            </main>
-            <Footer />
-          </Providers>
+          <Navigation />
+          <main id="skip" className="flex-1">
+            {children}
+          </main>
+          <Footer />
         </body>
       </html>
     </>

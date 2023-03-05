@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ReactNode, useRef, useState } from "react";
 import { Card } from "../../design-system/Card/Card";
 import { usePrevious } from "../../hooks/usePrevious";
+import { MotionProvider } from "../MotionProvider/MotionProvider";
 
 const variants: Variants = {
   enter: (direction: number) => ({
@@ -78,59 +79,61 @@ export const Carousel = <Item extends {}>({
   };
 
   return (
-    <div>
-      <ul className="mb-16 flex flex-wrap gap-2">
-        {items.map((item, index) => {
-          const selected = index === selectedItemIndex;
-          return (
-            <li key={index}>
-              <button
-                onClick={() => selectItem(index)}
-                className="transition-transform will-change-transform duration-100 ease-in hover:scale-105 active:scale-95"
+    <MotionProvider>
+      <div>
+        <ul className="mb-16 flex flex-wrap gap-2">
+          {items.map((item, index) => {
+            const selected = index === selectedItemIndex;
+            return (
+              <li key={index}>
+                <button
+                  onClick={() => selectItem(index)}
+                  className="transition-transform will-change-transform duration-100 ease-in hover:scale-105 active:scale-95"
+                >
+                  {tag({ item, selected, index })}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+        <Card
+          ref={cardRef}
+          color="primary"
+          className="flex h-[800px] sm:h-[600px]"
+        >
+          <button
+            className="px-4 transition-transform will-change-transform duration-100 ease-in hover:-translate-x-1 active:-translate-x-2 lg:px-10"
+            onClick={prevItem}
+          >
+            <ArrowLeft />
+          </button>
+          <div className="relative flex-1 overflow-x-hidden">
+            <AnimatePresence initial={false} custom={direction()}>
+              <m.div
+                className="absolute h-full w-full bg-background-primary py-16"
+                key={Math.random()}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                custom={direction()}
+                transition={{
+                  type: "spring",
+                  duration: 0.5,
+                }}
               >
-                {tag({ item, selected, index })}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-      <Card
-        ref={cardRef}
-        color="primary"
-        className="flex h-[800px] sm:h-[600px]"
-      >
-        <button
-          className="px-4 transition-transform will-change-transform duration-100 ease-in hover:-translate-x-1 active:-translate-x-2 lg:px-10"
-          onClick={prevItem}
-        >
-          <ArrowLeft />
-        </button>
-        <div className="relative flex-1 overflow-x-hidden">
-          <AnimatePresence initial={false} custom={direction()}>
-            <m.div
-              className="absolute h-full w-full bg-background-primary py-16"
-              key={Math.random()}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              custom={direction()}
-              transition={{
-                type: "spring",
-                duration: 0.5,
-              }}
-            >
-              {children({ item: selectedItem })}
-            </m.div>
-          </AnimatePresence>
-        </div>
-        <button
-          className="px-4 transition-transform will-change-transform duration-100 ease-in hover:translate-x-1 active:translate-x-2 lg:px-10"
-          onClick={nextItem}
-        >
-          <ArrowRight />
-        </button>
-      </Card>
-    </div>
+                {children({ item: selectedItem })}
+              </m.div>
+            </AnimatePresence>
+          </div>
+          <button
+            className="px-4 transition-transform will-change-transform duration-100 ease-in hover:translate-x-1 active:translate-x-2 lg:px-10"
+            onClick={nextItem}
+          >
+            <ArrowRight />
+          </button>
+        </Card>
+      </div>
+    </MotionProvider>
   );
 };
