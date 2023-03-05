@@ -14,5 +14,6 @@ Visit on: https://katharinaclasen.com
 - [CVA](https://cva.style/docs)
 - [Framer Motio](https://www.framer.com/motion/)
 - [Sanity CMS](https://www.sanity.io/)
+- [MDX](https://github.com/hashicorp/next-mdx-remote)
 - [Zod](https://github.com/colinhacks/zod)
 - [Vercel](https://vercel.com/)
