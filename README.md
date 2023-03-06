@@ -12,7 +12,7 @@ Visit on: https://katharinaclasen.com
 - [Next.js with App Router](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [CVA](https://cva.style/docs)
-- [Framer Motio](https://www.framer.com/motion/)
+- [Framer Motion](https://www.framer.com/motion/)
 - [Sanity CMS](https://www.sanity.io/)
 - [MDX](https://github.com/hashicorp/next-mdx-remote)
 - [Zod](https://github.com/colinhacks/zod)
