@@ -8,6 +8,8 @@ import { createGenerateMetadata } from "../lib/metadata";
 import { getMetadata } from "../lib/queries";
 import "../styles/global.css";
 
+export const runtime = "experimental-edge";
+
 export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description } = await getMetadata(
     "3c9f2256-cc4a-4e79-bfa7-4dcda1263376"
