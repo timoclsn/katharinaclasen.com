@@ -38,7 +38,7 @@ export const Header = async () => {
         <Image
           src={memojiImg}
           alt="Memoji of Katharina Clasen forming a heart with her hands."
-          className="absolute bottom-0 right-0 h-auto w-[150px] animate-in fade-in slide-in-from-bottom-full duration-700 ease-out sm:w-[250px] lg:w-[350px]"
+          className="absolute bottom-0 right-0 h-auto w-[150px] animate-in fade-in slide-in-from-bottom-1/3 duration-500 ease-out sm:w-[250px] lg:w-[350px]"
           sizes="30vw"
           priority
         />

@@ -35,7 +35,7 @@ export const Header = async () => {
                 src={memojiImg}
                 alt="Memoji of Katharina Clasen"
                 priority
-                className="h-auto w-[100px] animate-in fade-in slide-in-from-left-full duration-700 ease-in-out"
+                className="h-auto w-[100px] animate-in fade-in slide-in-from-left-1/3 duration-500 ease-in-out"
               />
               <Body as="p" size="large" priority="secondary">
                 {content}
