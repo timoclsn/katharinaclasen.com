@@ -72,7 +72,7 @@ Select.Separator = forwardRef<
 >(function SelectSeparator({ className, ...props }, ref) {
   return (
     <SelectPrimitive.Separator
-      className={cx("m-1 h-[1px] bg-contrast-secondary-light", className)}
+      className={cx("m-1 h-[1px] bg-contrast-secondary-light/30", className)}
       {...props}
       ref={ref}
     >
