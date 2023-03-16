@@ -146,7 +146,8 @@ const BlogPostPage = async ({ params }: Props) => {
         <MDXContent
           source={blogPost.content}
           color="dark"
-          className="mx-auto mt-32 max-w-none"
+          size="large"
+          className="mx-auto mt-32"
         />
       </Container>
     </article>

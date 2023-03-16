@@ -2,9 +2,10 @@ import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import { HTMLProps } from "react";
 import { Heading } from "../../design-system/Heading/Heading";
-import { InfoBox } from "../InfoBox/InfoBox";
+import { ContentBox } from "../ContentBox/ContentBox";
 import { Link } from "../Link/Link";
 import { Markdown, MarkdownProps } from "../Markdown/Markdown";
+import { NumberHeading } from "../NumberHeading/NumberHeading";
 
 interface Props extends Omit<MarkdownProps, "children"> {
   source: MDXRemoteProps["source"];
@@ -76,7 +77,8 @@ export const MDXContent = ({
       </Heading>
     ),
     a: Link,
-    InfoBox,
+    NumberHeading,
+    ContentBox,
   };
 
   return (
