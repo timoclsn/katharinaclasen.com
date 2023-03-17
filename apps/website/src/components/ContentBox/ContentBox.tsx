@@ -15,7 +15,7 @@ interface Props {
 export const ContentBox = ({ children, links }: Props) => {
   return (
     <Card color="secondary" inset="normal">
-      <Markdown>{children}</Markdown>
+      <Markdown size="large">{children}</Markdown>
       {links && (
         <div className="mt-8 flex flex-wrap items-center gap-2">
           {links.map((link, index) => (
