@@ -9,25 +9,43 @@ import { Container } from "../../../design-system/Container/Container";
 import { createGenerateMetadata } from "../../../lib/metadata";
 import { queryContent } from "../../../lib/sanity";
 
-// Todo add more og tags
 export const generateMetadata = createGenerateMetadata(async ({ params }) => {
   const { slug } = params;
-  const blogPost = await queryContent(
+  const { title, summary, date } = await queryContent(
     groq`
       *[_type == 'blogPost' && slug.current == '${slug}'][0]
       {
         title,
+        date,
         summary
       }
     `,
     z.object({
       title: z.string(),
+      date: z.string(),
       summary: z.string().nullable(),
     })
   );
+
   return {
-    title: blogPost.title,
-    description: blogPost.summary || "Blog post by Katharina Clasen",
+    title,
+    description: summary || "Blog post by Katharina Clasen",
+    openGraph: {
+      type: "article",
+      title,
+      authors: "Katharina Clasen",
+      url: `https://katharinaclasen.com/${slug}`,
+      publishedTime: date,
+      modifiedTime: date,
+      siteName: "Katharina Clasen",
+      description: summary || "Blog post by Katharina Clasen",
+      images: {
+        url: "https://katharinaclasen.com/og-image.png",
+        alt: "Website of Katharina Clasen",
+        width: 1200,
+        height: 630,
+      },
+    },
   };
 });
 
@@ -64,7 +82,9 @@ const BlogPostPage = async ({ params }: Props) => {
       *[_type == 'blogPost' && slug.current == '${slug}'][0]
       {
         _id,
+        'slug': slug.current,
         title,
+        summary,
         image{'url': asset->url, alt, border},
         author,
         date,
@@ -75,7 +95,9 @@ const BlogPostPage = async ({ params }: Props) => {
     `,
     z.object({
       _id: z.string(),
+      slug: z.string(),
       title: z.string(),
+      summary: z.string().nullable(),
       image: z.object({
         url: z.string(),
         alt: z.string(),
@@ -100,57 +122,89 @@ const BlogPostPage = async ({ params }: Props) => {
       content: z.string(),
     })
   );
+
   const stats = readingTime(blogPost.content);
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    mainEntityOfPage: {
+      "@type": "BlogPosting",
+      "@id": `https://katharinaclasen.com/${blogPost.slug}`,
+    },
+    headline: blogPost.title,
+    image: [blogPost.image.url],
+    datePublished: blogPost.date,
+    dateModified: blogPost.date,
+    author: {
+      "@type": "Person",
+      name: "Katharina Clasen",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Katharina Clasen",
+      logo: {
+        "@type": "ImageObject",
+        url: "/favicon.png",
+      },
+    },
+    description: blogPost.summary || "Blog post by Katharina Clasen",
+  };
+
   return (
-    <article className="py-20 sm:py-32">
-      <Container size="small" inset>
-        <ArticleHeader
-          title={blogPost.title}
-          titleImage={blogPost.image}
-          metaData={[
-            {
-              icon: User,
-              text: blogPost.author,
-            },
-            {
-              icon: Clock,
-              text: `${Math.ceil(stats.minutes)} min`,
-            },
-            {
-              icon: CalendarDays,
-              text: format(new Date(blogPost.date), "LLLL dd, yyyy"),
-            },
-          ]}
-          tags={[
-            ...(blogPost.services
-              ? blogPost.services.map(
-                  (service) =>
-                    ({
-                      outline: "solid",
-                      text: service.title,
-                    } as const)
-                )
-              : []),
-            ...(blogPost.topics
-              ? blogPost.topics.map(
-                  (topic) =>
-                    ({
-                      outline: "dash",
-                      text: topic.title,
-                    } as const)
-                )
-              : []),
-          ]}
-        />
-        <MDXContent
-          source={blogPost.content}
-          color="dark"
-          size="large"
-          className="mx-auto mt-32"
-        />
-      </Container>
-    </article>
+    <>
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </script>
+      <article className="py-20 sm:py-32">
+        <Container size="small" inset>
+          <ArticleHeader
+            title={blogPost.title}
+            titleImage={blogPost.image}
+            metaData={[
+              {
+                icon: User,
+                text: blogPost.author,
+              },
+              {
+                icon: Clock,
+                text: `${Math.ceil(stats.minutes)} min`,
+              },
+              {
+                icon: CalendarDays,
+                text: format(new Date(blogPost.date), "LLLL dd, yyyy"),
+              },
+            ]}
+            tags={[
+              ...(blogPost.services
+                ? blogPost.services.map(
+                    (service) =>
+                      ({
+                        outline: "solid",
+                        text: service.title,
+                      } as const)
+                  )
+                : []),
+              ...(blogPost.topics
+                ? blogPost.topics.map(
+                    (topic) =>
+                      ({
+                        outline: "dash",
+                        text: topic.title,
+                      } as const)
+                  )
+                : []),
+            ]}
+          />
+          <MDXContent
+            source={blogPost.content}
+            color="dark"
+            size="large"
+            className="mx-auto mt-32"
+          />
+        </Container>
+      </article>
+    </>
   );
 };
 
