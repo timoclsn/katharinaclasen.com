@@ -46,6 +46,13 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
         height: 630,
       },
     },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: summary || "Blog post by Katharina Clasen",
+      site: "@KatharinaClasen",
+      creator: "@KatharinaClasen",
+    },
   };
 });
 
