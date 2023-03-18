@@ -33,7 +33,7 @@ export const ContentBox = ({ children, links }: Props) => {
     <Card color="secondary" inset="normal">
       <Markdown size="large">{children}</Markdown>
       {links && (
-        <div className="mt-8 flex flex-wrap items-center gap-2">
+        <div className="not-prose mt-8 flex flex-wrap items-center gap-2">
           {links.map((link, index) => {
             const { title, url, icon } = link;
             const Icon = icon && iconMap[icon];
