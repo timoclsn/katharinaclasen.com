@@ -33,7 +33,9 @@ export const MDXContent = ({
               className="h-auto w-full"
               sizes="100vw"
             />
-            <figcaption className="text-right">{child.props.title}</figcaption>
+            <figcaption className="text-right text-base">
+              {child.props.title}
+            </figcaption>
           </figure>
         );
       }
