@@ -2,7 +2,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import { ReactNode } from "react";
 
 const markdownVariants = cva(
-  "prose font-normal prose-headings:font-semilight max-w-none prose-a:underline antialiased",
+  "prose font-normal prose-headings:font-semilight max-w-none prose-a:underline antialiased break-words",
   {
     variants: {
       color: {
