@@ -151,8 +151,9 @@ const ProjectPage = async ({ params }: Props) => {
         />
         <MDXContent
           source={project.content}
+          size="large"
           color="dark"
-          className="mx-auto mt-32 max-w-none"
+          className="mx-auto mt-32"
         />
       </Container>
     </article>
