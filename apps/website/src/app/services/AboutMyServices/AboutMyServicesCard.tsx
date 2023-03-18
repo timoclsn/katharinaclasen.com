@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
-import { Quote, QuoteProps } from "../../../components/Quote/Quote";
+import {
+  ClientQuote,
+  ClientQuoteProps,
+} from "../../../components/ClientQuote/ClientQuote";
 import { Card, CardProps } from "../../../design-system/Card/Card";
 import { Heading } from "../../../design-system/Heading/Heading";
 import { Tag } from "../../../design-system/Tag/Tag";
@@ -8,7 +11,7 @@ import { Service, ServiceTopics } from "../../../lib/queries";
 
 interface Props {
   color?: CardProps["color"];
-  quoteColor?: QuoteProps["color"];
+  quoteColor?: ClientQuoteProps["color"];
   service: Service;
   topics?: ServiceTopics;
   id?: string;
@@ -50,7 +53,7 @@ export const AboutMyServicesCard = ({
         <div className="flex flex-1 items-center justify-center">
           <div className="flex flex-col gap-10">
             {quote && (
-              <Quote
+              <ClientQuote
                 size="normal"
                 text={quote.text}
                 author={quote.author}

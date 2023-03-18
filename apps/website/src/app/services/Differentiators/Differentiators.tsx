@@ -1,5 +1,5 @@
 import { CardGrid } from "../../../components/CardGrid/CardGrid";
-import { Quote } from "../../../components/Quote/Quote";
+import { ClientQuote } from "../../../components/ClientQuote/ClientQuote";
 import { Section } from "../../../components/Section/Section";
 import { Body } from "../../../design-system/Body/Body";
 import { Heading } from "../../../design-system/Heading/Heading";
@@ -23,7 +23,11 @@ export const Differentiators = async () => {
         <ul className="mt-12 grid grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-3">
           {quotes.map((quote, idx) => (
             <li key={idx}>
-              <Quote text={quote.text} author={quote.author} size="normal" />
+              <ClientQuote
+                text={quote.text}
+                author={quote.author}
+                size="normal"
+              />
             </li>
           ))}
         </ul>

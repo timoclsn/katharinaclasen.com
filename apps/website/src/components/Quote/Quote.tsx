@@ -1,34 +1,21 @@
-import { cva, VariantProps } from "class-variance-authority";
-import { Body, BodyProps } from "../../design-system/Body/Body";
+import { ReactNode } from "react";
 
-const quoteVariants = cva("border-l-4 pl-3", {
-  variants: {
-    color: {
-      salmon: "border-background-salmon",
-      sun: "border-background-sun",
-      lilcaExtreme: "border-background-lilac-extreme",
-    },
-  },
-});
-
-export interface QuoteProps extends VariantProps<typeof quoteVariants> {
-  text: string;
-  author: string;
-  size?: BodyProps["size"];
+interface Props {
+  children: ReactNode;
+  author?: string;
 }
 
-export const Quote = ({
-  text,
-  author,
-  size = "large",
-  color = "salmon",
-}: QuoteProps) => {
+export const Quote = ({ children, author }: Props) => {
   return (
-    <div className={quoteVariants({ color })}>
-      <Body as="p" family="serif" size={size} style="italic" className="mb-3">
-        {text}
-      </Body>
-      <p className="font-sans text-sm text-contrast-secondary-dark">{author}</p>
-    </div>
+    <figure className="not-prose">
+      <blockquote className="inline-block border-l-8 border-background-secondary pl-4 font-medium italic text-contrast-primary-dark">
+        <p className="before:content-['\201C'] after:content-['\201D']">
+          {children}
+        </p>
+      </blockquote>
+      {author && (
+        <figcaption className="ml-2 inline-block text-base">{` – ${author}`}</figcaption>
+      )}
+    </figure>
   );
 };

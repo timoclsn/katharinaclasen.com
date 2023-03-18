@@ -7,7 +7,7 @@ import { Heading } from "../../design-system/Heading/Heading";
 import { Tag } from "../../design-system/Tag/Tag";
 import { Carousel } from "../Carousel/Carousel";
 import { Markdown } from "../Markdown/Markdown";
-import { Quote } from "../Quote/Quote";
+import { ClientQuote } from "../ClientQuote/ClientQuote";
 import { Clients } from "./MyClients";
 
 interface Props {
@@ -70,7 +70,7 @@ export const MyClientsCarousel = ({ clients }: Props) => {
           </div>
           <div className="flex flex-1 flex-col items-start justify-center">
             {client.quote && (
-              <Quote
+              <ClientQuote
                 size="normal"
                 text={client.quote.text}
                 author={client.quote.author}
