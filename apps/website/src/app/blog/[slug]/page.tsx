@@ -132,37 +132,40 @@ const BlogPostPage = async ({ params }: Props) => {
 
   const stats = readingTime(blogPost.content);
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    mainEntityOfPage: {
-      "@type": "BlogPosting",
-      "@id": `https://katharinaclasen.com/${blogPost.slug}`,
-    },
-    headline: blogPost.title,
-    image: [blogPost.image.url],
-    datePublished: blogPost.date,
-    dateModified: blogPost.date,
-    author: {
-      "@type": "Person",
-      name: "Katharina Clasen",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Katharina Clasen",
-      logo: {
-        "@type": "ImageObject",
-        url: "/favicon.png",
+  const structuredData = `
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "BlogPosting",
+        "@id": "https://katharinaclasen.com/${blogPost.slug}",
       },
-    },
-    description: blogPost.summary || "Blog post by Katharina Clasen",
-  };
+      "headline": "${blogPost.title}",
+      "image": ["${blogPost.image.url}"],
+      "datePublished": "${blogPost.date}",
+      "dateModified": "${blogPost.date}",
+      "author": {
+        "@type": "Person",
+        "name": "Katharina Clasen",
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Katharina Clasen",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "/favicon.png",
+        },
+      },
+      "description": "${blogPost.summary || "Blog post by Katharina Clasen"}",
+    }
+  `;
 
   return (
     <>
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: structuredData }}
+      />
       <article className="py-20 sm:py-32">
         <Container size="small" inset>
           <ArticleHeader
