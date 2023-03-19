@@ -5,8 +5,8 @@ import { Heading } from "../../design-system/Heading/Heading";
 import { ContentBox } from "../ContentBox/ContentBox";
 import { Link } from "../Link/Link";
 import { Markdown, MarkdownProps } from "../Markdown/Markdown";
+import { Note } from "../Note/Note";
 import { NumberHeading } from "../NumberHeading/NumberHeading";
-import { PullQuote } from "../PullQuote/PullQuote";
 import { Quote } from "../Quote/Quote";
 
 interface Props extends Omit<MarkdownProps, "children"> {
@@ -83,8 +83,8 @@ export const MDXContent = ({
     a: Link,
     NumberHeading,
     ContentBox,
-    PullQuote,
     Quote,
+    Note,
   };
 
   return (
