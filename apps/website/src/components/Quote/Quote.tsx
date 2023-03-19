@@ -1,21 +1,24 @@
 import { ReactNode } from "react";
+import { Body, BodyProps } from "../../design-system/Body/Body";
 
 interface Props {
   children: ReactNode;
   author?: string;
+  size?: BodyProps["size"];
 }
 
-export const Quote = ({ children, author }: Props) => {
+export const Quote = ({ children, author, size = "large" }: Props) => {
   return (
-    <figure className="not-prose">
-      <blockquote className="inline-block border-l-8 border-background-secondary pl-4 font-medium italic text-contrast-primary-dark">
-        <p className="before:content-['\201C'] after:content-['\201D']">
-          {children}
-        </p>
-      </blockquote>
-      {author && (
-        <figcaption className="ml-2 inline-block text-base">{` – ${author}`}</figcaption>
-      )}
-    </figure>
+    <div className="not-prose flex flex-col items-center justify-center">
+      <div className="mt-12 mb-4 border-b-8 border-background-pink-candy text-9xl leading-[0] text-contrast-primary-dark before:content-['\201C']" />
+      <figure className="max-w-[90%] sm:max-w-[80%]">
+        <blockquote>
+          <Body as="p" family="serif" style="italic" size={size} align="center">
+            {children}
+          </Body>
+        </blockquote>
+        <figcaption className="mt-4 text-center text-base">{` - ${author} -`}</figcaption>
+      </figure>
+    </div>
   );
 };

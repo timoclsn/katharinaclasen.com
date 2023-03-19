@@ -17,6 +17,7 @@ const bodyVariants = cva("antialiased", {
     size: {
       normal: "text-base",
       large: "text-xl sm:text-2xl",
+      xLarge: "text-2xl sm:text-3xl",
     },
     weight: {
       light: "font-light",
@@ -30,6 +31,11 @@ const bodyVariants = cva("antialiased", {
     color: {
       dark: null,
       light: null,
+    },
+    align: {
+      start: "text-start",
+      center: "text-center",
+      right: "text-end",
     },
   },
 
@@ -89,6 +95,7 @@ export const Body = forwardRef<ElementType, BodyProps>(
       size = "normal",
       weight = "normal",
       color = "dark",
+      align = "start",
       style,
       className,
     },
@@ -103,6 +110,7 @@ export const Body = forwardRef<ElementType, BodyProps>(
           weight,
           color,
           style,
+          align,
           className,
         })}
         ref={ref}
