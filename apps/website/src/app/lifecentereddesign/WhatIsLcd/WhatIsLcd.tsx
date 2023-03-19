@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Section } from "../../../components/Section/Section";
-import { Heading } from "../../../design-system/Heading/Heading";
 import { getTextSnippet } from "../../../lib/queries";
 import earthImg from "./earth.jpg";
 
@@ -13,7 +12,6 @@ export const WhatIsLcd = async () => {
     <Section id="what-is-lcd" color="dark">
       <div className="flex flex-col gap-8 lg:flex-row">
         <div className="flex flex-col items-start justify-center gap-8 lg:w-1/2">
-          <Heading color="light">What is Life-centered Design?</Heading>
           <MDXContent source={content} color="light" family="serif" />
         </div>
         <Image

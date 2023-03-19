@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Section } from "../../../components/Section/Section";
-import { Heading } from "../../../design-system/Heading/Heading";
 import {
   getService,
   getServiceTopics,
@@ -31,7 +30,6 @@ export const AboutMyServices = async () => {
     <Section id="about-my-services" color="secondary">
       <div className="flex flex-col gap-12 lg:flex-row">
         <div className="flex-1 pb-24">
-          <Heading className="mb-8">About my services</Heading>
           <MDXContent source={content} />
         </div>
         <div className="flex-1 pl-20 pr-20 lg:pl-0">

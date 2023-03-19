@@ -3,7 +3,6 @@ import Image from "next/image";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Section } from "../../../components/Section/Section";
 import { Button } from "../../../design-system/Button/Button";
-import { Heading } from "../../../design-system/Heading/Heading";
 import { getTextSnippet } from "../../../lib/queries";
 import earthImg from "./earth.jpg";
 
@@ -20,7 +19,6 @@ export const LcdTeaser = async () => {
           className="max-h-[500px] object-contain lg:w-1/2"
         />
         <div className="flex flex-col items-start justify-center gap-8 lg:w-1/2">
-          <Heading color="light">Life-centered Design</Heading>
           <MDXContent source={content} family="serif" color="light" />
           <Button color="light" href="/lifecentereddesign">
             <ArrowRight />
