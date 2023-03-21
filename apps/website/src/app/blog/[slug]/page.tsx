@@ -6,24 +6,26 @@ import { z } from "zod";
 import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Container } from "../../../design-system/Container/Container";
-import { createGenerateMetadata } from "../../../lib/metadata";
+import { createGenerateMetadata, ogImage } from "../../../lib/metadata";
 import { queryContent } from "../../../lib/sanity";
 
 export const generateMetadata = createGenerateMetadata(async ({ params }) => {
   const { slug } = params;
-  const { title, summary, date } = await queryContent(
+  const { title, summary, date, image } = await queryContent(
     groq`
       *[_type == 'blogPost' && slug.current == '${slug}'][0]
       {
         title,
         date,
-        summary
+        summary,
+        'image': image.asset->url,
       }
     `,
     z.object({
       title: z.string(),
       date: z.string(),
       summary: z.string().nullable(),
+      image: z.string(),
     })
   );
 
@@ -40,8 +42,12 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
       siteName: "Katharina Clasen",
       description: summary || "Blog post by Katharina Clasen",
       images: {
-        url: "https://katharinaclasen.com/og-image.png",
-        alt: "Website of Katharina Clasen",
+        url: ogImage({
+          subtitle: "Blog • Katharina Clasen",
+          title,
+          image,
+        }),
+        alt: title,
         width: 1200,
         height: 630,
       },

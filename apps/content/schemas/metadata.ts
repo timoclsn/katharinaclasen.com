@@ -17,5 +17,15 @@ export const metadata = defineType({
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: "ogTitle",
+      title: "OG Title",
+      type: "string",
+    }),
+    defineField({
+      name: "ogImage",
+      title: "OG Image",
+      type: "image",
+    }),
   ],
 });

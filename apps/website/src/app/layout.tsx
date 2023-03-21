@@ -4,12 +4,12 @@ import Script from "next/script";
 import { ReactNode } from "react";
 import { Footer } from "../components/Footer/Footer";
 import { Navigation } from "../components/Navigation/Navigation";
-import { createGenerateMetadata } from "../lib/metadata";
+import { createGenerateMetadata, ogImage } from "../lib/metadata";
 import { getMetadata } from "../lib/queries";
 import "../styles/global.css";
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description } = await getMetadata(
+  const { title, description, ogTitle, ogImageUrl } = await getMetadata(
     "3c9f2256-cc4a-4e79-bfa7-4dcda1263376"
   );
   return {
@@ -26,7 +26,11 @@ export const generateMetadata = createGenerateMetadata(async () => {
       siteName: "Katharina Clasen",
       description,
       images: {
-        url: "https://katharinaclasen.com/og-image.png",
+        url: ogImage({
+          subtitle: "Katharina Clasen",
+          title: ogTitle || "",
+          image: ogImageUrl || "",
+        }),
         alt: "Website of Katharina Clasen",
         width: 1200,
         height: 630,
