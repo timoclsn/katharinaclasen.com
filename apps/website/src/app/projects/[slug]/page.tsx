@@ -4,7 +4,7 @@ import { z } from "zod";
 import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Container } from "../../../design-system/Container/Container";
-import { createGenerateMetadata } from "../../../lib/metadata";
+import { createGenerateMetadata, ogImage } from "../../../lib/metadata";
 import { context, contexts } from "../../../lib/projects";
 import { queryContent } from "../../../lib/sanity";
 
@@ -15,17 +15,41 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
       *[_type == 'project' && slug.current == '${slug}'][0]
       {
         title,
-        summary
+        summary,
+        date,
+        context,
+        'client': client->shortName,
       }
     `,
     z.object({
       title: z.string(),
       summary: z.string().nullable(),
+      date: z.string(),
+      context: z.enum(contexts),
+      client: z.string().nullable(),
     })
   );
   return {
     title: project.title,
     description: project.summary || "Project by Katharina Clasen",
+    openGraph: {
+      type: "website",
+      title: project.title,
+      url: `https://katharinaclasen.com/project/${slug}}`,
+      siteName: "Katharina Clasen",
+      description: project.summary || "Project by Katharina Clasen",
+      images: {
+        url: ogImage({
+          overline: "Project • Katharina Clasen",
+          headline: project.title,
+          client: context(project.context, project.client || ""),
+          date: new Date(project.date).getFullYear().toString(),
+        }),
+        alt: project.title,
+        width: 1200,
+        height: 630,
+      },
+    },
   };
 });
 

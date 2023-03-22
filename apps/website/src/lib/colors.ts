@@ -2,14 +2,14 @@ export const backgroundColorsList = [
   "primary",
   "secondary",
   "dark",
-  'lilac',
+  "lilac",
   "pinkCandy",
   "redCandy",
   "stone",
   "mint",
-  'oceanFoam',
+  "oceanFoam",
   "salmon",
-  'sun',
+  "sun",
   "blueExtreme",
   "lilacExtreme",
 ] as const;
@@ -30,8 +30,27 @@ export const backgroundColorsMap = {
   lilacExtreme: "bg-background-lilac-extreme",
 } as const;
 
+export const backgroundColorsValueMap: Record<
+  keyof typeof backgroundColorsMap,
+  string
+> = {
+  primary: "#FFFFFF",
+  secondary: "#F9F7F6",
+  dark: "#171D2D",
+  lilac: "#EDE7F3",
+  pinkCandy: "#F7E4F2",
+  redCandy: "#FAEAE9",
+  stone: "#F0EEEA",
+  mint: "#E8EFE0",
+  oceanFoam: "#E2E5F5",
+  salmon: "#FFD9B7",
+  sun: "#FFEBB7",
+  blueExtreme: "#343294",
+  lilacExtreme: "#513294",
+} as const;
+
 export type BackgroundColor = keyof typeof backgroundColorsMap;
 
-export const colorsList = ['light', 'dark'] as const;
+export const colorsList = ["light", "dark"] as const;
 
-export type Color = typeof colorsList[number];
+export type Color = (typeof colorsList)[number];

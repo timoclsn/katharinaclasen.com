@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { z } from "zod";
 import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";
-import { createGenerateMetadata } from "../../lib/metadata";
+import { createGenerateMetadata, ogImage } from "../../lib/metadata";
 import { contexts } from "../../lib/projects";
 import { getMetadata } from "../../lib/queries";
 import { queryContent } from "../../lib/sanity";
@@ -13,12 +13,34 @@ import { ProjectList } from "./ProjectList/ProjectList";
 export const dynamic = "force-dynamic";
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description } = await getMetadata(
-    "74d12002-8c85-433c-ab61-e5680554813c"
-  );
+  const {
+    title,
+    description,
+    ogImageTitle,
+    ogImageImage,
+    ogImageBackgroundColor,
+  } = await getMetadata("74d12002-8c85-433c-ab61-e5680554813c");
   return {
     title,
     description,
+    openGraph: {
+      type: "website",
+      title,
+      url: "https://katharinaclasen.com/projects",
+      siteName: "Katharina Clasen",
+      description,
+      images: {
+        url: ogImage({
+          overline: `${title} • Katharina Clasen`,
+          headline: ogImageTitle,
+          image: ogImageImage,
+          backgroundColor: ogImageBackgroundColor,
+        }),
+        alt: title,
+        width: 1200,
+        height: 630,
+      },
+    },
   };
 });
 

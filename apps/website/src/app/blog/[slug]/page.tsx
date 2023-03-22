@@ -11,7 +11,7 @@ import { queryContent } from "../../../lib/sanity";
 
 export const generateMetadata = createGenerateMetadata(async ({ params }) => {
   const { slug } = params;
-  const { title, summary, date, image } = await queryContent(
+  const { title, summary, date, image, content } = await queryContent(
     groq`
       *[_type == 'blogPost' && slug.current == '${slug}'][0]
       {
@@ -19,6 +19,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
         date,
         summary,
         'image': image.asset->url,
+        content,
       }
     `,
     z.object({
@@ -26,8 +27,11 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
       date: z.string(),
       summary: z.string().nullable(),
       image: z.string(),
+      content: z.string(),
     })
   );
+
+  const stats = readingTime(content);
 
   return {
     title,
@@ -43,9 +47,11 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
       description: summary || "Blog post by Katharina Clasen",
       images: {
         url: ogImage({
-          subtitle: "Blog • Katharina Clasen",
-          title,
+          overline: "Blog • Katharina Clasen",
+          headline: title,
           image,
+          readingTime: `${Math.ceil(stats.minutes)} min`,
+          date: format(new Date(date), "LLLL dd, yyyy"),
         }),
         alt: title,
         width: 1200,

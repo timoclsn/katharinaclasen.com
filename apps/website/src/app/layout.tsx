@@ -9,13 +9,13 @@ import { getMetadata } from "../lib/queries";
 import "../styles/global.css";
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description, ogTitle, ogImageUrl } = await getMetadata(
+  const { title, description } = await getMetadata(
     "3c9f2256-cc4a-4e79-bfa7-4dcda1263376"
   );
   return {
     title: {
       default: title,
-      template: "%s | Katharina Clasen",
+      template: "%s • Katharina Clasen",
     },
     description,
     icons: "/favicon.png",
@@ -26,12 +26,8 @@ export const generateMetadata = createGenerateMetadata(async () => {
       siteName: "Katharina Clasen",
       description,
       images: {
-        url: ogImage({
-          subtitle: "Katharina Clasen",
-          title: ogTitle || "",
-          image: ogImageUrl || "",
-        }),
-        alt: "Website of Katharina Clasen",
+        url: ogImage(),
+        alt: title,
         width: 1200,
         height: 630,
       },

@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { backgroundColors } from "../lib/colors";
 
 export const metadata = defineType({
   name: "metadata",
@@ -9,22 +10,28 @@ export const metadata = defineType({
       name: "title",
       title: "Title",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "description",
       title: "Description",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "ogTitle",
-      title: "OG Title",
+      name: "ogImageTitle",
+      title: "OG Image Title",
       type: "string",
     }),
     defineField({
-      name: "ogImage",
-      title: "OG Image",
+      name: "ogImageBackgroundColor",
+      title: "OG Image Background Color",
+      type: "string",
+      options: {
+        list: [...backgroundColors],
+      },
+    }),
+    defineField({
+      name: "ogImageImage",
+      title: "OG Image Image",
       type: "image",
     }),
   ],

@@ -6,17 +6,39 @@ import readingTime from "reading-time";
 import { z } from "zod";
 import { ArticlePreview } from "../../components/ArticlePreview/ArticlePreview";
 import { Container } from "../../design-system/Container/Container";
-import { createGenerateMetadata } from "../../lib/metadata";
+import { createGenerateMetadata, ogImage } from "../../lib/metadata";
 import { getMetadata } from "../../lib/queries";
 import { queryContent } from "../../lib/sanity";
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description } = await getMetadata(
-    "104cc2a8-c804-44a9-a8ff-2f195a85b8be"
-  );
+  const {
+    title,
+    description,
+    ogImageTitle,
+    ogImageImage,
+    ogImageBackgroundColor,
+  } = await getMetadata("104cc2a8-c804-44a9-a8ff-2f195a85b8be");
   return {
     title,
     description,
+    openGraph: {
+      type: "website",
+      title,
+      url: "https://katharinaclasen.com/blog",
+      siteName: "Katharina Clasen",
+      description,
+      images: {
+        url: ogImage({
+          overline: `${title} • Katharina Clasen`,
+          headline: ogImageTitle,
+          image: ogImageImage,
+          backgroundColor: ogImageBackgroundColor,
+        }),
+        alt: title,
+        width: 1200,
+        height: 630,
+      },
+    },
   };
 });
 
