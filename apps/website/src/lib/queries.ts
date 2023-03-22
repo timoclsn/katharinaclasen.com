@@ -199,11 +199,17 @@ export const getMetadata = async (id: string) => {
       {
         title,
         description,
+        ogImageTitle,
+        'ogImageImage': ogImageImage.asset->url,
+        ogImageBackgroundColor
       }
     `,
     z.object({
       title: z.string(),
       description: z.string(),
+      ogImageTitle: z.string().nullable(),
+      ogImageImage: z.string().url().nullable(),
+      ogImageBackgroundColor: z.enum(backgroundColorsList).nullable(),
     })
   );
 };

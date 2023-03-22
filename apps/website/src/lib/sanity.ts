@@ -1,12 +1,7 @@
 import "server-only";
 import { z } from "zod";
 
-const envSchema = z.object({
-  SANITY_PROJECT_ID: z.string(),
-});
-
-const { SANITY_PROJECT_ID } = envSchema.parse(process.env);
-
+const SANITY_PROJECT_ID = "dk9hv6ix";
 const DATASET = "production";
 const API_Version = "2022-12-21";
 

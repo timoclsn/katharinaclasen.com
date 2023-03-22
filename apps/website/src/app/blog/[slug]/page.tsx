@@ -6,26 +6,32 @@ import { z } from "zod";
 import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Container } from "../../../design-system/Container/Container";
-import { createGenerateMetadata } from "../../../lib/metadata";
+import { createGenerateMetadata, ogImage } from "../../../lib/metadata";
 import { queryContent } from "../../../lib/sanity";
 
 export const generateMetadata = createGenerateMetadata(async ({ params }) => {
   const { slug } = params;
-  const { title, summary, date } = await queryContent(
+  const { title, summary, date, image, content } = await queryContent(
     groq`
       *[_type == 'blogPost' && slug.current == '${slug}'][0]
       {
         title,
         date,
-        summary
+        summary,
+        'image': image.asset->url,
+        content,
       }
     `,
     z.object({
       title: z.string(),
       date: z.string(),
       summary: z.string().nullable(),
+      image: z.string(),
+      content: z.string(),
     })
   );
+
+  const stats = readingTime(content);
 
   return {
     title,
@@ -40,8 +46,14 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
       siteName: "Katharina Clasen",
       description: summary || "Blog post by Katharina Clasen",
       images: {
-        url: "https://katharinaclasen.com/og-image.png",
-        alt: "Website of Katharina Clasen",
+        url: ogImage({
+          overline: "Blog • Katharina Clasen",
+          headline: title,
+          image,
+          readingTime: `${Math.ceil(stats.minutes)} min`,
+          date: format(new Date(date), "LLLL dd, yyyy"),
+        }),
+        alt: title,
         width: 1200,
         height: 630,
       },

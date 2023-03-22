@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { createGenerateMetadata } from "../../lib/metadata";
+import { createGenerateMetadata, ogImage } from "../../lib/metadata";
 import { getMetadata } from "../../lib/queries";
 import { AboutMyServices } from "./AboutMyServices/AboutMyServices";
 import { Differentiators } from "./Differentiators/Differentiators";
@@ -8,12 +8,34 @@ import { ServicesAccordion } from "./ServicesAccordion/ServicesAccordion";
 import wireframesImg from "./wireframes.png";
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description } = await getMetadata(
-    "75ef70cb-03db-478a-a5f6-c20899229f73"
-  );
+  const {
+    title,
+    description,
+    ogImageTitle,
+    ogImageImage,
+    ogImageBackgroundColor,
+  } = await getMetadata("75ef70cb-03db-478a-a5f6-c20899229f73");
   return {
     title,
     description,
+    openGraph: {
+      type: "website",
+      title,
+      url: "https://katharinaclasen.com/services",
+      siteName: "Katharina Clasen",
+      description,
+      images: {
+        url: ogImage({
+          overline: `${title} • Katharina Clasen`,
+          headline: ogImageTitle,
+          image: ogImageImage,
+          backgroundColor: ogImageBackgroundColor,
+        }),
+        alt: title,
+        width: 1200,
+        height: 630,
+      },
+    },
   };
 });
 

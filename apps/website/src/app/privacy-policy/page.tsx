@@ -1,6 +1,6 @@
 import { MDXContent } from "../../components/MDXContent/MDXContent";
 import { Container } from "../../design-system/Container/Container";
-import { createGenerateMetadata } from "../../lib/metadata";
+import { createGenerateMetadata, ogImage } from "../../lib/metadata";
 import { getMetadata, getTextSnippet } from "../../lib/queries";
 
 export const generateMetadata = createGenerateMetadata(async () => {
@@ -10,6 +10,21 @@ export const generateMetadata = createGenerateMetadata(async () => {
   return {
     title,
     description,
+    openGraph: {
+      type: "website",
+      title,
+      url: "https://katharinaclasen.com/privacy-policy",
+      siteName: "Katharina Clasen",
+      description,
+      images: {
+        url: ogImage({
+          overline: `${title} • Katharina Clasen`,
+        }),
+        alt: title,
+        width: 1200,
+        height: 630,
+      },
+    },
   };
 });
 
