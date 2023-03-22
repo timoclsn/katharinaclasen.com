@@ -4,7 +4,7 @@ import { BackgroundColor, backgroundColorsValueMap } from "../../lib/colors";
 import { getImage } from "../../lib/queries";
 
 export const runtime = "experimental-edge";
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 const sourceSans3 = fetch(
   new URL("./source-sans-3-latin-400-normal.ttf", import.meta.url)
