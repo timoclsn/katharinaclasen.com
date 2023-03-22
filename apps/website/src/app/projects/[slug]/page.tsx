@@ -19,6 +19,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
         date,
         context,
         'client': client->shortName,
+        'image': image.asset->url,
       }
     `,
     z.object({
@@ -27,6 +28,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
       date: z.string(),
       context: z.enum(contexts),
       client: z.string().nullable(),
+      image: z.string(),
     })
   );
   return {
@@ -42,6 +44,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
         url: ogImage({
           overline: "Project • Katharina Clasen",
           headline: project.title,
+          image: project.image,
           client: context(project.context, project.client || ""),
           date: new Date(project.date).getFullYear().toString(),
         }),
