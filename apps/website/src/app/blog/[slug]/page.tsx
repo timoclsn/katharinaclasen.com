@@ -41,29 +41,14 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
       title,
       authors: "Katharina Clasen",
       url: `https://katharinaclasen.com/${slug}`,
-      publishedTime: date,
-      modifiedTime: date,
       siteName: "Katharina Clasen",
       description: summary || "Blog post by Katharina Clasen",
       images: {
-        url: ogImage({
-          overline: "Blog • Katharina Clasen",
-          headline: title,
-          image,
-          readingTime: `${Math.ceil(stats.minutes)} min`,
-          date: format(new Date(date), "LLLL dd, yyyy"),
-        }),
+        url: ogImage(),
         alt: title,
         width: 1200,
         height: 630,
       },
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description: summary || "Blog post by Katharina Clasen",
-      site: "@KatharinaClasen",
-      creator: "@KatharinaClasen",
     },
   };
 });
@@ -174,10 +159,6 @@ const BlogPostPage = async ({ params }: Props) => {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: structuredData }}
-      />
       <article className="py-20 sm:py-32">
         <Container size="small" inset>
           <ArticleHeader
