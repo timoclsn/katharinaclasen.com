@@ -37,7 +37,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
     openGraph: {
       type: "website",
       title: project.title,
-      url: `https://katharinaclasen.com/project/${slug}}`,
+      url: `https://katharinaclasen.com/project/${slug}`,
       siteName: "Katharina Clasen",
       description: project.summary || "Project by Katharina Clasen",
       images: {
