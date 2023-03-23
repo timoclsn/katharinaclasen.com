@@ -40,7 +40,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
       type: "article",
       title,
       authors: "Katharina Clasen",
-      url: `https://katharinaclasen.com/${slug}`,
+      url: `https://katharinaclasen.com/blog/${slug}`,
       publishedTime: date,
       modifiedTime: date,
       siteName: "Katharina Clasen",
