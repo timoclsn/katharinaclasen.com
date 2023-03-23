@@ -38,7 +38,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
       type: "website",
       title: project.title,
       authors: "Katharina Clasen",
-      url: `https://katharinaclasen.com/project/${slug}`,
+      url: `https://katharinaclasen.com/projects/${slug}`,
       publishedTime: project.date,
       modifiedTime: project.date,
       siteName: "Katharina Clasen",
