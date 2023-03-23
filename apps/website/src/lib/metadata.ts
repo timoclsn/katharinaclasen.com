@@ -62,7 +62,7 @@ export const ogImage = ({
     // eslint-disable-next-line turbo/no-undeclared-env-vars
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : "https://katharinaclasen.com";
+      : "https://katharinaclasen-com-git-fix-linkedin-og-image-timoclsn.vercel.app";
   return `${url}/og-image${
     searchParams.toString() ? "?" : ""
   }${searchParams.toString()}`;
