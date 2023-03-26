@@ -1,5 +1,6 @@
 import { MyClients } from "../../components/MyClients/MyClients";
 import { createGenerateMetadata } from "../../lib/metadata";
+import { BlogTeaser } from "./BlogTeaser/BlogTeaser";
 import { Header } from "./Header/Header";
 import { HomeAccordion } from "./HomeAccordion/HomeAccordion";
 import { LcdTeaser } from "./LcdTeaser/LcdTeaser";
@@ -19,6 +20,8 @@ const Home = async () => {
       <HomeAccordion />
       {/* @ts-expect-error Server Component */}
       <LcdTeaser />
+      {/* @ts-expect-error Server Component */}
+      <BlogTeaser />
       {/* @ts-expect-error Server Component */}
       <MyClients />
     </div>
