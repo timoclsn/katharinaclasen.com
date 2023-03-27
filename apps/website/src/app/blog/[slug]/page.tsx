@@ -150,7 +150,7 @@ const BlogPostPage = async ({ params }: Props) => {
     "@type": "Article",
     mainEntityOfPage: {
       "@type": "BlogPosting",
-      "@id": "https://katharinaclasen.com/${blogPost.slug}",
+      "@id": `https://katharinaclasen.com/blog/${blogPost.slug}`,
     },
     headline: blogPost.title,
     image: [blogPost.image.url],
