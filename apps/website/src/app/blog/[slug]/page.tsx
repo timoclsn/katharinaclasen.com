@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import { CalendarDays, Clock, User } from "lucide-react";
 import { groq } from "next-sanity";
 import readingTime from "reading-time";
+import { Article, WithContext } from "schema-dts";
 import { z } from "zod";
 import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
@@ -144,39 +145,36 @@ const BlogPostPage = async ({ params }: Props) => {
 
   const stats = readingTime(blogPost.content);
 
-  const structuredData = `
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "mainEntityOfPage": {
-        "@type": "BlogPosting",
-        "@id": "https://katharinaclasen.com/${blogPost.slug}",
+  const jsonLd: WithContext<Article> = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    mainEntityOfPage: {
+      "@type": "BlogPosting",
+      "@id": "https://katharinaclasen.com/${blogPost.slug}",
+    },
+    headline: blogPost.title,
+    image: [blogPost.image.url],
+    datePublished: blogPost.date,
+    dateModified: blogPost.date,
+    author: {
+      "@type": "Person",
+      name: "Katharina Clasen",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Katharina Clasen",
+      logo: {
+        "@type": "ImageObject",
+        url: "/favicon.png",
       },
-      "headline": "${blogPost.title}",
-      "image": ["${blogPost.image.url}"],
-      "datePublished": "${blogPost.date}",
-      "dateModified": "${blogPost.date}",
-      "author": {
-        "@type": "Person",
-        "name": "Katharina Clasen",
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Katharina Clasen",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "/favicon.png",
-        },
-      },
-      "description": "${blogPost.summary || "Blog post by Katharina Clasen"}",
-    }
-  `;
-
+    },
+    description: blogPost.summary || "Blog post by Katharina Clasen",
+  };
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: structuredData }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <article className="py-20 sm:py-32">
         <Container size="small" inset>
