@@ -70,7 +70,7 @@ export const Header = async () => {
                   className="group relative flex-1 overflow-hidden rounded-3xl transition-opacity hover:opacity-80 sm:rounded-4xl"
                 >
                   <Image
-                    src={serviceUiDesign}
+                    src={serviceUxDesignImg}
                     alt="Hand holding a mockup iPhone"
                     priority
                     className="h-auto w-full"
@@ -88,7 +88,7 @@ export const Header = async () => {
                   className="group relative flex-1 overflow-hidden rounded-3xl border-2 border-outline-light-dark transition-opacity hover:opacity-80 sm:rounded-4xl"
                 >
                   <Image
-                    src={serviceUxDesignImg}
+                    src={serviceUiDesign}
                     alt="Mobile app wireframes"
                     priority
                     className="h-auto w-full"
