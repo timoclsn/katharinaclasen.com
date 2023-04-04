@@ -136,19 +136,19 @@ export const Navigation = () => {
 
             {/* Desktop Menu */}
             <ul className="hidden items-center gap-10 lg:flex">
-              <li className="flex-1"></li>
               {items.map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.href}
-                  onClick={closeMenu}
-                  className={navigationLinkVariants({
-                    active: isActive(item.href),
-                    highlighted: item.highlighted,
-                  })}
-                >
-                  {item.label}
-                </Link>
+                <li key={index}>
+                  <Link
+                    href={item.href}
+                    onClick={closeMenu}
+                    className={navigationLinkVariants({
+                      active: isActive(item.href),
+                      highlighted: item.highlighted,
+                    })}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
               ))}
             </ul>
 
@@ -181,17 +181,21 @@ export const Navigation = () => {
               <Container inset className="h-full w-full">
                 <ul className="flex h-full flex-col items-center justify-center gap-2 sm:gap-4">
                   {items.map((item, index) => (
-                    <Link
+                    <li
                       key={index}
-                      href={item.href}
-                      onClick={closeMenu}
                       className={mobileNavigationLinkVariants({
                         active: isActive(item.href),
                         highlighted: item.highlighted,
                       })}
                     >
-                      {item.label}
-                    </Link>
+                      <Link
+                        href={item.href}
+                        onClick={closeMenu}
+                        className="block"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               </Container>

@@ -106,6 +106,7 @@ export const Carousel = <Item extends {}>({
             onClick={prevItem}
           >
             <ArrowLeft />
+            <span className="sr-only">Previous</span>
           </button>
           <div className="relative flex-1 overflow-x-hidden">
             <AnimatePresence initial={false} custom={direction()}>
@@ -131,6 +132,7 @@ export const Carousel = <Item extends {}>({
             onClick={nextItem}
           >
             <ArrowRight />
+            <span className="sr-only">Next</span>
           </button>
         </Card>
       </div>
