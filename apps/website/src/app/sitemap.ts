@@ -1,10 +1,9 @@
 import { groq } from "next-sanity";
+import { queryContent } from "../lib/sanity";
 import { z } from "zod";
-import { queryContent } from "../../lib/sanity";
 
-export const GET = async (request: Request) => {
-  const url = new URL(request.url);
-  const origin = `${url.protocol}//${url.host}`;
+const sitemap = async () => {
+  const origin = "https://katharinaclasen.com";
   const buildUrl = (path: string) => `${origin}${path}`;
 
   const pages = [
@@ -61,24 +60,10 @@ export const GET = async (request: Request) => {
     pages.push(`/blog/${blogPost.slug}`);
   });
 
-  const sitemap = `
-    <?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      ${pages
-        .map((page) => {
-          return `
-            <url>
-              <loc>${buildUrl(page)}</loc>
-            </url>
-          `;
-        })
-        .join("")}
-    </urlset>
-  `.trim();
-
-  return new Response(sitemap, {
-    headers: {
-      "Content-Type": "application/xml",
-    },
-  });
+  return pages.map((page) => ({
+    url: buildUrl(page),
+    lastModified: new Date(),
+  }));
 };
+
+export default sitemap;
