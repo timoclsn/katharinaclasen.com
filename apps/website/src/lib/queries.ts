@@ -2,7 +2,7 @@ import { groq } from "next-sanity";
 import "server-only";
 import { z } from "zod";
 import { backgroundColorsList, colorsList } from "./colors";
-import { illustrationsList } from "./illustrations/illustrations";
+import { illustrationsList } from "../components/illustrations/illustrations";
 import { markdownToHtml } from "./markdown";
 import { queryContent } from "./sanity";
 

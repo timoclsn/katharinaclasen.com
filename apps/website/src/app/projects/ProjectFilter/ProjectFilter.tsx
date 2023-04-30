@@ -13,7 +13,7 @@ interface Props {
 
 export const ProjectFilter = ({ services, topics }: Props) => {
   const nextSearchParams = useSearchParams();
-  const searchParams = new URLSearchParams(nextSearchParams);
+  const searchParams = new URLSearchParams(nextSearchParams.toString());
 
   const { replace } = useRouter();
   const pathname = usePathname();

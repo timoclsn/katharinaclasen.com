@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "../../design-system/Button/Button";
 import { Heading } from "../../design-system/Heading/Heading";
 import { backgroundColorsMap } from "../../lib/colors";
-import { illustrationsMap } from "../../lib/illustrations/illustrations";
+import { illustrationsMap } from "../illustrations/illustrations";
 import { AccordeonItems } from "../../lib/queries";
 import { Markdown } from "../Markdown/Markdown";
 import styles from "./Accordion.module.css";
