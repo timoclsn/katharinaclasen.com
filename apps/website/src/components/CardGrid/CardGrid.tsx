@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Button } from "../../design-system/Button/Button";
 import { Card } from "../../design-system/Card/Card";
 import { Heading } from "../../design-system/Heading/Heading";
-import { illustrationsMap } from "../../lib/illustrations/illustrations";
+import { illustrationsMap } from "../illustrations/illustrations";
 import { CardGridItems } from "../../lib/queries";
 import { MDXContent } from "../MDXContent/MDXContent";
 
