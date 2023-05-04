@@ -4,11 +4,6 @@ const nextConfig = {
   images: {
     domains: ["cdn.sanity.io"],
   },
-  experimental: {
-    serverComponentsExternalPackages: ["next-sanity"],
-    scrollRestoration: true,
-    appDir: true,
-  },
   async rewrites() {
     return [
       {

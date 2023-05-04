@@ -58,12 +58,7 @@ export const ogImage = ({
     searchParams.set("backgroundColor", backgroundColor);
   }
 
-  const url =
-    // eslint-disable-next-line turbo/no-undeclared-env-vars
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : "https://katharinaclasen.com";
-  return `${url}/og-image${
+  return `/og-image${
     searchParams.toString() ? "?" : ""
   }${searchParams.toString()}`;
 };
