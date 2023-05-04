@@ -13,6 +13,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
     "3c9f2256-cc4a-4e79-bfa7-4dcda1263376"
   );
   return {
+    metadataBase: new URL("https://katharinaclasen.com"),
     title: {
       default: title,
       template: "%s • Katharina Clasen",
@@ -22,7 +23,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
     openGraph: {
       type: "website",
       title,
-      url: "https://katharinaclasen.com",
+      url: "/",
       siteName: "Katharina Clasen",
       description,
       images: {
@@ -41,7 +42,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
     },
     alternates: {
       types: {
-        "application/rss+xml": "https://katharinaclasen.com/rss.xml",
+        "application/rss+xml": "/rss.xml",
       },
     },
     other: {

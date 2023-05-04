@@ -21,7 +21,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
     openGraph: {
       type: "website",
       title,
-      url: "https://katharinaclasen.com/services",
+      url: "/services",
       siteName: "Katharina Clasen",
       description,
       images: {

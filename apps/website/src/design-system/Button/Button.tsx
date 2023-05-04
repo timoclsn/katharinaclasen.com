@@ -98,8 +98,7 @@ export const Button = forwardRef<HTMLAnchorElement & HTMLButtonElement, Props>(
     },
     ref
   ) => {
-    // href.includes("#") is a workaround, because jumping to a anchor doesn't work with Link currently
-    const Element = href ? (href.includes("#") ? "a" : Link) : "button";
+    const Element = href ? Link : "button";
     return (
       <Element
         className={styles({ size, style, color, className })}

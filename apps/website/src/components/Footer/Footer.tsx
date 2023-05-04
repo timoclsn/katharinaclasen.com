@@ -5,7 +5,7 @@ import { data } from "./data";
 
 export const Footer = () => {
   return (
-    <footer className="bg-background-dark pt-20 pb-36 text-contrast-primary-light">
+    <footer className="bg-background-dark pb-36 pt-20 text-contrast-primary-light">
       <Container inset>
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
           {data.map((column, idx) => (
@@ -20,17 +20,15 @@ export const Footer = () => {
               </Link>
               <ul className="flex flex-col gap-3">
                 {column.links.map((link, idx) => {
-                  // link.link.includes("#") is a workaround, because jumping to a anchor doesn't work with Link currently
-                  const Element = link.link.includes("#") ? "a" : Link;
                   return (
                     <li key={idx}>
-                      <Element
+                      <Link
                         href={link.link}
                         className="flex items-center gap-2 text-contrast-secondary-light transition-opacity hover:opacity-80 [&>svg]:h-[20px] [&>svg]:w-[20px]"
                       >
                         {link.icon}
                         {link.title}
-                      </Element>
+                      </Link>
                     </li>
                   );
                 })}
