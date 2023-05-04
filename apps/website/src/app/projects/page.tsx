@@ -10,6 +10,8 @@ import { queryContent } from "../../lib/sanity";
 import { ProjectFilter } from "./ProjectFilter/ProjectFilter";
 import { ProjectList } from "./ProjectList/ProjectList";
 
+export const runtime = "edge";
+
 export const generateMetadata = createGenerateMetadata(async () => {
   const {
     title,
