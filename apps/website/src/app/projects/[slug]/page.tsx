@@ -139,6 +139,11 @@ const ProjectPage = async ({ params }: Props) => {
     })
   );
 
+  const formAction = async () => {
+    "use server";
+    console.log("test");
+  };
+
   return (
     <article className="py-20 sm:py-32">
       <Container size="small" inset>
@@ -179,6 +184,9 @@ const ProjectPage = async ({ params }: Props) => {
           ]}
           externalLink={project.externalLink || undefined}
         />
+        <form action={formAction}>
+          <button>Test</button>
+        </form>
         <MDXContent
           source={project.content}
           size="large"

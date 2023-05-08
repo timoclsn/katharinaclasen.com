@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { CalendarDays, Clock, User } from "lucide-react";
+import { CalendarDays, Clock, Heart, User } from "lucide-react";
 import { groq } from "next-sanity";
 import readingTime from "reading-time";
 import { Article, WithContext } from "schema-dts";
@@ -170,6 +170,17 @@ const BlogPostPage = async ({ params }: Props) => {
     },
     description: blogPost.summary || "Blog post by Katharina Clasen",
   };
+
+  // const likes = (await kv.get<number>(blogPost._id)) || 0;
+
+  const likeBlogpost = async () => {
+    "use server";
+
+    console.log("like");
+    // const likes = (await kv.get<number>(blogPost._id)) || 0;
+    // await kv.set(blogPost._id, likes + 1);
+  };
+
   return (
     <>
       <script
@@ -194,6 +205,10 @@ const BlogPostPage = async ({ params }: Props) => {
                 icon: CalendarDays,
                 text: format(new Date(blogPost.date), "LLLL dd, yyyy"),
               },
+              // {
+              //   icon: Heart,
+              //   text: likes.toString(),
+              // },
             ]}
             tags={[
               ...(blogPost.services
@@ -216,6 +231,9 @@ const BlogPostPage = async ({ params }: Props) => {
                 : []),
             ]}
           />
+          <form action={likeBlogpost}>
+            <button type="submit">Like</button>
+          </form>
           <MDXContent
             source={blogPost.content}
             color="dark"

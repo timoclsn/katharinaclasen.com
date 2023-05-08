@@ -26,6 +26,11 @@ interface Props {
   };
 }
 
+const formAction = async () => {
+  "use server";
+  console.log("test");
+};
+
 export const ArticleHeader = ({
   title,
   titleImage,
@@ -74,6 +79,9 @@ export const ArticleHeader = ({
           {externalLink.label}
         </Button>
       )}
+      <form action={formAction}>
+        <button>Test</button>
+      </form>
     </div>
   );
 };

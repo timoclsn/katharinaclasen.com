@@ -16,6 +16,12 @@ export const Header = async () => {
   const { content } = await getTextSnippet(
     "32e5e0f0-a6fc-444f-96c5-86119e3f2204"
   );
+
+  const formAction = async () => {
+    "use server";
+    console.log("test");
+  };
+
   return (
     <section className="overflow-hidden bg-background-secondary py-20 sm:py-32">
       <Container inset>
@@ -119,7 +125,7 @@ export const Header = async () => {
             />
             <Button
               href="/projects"
-              className="absolute bottom-4 right-4 sm:top-8 sm:right-8 sm:bottom-auto"
+              className="absolute bottom-4 right-4 sm:bottom-auto sm:right-8 sm:top-8"
             >
               <ArrowRight />
               Find more projects
@@ -127,6 +133,9 @@ export const Header = async () => {
           </div>
         </div>
       </Container>
+      <form action={formAction}>
+        <button>Test</button>
+      </form>
     </section>
   );
 };
