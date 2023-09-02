@@ -1,36 +1,38 @@
 .AccordionContent[data-state="open"] {
   animation: slideDown 300ms linear;
-  opacity: 1;
 }
 .AccordionContent[data-state="closed"] {
   animation: slideUp 300ms linear;
-  opacity: 0;
 }
 
 @media (min-width: 1024px) {
   .AccordionContent[data-state="open"] {
-    animation: openHorizontal 600ms linear;
-    opacity: 1;
+    opacity: 0;
+    animation:
+      openHorizontal 300ms linear,
+      fadeIn 300ms linear 300ms forwards;
   }
   .AccordionContent[data-state="closed"] {
-    animation: closeHorizontal 300ms linear;
     opacity: 0;
+    animation: closeHorizontal 300ms linear;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
 @keyframes openHorizontal {
-  0% {
+  from {
     width: 0;
-    opacity: 0;
   }
-  50% {
+  to {
     width: var(--radix-accordion-content-width);
-  }
-  75% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }
 
@@ -46,21 +48,17 @@
 @keyframes slideDown {
   from {
     height: 0;
-    opacity: 0;
   }
   to {
     height: var(--radix-accordion-content-height);
-    opacity: 1;
   }
 }
 
 @keyframes slideUp {
   from {
     height: var(--radix-accordion-content-height);
-    opacity: 1;
   }
   to {
     height: 0;
-    opacity: 0;
   }
 }

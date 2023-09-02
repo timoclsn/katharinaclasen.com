@@ -28,7 +28,7 @@ const itemVariants = cva(
         ...backgroundColorsMap,
       },
     },
-  }
+  },
 );
 
 const triggerVariants = cva(
@@ -40,10 +40,10 @@ const triggerVariants = cva(
         large: "data-[state=open]:hidden",
       },
     },
-  }
+  },
 );
 
-const contentVariants = cva("overflow-hidden p-6 sm:p-10", {
+const contentVariants = cva("overflow-hidden", {
   variants: {
     size: {
       medium: "lg:pl-0",
@@ -101,10 +101,10 @@ export const Accordion = ({
               className={cx(
                 "w-full",
                 styles.AccordionContent,
-                contentVariants({ size })
+                contentVariants({ size }),
               )}
             >
-              <div className="flex h-full flex-col items-start overflow-auto">
+              <div className="flex h-full flex-col items-start overflow-auto p-6 sm:p-10">
                 {size === "large" && (
                   <>
                     <div className="flex w-full justify-center">
