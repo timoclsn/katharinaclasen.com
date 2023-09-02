@@ -14,15 +14,10 @@ export const generateMetadata = createGenerateMetadata(async () => ({
 const Home = async () => {
   return (
     <div className="home-page">
-      {/* @ts-expect-error Server Component */}
       <Header />
-      {/* @ts-expect-error Server Component */}
       <HomeAccordion />
-      {/* @ts-expect-error Server Component */}
       <LcdTeaser />
-      {/* @ts-expect-error Server Component */}
       <BlogTeaser />
-      {/* @ts-expect-error Server Component */}
       <MyClients />
     </div>
   );

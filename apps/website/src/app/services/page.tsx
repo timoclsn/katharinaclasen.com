@@ -42,9 +42,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
 const ServicesPage = () => {
   return (
     <div className="services-page">
-      {/* @ts-expect-error Server Component */}
       <Header />
-      {/* @ts-expect-error Server Component */}
       <Differentiators />
       <Image
         src={wireframesImg}
@@ -53,9 +51,7 @@ const ServicesPage = () => {
         sizes="100vw"
         priority
       />
-      {/* @ts-expect-error Server Component */}
       <AboutMyServices />
-      {/* @ts-expect-error Server Component */}
       <ServicesAccordion />
     </div>
   );

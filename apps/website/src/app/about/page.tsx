@@ -8,7 +8,7 @@ import { MyPhilosophy } from "./MyPhilosophy/MyPhilosophy";
 
 export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description } = await getMetadata(
-    "013e7d69-692f-41b5-9111-7de0b7d24376"
+    "013e7d69-692f-41b5-9111-7de0b7d24376",
   );
   return {
     title,
@@ -22,15 +22,10 @@ export const generateMetadata = createGenerateMetadata(async () => {
 const AboutPage = () => {
   return (
     <div className="about-page">
-      {/* @ts-expect-error Server Component */}
       <Header />
-      {/* @ts-expect-error Server Component */}
       <AboutMe />
-      {/* @ts-expect-error Server Component */}
       <AboutAccordion />
-      {/* @ts-expect-error Server Component */}
       <MyClients />
-      {/* @ts-expect-error Server Component */}
       <MyPhilosophy />
     </div>
   );

@@ -80,7 +80,11 @@ export const MDXContent = ({
         {props.children!}
       </Heading>
     ),
-    a: Link,
+    a: (props: HTMLProps<HTMLAnchorElement>) => (
+      <Link href={props.href ?? ""} external={props.target === "_blank"}>
+        {props.children}
+      </Link>
+    ),
     NumberHeading,
     ContentBox,
     Quote,
@@ -89,7 +93,6 @@ export const MDXContent = ({
 
   return (
     <Markdown color={color} size={size} family={family} className={className}>
-      {/* @ts-expect-error Server Component */}
       <MDXRemote source={source} components={components} />
     </Markdown>
   );
