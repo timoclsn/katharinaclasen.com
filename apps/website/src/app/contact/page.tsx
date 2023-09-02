@@ -41,7 +41,6 @@ export const generateMetadata = createGenerateMetadata(async () => {
 const ContactPage = () => {
   return (
     <div className="contact-page">
-      {/* @ts-expect-error Server Component */}
       <Header />
       <ContactMe />
     </div>

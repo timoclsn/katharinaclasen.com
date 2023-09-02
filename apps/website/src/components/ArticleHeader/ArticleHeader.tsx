@@ -1,4 +1,4 @@
-import { Icon, Link2 } from "lucide-react";
+import { LucideIcon, Link2 } from "lucide-react";
 import Image from "next/image";
 import { Body } from "../../design-system/Body/Body";
 import { Button } from "../../design-system/Button/Button";
@@ -13,7 +13,7 @@ interface Props {
     border?: boolean | null;
   };
   metaData?: Array<{
-    icon: Icon;
+    icon: LucideIcon;
     text: string;
   }>;
   tags?: Array<{

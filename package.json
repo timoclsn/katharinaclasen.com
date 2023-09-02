@@ -14,8 +14,8 @@
     "typecheck": "turbo run typecheck"
   },
   "devDependencies": {
-    "prettier": "^2.8.8",
-    "turbo": "^1.9.3"
+    "prettier": "^3.0.3",
+    "turbo": "^1.10.13"
   },
   "engines": {
     "node": ">=14.0.0"
