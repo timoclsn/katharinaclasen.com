@@ -11,7 +11,7 @@ import { getTextSnippet } from "../../../lib/queries";
 
 export const Header = async () => {
   const { content } = await getTextSnippet(
-    "e1621db5-a950-467f-b6fd-2c0dfa735e3e"
+    "e1621db5-a950-467f-b6fd-2c0dfa735e3e",
   );
   return (
     <section className="flex min-h-[calc(100vh-80px)] flex-col overflow-hidden bg-background-red-candy">
@@ -38,7 +38,7 @@ export const Header = async () => {
         <Image
           src={memojiImg}
           alt="Memoji of Katharina Clasen forming a heart with her hands."
-          className="absolute bottom-0 right-0 h-auto w-[150px] animate-in fade-in slide-in-from-bottom-1/3 duration-500 ease-out sm:w-[250px] lg:w-[350px]"
+          className="absolute bottom-0 right-0 h-auto w-[150px] duration-500 ease-out animate-in fade-in slide-in-from-bottom-1/3 sm:w-[250px] lg:w-[350px]"
           sizes="30vw"
           priority
         />

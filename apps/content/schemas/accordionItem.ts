@@ -1,11 +1,11 @@
-import { defineField, defineType } from 'sanity';
-import { backgroundColors, colors } from '../lib/colors';
-import { illustrations } from '../lib/illustration';
+import { defineField, defineType } from "sanity";
+import { backgroundColors, colors } from "../lib/colors";
+import { illustrations } from "../lib/illustration";
 
 export const accordionItem = defineType({
-  name: 'accordionItem',
-  title: 'Accordion Item',
-  type: 'document',
+  name: "accordionItem",
+  title: "Accordion Item",
+  type: "document",
   groups: [
     {
       name: "content",
@@ -88,5 +88,5 @@ export const accordionItem = defineType({
       },
       group: "visual",
     }),
-  ]
+  ],
 });

@@ -92,7 +92,7 @@ export const Body = forwardRef<ElementType, BodyProps>(
       style,
       className,
     },
-    ref
+    ref,
   ) => {
     return (
       <Element
@@ -110,7 +110,7 @@ export const Body = forwardRef<ElementType, BodyProps>(
         {children}
       </Element>
     );
-  }
+  },
 );
 
 Body.displayName = "Body";

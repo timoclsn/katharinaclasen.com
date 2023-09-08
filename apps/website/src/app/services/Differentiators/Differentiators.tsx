@@ -7,7 +7,7 @@ import { getCardGridItems } from "../../../lib/queries";
 
 export const Differentiators = async () => {
   const cardGrid = await getCardGridItems(
-    "f82aeac9-95d4-4f49-a8f8-ec2c7f207c44"
+    "f82aeac9-95d4-4f49-a8f8-ec2c7f207c44",
   );
   const { title, subtitle, items, quotes } = cardGrid;
   return (

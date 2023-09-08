@@ -7,7 +7,7 @@ import { getCardGridItems } from "../../../lib/queries";
 
 export const LcdPrinciples = async () => {
   const cardGrid = await getCardGridItems(
-    "ca47f6e9-4d82-469a-8d06-4e305208cfef"
+    "ca47f6e9-4d82-469a-8d06-4e305208cfef",
   );
   const { title, subtitle, items, quotes } = cardGrid;
   return (

@@ -17,7 +17,7 @@ import smartphoneImg from "./smartphone.png";
 
 export const Header = async () => {
   const { content } = await getTextSnippet(
-    "e0c78e26-6cdb-4f2e-b147-fb6ef99b5bd2"
+    "e0c78e26-6cdb-4f2e-b147-fb6ef99b5bd2",
   );
   return (
     <section className="flex min-h-[calc(100vh-80px)] flex-col overflow-hidden bg-background-pink-candy">
@@ -57,7 +57,7 @@ export const Header = async () => {
         <Image
           src={memojiImg}
           alt="Memoji of Katharina Clasen forming a heart with her hands."
-          className="absolute bottom-0 right-0 h-auto w-[150px] animate-in fade-in slide-in-from-bottom-1/3 duration-500 ease-out md:w-[250px] lg:w-[350px]"
+          className="absolute bottom-0 right-0 h-auto w-[150px] duration-500 ease-out animate-in fade-in slide-in-from-bottom-1/3 md:w-[250px] lg:w-[350px]"
           sizes="30vw"
           priority
         />

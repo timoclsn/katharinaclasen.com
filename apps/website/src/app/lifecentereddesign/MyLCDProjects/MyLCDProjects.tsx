@@ -46,9 +46,9 @@ const queryCarousel = async () => {
             url: z.string(),
             alt: z.string(),
           }),
-        })
+        }),
       ),
-    })
+    }),
   );
 };
 

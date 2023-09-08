@@ -10,7 +10,7 @@ const variants = cva(
         xLarge: "text-2xl sm:text-3xl",
       },
     },
-  }
+  },
 );
 
 interface Props extends VariantProps<typeof variants> {
@@ -21,7 +21,7 @@ interface Props extends VariantProps<typeof variants> {
 export const Quote = ({ children, author, size = "large" }: Props) => {
   return (
     <div className="not-prose my-10 flex flex-col items-center justify-center">
-      <div className="mt-12 mb-4 border-b-8 border-background-pink-candy text-9xl leading-[0] text-contrast-primary-dark before:content-['\201C']" />
+      <div className="mb-4 mt-12 border-b-8 border-background-pink-candy text-9xl leading-[0] text-contrast-primary-dark before:content-['\201C']" />
       <figure className="max-w-[90%] sm:max-w-[80%]">
         <blockquote>
           <p className={variants({ size })}>{children}</p>

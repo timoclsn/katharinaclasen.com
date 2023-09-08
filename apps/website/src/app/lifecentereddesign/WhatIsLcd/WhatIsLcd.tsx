@@ -6,7 +6,7 @@ import earthImg from "./earth.jpg";
 
 export const WhatIsLcd = async () => {
   const { content } = await getTextSnippet(
-    "c249368d-64c2-4640-bfb1-81ab7ae01255"
+    "c249368d-64c2-4640-bfb1-81ab7ae01255",
   );
   return (
     <Section id="what-is-lcd" color="dark">

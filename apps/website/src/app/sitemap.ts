@@ -28,11 +28,11 @@ const sitemap = async () => {
     z.array(
       z.object({
         slug: z.string(),
-      })
+      }),
     ),
     {
       cache: "dynamic",
-    }
+    },
   );
 
   projects.forEach((project) => {
@@ -49,11 +49,11 @@ const sitemap = async () => {
     z.array(
       z.object({
         slug: z.string(),
-      })
+      }),
     ),
     {
       cache: "dynamic",
-    }
+    },
   );
 
   blogPosts.forEach((blogPost) => {

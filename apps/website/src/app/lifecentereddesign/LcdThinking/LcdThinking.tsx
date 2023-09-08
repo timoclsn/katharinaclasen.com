@@ -7,7 +7,7 @@ import thinkingImg from "./thinking.jpg";
 
 export const LcdThinking = async () => {
   const { content } = await getTextSnippet(
-    "3a5572f6-c488-4bee-a3c6-7ca0977088d4"
+    "3a5572f6-c488-4bee-a3c6-7ca0977088d4",
   );
   return (
     <Section color="primary">

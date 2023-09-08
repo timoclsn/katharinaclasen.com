@@ -56,7 +56,7 @@ const navigationLinkVariants = cva(
         false: "text-contrast-secondary-dark",
       },
     },
-  }
+  },
 );
 
 const mobileNavigationLinkVariants = cva(
@@ -71,7 +71,7 @@ const mobileNavigationLinkVariants = cva(
         false: "text-contrast-secondary-dark",
       },
     },
-  }
+  },
 );
 
 export const Navigation = () => {
@@ -115,7 +115,7 @@ export const Navigation = () => {
       className={cx(
         `sticky top-0 z-50 transition-colors duration-300 ${
           isScrolled ? "bg-background-primary" : ""
-        }`
+        }`,
       )}
     >
       <Container inset>
@@ -157,7 +157,7 @@ export const Navigation = () => {
               type="button"
               className={cx(
                 "relative z-20 h-8 w-8 text-contrast-secondary-dark transition-opacity hover:opacity-80 focus:outline-none lg:hidden",
-                styles.menuIcon
+                styles.menuIcon,
               )}
               aria-controls="mobile-menu"
               aria-expanded={isMenuOpen ? "true" : "false"}
@@ -174,8 +174,8 @@ export const Navigation = () => {
             <div
               data-open={isMenuOpen}
               className={cx(
-                "mobile-nav fixed top-0 left-full z-10 h-screen w-full bg-background-primary lg:hidden",
-                styles.mobileMenu
+                "mobile-nav fixed left-full top-0 z-10 h-screen w-full bg-background-primary lg:hidden",
+                styles.mobileMenu,
               )}
             >
               <Container inset className="h-full w-full">

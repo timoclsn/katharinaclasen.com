@@ -37,9 +37,9 @@ export const getAccordionItems = async (id: string) => {
             .nullable(),
           backgroundColor: z.enum(backgroundColorsList).nullable(),
           color: z.enum(colorsList).nullable(),
-        })
+        }),
       ),
-    })
+    }),
   );
   return items;
 };
@@ -116,15 +116,15 @@ export const getCardGridItems = async (id: string) => {
               alt: z.string(),
             })
             .nullable(),
-        })
+        }),
       ),
       quotes: z.array(
         z.object({
           text: z.string(),
           author: z.string(),
-        })
+        }),
       ),
-    })
+    }),
   );
 };
 
@@ -156,7 +156,7 @@ export const getService = async (id: string) => {
           alt: z.string(),
         })
         .nullable(),
-    })
+    }),
   );
 };
 
@@ -173,8 +173,8 @@ export const getServiceTopics = async (id: string) => {
     z.array(
       z.object({
         title: z.string(),
-      })
-    )
+      }),
+    ),
   );
 };
 
@@ -188,7 +188,7 @@ export const getTextSnippet = async (id: string) => {
     `,
     z.object({
       content: z.string(),
-    })
+    }),
   );
 };
 
@@ -210,7 +210,7 @@ export const getMetadata = async (id: string) => {
       ogImageTitle: z.string().nullable(),
       ogImageImage: z.string().url().nullable(),
       ogImageBackgroundColor: z.enum(backgroundColorsList).nullable(),
-    })
+    }),
   );
 };
 
@@ -226,6 +226,6 @@ export const getImage = async (id: string) => {
     z.object({
       url: z.string().url(),
       alt: z.string(),
-    })
+    }),
   );
 };

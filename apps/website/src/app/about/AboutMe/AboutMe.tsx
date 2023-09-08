@@ -8,7 +8,7 @@ import { getImage, getTextSnippet } from "../../../lib/queries";
 
 export const AboutMe = async () => {
   const { content } = await getTextSnippet(
-    "21714849-9385-4b58-9f14-600c1ebdf708"
+    "21714849-9385-4b58-9f14-600c1ebdf708",
   );
   const image = await getImage("24761a5c-f2f8-43d3-91da-5c1d5ebf6d31");
 

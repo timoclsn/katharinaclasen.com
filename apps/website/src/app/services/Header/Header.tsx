@@ -11,7 +11,7 @@ import stonesImg from "./stones.png";
 
 export const Header = async () => {
   const { content } = await getTextSnippet(
-    "4b272c72-97ad-4e93-b5a1-fe9e9caa4956"
+    "4b272c72-97ad-4e93-b5a1-fe9e9caa4956",
   );
   return (
     <section className="flex min-h-[calc(100vh-80px)] flex-col overflow-hidden">
@@ -50,7 +50,7 @@ export const Header = async () => {
         <Image
           src={memojiImg}
           alt="Memoji of Katharina Clasen forming a victory sign with her hands."
-          className="absolute bottom-0 right-0 -mb-20 mr-20 h-auto w-[150px] animate-in slide-in-from-right-1/3 duration-500 ease-out lg:-mb-40 lg:mr-40 lg:w-[250px]"
+          className="absolute bottom-0 right-0 -mb-20 mr-20 h-auto w-[150px] duration-500 ease-out animate-in slide-in-from-right-1/3 lg:-mb-40 lg:mr-40 lg:w-[250px]"
           sizes="30vw"
           priority
         />

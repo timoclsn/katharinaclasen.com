@@ -1,17 +1,17 @@
-import { visionTool } from '@sanity/vision';
-import { defineConfig } from 'sanity';
+import { visionTool } from "@sanity/vision";
+import { defineConfig } from "sanity";
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import { markdownSchema } from "sanity-plugin-markdown";
-import { media } from 'sanity-plugin-media';
-import { deskTool } from 'sanity/desk';
-import { schemaTypes } from './schemas';
+import { media } from "sanity-plugin-media";
+import { deskTool } from "sanity/desk";
+import { schemaTypes } from "./schemas";
 
 export default defineConfig({
-  name: 'default',
-  title: 'katharinaclasen-com',
+  name: "default",
+  title: "katharinaclasen-com",
 
-  projectId: 'dk9hv6ix',
-  dataset: 'production',
+  projectId: "dk9hv6ix",
+  dataset: "production",
 
   plugins: [
     deskTool(),
@@ -24,4 +24,4 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
   },
-})
+});

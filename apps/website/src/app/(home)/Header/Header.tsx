@@ -14,7 +14,7 @@ import serviceUxResearchImg from "./service-ux-research.png";
 
 export const Header = async () => {
   const { content } = await getTextSnippet(
-    "32e5e0f0-a6fc-444f-96c5-86119e3f2204"
+    "32e5e0f0-a6fc-444f-96c5-86119e3f2204",
   );
   return (
     <section className="overflow-hidden bg-background-secondary py-20 sm:py-32">
@@ -35,7 +35,7 @@ export const Header = async () => {
                 src={memojiImg}
                 alt="Memoji of Katharina Clasen"
                 priority
-                className="h-auto w-[100px] animate-in fade-in slide-in-from-left-1/3 duration-500 ease-in-out"
+                className="h-auto w-[100px] duration-500 ease-in-out animate-in fade-in slide-in-from-left-1/3"
               />
               <Body as="p" size="large" priority="secondary">
                 {content}
@@ -119,7 +119,7 @@ export const Header = async () => {
             />
             <Button
               href="/projects"
-              className="absolute bottom-4 right-4 sm:top-8 sm:right-8 sm:bottom-auto"
+              className="absolute bottom-4 right-4 sm:bottom-auto sm:right-8 sm:top-8"
             >
               <ArrowRight />
               Find more projects

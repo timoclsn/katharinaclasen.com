@@ -29,7 +29,7 @@ export const Container = forwardRef<HTMLDivElement, Props>(
         {children}
       </div>
     );
-  }
+  },
 );
 
 Container.displayName = "Container";

@@ -43,19 +43,19 @@ export const BlogTeaser = async () => {
           .array(
             z.object({
               title: z.string(),
-            })
+            }),
           )
           .nullable(),
         topics: z
           .array(
             z.object({
               title: z.string(),
-            })
+            }),
           )
           .nullable(),
         content: z.string(),
-      })
-    )
+      }),
+    ),
   );
   return (
     <Section id="blog" color="primary">
@@ -98,7 +98,7 @@ export const BlogTeaser = async () => {
                             ({
                               outline: "solid",
                               text: service.title,
-                            } as const)
+                            }) as const,
                         )
                       : []),
                     ...(blogPost.topics
@@ -107,7 +107,7 @@ export const BlogTeaser = async () => {
                             ({
                               outline: "dash",
                               text: topic.title,
-                            } as const)
+                            }) as const,
                         )
                       : []),
                   ]}

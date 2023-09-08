@@ -8,7 +8,7 @@ import earthImg from "./earth.jpg";
 
 export const LcdTeaser = async () => {
   const { content } = await getTextSnippet(
-    "44ee2a4a-1135-43a4-a5c8-59bb49ef7a47"
+    "44ee2a4a-1135-43a4-a5c8-59bb49ef7a47",
   );
   return (
     <Section color="dark">

@@ -74,19 +74,19 @@ const BlogPage = async () => {
           .array(
             z.object({
               title: z.string(),
-            })
+            }),
           )
           .nullable(),
         topics: z
           .array(
             z.object({
               title: z.string(),
-            })
+            }),
           )
           .nullable(),
         content: z.string(),
-      })
-    )
+      }),
+    ),
   );
   return (
     <div className="py-20 sm:py-32">
@@ -124,7 +124,7 @@ const BlogPage = async () => {
                               ({
                                 outline: "solid",
                                 text: service.title,
-                              } as const)
+                              }) as const,
                           )
                         : []),
                       ...(blogPost.topics
@@ -133,7 +133,7 @@ const BlogPage = async () => {
                               ({
                                 outline: "dash",
                                 text: topic.title,
-                              } as const)
+                              }) as const,
                           )
                         : []),
                     ]}
