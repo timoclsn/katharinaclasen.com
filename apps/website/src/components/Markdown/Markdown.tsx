@@ -19,7 +19,7 @@ const markdownVariants = cva(
         serif: "font-serif prose-headings:font-serif",
       },
     },
-  }
+  },
 );
 
 export interface MarkdownProps extends VariantProps<typeof markdownVariants> {

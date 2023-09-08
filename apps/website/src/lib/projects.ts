@@ -1,4 +1,4 @@
-type Context = typeof contexts[number];
+type Context = (typeof contexts)[number];
 
 export const contexts = [
   "selfEmployment",
@@ -10,15 +10,15 @@ export const contexts = [
 
 export const context = (context: Context, client: string) => {
   switch (context) {
-    case 'selfEmployment':
+    case "selfEmployment":
       return client;
-    case 'sideproject':
-      return 'Sideproject';
-    case 'nonProfit':
+    case "sideproject":
+      return "Sideproject";
+    case "nonProfit":
       return `${client} (Profit)`;
-    case 'lecture':
+    case "lecture":
       return `${client} (Lecture)`;
-    case 'employment':
+    case "employment":
       return `${client} (Employment)`;
     default:
       return client;

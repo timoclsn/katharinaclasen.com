@@ -42,7 +42,7 @@ export const Heading = forwardRef<HTMLHeadingElement & HTMLSpanElement, Props>(
         {children}
       </Element>
     );
-  }
+  },
 );
 
 Heading.displayName = "Heading";

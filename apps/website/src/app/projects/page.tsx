@@ -81,18 +81,18 @@ const getProjects = async () => {
           .array(
             z.object({
               title: z.string(),
-            })
+            }),
           )
           .nullable(),
         topics: z
           .array(
             z.object({
               title: z.string(),
-            })
+            }),
           )
           .nullable(),
-      })
-    )
+      }),
+    ),
   );
 };
 
@@ -127,8 +127,8 @@ const ProjectsPage = async ({ searchParams = {} }: Props) => {
             ? project.services.map((service) => service.title)
             : [];
         })
-        .flat()
-    )
+        .flat(),
+    ),
   );
 
   const topics = Array.from(
@@ -139,8 +139,8 @@ const ProjectsPage = async ({ searchParams = {} }: Props) => {
             ? project.topics.map((topic) => topic.title)
             : [];
         })
-        .flat()
-    )
+        .flat(),
+    ),
   );
 
   return (

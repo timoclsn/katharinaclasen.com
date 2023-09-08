@@ -15,7 +15,7 @@ const uiDesignId = "a01649bf-92e5-494f-ac6f-8db56650e7b8";
 
 export const AboutMyServices = async () => {
   const { content } = await getTextSnippet(
-    "54c41198-0d5c-4060-9164-6ad34d2bd7d9"
+    "54c41198-0d5c-4060-9164-6ad34d2bd7d9",
   );
 
   const uxResearch = await getService(uxResearchId);

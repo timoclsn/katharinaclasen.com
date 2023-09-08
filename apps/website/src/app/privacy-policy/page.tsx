@@ -5,7 +5,7 @@ import { getMetadata, getTextSnippet } from "../../lib/queries";
 
 export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description } = await getMetadata(
-    "d55aa383-149f-4b32-a7ae-4b640483d033"
+    "d55aa383-149f-4b32-a7ae-4b640483d033",
   );
   return {
     title,
@@ -30,7 +30,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
 
 const PrivacyPage = async () => {
   const textSnippet = await getTextSnippet(
-    "1a89fc3a-c6c5-473d-94f1-eaea8893b5b8"
+    "1a89fc3a-c6c5-473d-94f1-eaea8893b5b8",
   );
 
   return (

@@ -37,7 +37,7 @@ export const ProjectFilter = ({ services, topics }: Props) => {
             handleValueChange("service", value);
           }}
         >
-          <Select.Trigger className="outline-none transition-transform will-change-transform duration-100 ease-in hover:scale-105">
+          <Select.Trigger className="outline-none transition-transform duration-100 ease-in will-change-transform hover:scale-105">
             <Tag color="dark" size="xxl" outline="solid">
               <Select.Value placeholder="Services" />
               <Select.Icon>

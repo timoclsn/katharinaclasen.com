@@ -13,7 +13,7 @@ export const Link = forwardRef<HTMLAnchorElement, Props>(
   ({ children, href, external, className }, ref) => {
     const styles = cx(
       "underline hover:opacity-80 transition-opacity",
-      className
+      className,
     );
     return (
       <NextLink
@@ -30,7 +30,7 @@ export const Link = forwardRef<HTMLAnchorElement, Props>(
         {children}
       </NextLink>
     );
-  }
+  },
 );
 
 Link.displayName = "Link";

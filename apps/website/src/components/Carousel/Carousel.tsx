@@ -88,7 +88,7 @@ export const Carousel = <Item extends {}>({
               <li key={index}>
                 <button
                   onClick={() => selectItem(index)}
-                  className="transition-transform will-change-transform duration-100 ease-in hover:scale-105 active:scale-95"
+                  className="transition-transform duration-100 ease-in will-change-transform hover:scale-105 active:scale-95"
                 >
                   {tag({ item, selected, index })}
                 </button>
@@ -102,7 +102,7 @@ export const Carousel = <Item extends {}>({
           className="flex h-[800px] sm:h-[600px]"
         >
           <button
-            className="px-4 transition-transform will-change-transform duration-100 ease-in hover:-translate-x-1 active:-translate-x-2 lg:px-10"
+            className="px-4 transition-transform duration-100 ease-in will-change-transform hover:-translate-x-1 active:-translate-x-2 lg:px-10"
             onClick={prevItem}
           >
             <ArrowLeft />
@@ -128,7 +128,7 @@ export const Carousel = <Item extends {}>({
             </AnimatePresence>
           </div>
           <button
-            className="px-4 transition-transform will-change-transform duration-100 ease-in hover:translate-x-1 active:translate-x-2 lg:px-10"
+            className="px-4 transition-transform duration-100 ease-in will-change-transform hover:translate-x-1 active:translate-x-2 lg:px-10"
             onClick={nextItem}
           >
             <ArrowRight />

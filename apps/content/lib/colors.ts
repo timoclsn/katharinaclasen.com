@@ -2,18 +2,16 @@ export const backgroundColors = [
   "primary",
   "secondary",
   "dark",
-  'lilac',
+  "lilac",
   "pinkCandy",
   "redCandy",
   "stone",
   "mint",
-  'oceanFoam',
+  "oceanFoam",
   "salmon",
-  'sun',
+  "sun",
   "blueExtreme",
   "lilacExtreme",
 ];
 
-export const colors = [
-  'light', 'dark'
-];
+export const colors = ["light", "dark"];

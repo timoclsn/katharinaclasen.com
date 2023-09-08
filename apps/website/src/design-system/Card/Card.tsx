@@ -27,7 +27,7 @@ export interface CardProps extends VariantProps<typeof cardVariants> {
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   (
     { children, inset, color = "dark", border, className, customColor, id },
-    ref
+    ref,
   ) => {
     return (
       <div
@@ -46,7 +46,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
         {children}
       </div>
     );
-  }
+  },
 );
 
 Card.displayName = "Card";

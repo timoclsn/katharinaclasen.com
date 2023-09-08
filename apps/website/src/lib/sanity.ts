@@ -12,14 +12,14 @@ export const queryContent = async <TSchema extends z.ZodTypeAny>(
     cache: "dynamic" | "ISR" | "static";
   } = {
     cache: "ISR",
-  }
+  },
 ) => {
   const { cache } = options;
 
   const url = `https://${SANITY_PROJECT_ID}.api${
     cache === "dynamic" ? "cdn" : ""
   }.sanity.io/v${API_Version}/data/query/${DATASET}?query=${encodeURIComponent(
-    query
+    query,
   )}`;
 
   const response = await fetch(url, {

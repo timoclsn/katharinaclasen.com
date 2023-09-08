@@ -46,11 +46,11 @@ export const GET = async (request: Request) => {
         slug: z.string(),
         date: z.string(),
         content: z.string(),
-      })
+      }),
     ),
     {
       cache: "dynamic",
-    }
+    },
   );
 
   blogPosts.forEach((blogPost) => {

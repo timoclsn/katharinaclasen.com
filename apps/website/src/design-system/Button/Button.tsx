@@ -54,7 +54,7 @@ const styles = cva(
         className: "text-contrast-primary-light",
       },
     ],
-  }
+  },
 );
 
 type Styles = VariantProps<typeof styles>;
@@ -96,7 +96,7 @@ export const Button = forwardRef<HTMLAnchorElement & HTMLButtonElement, Props>(
       external,
       className,
     },
-    ref
+    ref,
   ) => {
     const Element = href ? Link : "button";
     return (
@@ -113,7 +113,7 @@ export const Button = forwardRef<HTMLAnchorElement & HTMLButtonElement, Props>(
         {children}
       </Element>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

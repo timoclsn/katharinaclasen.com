@@ -29,7 +29,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
       context: z.enum(contexts),
       client: z.string().nullable(),
       image: z.string(),
-    })
+    }),
   );
   return {
     title: project.title,
@@ -69,8 +69,8 @@ export const generateStaticParams = async () => {
     z.array(
       z.object({
         slug: z.string(),
-      })
-    )
+      }),
+    ),
   );
 
   return projects.map((project) => ({
@@ -125,18 +125,18 @@ const ProjectPage = async ({ params }: Props) => {
         .array(
           z.object({
             title: z.string(),
-          })
+          }),
         )
         .nullable(),
       topics: z
         .array(
           z.object({
             title: z.string(),
-          })
+          }),
         )
         .nullable(),
       content: z.string(),
-    })
+    }),
   );
 
   return (
@@ -164,7 +164,7 @@ const ProjectPage = async ({ params }: Props) => {
                     ({
                       outline: "solid",
                       text: service.title,
-                    } as const)
+                    }) as const,
                 )
               : []),
             ...(project.topics
@@ -173,7 +173,7 @@ const ProjectPage = async ({ params }: Props) => {
                     ({
                       outline: "dash",
                       text: topic.title,
-                    } as const)
+                    }) as const,
                 )
               : []),
           ]}

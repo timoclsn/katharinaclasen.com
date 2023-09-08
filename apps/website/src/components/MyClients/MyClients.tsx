@@ -44,9 +44,9 @@ const queryCarousel = async () => {
               author: z.string(),
             })
             .nullable(),
-        })
+        }),
       ),
-    })
+    }),
   );
 };
 

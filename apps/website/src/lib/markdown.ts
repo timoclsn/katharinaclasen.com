@@ -1,8 +1,8 @@
 import "server-only";
-import showdown from 'showdown';
+import showdown from "showdown";
 
 const converter = new showdown.Converter({
-  noHeaderId: true
+  noHeaderId: true,
 });
 
 export const markdownToHtml = (makrkdown: string) => {

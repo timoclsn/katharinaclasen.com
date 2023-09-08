@@ -6,7 +6,7 @@ import journeyImg from "./journey.jpg";
 
 export const LcdJourney = async () => {
   const { content } = await getTextSnippet(
-    "f82e5299-98ae-4fb9-95c5-75544775deb0"
+    "f82e5299-98ae-4fb9-95c5-75544775deb0",
   );
   return (
     <Section id="my-lcd-journey" color="secondary">

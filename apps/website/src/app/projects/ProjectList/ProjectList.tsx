@@ -17,7 +17,7 @@ export const ProjectList = ({ projects, filter, sort }: Props) => {
     .filter((project) => {
       if (!filter?.service || filter.service === "all") return true;
       return project.services?.some(
-        (service) => service.title === filter.service
+        (service) => service.title === filter.service,
       );
     })
     .filter((project) => {
@@ -72,7 +72,7 @@ export const ProjectList = ({ projects, filter, sort }: Props) => {
                               ({
                                 outline: "solid",
                                 text: service.title,
-                              } as const)
+                              }) as const,
                           )
                         : []),
                       ...(project.topics
@@ -81,7 +81,7 @@ export const ProjectList = ({ projects, filter, sort }: Props) => {
                               ({
                                 outline: "dash",
                                 text: topic.title,
-                              } as const)
+                              }) as const,
                           )
                         : []),
                     ]}

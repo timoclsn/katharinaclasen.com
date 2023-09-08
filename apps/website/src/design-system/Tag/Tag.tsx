@@ -64,7 +64,7 @@ const tagVariants = cva(
         className: "px-4 py-1 sm:px-6 sm:py-2",
       },
     ],
-  }
+  },
 );
 
 type TagVariants = VariantProps<typeof tagVariants>;
@@ -84,7 +84,7 @@ const prependVariants = cva(
         xxl: "text-3xl [&_img]:h-[24px] px-4 py-2",
       },
     },
-  }
+  },
 );
 
 interface ComponentProps {

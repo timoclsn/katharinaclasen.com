@@ -48,7 +48,7 @@ Select.Content = forwardRef<
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
-        className="z-50 rounded-2xl bg-background-dark px-4 py-6 text-contrast-primary-light animate-in fade-in-75 zoom-in-90 duration-100 ease-in"
+        className="z-50 rounded-2xl bg-background-dark px-4 py-6 text-contrast-primary-light duration-100 ease-in animate-in fade-in-75 zoom-in-90"
         ref={ref}
         {...props}
       >
@@ -89,7 +89,7 @@ Select.Item = forwardRef<
     <SelectPrimitive.Item
       className={cx(
         "cursor-pointer rounded-lg py-1 pl-[29px] pr-2 outline-none ring-inset hover:bg-contrast-primary-light hover:text-background-dark focus-visible:bg-contrast-primary-light focus-visible:text-background-dark",
-        className
+        className,
       )}
       {...props}
       ref={ref}

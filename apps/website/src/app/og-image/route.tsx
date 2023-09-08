@@ -7,15 +7,15 @@ export const runtime = "experimental-edge";
 export const dynamic = "force-dynamic";
 
 const sourceSans3 = fetch(
-  new URL("./source-sans-3-latin-400-normal.ttf", import.meta.url)
+  new URL("./source-sans-3-latin-400-normal.ttf", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 const sourceSans3_500 = fetch(
-  new URL("./source-sans-3-latin-500-normal.ttf", import.meta.url)
+  new URL("./source-sans-3-latin-500-normal.ttf", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 const sourceSerif4 = fetch(
-  new URL("./source-serif-4-latin-400-normal.ttf", import.meta.url)
+  new URL("./source-serif-4-latin-400-normal.ttf", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 export const GET = async (request: Request) => {
@@ -280,6 +280,6 @@ export const GET = async (request: Request) => {
           style: "normal",
         },
       ],
-    }
+    },
   );
 };

@@ -10,7 +10,7 @@ import "../styles/global.css";
 
 export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description } = await getMetadata(
-    "3c9f2256-cc4a-4e79-bfa7-4dcda1263376"
+    "3c9f2256-cc4a-4e79-bfa7-4dcda1263376",
   );
   return {
     metadataBase: new URL("https://katharinaclasen.com"),
@@ -81,7 +81,7 @@ const RootLayout = ({ children }: Props) => {
           "[&:has(.about-page)]:bg-background-red-candy [&:has(.about-page)_.mobile-nav]:bg-background-red-candy",
           "[&:has(.services-page)]:bg-background-stone lg:[&:has(.services-page)]:!bg-background-primary [&:has(.services-page)_.mobile-nav]:bg-background-stone",
           "[&:has(.lcd-page)]:bg-background-ocean-foam [&:has(.lcd-page)_.mobile-nav]:bg-background-ocean-foam",
-          "[&:has(.contact-page)]:bg-background-pink-candy [&:has(.contact-page)_.mobile-nav]:bg-background-pink-candy"
+          "[&:has(.contact-page)]:bg-background-pink-candy [&:has(.contact-page)_.mobile-nav]:bg-background-pink-candy",
         )}
       >
         <body className="relative flex min-h-screen flex-col overflow-x-hidden">

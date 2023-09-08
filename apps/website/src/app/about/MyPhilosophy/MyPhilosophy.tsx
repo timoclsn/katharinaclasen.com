@@ -7,7 +7,7 @@ import { getCardGridItems } from "../../../lib/queries";
 
 export const MyPhilosophy = async () => {
   const cardGrid = await getCardGridItems(
-    "4636d048-0b7e-4cf4-9416-b90c291705c6"
+    "4636d048-0b7e-4cf4-9416-b90c291705c6",
   );
   const { title, subtitle, items, quotes } = cardGrid;
   return (

@@ -9,7 +9,7 @@ const variants = cva(
         true: "md:float-left md:mr-8 md:mb-8 md:max-w-[50%] xl:-ml-32",
       },
     },
-  }
+  },
 );
 
 interface Props extends VariantProps<typeof variants> {
