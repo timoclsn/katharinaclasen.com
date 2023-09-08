@@ -2,10 +2,10 @@ import { format } from "date-fns";
 import { CalendarDays, Clock, User } from "lucide-react";
 import { groq } from "next-sanity";
 import readingTime from "reading-time";
-import { Article, WithContext } from "schema-dts";
 import { z } from "zod";
 import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
+import { StructuredData } from "../../../components/StructuredData/StructuredData";
 import { Container } from "../../../design-system/Container/Container";
 import { createGenerateMetadata, ogImage } from "../../../lib/metadata";
 import { queryContent } from "../../../lib/sanity";
@@ -29,7 +29,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
       summary: z.string().nullable(),
       image: z.string(),
       content: z.string(),
-    })
+    }),
   );
 
   const stats = readingTime(content);
@@ -80,8 +80,8 @@ export const generateStaticParams = async () => {
     z.array(
       z.object({
         slug: z.string(),
-      })
-    )
+      }),
+    ),
   );
 
   return blogPosts.map((blogPost) => ({
@@ -129,53 +129,50 @@ const BlogPostPage = async ({ params }: Props) => {
         .array(
           z.object({
             title: z.string(),
-          })
+          }),
         )
         .nullable(),
       topics: z
         .array(
           z.object({
             title: z.string(),
-          })
+          }),
         )
         .nullable(),
       content: z.string(),
-    })
+    }),
   );
 
   const stats = readingTime(blogPost.content);
-
-  const jsonLd: WithContext<Article> = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    mainEntityOfPage: {
-      "@type": "BlogPosting",
-      "@id": `https://katharinaclasen.com/blog/${blogPost.slug}`,
-    },
-    headline: blogPost.title,
-    image: [blogPost.image.url],
-    datePublished: blogPost.date,
-    dateModified: blogPost.date,
-    author: {
-      "@type": "Person",
-      name: "Katharina Clasen",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Katharina Clasen",
-      logo: {
-        "@type": "ImageObject",
-        url: "/favicon.png",
-      },
-    },
-    description: blogPost.summary || "Blog post by Katharina Clasen",
-  };
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <StructuredData type="Article">
+        {{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          mainEntityOfPage: {
+            "@type": "BlogPosting",
+            "@id": `https://katharinaclasen.com/blog/${blogPost.slug}`,
+          },
+          headline: blogPost.title,
+          image: [blogPost.image.url],
+          datePublished: blogPost.date,
+          dateModified: blogPost.date,
+          author: {
+            "@type": "Person",
+            name: "Katharina Clasen",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "Katharina Clasen",
+            logo: {
+              "@type": "ImageObject",
+              url: "/favicon.png",
+            },
+          },
+          description: blogPost.summary || "Blog post by Katharina Clasen",
+        }}
+      </StructuredData>
       <article className="py-20 sm:py-32">
         <Container size="small" inset>
           <ArticleHeader
@@ -202,7 +199,7 @@ const BlogPostPage = async ({ params }: Props) => {
                       ({
                         outline: "solid",
                         text: service.title,
-                      } as const)
+                      }) as const,
                   )
                 : []),
               ...(blogPost.topics
@@ -211,7 +208,7 @@ const BlogPostPage = async ({ params }: Props) => {
                       ({
                         outline: "dash",
                         text: topic.title,
-                      } as const)
+                      }) as const,
                   )
                 : []),
             ]}
