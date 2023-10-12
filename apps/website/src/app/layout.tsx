@@ -1,7 +1,9 @@
 import { cx } from "class-variance-authority";
 import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
+import { draftMode } from "next/headers";
 import Script from "next/script";
 import { ReactNode } from "react";
+import { DraftModeBanner } from "../components/DraftModeBanner/DraftModeBanner";
 import { Footer } from "../components/Footer/Footer";
 import { Navigation } from "../components/Navigation/Navigation";
 import { createGenerateMetadata, ogImage } from "../lib/metadata";
@@ -67,6 +69,7 @@ interface Props {
 }
 
 const RootLayout = ({ children }: Props) => {
+  const isDraftMode = draftMode().isEnabled;
   return (
     <>
       <Script data-no-cookie data-api="/_hive" src="/bee.js" />
@@ -85,6 +88,7 @@ const RootLayout = ({ children }: Props) => {
         )}
       >
         <body className="relative flex min-h-screen flex-col overflow-x-hidden">
+          {isDraftMode && <DraftModeBanner />}
           <Navigation />
           <main id="skip" className="flex-1">
             {children}

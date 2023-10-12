@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { CalendarDays, Clock, User } from "lucide-react";
+import { CalendarDays, Clock, Feather, User } from "lucide-react";
 import { groq } from "next-sanity";
 import readingTime from "reading-time";
 import { z } from "zod";
@@ -179,6 +179,14 @@ const BlogPostPage = async ({ params }: Props) => {
             title={blogPost.title}
             titleImage={blogPost.image}
             metaData={[
+              ...(blogPost._id.startsWith("drafts.")
+                ? [
+                    {
+                      icon: Feather,
+                      text: "DRAFT",
+                    },
+                  ]
+                : []),
               {
                 icon: User,
                 text: blogPost.author,
