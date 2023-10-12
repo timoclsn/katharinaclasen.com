@@ -4,7 +4,7 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"],
-      "env": ["SANITY_PROJECT_ID"]
+      "env": ["SANITY_PROJECT_ID", "SANITY_AUTH_TOKEN", "DRAFT_MODE_SECRET"]
     },
     "lint": {
       "outputs": []

@@ -1,4 +1,4 @@
-import { CalendarDays, Contact } from "lucide-react";
+import { CalendarDays, Contact, Feather } from "lucide-react";
 import { groq } from "next-sanity";
 import { z } from "zod";
 import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
@@ -146,6 +146,14 @@ const ProjectPage = async ({ params }: Props) => {
           title={project.title}
           titleImage={project.image}
           metaData={[
+            ...(project._id.startsWith("drafts.")
+              ? [
+                  {
+                    icon: Feather,
+                    text: "DRAFT",
+                  },
+                ]
+              : []),
             {
               icon: Contact,
               text: context(project.context, project.client || ""),

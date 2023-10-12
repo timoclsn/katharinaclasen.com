@@ -107,7 +107,7 @@ importers:
         version: 4.4.1(react-dom@18.2.0)(react@18.2.0)
       next-sanity:
         specifier: ^5.5.8
-        version: 5.5.8(@sanity/client@6.6.0)(@sanity/icons@2.4.1)(@sanity/types@3.16.2)(@sanity/ui@1.8.2)(next@13.5.4)(react@18.2.0)(sanity@3.18.0)(styled-components@6.0.8)
+        version: 5.5.8(@sanity/client@6.6.0)(@sanity/icons@2.4.1)(@sanity/types@3.18.0)(@sanity/ui@1.8.2)(next@13.5.4)(react@18.2.0)(sanity@3.18.0)(styled-components@6.0.8)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -183,7 +183,7 @@ importers:
         version: 8.51.0
       eslint-config-next:
         specifier: ^13.5.4
-        version: 13.5.4(eslint@8.51.0)
+        version: 13.5.4(eslint@8.51.0)(typescript@5.2.2)
       eslint-config-prettier:
         specifier: ^9.0.0
         version: 9.0.0(eslint@8.51.0)
@@ -5156,7 +5156,7 @@ packages:
       source-map: 0.6.1
     dev: false
 
-  /eslint-config-next@13.5.4(eslint@8.51.0):
+  /eslint-config-next@13.5.4(eslint@8.51.0)(typescript@5.2.2):
     resolution: {integrity: sha512-FzQGIj4UEszRX7fcRSJK6L1LrDiVZvDFW320VVntVKh3BSU8Fb9kpaoxQx0cdFgf3MQXdeSbrCXJ/5Z/NndDkQ==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
@@ -5175,6 +5175,7 @@ packages:
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.51.0)
       eslint-plugin-react: 7.33.2(eslint@8.51.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.51.0)
+      typescript: 5.2.2
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
       - supports-color
@@ -7342,7 +7343,7 @@ packages:
       - supports-color
     dev: false
 
-  /next-sanity@5.5.8(@sanity/client@6.6.0)(@sanity/icons@2.4.1)(@sanity/types@3.16.2)(@sanity/ui@1.8.2)(next@13.5.4)(react@18.2.0)(sanity@3.18.0)(styled-components@6.0.8):
+  /next-sanity@5.5.8(@sanity/client@6.6.0)(@sanity/icons@2.4.1)(@sanity/types@3.18.0)(@sanity/ui@1.8.2)(next@13.5.4)(react@18.2.0)(sanity@3.18.0)(styled-components@6.0.8):
     resolution: {integrity: sha512-RXblju8LqkHOOBsGrO7z0Psotog08paopR82N6/zqpGXq+4qIYla5kzEOGtRGUYbA/T2+gpnxijmLATxnSVNNw==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -7358,7 +7359,7 @@ packages:
       '@sanity/client': 6.6.0
       '@sanity/icons': 2.4.1(react@18.2.0)
       '@sanity/preview-kit': 3.2.0(@sanity/client@6.6.0)(react@18.2.0)
-      '@sanity/types': 3.16.2
+      '@sanity/types': 3.18.0
       '@sanity/ui': 1.8.2(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@6.0.8)
       '@sanity/webhook': 3.0.1
       groq: 3.16.2
