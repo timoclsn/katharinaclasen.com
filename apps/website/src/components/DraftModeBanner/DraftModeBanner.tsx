@@ -1,15 +1,18 @@
-import { XCircle } from "lucide-react";
+import { Feather, XCircle } from "lucide-react";
 import Link from "next/link";
 import { Container } from "../../design-system/Container/Container";
 
 export const DraftModeBanner = () => {
   return (
-    <section className="bg-background-pink-candy">
+    <section className="bg-background-dark">
       <Container
         inset
-        className="flex items-center justify-between gap-4 py-4 font-serif italic text-contrast-primary-dark"
+        className="flex items-center justify-between gap-4 py-4 font-serif italic text-contrast-primary-light"
       >
-        Draft Mode
+        <div className="flex items-center justify-center gap-2">
+          <Feather size={18} />
+          Draft Mode
+        </div>
         <Link
           href="/api/disable-draft"
           prefetch={false}
