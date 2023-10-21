@@ -27,6 +27,12 @@ export const project = defineType({
       initialValue: false,
     }),
     defineField({
+      name: "highlight",
+      title: "Highlight",
+      type: "boolean",
+      initialValue: false,
+    }),
+    defineField({
       name: "image",
       title: "Titelbild",
       type: "image",
