@@ -38,20 +38,16 @@ export const MyLCDProjectsCarousel = ({ projects }: Props) => {
               <Markdown size="normal">{project.summary}</Markdown>
             )}
             <div className="mt-16 flex flex-col gap-6 sm:flex-row">
-              {project.slug && (
-                <Button href={`/projects/${project.slug}`}>
-                  <Files />
-                  Case study
-                </Button>
-              )}
               {project.externalLink && (
-                <Button
-                  style="outline"
-                  href={project.externalLink.href}
-                  external
-                >
+                <Button href={project.externalLink.href} external>
                   <Link2 />
                   {project.externalLink.label}
+                </Button>
+              )}
+              {project.slug && (
+                <Button href={`/projects/${project.slug}`} style="outline">
+                  <Files />
+                  Case study
                 </Button>
               )}
             </div>
