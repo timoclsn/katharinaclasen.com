@@ -18,7 +18,7 @@ interface Props {
 export const BlogTeaser = async ({ title, description, blogPosts }: Props) => {
   const blogPostsToDisplay = blogPosts.slice(0, 2);
   return (
-    <Section id="blog" color="primary">
+    <Section id="blog-teaser" color="primary">
       <Heading as="h2" level="1" className="mb-6">
         {title}
       </Heading>

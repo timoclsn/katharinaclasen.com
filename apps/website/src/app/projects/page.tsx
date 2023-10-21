@@ -9,6 +9,7 @@ import { getMetadata, getProjects } from "../../lib/queries";
 import { queryContent } from "../../lib/sanity";
 import { ProjectFilter } from "./ProjectFilter/ProjectFilter";
 import { ProjectList } from "./ProjectList/ProjectList";
+import { HighlightedProjects } from "./HighlightedProjects/HighlightedProjects";
 
 export const runtime = "edge";
 
@@ -94,6 +95,7 @@ const ProjectsPage = async ({ searchParams = {} }: Props) => {
 
   return (
     <div className="py-20 sm:py-32">
+      <HighlightedProjects />
       <Container inset>
         <div className="mb-20">
           <Heading className="mb-6 max-w-2xl">
