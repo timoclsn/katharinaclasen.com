@@ -1,6 +1,6 @@
-import { groq } from "next-sanity";
-import { queryContent } from "../lib/sanity";
-import { z } from "zod";
+import { getBlogPosts, getProjects } from "../lib/queries";
+
+export const dynamic = "force-dynamic";
 
 const sitemap = async () => {
   const origin = "https://katharinaclasen.com";
@@ -18,43 +18,13 @@ const sitemap = async () => {
     "/privacy-policy",
   ];
 
-  const projects = await queryContent(
-    groq`
-      *[_type == 'project']
-      {
-        'slug': slug.current,
-      }
-    `,
-    z.array(
-      z.object({
-        slug: z.string(),
-      }),
-    ),
-    {
-      cache: "dynamic",
-    },
-  );
+  const projects = await getProjects();
 
   projects.forEach((project) => {
     pages.push(`/projects/${project.slug}`);
   });
 
-  const blogPosts = await queryContent(
-    groq`
-      *[_type == 'blogPost']
-      {
-        'slug': slug.current,
-      }
-    `,
-    z.array(
-      z.object({
-        slug: z.string(),
-      }),
-    ),
-    {
-      cache: "dynamic",
-    },
-  );
+  const blogPosts = await getBlogPosts();
 
   blogPosts.forEach((blogPost) => {
     pages.push(`/blog/${blogPost.slug}`);
