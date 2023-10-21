@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Files } from "lucide-react";
 import Image from "next/image";
 import { Body } from "../../../design-system/Body/Body";
 import { Button } from "../../../design-system/Button/Button";
@@ -24,10 +24,16 @@ export const Header = async () => {
             <Body as="p" priority="secondary" className="mb-8 max-w-md">
               {content}
             </Body>
-            <Button href="/lifecentereddesign#my-lcd-projects">
-              <ArrowRight />
-              My Life-centered Design projects
-            </Button>
+            <div className="flex flex-wrap items-center gap-4">
+              <Button href="/lifecentereddesign#my-lcd-projects">
+                <ArrowRight />
+                My Life-centered Design projects
+              </Button>
+              <Button href="/projects/behavioral-impact-canvas" style="outline">
+                <Files />
+                Behavioral Impact Canvas
+              </Button>
+            </div>
           </div>
         </div>
         <Image
