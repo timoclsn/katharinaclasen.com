@@ -308,6 +308,7 @@ const projectSchema = z.object({
   _id: z.string(),
   slug: z.string(),
   title: z.string(),
+  hidden: z.boolean().nullable(),
   summary: z.string().nullable(),
   image: z.object({
     url: z.string(),
@@ -349,6 +350,7 @@ export const getProjects = async () => {
           _id,
           'slug': slug.current,
           title,
+          hidden,
           summary,
           image{'url': asset->url, alt, border},
           context,
@@ -373,6 +375,7 @@ export const getProject = async (slug: string) => {
         _id,
         'slug': slug.current,
         title,
+        hidden,
         summary,
         image{'url': asset->url, alt, border},
         context,

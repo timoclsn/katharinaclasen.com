@@ -66,10 +66,11 @@ const ProjectsPage = async ({ searchParams = {} }: Props) => {
   const { sort } = sortSchema.parse(searchParams);
 
   const projects = await getProjects();
+  const filteredProjects = projects.filter((project) => !project.hidden);
 
   const services = Array.from(
     new Set(
-      projects
+      filteredProjects
         .map((project) => {
           return project.services
             ? project.services.map((service) => service.title)
@@ -81,7 +82,7 @@ const ProjectsPage = async ({ searchParams = {} }: Props) => {
 
   const topics = Array.from(
     new Set(
-      projects
+      filteredProjects
         .map((project) => {
           return project.topics
             ? project.topics.map((topic) => topic.title)
@@ -102,7 +103,7 @@ const ProjectsPage = async ({ searchParams = {} }: Props) => {
             <ProjectFilter services={services} topics={topics} />
           </Suspense>
         </div>
-        <ProjectList projects={projects} filter={filter} sort={sort} />
+        <ProjectList projects={filteredProjects} filter={filter} sort={sort} />
       </Container>
     </div>
   );
