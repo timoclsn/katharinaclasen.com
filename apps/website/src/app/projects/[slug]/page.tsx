@@ -1,36 +1,14 @@
 import { CalendarDays, Contact, Feather } from "lucide-react";
-import { groq } from "next-sanity";
-import { z } from "zod";
 import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Container } from "../../../design-system/Container/Container";
 import { createGenerateMetadata, ogImage } from "../../../lib/metadata";
-import { context, contexts } from "../../../lib/projects";
-import { queryContent } from "../../../lib/sanity";
+import { context } from "../../../lib/projects";
+import { getProject, getProjects } from "../../../lib/queries";
 
 export const generateMetadata = createGenerateMetadata(async ({ params }) => {
   const { slug } = params;
-  const project = await queryContent(
-    groq`
-      *[_type == 'project' && slug.current == '${slug}'][0]
-      {
-        title,
-        summary,
-        date,
-        context,
-        'client': client->shortName,
-        'image': image.asset->url,
-      }
-    `,
-    z.object({
-      title: z.string(),
-      summary: z.string().nullable(),
-      date: z.string(),
-      context: z.enum(contexts),
-      client: z.string().nullable(),
-      image: z.string(),
-    }),
-  );
+  const project = await getProject(slug);
   return {
     title: project.title,
     description: project.summary || "Project by Katharina Clasen",
@@ -47,7 +25,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
         url: ogImage({
           overline: "Project • Katharina Clasen",
           headline: project.title,
-          image: project.image,
+          image: project.image.url,
           client: context(project.context, project.client || ""),
           date: new Date(project.date).getFullYear().toString(),
         }),
@@ -60,19 +38,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
 });
 
 export const generateStaticParams = async () => {
-  const projects = await queryContent(
-    groq`
-      *[_type == 'project']
-      {
-        'slug': slug.current
-      }`,
-    z.array(
-      z.object({
-        slug: z.string(),
-      }),
-    ),
-  );
-
+  const projects = await getProjects();
   return projects.map((project) => ({
     slug: project.slug,
   }));
@@ -86,58 +52,7 @@ interface Props {
 
 const ProjectPage = async ({ params }: Props) => {
   const { slug } = params;
-  const project = await queryContent(
-    groq`
-      *[_type == 'project' && slug.current == '${slug}'][0]
-      {
-        _id,
-        title,
-        image{'url': asset->url, alt, border},
-        context,
-        'client': client->shortName,
-        date,
-        period,
-        externalLink{label, href},
-        services[]->{title},
-        topics[]->{title},
-        content
-      }
-    `,
-    z.object({
-      _id: z.string(),
-      title: z.string(),
-      image: z.object({
-        url: z.string(),
-        alt: z.string(),
-        border: z.boolean().nullable(),
-      }),
-      context: z.enum(contexts),
-      client: z.string().nullable(),
-      date: z.string(),
-      period: z.string().nullable(),
-      externalLink: z
-        .object({
-          label: z.string(),
-          href: z.string(),
-        })
-        .nullable(),
-      services: z
-        .array(
-          z.object({
-            title: z.string(),
-          }),
-        )
-        .nullable(),
-      topics: z
-        .array(
-          z.object({
-            title: z.string(),
-          }),
-        )
-        .nullable(),
-      content: z.string(),
-    }),
-  );
+  const project = await getProject(slug);
 
   return (
     <article className="py-20 sm:py-32">

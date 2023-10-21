@@ -1,9 +1,9 @@
 import { MyClients } from "../../components/MyClients/MyClients";
 import { createGenerateMetadata } from "../../lib/metadata";
-import { BlogTeaser } from "./BlogTeaser/BlogTeaser";
 import { Header } from "./Header/Header";
 import { HomeAccordion } from "./HomeAccordion/HomeAccordion";
 import { LcdTeaser } from "./LcdTeaser/LcdTeaser";
+import { NewBlogPosts } from "./NewBlogPosts/NewBlogPosts";
 
 export const generateMetadata = createGenerateMetadata(async () => ({
   other: {
@@ -17,7 +17,7 @@ const Home = async () => {
       <Header />
       <HomeAccordion />
       <LcdTeaser />
-      <BlogTeaser />
+      <NewBlogPosts />
       <MyClients />
     </div>
   );

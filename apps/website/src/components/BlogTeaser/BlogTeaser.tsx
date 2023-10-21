@@ -1,72 +1,32 @@
 import { format } from "date-fns";
 import { ArrowRight, CalendarDays, Clock, User } from "lucide-react";
-import { groq } from "next-sanity";
 import Link from "next/link";
 import readingTime from "reading-time";
-import { z } from "zod";
-import { ArticlePreview } from "../../../components/ArticlePreview/ArticlePreview";
-import { Section } from "../../../components/Section/Section";
-import { Body } from "../../../design-system/Body/Body";
-import { Button } from "../../../design-system/Button/Button";
-import { Heading } from "../../../design-system/Heading/Heading";
-import { queryContent } from "../../../lib/sanity";
+import { Body } from "../../design-system/Body/Body";
+import { Button } from "../../design-system/Button/Button";
+import { Heading } from "../../design-system/Heading/Heading";
+import { BlogPost } from "../../lib/queries";
+import { ArticlePreview } from "../ArticlePreview/ArticlePreview";
+import { Section } from "../Section/Section";
 
-export const BlogTeaser = async () => {
-  const blogPosts = await queryContent(
-    groq`
-      *[_type == 'blogPost']
-      {
-        _id,
-        title,
-        'slug': slug.current,
-        image{'url': asset->url, alt, border},
-        author,
-        date,
-        services[]->{title},
-        topics[]->{title},
-        content
-      } | order(date desc)[0..1]
-    `,
-    z.array(
-      z.object({
-        _id: z.string(),
-        title: z.string(),
-        slug: z.string(),
-        image: z.object({
-          url: z.string(),
-          alt: z.string(),
-          border: z.boolean().nullable(),
-        }),
-        author: z.string(),
-        date: z.string(),
-        services: z
-          .array(
-            z.object({
-              title: z.string(),
-            }),
-          )
-          .nullable(),
-        topics: z
-          .array(
-            z.object({
-              title: z.string(),
-            }),
-          )
-          .nullable(),
-        content: z.string(),
-      }),
-    ),
-  );
+interface Props {
+  title: string;
+  description: string;
+  blogPosts: Array<BlogPost>;
+}
+
+export const BlogTeaser = async ({ title, description, blogPosts }: Props) => {
+  const blogPostsToDisplay = blogPosts.slice(0, 2);
   return (
     <Section id="blog" color="primary">
       <Heading as="h2" level="1" className="mb-6">
-        Blog
+        {title}
       </Heading>
       <Body as="p" size="large" priority="secondary" className="mb-16">
-        Irregular writing on UX Design, Life-centered Design, and more...
+        {description}
       </Body>
       <ul className="grid grid-cols-1 gap-x-14 gap-y-28 md:grid-cols-2">
-        {blogPosts.map((blogPost) => {
+        {blogPostsToDisplay.map((blogPost) => {
           const stats = readingTime(blogPost.content);
           return (
             <li key={blogPost._id}>

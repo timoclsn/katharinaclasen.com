@@ -4,10 +4,11 @@ import { ArticlePreview } from "../../../components/ArticlePreview/ArticlePrevie
 import { AutoAnimate } from "../../../components/AutoAnimate/AutoAnimate";
 import { Heading } from "../../../design-system/Heading/Heading";
 import { context } from "../../../lib/projects";
-import { Filter, Projects, Sort } from "../page";
+import { Project } from "../../../lib/queries";
+import { Filter, Sort } from "../page";
 
 interface Props {
-  projects: Projects;
+  projects: Array<Project>;
   filter?: Filter;
   sort?: Sort;
 }
