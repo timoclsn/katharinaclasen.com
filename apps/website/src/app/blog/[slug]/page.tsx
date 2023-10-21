@@ -1,37 +1,16 @@
 import { format } from "date-fns";
 import { CalendarDays, Clock, Feather, User } from "lucide-react";
-import { groq } from "next-sanity";
 import readingTime from "reading-time";
-import { z } from "zod";
 import { ArticleHeader } from "../../../components/ArticleHeader/ArticleHeader";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { StructuredData } from "../../../components/StructuredData/StructuredData";
 import { Container } from "../../../design-system/Container/Container";
 import { createGenerateMetadata, ogImage } from "../../../lib/metadata";
-import { queryContent } from "../../../lib/sanity";
+import { getBlogPost, getBlogPosts } from "../../../lib/queries";
 
 export const generateMetadata = createGenerateMetadata(async ({ params }) => {
   const { slug } = params;
-  const { title, summary, date, image, content } = await queryContent(
-    groq`
-      *[_type == 'blogPost' && slug.current == '${slug}'][0]
-      {
-        title,
-        date,
-        summary,
-        'image': image.asset->url,
-        content,
-      }
-    `,
-    z.object({
-      title: z.string(),
-      date: z.string(),
-      summary: z.string().nullable(),
-      image: z.string(),
-      content: z.string(),
-    }),
-  );
-
+  const { title, summary, date, image, content } = await getBlogPost(slug);
   const stats = readingTime(content);
 
   return {
@@ -50,7 +29,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
         url: ogImage({
           overline: "Blog • Katharina Clasen",
           headline: title,
-          image,
+          image: image.url,
           readingTime: `${Math.ceil(stats.minutes)} min`,
           date: format(new Date(date), "LLLL dd, yyyy"),
         }),
@@ -70,20 +49,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
 });
 
 export const generateStaticParams = async () => {
-  const blogPosts = await queryContent(
-    groq`
-      *[_type == 'blogPost']
-      {
-        'slug': slug.current
-      }
-    `,
-    z.array(
-      z.object({
-        slug: z.string(),
-      }),
-    ),
-  );
-
+  const blogPosts = await getBlogPosts();
   return blogPosts.map((blogPost) => ({
     slug: blogPost.slug,
   }));
@@ -97,52 +63,7 @@ interface Props {
 
 const BlogPostPage = async ({ params }: Props) => {
   const { slug } = params;
-  const blogPost = await queryContent(
-    groq`
-      *[_type == 'blogPost' && slug.current == '${slug}'][0]
-      {
-        _id,
-        'slug': slug.current,
-        title,
-        summary,
-        image{'url': asset->url, alt, border},
-        author,
-        date,
-        services[]->{title},
-        topics[]->{title},
-        content
-      }
-    `,
-    z.object({
-      _id: z.string(),
-      slug: z.string(),
-      title: z.string(),
-      summary: z.string().nullable(),
-      image: z.object({
-        url: z.string(),
-        alt: z.string(),
-        border: z.boolean().nullable(),
-      }),
-      author: z.string(),
-      date: z.string(),
-      services: z
-        .array(
-          z.object({
-            title: z.string(),
-          }),
-        )
-        .nullable(),
-      topics: z
-        .array(
-          z.object({
-            title: z.string(),
-          }),
-        )
-        .nullable(),
-      content: z.string(),
-    }),
-  );
-
+  const blogPost = await getBlogPost(slug);
   const stats = readingTime(blogPost.content);
   return (
     <>

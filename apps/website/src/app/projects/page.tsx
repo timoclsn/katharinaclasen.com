@@ -5,7 +5,7 @@ import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";
 import { createGenerateMetadata, ogImage } from "../../lib/metadata";
 import { contexts } from "../../lib/projects";
-import { getMetadata } from "../../lib/queries";
+import { getMetadata, getProjects } from "../../lib/queries";
 import { queryContent } from "../../lib/sanity";
 import { ProjectFilter } from "./ProjectFilter/ProjectFilter";
 import { ProjectList } from "./ProjectList/ProjectList";
@@ -43,58 +43,6 @@ export const generateMetadata = createGenerateMetadata(async () => {
     },
   };
 });
-
-export type Projects = Awaited<ReturnType<typeof getProjects>>;
-
-const getProjects = async () => {
-  return await queryContent(
-    groq`
-      *[_type == 'project']
-      {
-        _id,
-        title,
-        'slug': slug.current,
-        image{'url': asset->url, alt, border},
-        context,
-        'client': client->shortName,
-        date,
-        period,
-        services[]->{title},
-        topics[]->{title}
-      } | order(date desc)
-    `,
-    z.array(
-      z.object({
-        _id: z.string(),
-        title: z.string(),
-        slug: z.string(),
-        image: z.object({
-          url: z.string(),
-          alt: z.string(),
-          border: z.boolean().nullable(),
-        }),
-        context: z.enum(contexts),
-        client: z.string().nullable(),
-        date: z.string(),
-        period: z.string().nullable(),
-        services: z
-          .array(
-            z.object({
-              title: z.string(),
-            }),
-          )
-          .nullable(),
-        topics: z
-          .array(
-            z.object({
-              title: z.string(),
-            }),
-          )
-          .nullable(),
-      }),
-    ),
-  );
-};
 
 export type Filter = z.infer<typeof filterSchema>;
 const filterSchema = z.object({

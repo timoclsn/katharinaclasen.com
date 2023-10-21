@@ -1,14 +1,11 @@
 import { format } from "date-fns";
 import { CalendarDays, Clock, Feather, User } from "lucide-react";
-import { groq } from "next-sanity";
 import Link from "next/link";
 import readingTime from "reading-time";
-import { z } from "zod";
 import { ArticlePreview } from "../../components/ArticlePreview/ArticlePreview";
 import { Container } from "../../design-system/Container/Container";
 import { createGenerateMetadata, ogImage } from "../../lib/metadata";
-import { getMetadata } from "../../lib/queries";
-import { queryContent } from "../../lib/sanity";
+import { getBlogPosts, getMetadata } from "../../lib/queries";
 
 export const generateMetadata = createGenerateMetadata(async () => {
   const {
@@ -43,51 +40,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
 });
 
 const BlogPage = async () => {
-  const blogPosts = await queryContent(
-    groq`
-      *[_type == 'blogPost']
-      {
-        _id,
-        title,
-        'slug': slug.current,
-        image{'url': asset->url, alt, border},
-        author,
-        date,
-        services[]->{title},
-        topics[]->{title},
-        content
-      } | order(date desc)
-    `,
-    z.array(
-      z.object({
-        _id: z.string(),
-        title: z.string(),
-        slug: z.string(),
-        image: z.object({
-          url: z.string(),
-          alt: z.string(),
-          border: z.boolean().nullable(),
-        }),
-        author: z.string(),
-        date: z.string(),
-        services: z
-          .array(
-            z.object({
-              title: z.string(),
-            }),
-          )
-          .nullable(),
-        topics: z
-          .array(
-            z.object({
-              title: z.string(),
-            }),
-          )
-          .nullable(),
-        content: z.string(),
-      }),
-    ),
-  );
+  const blogPosts = await getBlogPosts();
   return (
     <div className="py-20 sm:py-32">
       <Container inset>

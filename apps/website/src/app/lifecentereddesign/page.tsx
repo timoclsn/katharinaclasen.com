@@ -2,6 +2,7 @@ import { createGenerateMetadata, ogImage } from "../../lib/metadata";
 import { getMetadata } from "../../lib/queries";
 import { Header } from "./Header/Header";
 import { LcdAccordion } from "./LcdAccordion/LcdAccordion";
+import { LcdBlogPosts } from "./LcdBlogPosts/LcdBlogPosts";
 import { LcdJourney } from "./LcdJourney/LcdJourney";
 import { LcdPrinciples } from "./LcdPrinciples/LcdPrinciples";
 import { LcdThinking } from "./LcdThinking/LcdThinking";
@@ -50,6 +51,7 @@ const LcdPage = () => {
       <WhatIsLcd />
       <MyLCDProjects />
       <LcdPrinciples />
+      <LcdBlogPosts />
       <LcdJourney />
       <LcdAccordion />
       <LcdThinking />

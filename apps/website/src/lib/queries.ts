@@ -5,6 +5,7 @@ import { backgroundColorsList, colorsList } from "./colors";
 import { illustrationsList } from "../components/illustrations/illustrations";
 import { markdownToHtml } from "./markdown";
 import { queryContent } from "./sanity";
+import { contexts } from "./projects";
 
 export type AccordeonItems = Awaited<ReturnType<typeof getAccordionItems>>;
 
@@ -227,5 +228,163 @@ export const getImage = async (id: string) => {
       url: z.string().url(),
       alt: z.string(),
     }),
+  );
+};
+
+export type BlogPost = z.infer<typeof blogPostSchema>;
+const blogPostSchema = z.object({
+  _id: z.string(),
+  slug: z.string(),
+  title: z.string(),
+  summary: z.string().nullable(),
+  image: z.object({
+    url: z.string(),
+    alt: z.string(),
+    border: z.boolean().nullable(),
+  }),
+  author: z.string(),
+  date: z.string(),
+  services: z
+    .array(
+      z.object({
+        title: z.string(),
+      }),
+    )
+    .nullable(),
+  topics: z
+    .array(
+      z.object({
+        title: z.string(),
+      }),
+    )
+    .nullable(),
+  content: z.string(),
+});
+
+export const getBlogPosts = async () => {
+  return await queryContent(
+    groq`
+      *[_type == 'blogPost']
+      {
+        _id,
+        'slug': slug.current,
+        title,
+        summary,
+        image{'url': asset->url, alt, border},
+        author,
+        date,
+        services[]->{title},
+        topics[]->{title},
+        content
+      } | order(date desc)
+    `,
+    z.array(blogPostSchema),
+  );
+};
+
+export const getBlogPost = async (slug: string) => {
+  return await queryContent(
+    groq`
+      *[_type == 'blogPost' && slug.current == '${slug}'][0]
+      {
+        _id,
+        'slug': slug.current,
+        title,
+        summary,
+        image{'url': asset->url, alt, border},
+        author,
+        date,
+        services[]->{title},
+        topics[]->{title},
+        content
+      }
+    `,
+    blogPostSchema,
+  );
+};
+
+export type Project = z.infer<typeof projectSchema>;
+const projectSchema = z.object({
+  _id: z.string(),
+  slug: z.string(),
+  title: z.string(),
+  summary: z.string().nullable(),
+  image: z.object({
+    url: z.string(),
+    alt: z.string(),
+    border: z.boolean().nullable(),
+  }),
+  context: z.enum(contexts),
+  client: z.string().nullable(),
+  date: z.string(),
+  period: z.string().nullable(),
+  externalLink: z
+    .object({
+      label: z.string(),
+      href: z.string(),
+    })
+    .nullable(),
+  services: z
+    .array(
+      z.object({
+        title: z.string(),
+      }),
+    )
+    .nullable(),
+  topics: z
+    .array(
+      z.object({
+        title: z.string(),
+      }),
+    )
+    .nullable(),
+  content: z.string(),
+});
+
+export const getProjects = async () => {
+  return await queryContent(
+    groq`
+        *[_type == 'project']
+        {
+          _id,
+          'slug': slug.current,
+          title,
+          summary,
+          image{'url': asset->url, alt, border},
+          context,
+          'client': client->shortName,
+          date,
+          period,
+          externalLink{label, href},
+          services[]->{title},
+          topics[]->{title},
+          content
+        } | order(date desc)
+      `,
+    z.array(projectSchema),
+  );
+};
+
+export const getProject = async (slug: string) => {
+  return await queryContent(
+    groq`
+      *[_type == 'project' && slug.current == '${slug}'][0]
+      {
+        _id,
+        'slug': slug.current,
+        title,
+        summary,
+        image{'url': asset->url, alt, border},
+        context,
+        'client': client->shortName,
+        date,
+        period,
+        externalLink{label, href},
+        services[]->{title},
+        topics[]->{title},
+        content
+      }
+    `,
+    projectSchema,
   );
 };
