@@ -26,7 +26,7 @@ export const Note = ({ children, source, pull }: Props) => {
       </p>
       {source && (
         <div className="flex justify-end text-lg font-[375] leading-8 text-contrast-secondary-dark sm:text-xl sm:leading-10">
-          <p>{`- ${source}`}</p>
+          <p className="max-w-[50%]">{`- ${source}`}</p>
         </div>
       )}
     </div>
