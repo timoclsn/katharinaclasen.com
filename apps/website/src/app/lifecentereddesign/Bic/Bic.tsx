@@ -21,8 +21,8 @@ export const Bic = async () => {
         <div className="flex flex-col items-start justify-center gap-8 lg:w-1/2">
           <MDXContent source={content} color="dark" family="serif" />
           <div className="flex gap-6">
-            <Button>
-              <Files href="/projects/behavioral-impact-canvas" />
+            <Button href="/projects/behavioral-impact-canvas">
+              <Files />
               About the canvas
             </Button>
             <Button
