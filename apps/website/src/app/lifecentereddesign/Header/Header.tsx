@@ -1,4 +1,4 @@
-import { ArrowRight, Files } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { Body } from "../../../design-system/Body/Body";
 import { Button } from "../../../design-system/Button/Button";
@@ -30,7 +30,7 @@ export const Header = async () => {
                 My Life-centered Design projects
               </Button>
               <Button href="/projects/behavioral-impact-canvas" style="outline">
-                <Files />
+                <ArrowRight />
                 Behavioral Impact Canvas
               </Button>
             </div>
