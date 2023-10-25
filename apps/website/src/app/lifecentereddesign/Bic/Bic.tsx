@@ -1,10 +1,11 @@
+import { ClipboardList, Files } from "lucide-react";
 import Image from "next/image";
+import { ButtonGroup } from "../../../components/ButtonGroup/ButtonGroup";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { Section } from "../../../components/Section/Section";
+import { Button } from "../../../design-system/Button/Button";
 import { getTextSnippet } from "../../../lib/queries";
 import bicImg from "./bic.png";
-import { Button } from "../../../design-system/Button/Button";
-import { ClipboardList, Files } from "lucide-react";
 
 export const Bic = async () => {
   const { content } = await getTextSnippet(
@@ -20,7 +21,7 @@ export const Bic = async () => {
         />
         <div className="flex flex-col items-start justify-center gap-8 lg:w-1/2">
           <MDXContent source={content} color="dark" family="serif" />
-          <div className="flex gap-6">
+          <ButtonGroup>
             <Button href="/projects/behavioral-impact-canvas">
               <Files />
               About the canvas
@@ -32,7 +33,7 @@ export const Bic = async () => {
               <ClipboardList />
               View the Canvas
             </Button>
-          </div>
+          </ButtonGroup>
         </div>
       </div>
     </Section>

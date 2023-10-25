@@ -5,9 +5,10 @@ import Image from "next/image";
 import { Button } from "../../design-system/Button/Button";
 import { Heading } from "../../design-system/Heading/Heading";
 import { Tag } from "../../design-system/Tag/Tag";
+import { ButtonGroup } from "../ButtonGroup/ButtonGroup";
 import { Carousel } from "../Carousel/Carousel";
-import { Markdown } from "../Markdown/Markdown";
 import { ClientQuote } from "../ClientQuote/ClientQuote";
+import { Markdown } from "../Markdown/Markdown";
 import { Clients } from "./MyClients";
 
 interface Props {
@@ -52,7 +53,7 @@ export const MyClientsCarousel = ({ clients }: Props) => {
             </Heading>
             <Markdown size="normal">{client.description}</Markdown>
             {(client.caseStudy || client.website) && (
-              <div className="mt-16 flex flex-col gap-6 sm:flex-row">
+              <ButtonGroup className="mt-16">
                 {client.caseStudy && (
                   <Button href={client.caseStudy}>
                     <Files />
@@ -65,7 +66,7 @@ export const MyClientsCarousel = ({ clients }: Props) => {
                     {`${client.shortName} website`}
                   </Button>
                 )}
-              </div>
+              </ButtonGroup>
             )}
           </div>
           <div className="flex flex-1 flex-col items-start justify-center">

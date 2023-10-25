@@ -9,6 +9,7 @@ import { Note } from "../Note/Note";
 import { NumberHeading } from "../NumberHeading/NumberHeading";
 import { Quote } from "../Quote/Quote";
 import { MdxButton } from "../MdxButton/MdxButton";
+import { ButtonGroup } from "../ButtonGroup/ButtonGroup";
 
 interface Props extends Omit<MarkdownProps, "children"> {
   source: MDXRemoteProps["source"];
@@ -91,6 +92,7 @@ export const MDXContent = ({
     Quote,
     Note,
     Button: MdxButton,
+    ButtonGroup,
   };
 
   return (
