@@ -1,8 +1,9 @@
-import { ClipboardList } from "lucide-react";
+import { ClipboardList, ClipboardSignature } from "lucide-react";
 import { Button, ButtonProps } from "../../design-system/Button/Button";
 
 const iconMap = {
   clipboard: ClipboardList,
+  clipboardSignature: ClipboardSignature,
 } as const;
 
 interface MdxButtonProps {
