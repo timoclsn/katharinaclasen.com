@@ -29,6 +29,7 @@ export const Bic = async () => {
             <Button
               style="outline"
               href="/downloads/behavioral-impact-canvas.pdf"
+              external
             >
               <ClipboardList />
               View the Canvas
