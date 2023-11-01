@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { ButtonGroup } from "../../../components/ButtonGroup/ButtonGroup";
 import { Body } from "../../../design-system/Body/Body";
 import { Button } from "../../../design-system/Button/Button";
 import { Container } from "../../../design-system/Container/Container";
@@ -24,10 +25,16 @@ export const Header = async () => {
             <Body as="p" priority="secondary" className="mb-8 max-w-md">
               {content}
             </Body>
-            <Button href="/lifecentereddesign#my-lcd-projects">
-              <ArrowRight />
-              My Life-centered Design projects
-            </Button>
+            <ButtonGroup>
+              <Button href="/lifecentereddesign#my-lcd-projects">
+                <ArrowRight />
+                My Life-centered Design projects
+              </Button>
+              <Button href="/projects/behavioral-impact-canvas" style="outline">
+                <ArrowRight />
+                Behavioral Impact Canvas
+              </Button>
+            </ButtonGroup>
           </div>
         </div>
         <Image

@@ -6,8 +6,9 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "../../design-system/Button/Button";
 import { Heading } from "../../design-system/Heading/Heading";
 import { backgroundColorsMap } from "../../lib/colors";
-import { illustrationsMap } from "../illustrations/illustrations";
 import { AccordeonItems } from "../../lib/queries";
+import { track } from "../../lib/tracking";
+import { illustrationsMap } from "../illustrations/illustrations";
 import { Markdown } from "../Markdown/Markdown";
 import styles from "./Accordion.module.css";
 
@@ -84,7 +85,14 @@ export const Accordion = ({
             value={(idx + 1).toString()}
             className={itemVariants({ backgroundColor })}
           >
-            <AccordionPrimitive.Trigger className={triggerVariants({ size })}>
+            <AccordionPrimitive.Trigger
+              className={triggerVariants({ size })}
+              onClick={() => {
+                track("Accordion item selected", {
+                  title: item.title,
+                });
+              }}
+            >
               <Illustration
                 className={colorVariants({
                   dark: color === "dark",

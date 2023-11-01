@@ -2,6 +2,7 @@
 
 import { Files, Link2 } from "lucide-react";
 import Image from "next/image";
+import { ButtonGroup } from "../../../components/ButtonGroup/ButtonGroup";
 import { Carousel } from "../../../components/Carousel/Carousel";
 import { Markdown } from "../../../components/Markdown/Markdown";
 import { Button } from "../../../design-system/Button/Button";
@@ -37,24 +38,20 @@ export const MyLCDProjectsCarousel = ({ projects }: Props) => {
             {project.summary && (
               <Markdown size="normal">{project.summary}</Markdown>
             )}
-            <div className="mt-16 flex flex-col gap-6 sm:flex-row">
-              {project.slug && (
-                <Button href={`/projects/${project.slug}`}>
-                  <Files />
-                  Case study
-                </Button>
-              )}
+            <ButtonGroup className="mt-16">
               {project.externalLink && (
-                <Button
-                  style="outline"
-                  href={project.externalLink.href}
-                  external
-                >
+                <Button href={project.externalLink.href} external>
                   <Link2 />
                   {project.externalLink.label}
                 </Button>
               )}
-            </div>
+              {project.slug && (
+                <Button href={`/projects/${project.slug}`} style="outline">
+                  <Files />
+                  Case study
+                </Button>
+              )}
+            </ButtonGroup>
           </div>
           <div className="hidden flex-1 flex-col items-start justify-center lg:flex">
             <Image

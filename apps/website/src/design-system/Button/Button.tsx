@@ -80,9 +80,12 @@ type ConditionalProps =
       disabled?: never;
     };
 
-type Props = ComponentProps & ConditionalProps & Styles;
+export type ButtonProps = ComponentProps & ConditionalProps & Styles;
 
-export const Button = forwardRef<HTMLAnchorElement & HTMLButtonElement, Props>(
+export const Button = forwardRef<
+  HTMLAnchorElement & HTMLButtonElement,
+  ButtonProps
+>(
   (
     {
       children,
