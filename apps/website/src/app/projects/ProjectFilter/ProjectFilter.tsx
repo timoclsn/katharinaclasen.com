@@ -5,6 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Body } from "../../../design-system/Body/Body";
 import { Select } from "../../../design-system/Select/Select";
 import { Tag } from "../../../design-system/Tag/Tag";
+import { track } from "../../../lib/tracking";
 
 interface Props {
   services: Array<string>;
@@ -23,9 +24,31 @@ export const ProjectFilter = ({ services, topics }: Props) => {
     replace(`${pathname}${searchParamsString ? "?" : ""}${searchParamsString}`);
   };
 
-  const handleValueChange = (param: string, value: string) => {
+  const handleValueChange = (
+    param: "service" | "topic" | "sort",
+    value: string,
+  ) => {
     searchParams.set(param, value);
     filter();
+
+    // Tracking
+    if (param === "service") {
+      track("Filter projects by service", {
+        service: value,
+      });
+    }
+
+    if (param === "topic") {
+      track("Filter projects by topic", {
+        topic: value,
+      });
+    }
+
+    if (param === "sort") {
+      track("Sort projects by", {
+        sort: value,
+      });
+    }
   };
 
   return (

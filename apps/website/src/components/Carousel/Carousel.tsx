@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ReactNode, useRef, useState } from "react";
 import { Card } from "../../design-system/Card/Card";
 import { usePrevious } from "../../hooks/usePrevious";
+import { track } from "../../lib/tracking";
 import { MotionProvider } from "../MotionProvider/MotionProvider";
 
 const variants: Variants = {
@@ -60,6 +61,9 @@ export const Carousel = <Item extends {}>({
     } else {
       selectItem(selectedItemIndex + 1);
     }
+    track("Carousel navigation", {
+      direction: "next",
+    });
   };
 
   const prevItem = () => {
@@ -68,6 +72,9 @@ export const Carousel = <Item extends {}>({
     } else {
       selectItem(selectedItemIndex - 1);
     }
+    track("Carousel navigation", {
+      direction: "prev",
+    });
   };
 
   const selectItem = (index: number) => {
@@ -75,6 +82,9 @@ export const Carousel = <Item extends {}>({
     cardRef.current?.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
+    });
+    track("Carousel item selected", {
+      item: items[index],
     });
   };
 
