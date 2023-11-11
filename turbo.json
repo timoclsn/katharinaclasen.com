@@ -4,7 +4,13 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"],
-      "env": ["SANITY_PROJECT_ID", "SANITY_AUTH_TOKEN", "DRAFT_MODE_SECRET"]
+      "env": [
+        "SANITY_PROJECT_ID",
+        "SANITY_AUTH_TOKEN",
+        "DRAFT_MODE_SECRET",
+        "NEXT_PUBLIC_VERCEL_ENV",
+        "NODE_ENV"
+      ]
     },
     "lint": {
       "outputs": []
