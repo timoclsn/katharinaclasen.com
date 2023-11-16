@@ -17,7 +17,7 @@ export const GET = async (request: Request) => {
     description: "My personal Blog",
     id: buildUrl(""),
     link: buildUrl(""),
-    language: "de",
+    language: "en",
     favicon: `${buildUrl("")}/favicon.png`,
     copyright: name,
     feedLinks: {
