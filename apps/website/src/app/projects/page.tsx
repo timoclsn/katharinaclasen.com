@@ -1,15 +1,11 @@
-import { groq } from "next-sanity";
-import { Suspense } from "react";
 import { z } from "zod";
 import { Container } from "../../design-system/Container/Container";
 import { Heading } from "../../design-system/Heading/Heading";
 import { createGenerateMetadata, ogImage } from "../../lib/metadata";
-import { contexts } from "../../lib/projects";
 import { getMetadata, getProjects } from "../../lib/queries";
-import { queryContent } from "../../lib/sanity";
+import { HighlightedProjects } from "./HighlightedProjects/HighlightedProjects";
 import { ProjectFilter } from "./ProjectFilter/ProjectFilter";
 import { ProjectList } from "./ProjectList/ProjectList";
-import { HighlightedProjects } from "./HighlightedProjects/HighlightedProjects";
 
 export const runtime = "edge";
 
@@ -101,9 +97,7 @@ const ProjectsPage = async ({ searchParams = {} }: Props) => {
           <Heading className="mb-6 max-w-2xl">
             Have a look at my projects, and filter them by:
           </Heading>
-          <Suspense fallback={<div>Loading filters...</div>}>
-            <ProjectFilter services={services} topics={topics} />
-          </Suspense>
+          <ProjectFilter services={services} topics={topics} />
         </div>
         <ProjectList projects={filteredProjects} filter={filter} sort={sort} />
       </Container>
