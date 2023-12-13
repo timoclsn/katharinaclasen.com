@@ -23,7 +23,7 @@ export const queryContent = async <TSchema extends z.ZodTypeAny>(
   try {
     isDraftMode = draftMode().isEnabled;
   } catch (error) {
-    // Ignire error
+    // Ignore error
   }
 
   const useCdn = !isDraftMode && cache === "dynamic";
