@@ -1,5 +1,5 @@
 import * as SelectPrimitive from "@radix-ui/react-select";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import { ArrowDown, ArrowUp, Check } from "lucide-react";
 import {
   ComponentProps,

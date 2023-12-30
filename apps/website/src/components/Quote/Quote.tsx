@@ -1,17 +1,15 @@
-import { cva, VariantProps } from "class-variance-authority";
+import { VariantProps, cva } from "cva";
 import { ReactNode } from "react";
 
-const variants = cva(
-  "font-serif italic text-contrast-primary-dark text-center",
-  {
-    variants: {
-      size: {
-        large: "text-xl sm:text-2xl",
-        xLarge: "text-2xl sm:text-3xl",
-      },
+const variants = cva({
+  base: "font-serif italic text-contrast-primary-dark text-center",
+  variants: {
+    size: {
+      large: "text-xl sm:text-2xl",
+      xLarge: "text-2xl sm:text-3xl",
     },
   },
-);
+});
 
 interface Props extends VariantProps<typeof variants> {
   children: ReactNode;

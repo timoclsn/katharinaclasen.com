@@ -1,7 +1,8 @@
-import { cva, VariantProps } from "class-variance-authority";
+import { VariantProps, cva } from "cva";
 import { Body, BodyProps } from "../../design-system/Body/Body";
 
-const quoteVariants = cva("border-l-4 pl-3", {
+const quoteVariants = cva({
+  base: "border-l-4 pl-3",
   variants: {
     color: {
       salmon: "border-background-salmon",

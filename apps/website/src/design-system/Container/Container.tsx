@@ -1,7 +1,8 @@
-import { cva, VariantProps } from "class-variance-authority";
+import { cva, VariantProps } from "cva";
 import { forwardRef, ReactNode } from "react";
 
-const containerVariants = cva("mx-auto w-full", {
+const containerVariants = cva({
+  base: "mx-auto w-full",
   variants: {
     size: {
       normal: "max-w-screen-2xl",

@@ -1,18 +1,19 @@
 "use client";
 
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { cva, cx, VariantProps } from "class-variance-authority";
+import { VariantProps, cva, cx } from "cva";
 import { ArrowRight } from "lucide-react";
 import { Button } from "../../design-system/Button/Button";
 import { Heading } from "../../design-system/Heading/Heading";
 import { backgroundColorsMap } from "../../lib/colors";
 import { AccordeonItems } from "../../lib/queries";
 import { track } from "../../lib/tracking";
-import { illustrationsMap } from "../illustrations/illustrations";
 import { Markdown } from "../Markdown/Markdown";
+import { illustrationsMap } from "../illustrations/illustrations";
 import styles from "./Accordion.module.css";
 
-const colorVariants = cva(null, {
+const colorVariants = cva({
+  base: null,
   variants: {
     dark: {
       true: "text-contrast-secondary-dark",
@@ -21,30 +22,27 @@ const colorVariants = cva(null, {
   },
 });
 
-const itemVariants = cva(
-  "rounded-3xl sm:rounded-4xl flex flex-col lg:flex-row lg:data-[state=open]:flex-1 lg:h-[600px]",
-  {
-    variants: {
-      backgroundColor: {
-        ...backgroundColorsMap,
-      },
+const itemVariants = cva({
+  base: "rounded-3xl sm:rounded-4xl flex flex-col lg:flex-row lg:data-[state=open]:flex-1 lg:h-[600px]",
+  variants: {
+    backgroundColor: {
+      ...backgroundColorsMap,
     },
   },
-);
+});
 
-const triggerVariants = cva(
-  "flex flex-none items-center gap-5 p-6 transition-opacity hover:opacity-80 sm:gap-10 sm:p-10 lg:flex-col-reverse",
-  {
-    variants: {
-      size: {
-        medium: null,
-        large: "data-[state=open]:hidden",
-      },
+const triggerVariants = cva({
+  base: "flex flex-none items-center gap-5 p-6 transition-opacity hover:opacity-80 sm:gap-10 sm:p-10 lg:flex-col-reverse",
+  variants: {
+    size: {
+      medium: null,
+      large: "data-[state=open]:hidden",
     },
   },
-);
+});
 
-const contentVariants = cva("overflow-hidden", {
+const contentVariants = cva({
+  base: "overflow-hidden",
   variants: {
     size: {
       medium: "lg:pl-0",
@@ -83,7 +81,9 @@ export const Accordion = ({
           <AccordionPrimitive.Item
             key={idx}
             value={(idx + 1).toString()}
-            className={itemVariants({ backgroundColor })}
+            className={itemVariants({
+              backgroundColor,
+            })}
           >
             <AccordionPrimitive.Trigger
               className={triggerVariants({ size })}

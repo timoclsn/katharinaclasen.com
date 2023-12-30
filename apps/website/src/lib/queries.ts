@@ -36,8 +36,14 @@ export const getAccordionItems = async (id: string) => {
               href: z.string(),
             })
             .nullable(),
-          backgroundColor: z.enum(backgroundColorsList).nullable(),
-          color: z.enum(colorsList).nullable(),
+          backgroundColor: z
+            .enum(backgroundColorsList)
+            .nullable()
+            .transform((value) => value ?? undefined),
+          color: z
+            .enum(colorsList)
+            .nullable()
+            .transform((value) => value ?? undefined),
         }),
       ),
     }),
@@ -101,10 +107,19 @@ export const getCardGridItems = async (id: string) => {
               href: z.string(),
             })
             .nullable(),
-          backgroundColor: z.enum(backgroundColorsList).nullable(),
+          backgroundColor: z
+            .enum(backgroundColorsList)
+            .nullable()
+            .transform((value) => value ?? undefined),
           customBackgroundColor: z.string().nullable(),
-          color: z.enum(colorsList).nullable(),
-          border: z.boolean().nullable(),
+          color: z
+            .enum(colorsList)
+            .nullable()
+            .transform((value) => value ?? undefined),
+          border: z
+            .boolean()
+            .nullable()
+            .transform((value) => value ?? undefined),
           backgroundImage: z
             .object({
               url: z.string(),
