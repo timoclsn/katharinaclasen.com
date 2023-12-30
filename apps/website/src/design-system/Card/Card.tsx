@@ -1,8 +1,9 @@
-import { cva, VariantProps } from "class-variance-authority";
+import { cva, VariantProps } from "cva";
 import { forwardRef, ReactNode } from "react";
 import { backgroundColorsMap } from "../../lib/colors";
 
-const cardVariants = cva("rounded-3xl sm:rounded-5xl relative", {
+const cardVariants = cva({
+  base: "rounded-3xl sm:rounded-5xl relative",
   variants: {
     inset: {
       normal: "px-6 py-8 sm:px-8 sm:py-10",

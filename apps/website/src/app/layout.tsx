@@ -1,4 +1,4 @@
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
 import { draftMode } from "next/headers";
 import Script from "next/script";

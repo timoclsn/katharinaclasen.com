@@ -1,4 +1,4 @@
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import NextLink from "next/link";
 import { forwardRef, ReactNode } from "react";
 

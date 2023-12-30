@@ -1,9 +1,10 @@
-import { cva, VariantProps } from "class-variance-authority";
+import { cva, VariantProps } from "cva";
 import { forwardRef, ReactNode } from "react";
 
 const validElements = ["h1", "h2", "h3", "h4", "p", "span", "strong"] as const;
 
-const bodyVariants = cva("antialiased", {
+const bodyVariants = cva({
+  base: "antialiased",
   variants: {
     priority: {
       primary: null,

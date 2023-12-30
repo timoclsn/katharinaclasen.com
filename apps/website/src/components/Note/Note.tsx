@@ -1,16 +1,14 @@
-import { cva, VariantProps } from "class-variance-authority";
+import { VariantProps, cva } from "cva";
 import { ReactNode } from "react";
 
-const variants = cva(
-  "not-prose bg-background-secondary bg-[linear-gradient(transparent_calc(100%_-_1px),#CBCAC7)] bg-[length:1px_32px] px-6 py-8 sm:bg-[length:1px_40px] sm:py-10 sm:px-8 my-10",
-  {
-    variants: {
-      pull: {
-        true: "md:float-left md:mr-8 md:mb-8 md:max-w-[50%] xl:-ml-32",
-      },
+const variants = cva({
+  base: "not-prose bg-background-secondary bg-[linear-gradient(transparent_calc(100%_-_1px),#CBCAC7)] bg-[length:1px_32px] px-6 py-8 sm:bg-[length:1px_40px] sm:py-10 sm:px-8 my-10",
+  variants: {
+    pull: {
+      true: "md:float-left md:mr-8 md:mb-8 md:max-w-[50%] xl:-ml-32",
     },
   },
-);
+});
 
 interface Props extends VariantProps<typeof variants> {
   children: ReactNode;

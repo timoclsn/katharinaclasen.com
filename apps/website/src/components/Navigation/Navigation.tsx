@@ -1,6 +1,6 @@
 "use client";
 
-import { cva, cx } from "class-variance-authority";
+import { cva, cx } from "cva";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -44,35 +44,31 @@ const items = [
   },
 ] as const;
 
-const navigationLinkVariants = cva(
-  "font-sans hover:opacity-80 transition-opacity",
-  {
-    variants: {
-      active: {
-        true: "underline",
-      },
-      highlighted: {
-        true: "font-medium text-contrast-primary-dark",
-        false: "text-contrast-secondary-dark",
-      },
+const navigationLinkVariants = cva({
+  base: "font-sans hover:opacity-80 transition-opacity",
+  variants: {
+    active: {
+      true: "underline",
+    },
+    highlighted: {
+      true: "font-medium text-contrast-primary-dark",
+      false: "text-contrast-secondary-dark",
     },
   },
-);
+});
 
-const mobileNavigationLinkVariants = cva(
-  "font-serif text-2xl sm:text-4xl w-full text-center py-4 hover:opacity-80 transition-opacity",
-  {
-    variants: {
-      active: {
-        true: "underline",
-      },
-      highlighted: {
-        true: "font-medium text-contrast-primary-dark",
-        false: "text-contrast-secondary-dark",
-      },
+const mobileNavigationLinkVariants = cva({
+  base: "font-serif text-2xl sm:text-4xl w-full text-center py-4 hover:opacity-80 transition-opacity",
+  variants: {
+    active: {
+      true: "underline",
+    },
+    highlighted: {
+      true: "font-medium text-contrast-primary-dark",
+      false: "text-contrast-secondary-dark",
     },
   },
-);
+});
 
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
