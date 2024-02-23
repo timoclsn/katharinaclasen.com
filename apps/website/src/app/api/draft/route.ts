@@ -1,8 +1,7 @@
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
-import { z } from "zod";
 
-const DRAFT_MODE_SECRET = z.string().parse(process.env.DRAFT_MODE_SECRET);
+const { DRAFT_MODE_SECRET } = process.env;
 
 export const GET = async (request: Request) => {
   const { searchParams } = new URL(request.url);

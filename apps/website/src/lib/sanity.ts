@@ -3,8 +3,8 @@ import "server-only";
 import { draftMode } from "next/headers";
 import { z } from "zod";
 
-const SANITY_PROJECT_ID = z.string().parse(process.env.SANITY_PROJECT_ID);
-const SANITY_AUTH_TOKEN = z.string().parse(process.env.SANITY_AUTH_TOKEN);
+const { SANITY_PROJECT_ID, SANITY_AUTH_TOKEN } = process.env;
+
 const DATASET = "production";
 const API_Version = "2023-10-12";
 

@@ -6,6 +6,7 @@ import { ReactNode } from "react";
 import { DraftModeBanner } from "../components/DraftModeBanner/DraftModeBanner";
 import { Footer } from "../components/Footer/Footer";
 import { Navigation } from "../components/Navigation/Navigation";
+import "../lib/env";
 import { createGenerateMetadata, ogImage } from "../lib/metadata";
 import { getMetadata } from "../lib/queries";
 import "../styles/global.css";

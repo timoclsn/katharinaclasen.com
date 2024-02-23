@@ -1,3 +1,5 @@
+const { NEXT_PUBLIC_VERCEL_ENV, NODE_ENV } = process.env;
+
 interface TrackingEvents {
   "Carousel item selected": {
     item: any;
@@ -25,10 +27,10 @@ export const track = <TEventKey extends keyof TrackingEvents>(
     : [event: TEventKey, data: TrackingEvents[TEventKey]]
 ) => {
   const [event, data] = args;
-  if (process.env.NEXT_PUBLIC_VERCEL_ENV === "production") {
+  if (NEXT_PUBLIC_VERCEL_ENV === "production") {
     splitbee.track(event, data);
   }
-  if (process.env.NODE_ENV === "development") {
+  if (NODE_ENV === "development") {
     console.info("Tracking event:", {
       event,
       data,
