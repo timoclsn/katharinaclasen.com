@@ -122,7 +122,7 @@ export const Carousel = <Item extends {}>({
             <AnimatePresence initial={false} custom={direction()}>
               <m.div
                 className="absolute h-full w-full bg-background-primary py-16"
-                key={Math.random()}
+                key={selectedItemIndex}
                 variants={variants}
                 initial="enter"
                 animate="center"
