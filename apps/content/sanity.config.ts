@@ -7,16 +7,13 @@ import { deskTool } from "sanity/desk";
 import "./lib/env";
 import { schemaTypes } from "./schemas";
 
-const { SANITY_STUDIO_DRAFT_MODE_SECRET, SANITY_STUDIO_SANITY_PROJECT_ID } =
-  process.env;
-
 const URL = "https://katharinaclasen.com";
 
 export default defineConfig({
   name: "default",
   title: "katharinaclasen-com",
 
-  projectId: SANITY_STUDIO_SANITY_PROJECT_ID,
+  projectId: process.env.SANITY_STUDIO_SANITY_PROJECT_ID,
   dataset: "production",
 
   document: {
@@ -30,7 +27,7 @@ export default defineConfig({
         );
 
         const params = new URLSearchParams();
-        params.set("secret", SANITY_STUDIO_DRAFT_MODE_SECRET);
+        params.set("secret", process.env.SANITY_STUDIO_DRAFT_MODE_SECRET);
         params.set("slug", `/blog/${slug}`);
 
         return `${URL}/api/draft?${params}`;
@@ -42,7 +39,7 @@ export default defineConfig({
         );
 
         const params = new URLSearchParams();
-        params.set("secret", SANITY_STUDIO_DRAFT_MODE_SECRET);
+        params.set("secret", process.env.SANITY_STUDIO_DRAFT_MODE_SECRET);
         params.set("slug", `/projects/${slug}`);
 
         return `${URL}/api/draft?${params}`;
