@@ -4,7 +4,7 @@ import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import { markdownSchema } from "sanity-plugin-markdown";
 import { media } from "sanity-plugin-media";
 import { deskTool } from "sanity/desk";
-import "./lib/env";
+// import "./lib/env";
 import { schemaTypes } from "./schemas";
 
 const URL = "https://katharinaclasen.com";
