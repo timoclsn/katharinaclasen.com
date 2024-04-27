@@ -4,8 +4,10 @@ import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import { markdownSchema } from "sanity-plugin-markdown";
 import { media } from "sanity-plugin-media";
 import { deskTool } from "sanity/desk";
-// import "./lib/env";
 import { schemaTypes } from "./schemas";
+
+const DRAFT_MODE_SECRET = process.env.SANITY_STUDIO_DRAFT_MODE_SECRET!;
+const SANITY_PROJECT_ID = process.env.SANITY_STUDIO_SANITY_PROJECT_ID!;
 
 const URL = "https://katharinaclasen.com";
 
@@ -13,7 +15,7 @@ export default defineConfig({
   name: "default",
   title: "katharinaclasen-com",
 
-  projectId: process.env.SANITY_STUDIO_SANITY_PROJECT_ID,
+  projectId: SANITY_PROJECT_ID,
   dataset: "production",
 
   document: {
@@ -27,7 +29,7 @@ export default defineConfig({
         );
 
         const params = new URLSearchParams();
-        params.set("secret", process.env.SANITY_STUDIO_DRAFT_MODE_SECRET);
+        params.set("secret", DRAFT_MODE_SECRET);
         params.set("slug", `/blog/${slug}`);
 
         return `${URL}/api/draft?${params}`;
@@ -39,7 +41,7 @@ export default defineConfig({
         );
 
         const params = new URLSearchParams();
-        params.set("secret", process.env.SANITY_STUDIO_DRAFT_MODE_SECRET);
+        params.set("secret", DRAFT_MODE_SECRET);
         params.set("slug", `/projects/${slug}`);
 
         return `${URL}/api/draft?${params}`;
