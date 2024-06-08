@@ -1,6 +1,6 @@
 import { cva, VariantProps } from "cva";
 import Link from "next/link";
-import { forwardRef, ReactNode } from "react";
+import { ReactNode, RefObject } from "react";
 
 const styles = cva({
   base: "font-sans font-medium inline-flex items-center justify-center gap-2 transition-transform ease-in duration-100 will-change-transform disabled:opacity-60",
@@ -60,6 +60,7 @@ type Styles = VariantProps<typeof styles>;
 interface ComponentProps {
   children: ReactNode;
   className?: string;
+  ref?: RefObject<HTMLAnchorElement & HTMLButtonElement>;
 }
 
 type ConditionalProps =
@@ -80,41 +81,32 @@ type ConditionalProps =
 
 export type ButtonProps = ComponentProps & ConditionalProps & Styles;
 
-export const Button = forwardRef<
-  HTMLAnchorElement & HTMLButtonElement,
-  ButtonProps
->(
-  (
-    {
-      children,
-      size = "normal",
-      style = "solid",
-      color = "dark",
-      type = "button",
-      onClick,
-      disabled,
-      href,
-      external,
-      className,
-    },
-    ref,
-  ) => {
-    const Element = href ? Link : "button";
-    return (
-      <Element
-        className={styles({ size, style, color, className })}
-        type={Element === "button" ? type : undefined}
-        onClick={onClick}
-        disabled={disabled}
-        href={href || ""}
-        target={external ? "_blank" : undefined}
-        rel={external ? "noopener noreferrer" : undefined}
-        ref={ref}
-      >
-        {children}
-      </Element>
-    );
-  },
-);
-
-Button.displayName = "Button";
+export const Button = ({
+  children,
+  size = "normal",
+  style = "solid",
+  color = "dark",
+  type = "button",
+  onClick,
+  disabled,
+  href,
+  external,
+  className,
+  ref,
+}: ButtonProps) => {
+  const Element = href ? Link : "button";
+  return (
+    <Element
+      className={styles({ size, style, color, className })}
+      type={Element === "button" ? type : undefined}
+      onClick={onClick}
+      disabled={disabled}
+      href={href || ""}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+      ref={ref}
+    >
+      {children}
+    </Element>
+  );
+};

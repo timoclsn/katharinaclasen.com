@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "cva";
-import { forwardRef, ReactNode } from "react";
+import { ReactNode, RefObject } from "react";
 
 const validElements = ["h1", "h2", "h3", "h4", "span"] as const;
 type ValidElements = (typeof validElements)[number];
@@ -27,23 +27,28 @@ interface CompoenntProps {
   as?: ValidElements;
   title?: string;
   className?: string;
+  ref?: RefObject<HTMLHeadingElement & HTMLSpanElement>;
 }
 
 type Props = CompoenntProps & HeadingVariants;
 
-export const Heading = forwardRef<HTMLHeadingElement & HTMLSpanElement, Props>(
-  ({ children, as, level = "2", color = "dark", title, className }, ref) => {
-    const Element = as ? as : (`h${level}` as ValidElements);
-    return (
-      <Element
-        title={title}
-        className={headingVariants({ color, level, className })}
-        ref={ref}
-      >
-        {children}
-      </Element>
-    );
-  },
-);
-
-Heading.displayName = "Heading";
+export const Heading = ({
+  children,
+  as,
+  level = "2",
+  color = "dark",
+  title,
+  className,
+  ref,
+}: Props) => {
+  const Element = as ? as : (`h${level}` as ValidElements);
+  return (
+    <Element
+      title={title}
+      className={headingVariants({ color, level, className })}
+      ref={ref}
+    >
+      {children}
+    </Element>
+  );
+};
