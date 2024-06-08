@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "cva";
-import { ReactNode, RefObject } from "react";
+import { forwardRef, ReactNode } from "react";
 
 const containerVariants = cva({
   base: "mx-auto w-full",
@@ -19,21 +19,18 @@ type ContainerVariants = VariantProps<typeof containerVariants>;
 interface ComponentProps {
   children: ReactNode;
   className?: string;
-  ref?: RefObject<HTMLDivElement>;
 }
 
 type Props = ComponentProps & ContainerVariants;
 
-export const Container = ({
-  children,
-  size = "normal",
-  inset,
-  className,
-  ref,
-}: Props) => {
-  return (
-    <div className={containerVariants({ size, inset, className })} ref={ref}>
-      {children}
-    </div>
-  );
-};
+export const Container = forwardRef<HTMLDivElement, Props>(
+  ({ children, size = "normal", inset, className }, ref) => {
+    return (
+      <div className={containerVariants({ size, inset, className })} ref={ref}>
+        {children}
+      </div>
+    );
+  },
+);
+
+Container.displayName = "Container";

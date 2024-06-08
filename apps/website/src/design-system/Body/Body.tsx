@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "cva";
-import { ReactNode } from "react";
+import { forwardRef, ReactNode } from "react";
 
 const validElements = ["h1", "h2", "h3", "h4", "p", "span", "strong"] as const;
 
@@ -69,43 +69,49 @@ const bodyVariants = cva({
 });
 
 type BodyVariants = VariantProps<typeof bodyVariants>;
-type ElementType = HTMLHeadingElement & HTMLParagraphElement & HTMLSpanElement;
 
 interface ComponentProps {
   children: ReactNode;
   as?: (typeof validElements)[number];
   className?: string;
-  ref?: React.RefObject<ElementType>;
 }
 
 export type BodyProps = ComponentProps & BodyVariants;
 
-export const Body = ({
-  children,
-  as: Element = "span",
-  priority = "primary",
-  family = "sans",
-  size = "normal",
-  weight = "normal",
-  color = "dark",
-  style,
-  className,
-  ref,
-}: BodyProps) => {
-  return (
-    <Element
-      className={bodyVariants({
-        priority,
-        family,
-        size,
-        weight,
-        color,
-        style,
-        className,
-      })}
-      ref={ref}
-    >
-      {children}
-    </Element>
-  );
-};
+type ElementType = HTMLHeadingElement & HTMLParagraphElement & HTMLSpanElement;
+
+export const Body = forwardRef<ElementType, BodyProps>(
+  (
+    {
+      children,
+      as: Element = "span",
+      priority = "primary",
+      family = "sans",
+      size = "normal",
+      weight = "normal",
+      color = "dark",
+      style,
+      className,
+    },
+    ref,
+  ) => {
+    return (
+      <Element
+        className={bodyVariants({
+          priority,
+          family,
+          size,
+          weight,
+          color,
+          style,
+          className,
+        })}
+        ref={ref}
+      >
+        {children}
+      </Element>
+    );
+  },
+);
+
+Body.displayName = "Body";
