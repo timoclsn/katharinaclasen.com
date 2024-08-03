@@ -14,7 +14,7 @@ export const queryContent = async <TSchema extends z.ZodTypeAny>(
   options: {
     cache: "dynamic" | "ISR" | "static";
   } = {
-    cache: "ISR",
+    cache: "dynamic",
   },
 ) => {
   const { cache } = options;

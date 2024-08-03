@@ -11,6 +11,9 @@ import { createGenerateMetadata, ogImage } from "../lib/metadata";
 import { getMetadata } from "../lib/queries";
 import "../styles/global.css";
 
+export const dynamic = "force-static";
+export const revalidate = 3600;
+
 export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description } = await getMetadata(
     "3c9f2256-cc4a-4e79-bfa7-4dcda1263376",
