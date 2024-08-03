@@ -7,7 +7,7 @@ import { HighlightedProjects } from "./HighlightedProjects/HighlightedProjects";
 import { ProjectFilter } from "./ProjectFilter/ProjectFilter";
 import { ProjectList } from "./ProjectList/ProjectList";
 
-export const runtime = "edge";
+export const dynamic = "force-dynamic";
 
 export const generateMetadata = createGenerateMetadata(async () => {
   const {
