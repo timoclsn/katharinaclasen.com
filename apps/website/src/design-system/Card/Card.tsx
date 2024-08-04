@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "cva";
-import { forwardRef, ReactNode } from "react";
+import { ReactNode, RefObject } from "react";
 import { backgroundColorsMap } from "../../lib/colors";
 
 const cardVariants = cva({
@@ -23,31 +23,34 @@ export interface CardProps extends VariantProps<typeof cardVariants> {
   className?: string;
   customColor?: string;
   id?: string;
+  ref?: RefObject<HTMLDivElement>;
 }
 
-export const Card = forwardRef<HTMLDivElement, CardProps>(
-  (
-    { children, inset, color = "dark", border, className, customColor, id },
-    ref,
-  ) => {
-    return (
-      <div
-        ref={ref}
-        id={id}
-        className={cardVariants({
-          inset,
-          color: !customColor ? color : undefined,
-          border,
-          className,
-        })}
-        style={{
-          backgroundColor: customColor,
-        }}
-      >
-        {children}
-      </div>
-    );
-  },
-);
-
-Card.displayName = "Card";
+export const Card = ({
+  children,
+  inset,
+  color = "dark",
+  border,
+  className,
+  customColor,
+  id,
+  ref,
+}: CardProps) => {
+  return (
+    <div
+      ref={ref}
+      id={id}
+      className={cardVariants({
+        inset,
+        color: !customColor ? color : undefined,
+        border,
+        className,
+      })}
+      style={{
+        backgroundColor: customColor,
+      }}
+    >
+      {children}
+    </div>
+  );
+};
