@@ -72,8 +72,9 @@ interface Props {
   children: ReactNode;
 }
 
-const RootLayout = ({ children }: Props) => {
-  const isDraftMode = draftMode().isEnabled;
+const RootLayout = async ({ children }: Props) => {
+  const draft = await draftMode();
+  const isDraftMode = draft.isEnabled;
   return (
     <>
       <Script data-no-cookie data-api="/_hive" src="/bee.js" />
