@@ -9,7 +9,7 @@ import { createGenerateMetadata, ogImage } from "../../../lib/metadata";
 import { getBlogPost, getBlogPosts } from "../../../lib/queries";
 
 export const generateMetadata = createGenerateMetadata(async ({ params }) => {
-  const { slug } = params;
+  const { slug } = await params;
   const { title, summary, date, image, content } = await getBlogPost(slug);
   const stats = readingTime(content);
 
@@ -56,13 +56,11 @@ export const generateStaticParams = async () => {
 };
 
 interface Props {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 const BlogPostPage = async ({ params }: Props) => {
-  const { slug } = params;
+  const { slug } = await params;
   const blogPost = await getBlogPost(slug);
   const stats = readingTime(blogPost.content);
   return (

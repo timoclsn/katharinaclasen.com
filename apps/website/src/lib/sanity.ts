@@ -21,7 +21,8 @@ export const queryContent = async <TSchema extends z.ZodTypeAny>(
 
   let isDraftMode = false;
   try {
-    isDraftMode = draftMode().isEnabled;
+    const draft = await draftMode();
+    isDraftMode = draft.isEnabled;
   } catch (error) {
     // Ignore error
   }
