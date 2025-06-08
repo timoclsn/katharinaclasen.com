@@ -42,7 +42,7 @@ export const ArticleHeader = ({
         height={500}
         sizes="100vw"
         className={`mb-8 h-auto w-full rounded-3xl sm:rounded-6xl${
-          titleImage.border ? " ring-2 ring-outline-light-dark" : ""
+          titleImage.border ? "ring-outline-light-dark ring-2" : ""
         }`}
         priority
       />

@@ -71,7 +71,7 @@ Select.Separator = function SelectSeparator({
 }: ComponentProps<typeof SelectPrimitive.Separator>) {
   return (
     <SelectPrimitive.Separator
-      className={cx("m-1 h-[1px] bg-contrast-secondary-light/30", className)}
+      className={cx("m-1 h-px bg-contrast-secondary-light/30", className)}
       {...props}
       ref={ref}
     >
@@ -89,7 +89,7 @@ Select.Item = function SelectItem({
   return (
     <SelectPrimitive.Item
       className={cx(
-        "cursor-pointer rounded-lg py-1 pl-[29px] pr-2 outline-none ring-inset hover:bg-contrast-primary-light hover:text-background-dark focus-visible:bg-contrast-primary-light focus-visible:text-background-dark",
+        "cursor-pointer rounded-lg py-1 pl-[29px] pr-2 outline-hidden ring-inset hover:bg-contrast-primary-light hover:text-background-dark focus-visible:bg-contrast-primary-light focus-visible:text-background-dark",
         className,
       )}
       {...props}

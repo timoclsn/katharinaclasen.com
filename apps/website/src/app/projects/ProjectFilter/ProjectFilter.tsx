@@ -60,8 +60,8 @@ export const ProjectFilter = ({ services, topics }: Props) => {
             handleValueChange("service", value);
           }}
         >
-          <Select.Trigger className="outline-none transition-transform duration-100 ease-in will-change-transform hover:scale-105">
-            <Tag color="dark" size="xxl" outline="solid">
+          <Select.Trigger className="outline-hidden transition-transform duration-100 ease-in will-change-transform hover:scale-105">
+            <Tag color="dark" size="xxl" outline-solid="solid">
               <Select.Value placeholder="Services" />
               <Select.Icon>
                 <ArrowDown />
@@ -85,8 +85,8 @@ export const ProjectFilter = ({ services, topics }: Props) => {
             handleValueChange("topic", value);
           }}
         >
-          <Select.Trigger className="outline-none transition-transform duration-100 ease-in hover:scale-105 hover:opacity-80">
-            <Tag color="dark" size="xxl" outline="dash">
+          <Select.Trigger className="outline-hidden transition-transform duration-100 ease-in hover:scale-105 hover:opacity-80">
+            <Tag color="dark" size="xxl" outline-solid="dash">
               <Select.Value placeholder="Topics" />
               <Select.Icon>
                 <ArrowDown />
@@ -116,7 +116,7 @@ export const ProjectFilter = ({ services, topics }: Props) => {
             handleValueChange("sort", value);
           }}
         >
-          <Select.Trigger className="flex items-center gap-2 text-left text-xl font-medium outline-none hover:opacity-80">
+          <Select.Trigger className="flex items-center gap-2 text-left text-xl font-medium outline-hidden hover:opacity-80">
             <Select.Value />
             <Select.Icon>
               <ArrowDown />

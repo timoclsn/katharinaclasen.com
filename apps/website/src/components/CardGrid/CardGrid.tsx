@@ -42,7 +42,7 @@ export const CardGrid = ({ items }: Props) => {
         return (
           <li
             key={idx}
-            className={`w-full flex-grow ${
+            className={`w-full grow ${
               isTwoCards ? "md:w-4/5 lg:w-2/4" : "md:w-2/5 lg:w-1/4"
             }`}
           >

@@ -33,12 +33,12 @@
     "zod": "^3.25.56"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
     "@tailwindcss/typography": "0.5.16",
     "@types/node": "22.15.30",
     "@types/react": "19.1.6",
     "@types/react-dom": "19.1.6",
     "@types/showdown": "^2.0.6",
-    "autoprefixer": "10.4.21",
     "eslint": "9.28.0",
     "eslint-config-next": "15.3.3",
     "eslint-config-prettier": "10.1.5",
@@ -46,7 +46,7 @@
     "prettier": "3.5.3",
     "prettier-plugin-tailwindcss": "0.6.12",
     "schema-dts": "^1.1.5",
-    "tailwindcss": "3.4.17",
+    "tailwindcss": "4.1.8",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.8.3"
   }

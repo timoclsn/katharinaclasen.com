@@ -17,7 +17,7 @@ export const Header = async () => {
     <section className="flex min-h-[calc(100vh-80px)] flex-col overflow-hidden bg-background-ocean-foam">
       <Container inset className="relative flex flex-1 flex-col items-end">
         <div className="flex h-full flex-1 flex-col justify-between gap-10 py-20 pb-40 sm:pb-20">
-          <Heading level="1" className="max-w-4xl !leading-[1.2]">
+          <Heading level="1" className="max-w-4xl leading-[1.2]!">
             Everything <Tag size="xxl">Life-centered</Tag>{" "}
             <Tag size="xxl">Design</Tag> and what I am doing in this space
           </Heading>
