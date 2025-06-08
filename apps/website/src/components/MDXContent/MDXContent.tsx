@@ -97,7 +97,7 @@ export const MDXContent = ({
 
   return (
     <Markdown color={color} size={size} family={family} className={className}>
-      <MDXRemote source={source} components={components} />
+      <MDXRemote source={source} components={components as any} />
     </Markdown>
   );
 };
