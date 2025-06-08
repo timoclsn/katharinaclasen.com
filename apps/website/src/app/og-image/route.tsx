@@ -10,8 +10,6 @@ const sourceSans3 = fetch(
   new URL("./source-sans-3-latin-400-normal.ttf", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
-
-
 const sourceSerif4 = fetch(
   new URL("./source-serif-4-latin-400-normal.ttf", import.meta.url),
 ).then((res) => res.arrayBuffer());
