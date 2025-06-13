@@ -23,7 +23,7 @@ export interface CardProps extends VariantProps<typeof cardVariants> {
   className?: string;
   customColor?: string;
   id?: string;
-  ref?: RefObject<HTMLDivElement>;
+  ref?: RefObject<HTMLDivElement | null>;
 }
 
 export const Card = ({

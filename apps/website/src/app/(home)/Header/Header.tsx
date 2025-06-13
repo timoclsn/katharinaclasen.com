@@ -21,7 +21,7 @@ export const Header = async () => {
       <Container inset>
         <div className="flex flex-col gap-14 lg:flex-row">
           <div className="flex w-full flex-col items-start gap-10 lg:w-3/5">
-            <Heading level="1" className="!leading-[1.2]">
+            <Heading level="1" className="leading-[1.2]!">
               <Tag size="xxl" align="bottom">
                 UX Design
               </Tag>{" "}

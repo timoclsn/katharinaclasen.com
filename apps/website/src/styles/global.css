@@ -1,16 +1,82 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/typography';
+@plugin '@tailwindcss/container-queries';
+@plugin 'tailwindcss-animate';
+
+@theme {
+  --font-*: initial;
+  --font-sans: var(--sans-font);
+  --font-serif: var(--serif-font);
+
+  --color-*: initial;
+  --color-background-transparent: transparent;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f9f7f6;
+  --color-background-dark: #171d2d;
+  --color-background-lilac: #ede7f3;
+  --color-background-pink-candy: #f7e4f2;
+  --color-background-red-candy: #faeae9;
+  --color-background-stone: #f0eeea;
+  --color-background-mint: #e8efe0;
+  --color-background-ocean-foam: #e2e5f5;
+  --color-background-salmon: #ffd9b7;
+  --color-background-sun: #ffebb7;
+  --color-background-blue-extreme: #343294;
+  --color-background-lilac-extreme: #513294;
+
+  --color-contrast-primary-dark: #171d2d;
+  --color-contrast-primary-light: #ffffff;
+
+  --color-contrast-secondary-dark: rgba(23, 29, 45, 0.64);
+  --color-contrast-secondary-light: rgba(255, 255, 255, 0.8);
+
+  --color-contrast-disabled-dark: rgba(23, 29, 45, 0.4);
+  --color-contrast-disabled-light: rgba(255, 255, 255, 0.48);
+
+  --color-outline-normal-dark: rgba(23, 29, 45, 0.24);
+  --color-outline-normal-light: rgba(255, 255, 255, 0.32);
+
+  --color-outline-light-dark: rgba(23, 29, 45, 0.12);
+  --color-outline-light-light: rgba(255, 255, 255, 0.16);
+
+  --border-width-3: 3px;
+
+  --radius-4xl: 2rem;
+  --radius-5xl: 3rem;
+  --radius-6xl: 3.5rem;
+
+  --aspect-4\/3: 4 / 3;
+  --aspect-3\/2: 3 / 2;
+
+  --font-weight-semilight: 350;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility writing-vertical {
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+}
 
 @layer base {
   html {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  }
-}
-
-@layer utilities {
-  .writing-vertical {
-    writing-mode: vertical-rl;
-    rotate: 180deg;
   }
 }

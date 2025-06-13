@@ -152,7 +152,7 @@ export const Navigation = () => {
             <button
               type="button"
               className={cx(
-                "relative z-20 h-8 w-8 text-contrast-secondary-dark transition-opacity hover:opacity-80 focus:outline-none lg:hidden",
+                "relative z-20 h-8 w-8 text-contrast-secondary-dark transition-opacity hover:opacity-80 focus:outline-hidden lg:hidden",
                 styles.menuIcon,
               )}
               aria-controls="mobile-menu"

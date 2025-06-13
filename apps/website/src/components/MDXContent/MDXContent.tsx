@@ -1,6 +1,6 @@
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import Image from "next/image";
-import { HTMLProps } from "react";
+import { HTMLProps, JSX } from "react";
 import { Heading } from "../../design-system/Heading/Heading";
 import { ContentBox } from "../ContentBox/ContentBox";
 import { Link } from "../Link/Link";
@@ -97,7 +97,7 @@ export const MDXContent = ({
 
   return (
     <Markdown color={color} size={size} family={family} className={className}>
-      <MDXRemote source={source} components={components} />
+      <MDXRemote source={source} components={components as any} />
     </Markdown>
   );
 };

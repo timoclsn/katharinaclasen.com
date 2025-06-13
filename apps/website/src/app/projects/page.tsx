@@ -53,12 +53,11 @@ const sortSchema = z.object({
 });
 
 interface Props {
-  searchParams?: {
-    [key: string]: string | string[] | undefined;
-  };
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-const ProjectsPage = async ({ searchParams = {} }: Props) => {
+const ProjectsPage = async ({ searchParams: searchParamsPromise }: Props) => {
+  const searchParams = (await searchParamsPromise) || {};
   const filter = filterSchema.parse(searchParams);
   const { sort } = sortSchema.parse(searchParams);
 

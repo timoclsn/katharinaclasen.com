@@ -19,7 +19,7 @@ export const Header = async () => {
         inset
         className="relative flex flex-1 flex-col justify-between gap-10 py-20"
       >
-        <Heading level="1" className="max-w-4xl !leading-[1.2]">
+        <Heading level="1" className="max-w-4xl leading-[1.2]!">
           Let&apos;s use digital for good and create{" "}
           <Tag size="xxl" align="bottom">
             truly positive

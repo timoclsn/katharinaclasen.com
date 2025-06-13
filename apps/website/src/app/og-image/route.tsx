@@ -3,15 +3,11 @@ import { ImageResponse } from "@vercel/og";
 import { BackgroundColor, backgroundColorsValueMap } from "../../lib/colors";
 import { getImage } from "../../lib/queries";
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 const sourceSans3 = fetch(
   new URL("./source-sans-3-latin-400-normal.ttf", import.meta.url),
-).then((res) => res.arrayBuffer());
-
-const sourceSans3_500 = fetch(
-  new URL("./source-sans-3-latin-500-normal.ttf", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 const sourceSerif4 = fetch(
@@ -20,7 +16,6 @@ const sourceSerif4 = fetch(
 
 export const GET = async (request: Request) => {
   const sourceSans3Data = await sourceSans3;
-  const sourceSans3_500Data = await sourceSans3_500;
   const sourceSerif4Data = await sourceSerif4;
 
   const { searchParams } = new URL(request.url);
@@ -238,8 +233,8 @@ export const GET = async (request: Request) => {
             </svg>
             <span
               style={{
-                fontFamily: "Sans 500",
-                fontWeight: "400",
+                fontFamily: "Sans",
+                fontWeight: "500",
                 color: "#171D2D",
                 fontSize: "24px",
                 lineHeight: "32px",
@@ -269,11 +264,7 @@ export const GET = async (request: Request) => {
           data: sourceSans3Data,
           style: "normal",
         },
-        {
-          name: "Sans 500",
-          data: sourceSans3_500Data,
-          style: "normal",
-        },
+
         {
           name: "Serif",
           data: sourceSerif4Data,

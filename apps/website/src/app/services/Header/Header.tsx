@@ -26,7 +26,7 @@ export const Header = async () => {
           />
         </div>
         <div className="flex w-full flex-col justify-between gap-10 bg-background-stone px-4 py-10 sm:px-8 lg:w-2/3 lg:rounded-l-6xl">
-          <Heading level="1" className="max-w-4xl !leading-[1.2]">
+          <Heading level="1" className="max-w-4xl leading-[1.2]!">
             I am the{" "}
             <Tag size="xxl" align="bottom">
               flexible

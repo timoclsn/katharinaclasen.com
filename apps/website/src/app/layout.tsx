@@ -72,8 +72,9 @@ interface Props {
   children: ReactNode;
 }
 
-const RootLayout = ({ children }: Props) => {
-  const isDraftMode = draftMode().isEnabled;
+const RootLayout = async ({ children }: Props) => {
+  const draft = await draftMode();
+  const isDraftMode = draft.isEnabled;
   return (
     <>
       <Script data-no-cookie data-api="/_hive" src="/bee.js" />
@@ -86,7 +87,7 @@ const RootLayout = ({ children }: Props) => {
           "bg-background-primary",
           "[&:has(.home-page)]:bg-background-secondary [&:has(.home-page)_.mobile-nav]:bg-background-secondary",
           "[&:has(.about-page)]:bg-background-red-candy [&:has(.about-page)_.mobile-nav]:bg-background-red-candy",
-          "[&:has(.services-page)]:bg-background-stone lg:[&:has(.services-page)]:!bg-background-primary [&:has(.services-page)_.mobile-nav]:bg-background-stone",
+          "[&:has(.services-page)]:bg-background-stone lg:[&:has(.services-page)]:bg-background-primary! [&:has(.services-page)_.mobile-nav]:bg-background-stone",
           "[&:has(.lcd-page)]:bg-background-ocean-foam [&:has(.lcd-page)_.mobile-nav]:bg-background-ocean-foam",
           "[&:has(.contact-page)]:bg-background-pink-candy [&:has(.contact-page)_.mobile-nav]:bg-background-pink-candy",
         )}

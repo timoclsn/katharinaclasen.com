@@ -7,7 +7,7 @@ import { context } from "../../../lib/projects";
 import { getProject, getProjects } from "../../../lib/queries";
 
 export const generateMetadata = createGenerateMetadata(async ({ params }) => {
-  const { slug } = params;
+  const { slug } = await params;
   const project = await getProject(slug);
   return {
     title: project.title,
@@ -45,13 +45,13 @@ export const generateStaticParams = async () => {
 };
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 const ProjectPage = async ({ params }: Props) => {
-  const { slug } = params;
+  const { slug } = await params;
   const project = await getProject(slug);
 
   return (

@@ -36,8 +36,8 @@ export const ArticlePreview = ({
           width={500}
           height={500}
           sizes="100vw, (min-width: 768px) 50vw"
-          className={`aspect-3/2 w-full rounded-3xl object-cover sm:rounded-6xl @5xl:w-1/3${
-            titleImage.border ? " ring-2 ring-outline-light-dark" : ""
+          className={`sm:rounded-6xl aspect-3/2 w-full rounded-3xl object-cover @5xl:w-1/3${
+            titleImage.border ? "ring-outline-light-dark ring-2" : ""
           }`}
         />
         <div className="flex-1">
