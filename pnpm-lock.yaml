@@ -72,9 +72,6 @@ importers:
       '@radix-ui/react-select':
         specifier: ^2.2.5
         version: 2.2.5(@types/react-dom@19.1.6(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@tailwindcss/container-queries':
-        specifier: ^0.1.1
-        version: 0.1.1(tailwindcss@4.1.8)
       '@vercel/og':
         specifier: ^0.6.8
         version: 0.6.8
@@ -2482,11 +2479,6 @@ packages:
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
-
-  '@tailwindcss/container-queries@0.1.1':
-    resolution: {integrity: sha512-p18dswChx6WnTSaJCSGx6lTmrGzNNvm2FtXmiO6AuA1V4U5REyoqwmT6kgAsIMdjo07QdAfYXHJ4hnMtfHzWgA==}
-    peerDependencies:
-      tailwindcss: '>=3.2.0'
 
   '@tailwindcss/node@4.1.8':
     resolution: {integrity: sha512-OWwBsbC9BFAJelmnNcrKuf+bka2ZxCE2A4Ft53Tkg4uoiE67r/PMEYwCsourC26E+kmxfwE0hVzMdxqeW+xu7Q==}
@@ -8918,7 +8910,7 @@ snapshots:
       get-random-values-esm: 1.0.2
       lodash: 4.17.21
 
-  '@portabletext/editor@1.52.4(@sanity/schema@3.92.0(@types/react@19.1.6)(debug@4.3.4))(@sanity/types@3.92.0(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rxjs@7.8.2)':
+  '@portabletext/editor@1.52.4(@sanity/schema@3.92.0(@types/react@19.1.6)(debug@4.3.4))(@sanity/types@3.92.0(@types/react@19.1.6)(debug@4.3.4))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rxjs@7.8.2)':
     dependencies:
       '@portabletext/block-tools': 1.1.30(@sanity/types@3.92.0(@types/react@19.1.6)(debug@4.3.4))(@types/react@19.1.6)
       '@portabletext/patches': 1.1.4
@@ -9933,10 +9925,6 @@ snapshots:
   '@swc/helpers@0.5.15':
     dependencies:
       tslib: 2.8.1
-
-  '@tailwindcss/container-queries@0.1.1(tailwindcss@4.1.8)':
-    dependencies:
-      tailwindcss: 4.1.8
 
   '@tailwindcss/node@4.1.8':
     dependencies:
@@ -14078,7 +14066,7 @@ snapshots:
       '@dnd-kit/utilities': 3.2.1(react@19.1.0)
       '@juggle/resize-observer': 3.4.0
       '@portabletext/block-tools': 1.1.30(@sanity/types@3.92.0(@types/react@19.1.6)(debug@4.3.4))(@types/react@19.1.6)
-      '@portabletext/editor': 1.52.4(@sanity/schema@3.92.0(@types/react@19.1.6)(debug@4.3.4))(@sanity/types@3.92.0(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rxjs@7.8.2)
+      '@portabletext/editor': 1.52.4(@sanity/schema@3.92.0(@types/react@19.1.6)(debug@4.3.4))(@sanity/types@3.92.0(@types/react@19.1.6)(debug@4.3.4))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rxjs@7.8.2)
       '@portabletext/react': 3.2.1(react@19.1.0)
       '@portabletext/toolkit': 2.0.17
       '@rexxars/react-json-inspector': 9.0.1(react@19.1.0)

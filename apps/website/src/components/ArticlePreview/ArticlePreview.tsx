@@ -1,3 +1,4 @@
+import { cva } from "cva";
 import { LucideIcon } from "lucide-react";
 import Image from "next/image";
 import { Body } from "../../design-system/Body/Body";
@@ -21,6 +22,16 @@ interface Props {
   }>;
 }
 
+const imageStyles = cva({
+  base: "sm:rounded-6xl aspect-3/2 w-full rounded-3xl object-cover @5xl:w-1/3",
+  variants: {
+    border: {
+      true: "ring-outline-light-dark ring-2",
+      false: "",
+    },
+  },
+});
+
 export const ArticlePreview = ({
   title,
   titleImage,
@@ -36,9 +47,7 @@ export const ArticlePreview = ({
           width={500}
           height={500}
           sizes="100vw, (min-width: 768px) 50vw"
-          className={`sm:rounded-6xl aspect-3/2 w-full rounded-3xl object-cover @5xl:w-1/3${
-            titleImage.border ? "ring-outline-light-dark ring-2" : ""
-          }`}
+          className={imageStyles({ border: !!titleImage.border })}
         />
         <div className="flex-1">
           <Heading className="mb-6">{title}</Heading>
