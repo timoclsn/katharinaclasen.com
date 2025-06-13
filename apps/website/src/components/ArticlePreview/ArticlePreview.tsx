@@ -27,7 +27,6 @@ const imageStyles = cva({
   variants: {
     border: {
       true: "ring-outline-light-dark ring-2",
-      false: "",
     },
   },
 });
