@@ -1,6 +1,7 @@
 import { cx } from "cva";
 import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
 import { draftMode } from "next/headers";
+import Script from "next/script";
 import { ReactNode } from "react";
 import { DraftModeBanner } from "../components/DraftModeBanner/DraftModeBanner";
 import { Footer } from "../components/Footer/Footer";
@@ -75,29 +76,32 @@ const RootLayout = async ({ children }: Props) => {
   const draft = await draftMode();
   const isDraftMode = draft.isEnabled;
   return (
-    <html
-      lang="en"
-      className={cx(
-        sansFont.variable,
-        serifFont.variable,
-        "min-h-screen",
-        "bg-background-primary",
-        "[&:has(.home-page)]:bg-background-secondary [&:has(.home-page)_.mobile-nav]:bg-background-secondary",
-        "[&:has(.about-page)]:bg-background-red-candy [&:has(.about-page)_.mobile-nav]:bg-background-red-candy",
-        "[&:has(.services-page)]:bg-background-stone lg:[&:has(.services-page)]:bg-background-primary! [&:has(.services-page)_.mobile-nav]:bg-background-stone",
-        "[&:has(.lcd-page)]:bg-background-ocean-foam [&:has(.lcd-page)_.mobile-nav]:bg-background-ocean-foam",
-        "[&:has(.contact-page)]:bg-background-pink-candy [&:has(.contact-page)_.mobile-nav]:bg-background-pink-candy",
-      )}
-    >
-      <body className="relative flex min-h-screen flex-col overflow-x-hidden">
-        {isDraftMode && <DraftModeBanner />}
-        <Navigation />
-        <main id="skip" className="flex-1">
-          {children}
-        </main>
-        <Footer />
-      </body>
-    </html>
+    <>
+      <Script src="/ods/script" data-url="/ods/events" />
+      <html
+        lang="en"
+        className={cx(
+          sansFont.variable,
+          serifFont.variable,
+          "min-h-screen",
+          "bg-background-primary",
+          "[&:has(.home-page)]:bg-background-secondary [&:has(.home-page)_.mobile-nav]:bg-background-secondary",
+          "[&:has(.about-page)]:bg-background-red-candy [&:has(.about-page)_.mobile-nav]:bg-background-red-candy",
+          "[&:has(.services-page)]:bg-background-stone lg:[&:has(.services-page)]:bg-background-primary! [&:has(.services-page)_.mobile-nav]:bg-background-stone",
+          "[&:has(.lcd-page)]:bg-background-ocean-foam [&:has(.lcd-page)_.mobile-nav]:bg-background-ocean-foam",
+          "[&:has(.contact-page)]:bg-background-pink-candy [&:has(.contact-page)_.mobile-nav]:bg-background-pink-candy",
+        )}
+      >
+        <body className="relative flex min-h-screen flex-col overflow-x-hidden">
+          {isDraftMode && <DraftModeBanner />}
+          <Navigation />
+          <main id="skip" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </body>
+      </html>
+    </>
   );
 };
 

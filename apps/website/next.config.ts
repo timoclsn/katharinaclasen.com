@@ -16,6 +16,18 @@ const nextConfig: NextConfig = {
     ],
   },
   transpilePackages: ["next-mdx-remote"],
+  async rewrites() {
+    return [
+      {
+        source: "/ods/script",
+        destination: "https://assets.onedollarstats.com/stonks.js",
+      },
+      {
+        source: "/ods/events",
+        destination: "https://collector.onedollarstats.com/events",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
