@@ -26,17 +26,17 @@ export const ContactMe = () => {
             </li>
             <li className="list-none">
               📞{" "}
-              <Link href="" external>
+              <Link href={CALENDLY_URL} external>
                 Book a call
               </Link>
             </li>
             <li className="list-none">
               💬 Stay in touch on{" "}
-              <Link href="" external>
+              <Link href={LINKEDIN_URL} external>
                 LinkedIn
               </Link>{" "}
               or{" "}
-              <Link href="" external>
+              <Link href={INSTAGRAL_URL} external>
                 Instagram
               </Link>
             </li>
